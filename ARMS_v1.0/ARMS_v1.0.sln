@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34408.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{5AD2F624-D453-4752-AFD8-685D5C53233A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{F7697795-DF75-428B-BA38-F1F88B63DE25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARMS_API", "ARMS_API\ARMS_API.csproj", "{DB6FDAE4-F1E5-470D-8A1B-086374712BFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5AD2F624-D453-4752-AFD8-685D5C53233A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AD2F624-D453-4752-AFD8-685D5C53233A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AD2F624-D453-4752-AFD8-685D5C53233A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AD2F624-D453-4752-AFD8-685D5C53233A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7697795-DF75-428B-BA38-F1F88B63DE25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7697795-DF75-428B-BA38-F1F88B63DE25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7697795-DF75-428B-BA38-F1F88B63DE25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7697795-DF75-428B-BA38-F1F88B63DE25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB6FDAE4-F1E5-470D-8A1B-086374712BFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB6FDAE4-F1E5-470D-8A1B-086374712BFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB6FDAE4-F1E5-470D-8A1B-086374712BFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB6FDAE4-F1E5-470D-8A1B-086374712BFE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D00605BD-E314-47E9-90BE-DBA64E2FB2C0}
+	EndGlobalSection
+EndGlobal
