@@ -16,6 +16,12 @@ namespace Data.Configurations
             builder.ToTable(nameof(Campus));
             builder.Property(x => x.CampusId).IsRequired();
             builder.Property(x => x.CampusName).IsRequired();
+
+            #region config relation
+            builder.HasOne(x => x.IntroduceCampus)
+                   .WithOne(sp => sp.Campus)
+                   .HasForeignKey<IntroduceCampus>(sp => sp.CampusId);
+            #endregion
         }
     }
 }

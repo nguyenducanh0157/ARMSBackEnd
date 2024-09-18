@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eP9GDy9oKoq5+JqebbdoCJtIb4lgJrBTKdZh+gfXTJDQzcaBTY2koXrapJ+q27wdJNsUPWrNQq8iiWEzOkNwAg==",
+  "dgSpecHash": "tG2s67zCExVyUV4WP0PnyenDE3mto/iDwHIVc6HvF5ac036FRuCzT6st2HByqEcihumfgmrAY+vSX8Yzigrbfw==",
   "success": true,
-  "projectFilePath": "D:\\Job\\Đức Anh\\ARMS_v1.0\\ARMS_API\\ARMS_API.csproj",
+  "projectFilePath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\ARMS_API\\ARMS_API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\-ASUS-\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\-ASUS-\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

@@ -107,19 +107,324 @@ namespace Data.Migrations
                             Id = new Guid("b8c777a9-55b9-4b3d-860a-d7b56e4c24b7"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "6a82d0a4-a13c-4feb-9dc6-1adb31334d15",
+                            ConcurrencyStamp = "8422e5df-8ad5-4a96-9fc9-270d14fc4828",
                             Email = "AdminHaNoi@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Admin Hanoi",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMINHANOI@GMAIL.COM",
                             NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAs06y1prirFXjpKf0+Hq/yD7nsMpOihwp6NbesjgAcaYLVze++Sd5mu+U58jB1TVQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELMPX4CDcG6AAfKQq6DR4FZRMiWhIXAXWWL7Yp1jVhmsFvJxfhc1kAbfXzna3il8jQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "98870d48-99bb-4bcd-beae-a690c35ebfca",
+                            SecurityStamp = "e1783e7d-1499-4aec-84ec-88f1d9bd1068",
                             TwoFactorEnabled = false,
                             UserName = "Administrator",
                             isAccountActive = false
+                        });
+                });
+
+            modelBuilder.Entity("Data.Models.AlumiStudent", b =>
+                {
+                    b.Property<int>("AlumiStudentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AlumiStudentId"), 1L, 1);
+
+                    b.Property<string>("CampusId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Desciption")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Img")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SpecializeMajorID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("AlumiStudentId");
+
+                    b.HasIndex("CampusId");
+
+                    b.HasIndex("SpecializeMajorID");
+
+                    b.ToTable("AlumiStudent", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            AlumiStudentId = 1,
+                            CampusId = "Hanoi",
+                            Desciption = "Là một người trẻ, năng động thích môi trường năng động và được học những kiến thức thực tế. Mình nhận thấy đây là môi trường hoàn hảo để chắp cánh ước mơ trở thành nhà quản trị khách sạn của mình.",
+                            FullName = "Nguyễn Đức Anh",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/AlumiStudent%2Fstudent1.webp?alt=media&token=03b25b7d-e847-4e6d-ae4c-5da00e1c8183",
+                            SpecializeMajorID = "ME"
+                        },
+                        new
+                        {
+                            AlumiStudentId = 2,
+                            CampusId = "Hanoi",
+                            Desciption = "Là một người trẻ, năng động thích môi trường năng động và được học những kiến thức thực tế. Mình nhận thấy đây là môi trường hoàn hảo để chắp cánh ước mơ trở thành nhà quản trị khách sạn của mình.",
+                            FullName = "Vũ Nguyễn Minh Sơn",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/AlumiStudent%2Fstudent1.webp?alt=media&token=03b25b7d-e847-4e6d-ae4c-5da00e1c8183",
+                            SpecializeMajorID = "ME"
+                        },
+                        new
+                        {
+                            AlumiStudentId = 3,
+                            CampusId = "Hanoi",
+                            Desciption = "Là một người trẻ, năng động thích môi trường năng động và được học những kiến thức thực tế. Mình nhận thấy đây là môi trường hoàn hảo để chắp cánh ước mơ trở thành nhà quản trị khách sạn của mình.",
+                            FullName = "Lê Quang An",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/AlumiStudent%2Fstudent1.webp?alt=media&token=03b25b7d-e847-4e6d-ae4c-5da00e1c8183",
+                            SpecializeMajorID = "ME"
+                        },
+                        new
+                        {
+                            AlumiStudentId = 4,
+                            CampusId = "Hanoi",
+                            Desciption = "Là một người trẻ, năng động thích môi trường năng động và được học những kiến thức thực tế. Mình nhận thấy đây là môi trường hoàn hảo để chắp cánh ước mơ trở thành nhà quản trị khách sạn của mình.",
+                            FullName = "Trần Tú Anh",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/AlumiStudent%2Fstudent1.webp?alt=media&token=03b25b7d-e847-4e6d-ae4c-5da00e1c8183",
+                            SpecializeMajorID = "ME"
+                        });
+                });
+
+            modelBuilder.Entity("Data.Models.Banner", b =>
+                {
+                    b.Property<int>("BannerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BannerId"), 1L, 1);
+
+                    b.Property<string>("CampusId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Img")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BannerId");
+
+                    b.HasIndex("CampusId");
+
+                    b.ToTable("Banner", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            BannerId = 1,
+                            CampusId = "Hanoi",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner1.jpg?alt=media&token=3b681990-e08c-4e87-a69b-d1586a72398d"
+                        },
+                        new
+                        {
+                            BannerId = 2,
+                            CampusId = "Hanoi",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner2.jpg?alt=media&token=fcd81d71-4b88-4443-a07d-3e21d2ad19bc"
+                        },
+                        new
+                        {
+                            BannerId = 3,
+                            CampusId = "Hanoi",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner3.jpg?alt=media&token=829186db-6511-49ff-a4b7-48211a4d83db"
+                        },
+                        new
+                        {
+                            BannerId = 4,
+                            CampusId = "Danang",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner1.jpg?alt=media&token=3b681990-e08c-4e87-a69b-d1586a72398d"
+                        },
+                        new
+                        {
+                            BannerId = 5,
+                            CampusId = "Danang",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner2.jpg?alt=media&token=fcd81d71-4b88-4443-a07d-3e21d2ad19bc"
+                        },
+                        new
+                        {
+                            BannerId = 6,
+                            CampusId = "Danang",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner3.jpg?alt=media&token=829186db-6511-49ff-a4b7-48211a4d83db"
+                        },
+                        new
+                        {
+                            BannerId = 7,
+                            CampusId = "HCM",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner1.jpg?alt=media&token=3b681990-e08c-4e87-a69b-d1586a72398d"
+                        },
+                        new
+                        {
+                            BannerId = 8,
+                            CampusId = "HCM",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner2.jpg?alt=media&token=fcd81d71-4b88-4443-a07d-3e21d2ad19bc"
+                        },
+                        new
+                        {
+                            BannerId = 9,
+                            CampusId = "HCM",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner3.jpg?alt=media&token=829186db-6511-49ff-a4b7-48211a4d83db"
+                        },
+                        new
+                        {
+                            BannerId = 10,
+                            CampusId = "Cantho",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner1.jpg?alt=media&token=3b681990-e08c-4e87-a69b-d1586a72398d"
+                        },
+                        new
+                        {
+                            BannerId = 11,
+                            CampusId = "Cantho",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner2.jpg?alt=media&token=fcd81d71-4b88-4443-a07d-3e21d2ad19bc"
+                        },
+                        new
+                        {
+                            BannerId = 12,
+                            CampusId = "Cantho",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner3.jpg?alt=media&token=829186db-6511-49ff-a4b7-48211a4d83db"
+                        },
+                        new
+                        {
+                            BannerId = 13,
+                            CampusId = "Thanhhoa",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner1.jpg?alt=media&token=3b681990-e08c-4e87-a69b-d1586a72398d"
+                        },
+                        new
+                        {
+                            BannerId = 14,
+                            CampusId = "Thanhhoa",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner2.jpg?alt=media&token=fcd81d71-4b88-4443-a07d-3e21d2ad19bc"
+                        },
+                        new
+                        {
+                            BannerId = 15,
+                            CampusId = "Thanhhoa",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner3.jpg?alt=media&token=829186db-6511-49ff-a4b7-48211a4d83db"
+                        });
+                });
+
+            modelBuilder.Entity("Data.Models.BlogCategory", b =>
+                {
+                    b.Property<int>("BlogCategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BlogCategoryId"), 1L, 1);
+
+                    b.Property<string>("BlogCategoryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CampusId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("BlogCategoryId");
+
+                    b.HasIndex("CampusId");
+
+                    b.ToTable("BlogCategory", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            BlogCategoryId = 1,
+                            BlogCategoryName = "Tuyển sinh",
+                            CampusId = "Hanoi"
+                        },
+                        new
+                        {
+                            BlogCategoryId = 2,
+                            BlogCategoryName = "Hoạt động của sinh viên",
+                            CampusId = "Hanoi"
+                        },
+                        new
+                        {
+                            BlogCategoryId = 3,
+                            BlogCategoryName = "Sự kiện",
+                            CampusId = "Hanoi"
+                        },
+                        new
+                        {
+                            BlogCategoryId = 4,
+                            BlogCategoryName = "Tuyển sinh",
+                            CampusId = "Danang"
+                        },
+                        new
+                        {
+                            BlogCategoryId = 5,
+                            BlogCategoryName = "Hoạt động của sinh viên",
+                            CampusId = "Danang"
+                        },
+                        new
+                        {
+                            BlogCategoryId = 6,
+                            BlogCategoryName = "Sự kiện",
+                            CampusId = "Danang"
+                        },
+                        new
+                        {
+                            BlogCategoryId = 7,
+                            BlogCategoryName = "Tuyển sinh",
+                            CampusId = "Cantho"
+                        },
+                        new
+                        {
+                            BlogCategoryId = 8,
+                            BlogCategoryName = "Hoạt động của sinh viên",
+                            CampusId = "Cantho"
+                        },
+                        new
+                        {
+                            BlogCategoryId = 9,
+                            BlogCategoryName = "Sự kiện",
+                            CampusId = "Cantho"
+                        },
+                        new
+                        {
+                            BlogCategoryId = 10,
+                            BlogCategoryName = "Tuyển sinh",
+                            CampusId = "HCM"
+                        },
+                        new
+                        {
+                            BlogCategoryId = 11,
+                            BlogCategoryName = "Hoạt động của sinh viên",
+                            CampusId = "HCM"
+                        },
+                        new
+                        {
+                            BlogCategoryId = 12,
+                            BlogCategoryName = "Sự kiện",
+                            CampusId = "HCM"
+                        },
+                        new
+                        {
+                            BlogCategoryId = 13,
+                            BlogCategoryName = "Tuyển sinh",
+                            CampusId = "Thanhhoa"
+                        },
+                        new
+                        {
+                            BlogCategoryId = 14,
+                            BlogCategoryName = "Hoạt động của sinh viên",
+                            CampusId = "Thanhhoa"
+                        },
+                        new
+                        {
+                            BlogCategoryId = 15,
+                            BlogCategoryName = "Sự kiện",
+                            CampusId = "Thanhhoa"
                         });
                 });
 
@@ -136,11 +441,18 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("IntroduceId")
+                        .HasColumnType("int");
+
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CampusId");
+
+                    b.HasIndex("IntroduceId")
+                        .IsUnique()
+                        .HasFilter("[IntroduceId] IS NOT NULL");
 
                     b.ToTable("Campus", (string)null);
 
@@ -179,6 +491,82 @@ namespace Data.Migrations
                             Address = "Tòa Beta, Tổ hợp giáo dục FPT, Đại lộ Võ Nguyên Giáp, phường Quảng Thành, TP Thanh Hóa",
                             CampusName = "Thanh Hoá",
                             PhoneNumber = "0913785213"
+                        });
+                });
+
+            modelBuilder.Entity("Data.Models.IntroduceCampus", b =>
+                {
+                    b.Property<int>("IntroduceId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IntroduceId"), 1L, 1);
+
+                    b.Property<string>("Achievements")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CampusId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("History")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TrainingMotto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WhyChooseUs")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IntroduceId");
+
+                    b.ToTable("IntroduceCampus", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            IntroduceId = 1,
+                            Achievements = "Trường Cao đẳng Nghề XYZ đã đạt được nhiều thành tích đáng tự hào trong suốt quá trình phát triển:\r\n\r\nDanh hiệu “Trường nghề xuất sắc” do Bộ Lao động - Thương binh và Xã hội trao tặng trong nhiều năm liên tiếp.\r\nThành tích đào tạo: Hơn 10.000 học viên đã tốt nghiệp và làm việc tại các công ty, tập đoàn lớn trong và ngoài nước.\r\nGiải thưởng về sáng tạo và nghiên cứu khoa học: Học viên của trường đã đạt nhiều giải thưởng tại các cuộc thi tay nghề và sáng tạo kỹ thuật cấp quốc gia.\r\nThành tích hợp tác quốc tế: Nhà trường đã ký kết nhiều chương trình hợp tác đào tạo và trao đổi học viên với các trường nghề uy tín ở nước ngoài, nâng cao chất lượng giáo dục và mở ra cơ hội học tập quốc tế cho học viên.",
+                            CampusId = "Hanoi",
+                            History = "Giới thiệu về lịch sử thành lập Trường Cao đẳng Nghề XYZ\r\n\r\nTrường Cao đẳng Nghề XYZ được thành lập vào năm 1995 với sứ mệnh cung cấp nguồn nhân lực chất lượng cao cho các ngành công nghiệp, dịch vụ và nông nghiệp trên cả nước. Trong suốt hơn hai thập kỷ phát triển, nhà trường đã không ngừng cải tiến, mở rộng quy mô đào tạo và nâng cao chất lượng giảng dạy nhằm đáp ứng nhu cầu ngày càng cao của xã hội và thị trường lao động.\r\n\r\nBan đầu, trường chỉ đào tạo một số ngành nghề cơ bản với quy mô nhỏ, nhưng nhờ sự nỗ lực của đội ngũ cán bộ, giảng viên và sự đầu tư của nhà nước, trường đã phát triển thành một cơ sở giáo dục nghề nghiệp đa ngành, đa lĩnh vực. Hiện nay, Trường Cao đẳng Nghề XYZ tự hào là một trong những đơn vị đi đầu trong việc đào tạo các ngành nghề kỹ thuật, công nghệ và dịch vụ, trang bị cho học viên kiến thức thực tiễn và kỹ năng chuyên môn cao.\r\n\r\nVới phương châm “Học đi đôi với hành”, trường luôn chú trọng vào việc kết hợp giữa lý thuyết và thực hành, giúp học viên sẵn sàng tham gia vào thị trường lao động ngay sau khi tốt nghiệp. Trải qua quá trình hình thành và phát triển, Trường Cao đẳng Nghề XYZ đã khẳng định được vị thế của mình trong hệ thống giáo dục nghề nghiệp và góp phần quan trọng vào sự phát triển của ngành nghề tại Việt Nam.",
+                            TrainingMotto = "Với phương châm \"Học đi đôi với hành, vững lý thuyết – chắc tay nghề\", Trường Cao đẳng Nghề XYZ luôn hướng tới việc đào tạo ra những thế hệ học viên có đầy đủ kiến thức chuyên môn và kỹ năng thực hành, đáp ứng tốt yêu cầu của thị trường lao động hiện đại.\r\n\r\nPhương châm này được cụ thể hóa thông qua các yếu tố:\r\n\r\nGiảng dạy bám sát nhu cầu thị trường: Chương trình đào tạo luôn được cập nhật theo xu hướng phát triển của các ngành công nghiệp và dịch vụ, đảm bảo học viên được trang bị những kiến thức và kỹ năng mới nhất.\r\nPhát triển toàn diện: Bên cạnh kỹ năng nghề nghiệp, trường còn chú trọng phát triển kỹ năng mềm, như kỹ năng giao tiếp, làm việc nhóm, và tư duy sáng tạo, giúp học viên tự tin hơn trong công việc.\r\nHọc tập suốt đời: Nhà trường khuyến khích tinh thần học tập không ngừng nghỉ, giúp học viên luôn sẵn sàng thích nghi với những thay đổi của xã hội và công nghệ.",
+                            WhyChooseUs = "Trường Cao đẳng Nghề XYZ luôn được học viên và doanh nghiệp đánh giá cao nhờ vào những ưu điểm vượt trội sau:\r\n\r\nChất lượng đào tạo hàng đầu: Với đội ngũ giảng viên giàu kinh nghiệm và cơ sở vật chất hiện đại, trường đảm bảo cung cấp cho học viên một nền tảng kiến thức vững chắc cùng kỹ năng nghề nghiệp thiết thực.\r\nChương trình đào tạo thực tiễn: Nhà trường luôn chú trọng việc kết hợp lý thuyết với thực hành, giúp học viên không chỉ nắm vững kiến thức mà còn được rèn luyện các kỹ năng cần thiết để làm việc ngay khi ra trường.\r\nMối liên kết chặt chẽ với doanh nghiệp: Trường hợp tác với nhiều doanh nghiệp trong các lĩnh vực khác nhau, tạo điều kiện cho học viên thực tập và có cơ hội việc làm ngay sau khi tốt nghiệp.\r\nMôi trường học tập thân thiện: Nhà trường không chỉ tạo ra một môi trường học tập chuyên nghiệp mà còn thân thiện, tạo điều kiện tốt nhất cho sự phát triển toàn diện của học viên.\r\nCơ hội việc làm cao: Với tỷ lệ học viên có việc làm sau khi ra trường đạt trên 90%, Trường Cao đẳng Nghề XYZ cam kết mang đến cho học viên những cơ hội việc làm tốt nhất."
+                        },
+                        new
+                        {
+                            IntroduceId = 2,
+                            Achievements = "Trường Cao đẳng Nghề XYZ đã đạt được nhiều thành tích đáng tự hào trong suốt quá trình phát triển:\r\n\r\nDanh hiệu “Trường nghề xuất sắc” do Bộ Lao động - Thương binh và Xã hội trao tặng trong nhiều năm liên tiếp.\r\nThành tích đào tạo: Hơn 10.000 học viên đã tốt nghiệp và làm việc tại các công ty, tập đoàn lớn trong và ngoài nước.\r\nGiải thưởng về sáng tạo và nghiên cứu khoa học: Học viên của trường đã đạt nhiều giải thưởng tại các cuộc thi tay nghề và sáng tạo kỹ thuật cấp quốc gia.\r\nThành tích hợp tác quốc tế: Nhà trường đã ký kết nhiều chương trình hợp tác đào tạo và trao đổi học viên với các trường nghề uy tín ở nước ngoài, nâng cao chất lượng giáo dục và mở ra cơ hội học tập quốc tế cho học viên.",
+                            CampusId = "Danang",
+                            History = "Giới thiệu về lịch sử thành lập Trường Cao đẳng Nghề XYZ\r\n\r\nTrường Cao đẳng Nghề XYZ được thành lập vào năm 1995 với sứ mệnh cung cấp nguồn nhân lực chất lượng cao cho các ngành công nghiệp, dịch vụ và nông nghiệp trên cả nước. Trong suốt hơn hai thập kỷ phát triển, nhà trường đã không ngừng cải tiến, mở rộng quy mô đào tạo và nâng cao chất lượng giảng dạy nhằm đáp ứng nhu cầu ngày càng cao của xã hội và thị trường lao động.\r\n\r\nBan đầu, trường chỉ đào tạo một số ngành nghề cơ bản với quy mô nhỏ, nhưng nhờ sự nỗ lực của đội ngũ cán bộ, giảng viên và sự đầu tư của nhà nước, trường đã phát triển thành một cơ sở giáo dục nghề nghiệp đa ngành, đa lĩnh vực. Hiện nay, Trường Cao đẳng Nghề XYZ tự hào là một trong những đơn vị đi đầu trong việc đào tạo các ngành nghề kỹ thuật, công nghệ và dịch vụ, trang bị cho học viên kiến thức thực tiễn và kỹ năng chuyên môn cao.\r\n\r\nVới phương châm “Học đi đôi với hành”, trường luôn chú trọng vào việc kết hợp giữa lý thuyết và thực hành, giúp học viên sẵn sàng tham gia vào thị trường lao động ngay sau khi tốt nghiệp. Trải qua quá trình hình thành và phát triển, Trường Cao đẳng Nghề XYZ đã khẳng định được vị thế của mình trong hệ thống giáo dục nghề nghiệp và góp phần quan trọng vào sự phát triển của ngành nghề tại Việt Nam.",
+                            TrainingMotto = "Với phương châm \"Học đi đôi với hành, vững lý thuyết – chắc tay nghề\", Trường Cao đẳng Nghề XYZ luôn hướng tới việc đào tạo ra những thế hệ học viên có đầy đủ kiến thức chuyên môn và kỹ năng thực hành, đáp ứng tốt yêu cầu của thị trường lao động hiện đại.\r\n\r\nPhương châm này được cụ thể hóa thông qua các yếu tố:\r\n\r\nGiảng dạy bám sát nhu cầu thị trường: Chương trình đào tạo luôn được cập nhật theo xu hướng phát triển của các ngành công nghiệp và dịch vụ, đảm bảo học viên được trang bị những kiến thức và kỹ năng mới nhất.\r\nPhát triển toàn diện: Bên cạnh kỹ năng nghề nghiệp, trường còn chú trọng phát triển kỹ năng mềm, như kỹ năng giao tiếp, làm việc nhóm, và tư duy sáng tạo, giúp học viên tự tin hơn trong công việc.\r\nHọc tập suốt đời: Nhà trường khuyến khích tinh thần học tập không ngừng nghỉ, giúp học viên luôn sẵn sàng thích nghi với những thay đổi của xã hội và công nghệ.",
+                            WhyChooseUs = "Trường Cao đẳng Nghề XYZ luôn được học viên và doanh nghiệp đánh giá cao nhờ vào những ưu điểm vượt trội sau:\r\n\r\nChất lượng đào tạo hàng đầu: Với đội ngũ giảng viên giàu kinh nghiệm và cơ sở vật chất hiện đại, trường đảm bảo cung cấp cho học viên một nền tảng kiến thức vững chắc cùng kỹ năng nghề nghiệp thiết thực.\r\nChương trình đào tạo thực tiễn: Nhà trường luôn chú trọng việc kết hợp lý thuyết với thực hành, giúp học viên không chỉ nắm vững kiến thức mà còn được rèn luyện các kỹ năng cần thiết để làm việc ngay khi ra trường.\r\nMối liên kết chặt chẽ với doanh nghiệp: Trường hợp tác với nhiều doanh nghiệp trong các lĩnh vực khác nhau, tạo điều kiện cho học viên thực tập và có cơ hội việc làm ngay sau khi tốt nghiệp.\r\nMôi trường học tập thân thiện: Nhà trường không chỉ tạo ra một môi trường học tập chuyên nghiệp mà còn thân thiện, tạo điều kiện tốt nhất cho sự phát triển toàn diện của học viên.\r\nCơ hội việc làm cao: Với tỷ lệ học viên có việc làm sau khi ra trường đạt trên 90%, Trường Cao đẳng Nghề XYZ cam kết mang đến cho học viên những cơ hội việc làm tốt nhất."
+                        },
+                        new
+                        {
+                            IntroduceId = 3,
+                            Achievements = "Trường Cao đẳng Nghề XYZ đã đạt được nhiều thành tích đáng tự hào trong suốt quá trình phát triển:\r\n\r\nDanh hiệu “Trường nghề xuất sắc” do Bộ Lao động - Thương binh và Xã hội trao tặng trong nhiều năm liên tiếp.\r\nThành tích đào tạo: Hơn 10.000 học viên đã tốt nghiệp và làm việc tại các công ty, tập đoàn lớn trong và ngoài nước.\r\nGiải thưởng về sáng tạo và nghiên cứu khoa học: Học viên của trường đã đạt nhiều giải thưởng tại các cuộc thi tay nghề và sáng tạo kỹ thuật cấp quốc gia.\r\nThành tích hợp tác quốc tế: Nhà trường đã ký kết nhiều chương trình hợp tác đào tạo và trao đổi học viên với các trường nghề uy tín ở nước ngoài, nâng cao chất lượng giáo dục và mở ra cơ hội học tập quốc tế cho học viên.",
+                            CampusId = "Cantho",
+                            History = "Giới thiệu về lịch sử thành lập Trường Cao đẳng Nghề XYZ\r\n\r\nTrường Cao đẳng Nghề XYZ được thành lập vào năm 1995 với sứ mệnh cung cấp nguồn nhân lực chất lượng cao cho các ngành công nghiệp, dịch vụ và nông nghiệp trên cả nước. Trong suốt hơn hai thập kỷ phát triển, nhà trường đã không ngừng cải tiến, mở rộng quy mô đào tạo và nâng cao chất lượng giảng dạy nhằm đáp ứng nhu cầu ngày càng cao của xã hội và thị trường lao động.\r\n\r\nBan đầu, trường chỉ đào tạo một số ngành nghề cơ bản với quy mô nhỏ, nhưng nhờ sự nỗ lực của đội ngũ cán bộ, giảng viên và sự đầu tư của nhà nước, trường đã phát triển thành một cơ sở giáo dục nghề nghiệp đa ngành, đa lĩnh vực. Hiện nay, Trường Cao đẳng Nghề XYZ tự hào là một trong những đơn vị đi đầu trong việc đào tạo các ngành nghề kỹ thuật, công nghệ và dịch vụ, trang bị cho học viên kiến thức thực tiễn và kỹ năng chuyên môn cao.\r\n\r\nVới phương châm “Học đi đôi với hành”, trường luôn chú trọng vào việc kết hợp giữa lý thuyết và thực hành, giúp học viên sẵn sàng tham gia vào thị trường lao động ngay sau khi tốt nghiệp. Trải qua quá trình hình thành và phát triển, Trường Cao đẳng Nghề XYZ đã khẳng định được vị thế của mình trong hệ thống giáo dục nghề nghiệp và góp phần quan trọng vào sự phát triển của ngành nghề tại Việt Nam.",
+                            TrainingMotto = "Với phương châm \"Học đi đôi với hành, vững lý thuyết – chắc tay nghề\", Trường Cao đẳng Nghề XYZ luôn hướng tới việc đào tạo ra những thế hệ học viên có đầy đủ kiến thức chuyên môn và kỹ năng thực hành, đáp ứng tốt yêu cầu của thị trường lao động hiện đại.\r\n\r\nPhương châm này được cụ thể hóa thông qua các yếu tố:\r\n\r\nGiảng dạy bám sát nhu cầu thị trường: Chương trình đào tạo luôn được cập nhật theo xu hướng phát triển của các ngành công nghiệp và dịch vụ, đảm bảo học viên được trang bị những kiến thức và kỹ năng mới nhất.\r\nPhát triển toàn diện: Bên cạnh kỹ năng nghề nghiệp, trường còn chú trọng phát triển kỹ năng mềm, như kỹ năng giao tiếp, làm việc nhóm, và tư duy sáng tạo, giúp học viên tự tin hơn trong công việc.\r\nHọc tập suốt đời: Nhà trường khuyến khích tinh thần học tập không ngừng nghỉ, giúp học viên luôn sẵn sàng thích nghi với những thay đổi của xã hội và công nghệ.",
+                            WhyChooseUs = "Trường Cao đẳng Nghề XYZ luôn được học viên và doanh nghiệp đánh giá cao nhờ vào những ưu điểm vượt trội sau:\r\n\r\nChất lượng đào tạo hàng đầu: Với đội ngũ giảng viên giàu kinh nghiệm và cơ sở vật chất hiện đại, trường đảm bảo cung cấp cho học viên một nền tảng kiến thức vững chắc cùng kỹ năng nghề nghiệp thiết thực.\r\nChương trình đào tạo thực tiễn: Nhà trường luôn chú trọng việc kết hợp lý thuyết với thực hành, giúp học viên không chỉ nắm vững kiến thức mà còn được rèn luyện các kỹ năng cần thiết để làm việc ngay khi ra trường.\r\nMối liên kết chặt chẽ với doanh nghiệp: Trường hợp tác với nhiều doanh nghiệp trong các lĩnh vực khác nhau, tạo điều kiện cho học viên thực tập và có cơ hội việc làm ngay sau khi tốt nghiệp.\r\nMôi trường học tập thân thiện: Nhà trường không chỉ tạo ra một môi trường học tập chuyên nghiệp mà còn thân thiện, tạo điều kiện tốt nhất cho sự phát triển toàn diện của học viên.\r\nCơ hội việc làm cao: Với tỷ lệ học viên có việc làm sau khi ra trường đạt trên 90%, Trường Cao đẳng Nghề XYZ cam kết mang đến cho học viên những cơ hội việc làm tốt nhất."
+                        },
+                        new
+                        {
+                            IntroduceId = 4,
+                            Achievements = "Trường Cao đẳng Nghề XYZ đã đạt được nhiều thành tích đáng tự hào trong suốt quá trình phát triển:\r\n\r\nDanh hiệu “Trường nghề xuất sắc” do Bộ Lao động - Thương binh và Xã hội trao tặng trong nhiều năm liên tiếp.\r\nThành tích đào tạo: Hơn 10.000 học viên đã tốt nghiệp và làm việc tại các công ty, tập đoàn lớn trong và ngoài nước.\r\nGiải thưởng về sáng tạo và nghiên cứu khoa học: Học viên của trường đã đạt nhiều giải thưởng tại các cuộc thi tay nghề và sáng tạo kỹ thuật cấp quốc gia.\r\nThành tích hợp tác quốc tế: Nhà trường đã ký kết nhiều chương trình hợp tác đào tạo và trao đổi học viên với các trường nghề uy tín ở nước ngoài, nâng cao chất lượng giáo dục và mở ra cơ hội học tập quốc tế cho học viên.",
+                            CampusId = "HCM",
+                            History = "Giới thiệu về lịch sử thành lập Trường Cao đẳng Nghề XYZ\r\n\r\nTrường Cao đẳng Nghề XYZ được thành lập vào năm 1995 với sứ mệnh cung cấp nguồn nhân lực chất lượng cao cho các ngành công nghiệp, dịch vụ và nông nghiệp trên cả nước. Trong suốt hơn hai thập kỷ phát triển, nhà trường đã không ngừng cải tiến, mở rộng quy mô đào tạo và nâng cao chất lượng giảng dạy nhằm đáp ứng nhu cầu ngày càng cao của xã hội và thị trường lao động.\r\n\r\nBan đầu, trường chỉ đào tạo một số ngành nghề cơ bản với quy mô nhỏ, nhưng nhờ sự nỗ lực của đội ngũ cán bộ, giảng viên và sự đầu tư của nhà nước, trường đã phát triển thành một cơ sở giáo dục nghề nghiệp đa ngành, đa lĩnh vực. Hiện nay, Trường Cao đẳng Nghề XYZ tự hào là một trong những đơn vị đi đầu trong việc đào tạo các ngành nghề kỹ thuật, công nghệ và dịch vụ, trang bị cho học viên kiến thức thực tiễn và kỹ năng chuyên môn cao.\r\n\r\nVới phương châm “Học đi đôi với hành”, trường luôn chú trọng vào việc kết hợp giữa lý thuyết và thực hành, giúp học viên sẵn sàng tham gia vào thị trường lao động ngay sau khi tốt nghiệp. Trải qua quá trình hình thành và phát triển, Trường Cao đẳng Nghề XYZ đã khẳng định được vị thế của mình trong hệ thống giáo dục nghề nghiệp và góp phần quan trọng vào sự phát triển của ngành nghề tại Việt Nam.",
+                            TrainingMotto = "Với phương châm \"Học đi đôi với hành, vững lý thuyết – chắc tay nghề\", Trường Cao đẳng Nghề XYZ luôn hướng tới việc đào tạo ra những thế hệ học viên có đầy đủ kiến thức chuyên môn và kỹ năng thực hành, đáp ứng tốt yêu cầu của thị trường lao động hiện đại.\r\n\r\nPhương châm này được cụ thể hóa thông qua các yếu tố:\r\n\r\nGiảng dạy bám sát nhu cầu thị trường: Chương trình đào tạo luôn được cập nhật theo xu hướng phát triển của các ngành công nghiệp và dịch vụ, đảm bảo học viên được trang bị những kiến thức và kỹ năng mới nhất.\r\nPhát triển toàn diện: Bên cạnh kỹ năng nghề nghiệp, trường còn chú trọng phát triển kỹ năng mềm, như kỹ năng giao tiếp, làm việc nhóm, và tư duy sáng tạo, giúp học viên tự tin hơn trong công việc.\r\nHọc tập suốt đời: Nhà trường khuyến khích tinh thần học tập không ngừng nghỉ, giúp học viên luôn sẵn sàng thích nghi với những thay đổi của xã hội và công nghệ.",
+                            WhyChooseUs = "Trường Cao đẳng Nghề XYZ luôn được học viên và doanh nghiệp đánh giá cao nhờ vào những ưu điểm vượt trội sau:\r\n\r\nChất lượng đào tạo hàng đầu: Với đội ngũ giảng viên giàu kinh nghiệm và cơ sở vật chất hiện đại, trường đảm bảo cung cấp cho học viên một nền tảng kiến thức vững chắc cùng kỹ năng nghề nghiệp thiết thực.\r\nChương trình đào tạo thực tiễn: Nhà trường luôn chú trọng việc kết hợp lý thuyết với thực hành, giúp học viên không chỉ nắm vững kiến thức mà còn được rèn luyện các kỹ năng cần thiết để làm việc ngay khi ra trường.\r\nMối liên kết chặt chẽ với doanh nghiệp: Trường hợp tác với nhiều doanh nghiệp trong các lĩnh vực khác nhau, tạo điều kiện cho học viên thực tập và có cơ hội việc làm ngay sau khi tốt nghiệp.\r\nMôi trường học tập thân thiện: Nhà trường không chỉ tạo ra một môi trường học tập chuyên nghiệp mà còn thân thiện, tạo điều kiện tốt nhất cho sự phát triển toàn diện của học viên.\r\nCơ hội việc làm cao: Với tỷ lệ học viên có việc làm sau khi ra trường đạt trên 90%, Trường Cao đẳng Nghề XYZ cam kết mang đến cho học viên những cơ hội việc làm tốt nhất."
+                        },
+                        new
+                        {
+                            IntroduceId = 5,
+                            Achievements = "Trường Cao đẳng Nghề XYZ đã đạt được nhiều thành tích đáng tự hào trong suốt quá trình phát triển:\r\n\r\nDanh hiệu “Trường nghề xuất sắc” do Bộ Lao động - Thương binh và Xã hội trao tặng trong nhiều năm liên tiếp.\r\nThành tích đào tạo: Hơn 10.000 học viên đã tốt nghiệp và làm việc tại các công ty, tập đoàn lớn trong và ngoài nước.\r\nGiải thưởng về sáng tạo và nghiên cứu khoa học: Học viên của trường đã đạt nhiều giải thưởng tại các cuộc thi tay nghề và sáng tạo kỹ thuật cấp quốc gia.\r\nThành tích hợp tác quốc tế: Nhà trường đã ký kết nhiều chương trình hợp tác đào tạo và trao đổi học viên với các trường nghề uy tín ở nước ngoài, nâng cao chất lượng giáo dục và mở ra cơ hội học tập quốc tế cho học viên.",
+                            CampusId = "Thanhhoa",
+                            History = "Giới thiệu về lịch sử thành lập Trường Cao đẳng Nghề XYZ\r\n\r\nTrường Cao đẳng Nghề XYZ được thành lập vào năm 1995 với sứ mệnh cung cấp nguồn nhân lực chất lượng cao cho các ngành công nghiệp, dịch vụ và nông nghiệp trên cả nước. Trong suốt hơn hai thập kỷ phát triển, nhà trường đã không ngừng cải tiến, mở rộng quy mô đào tạo và nâng cao chất lượng giảng dạy nhằm đáp ứng nhu cầu ngày càng cao của xã hội và thị trường lao động.\r\n\r\nBan đầu, trường chỉ đào tạo một số ngành nghề cơ bản với quy mô nhỏ, nhưng nhờ sự nỗ lực của đội ngũ cán bộ, giảng viên và sự đầu tư của nhà nước, trường đã phát triển thành một cơ sở giáo dục nghề nghiệp đa ngành, đa lĩnh vực. Hiện nay, Trường Cao đẳng Nghề XYZ tự hào là một trong những đơn vị đi đầu trong việc đào tạo các ngành nghề kỹ thuật, công nghệ và dịch vụ, trang bị cho học viên kiến thức thực tiễn và kỹ năng chuyên môn cao.\r\n\r\nVới phương châm “Học đi đôi với hành”, trường luôn chú trọng vào việc kết hợp giữa lý thuyết và thực hành, giúp học viên sẵn sàng tham gia vào thị trường lao động ngay sau khi tốt nghiệp. Trải qua quá trình hình thành và phát triển, Trường Cao đẳng Nghề XYZ đã khẳng định được vị thế của mình trong hệ thống giáo dục nghề nghiệp và góp phần quan trọng vào sự phát triển của ngành nghề tại Việt Nam.",
+                            TrainingMotto = "Với phương châm \"Học đi đôi với hành, vững lý thuyết – chắc tay nghề\", Trường Cao đẳng Nghề XYZ luôn hướng tới việc đào tạo ra những thế hệ học viên có đầy đủ kiến thức chuyên môn và kỹ năng thực hành, đáp ứng tốt yêu cầu của thị trường lao động hiện đại.\r\n\r\nPhương châm này được cụ thể hóa thông qua các yếu tố:\r\n\r\nGiảng dạy bám sát nhu cầu thị trường: Chương trình đào tạo luôn được cập nhật theo xu hướng phát triển của các ngành công nghiệp và dịch vụ, đảm bảo học viên được trang bị những kiến thức và kỹ năng mới nhất.\r\nPhát triển toàn diện: Bên cạnh kỹ năng nghề nghiệp, trường còn chú trọng phát triển kỹ năng mềm, như kỹ năng giao tiếp, làm việc nhóm, và tư duy sáng tạo, giúp học viên tự tin hơn trong công việc.\r\nHọc tập suốt đời: Nhà trường khuyến khích tinh thần học tập không ngừng nghỉ, giúp học viên luôn sẵn sàng thích nghi với những thay đổi của xã hội và công nghệ.",
+                            WhyChooseUs = "Trường Cao đẳng Nghề XYZ luôn được học viên và doanh nghiệp đánh giá cao nhờ vào những ưu điểm vượt trội sau:\r\n\r\nChất lượng đào tạo hàng đầu: Với đội ngũ giảng viên giàu kinh nghiệm và cơ sở vật chất hiện đại, trường đảm bảo cung cấp cho học viên một nền tảng kiến thức vững chắc cùng kỹ năng nghề nghiệp thiết thực.\r\nChương trình đào tạo thực tiễn: Nhà trường luôn chú trọng việc kết hợp lý thuyết với thực hành, giúp học viên không chỉ nắm vững kiến thức mà còn được rèn luyện các kỹ năng cần thiết để làm việc ngay khi ra trường.\r\nMối liên kết chặt chẽ với doanh nghiệp: Trường hợp tác với nhiều doanh nghiệp trong các lĩnh vực khác nhau, tạo điều kiện cho học viên thực tập và có cơ hội việc làm ngay sau khi tốt nghiệp.\r\nMôi trường học tập thân thiện: Nhà trường không chỉ tạo ra một môi trường học tập chuyên nghiệp mà còn thân thiện, tạo điều kiện tốt nhất cho sự phát triển toàn diện của học viên.\r\nCơ hội việc làm cao: Với tỷ lệ học viên có việc làm sau khi ra trường đạt trên 90%, Trường Cao đẳng Nghề XYZ cam kết mang đến cho học viên những cơ hội việc làm tốt nhất."
                         });
                 });
 
@@ -639,14 +1027,14 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("b8fd818f-63f1-49ee-bec5-f7b66cafbfca"),
-                            ConcurrencyStamp = "5ac84db9-d112-42f3-b02b-d49d07992fdf",
+                            ConcurrencyStamp = "fea78389-b7ed-4e3c-a7dc-f7123db478f8",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("d2d63c5b-d09b-4828-8322-f18ba103fe86"),
-                            ConcurrencyStamp = "b43b4df2-0c2e-42d7-ab26-f35caba8035a",
+                            ConcurrencyStamp = "c74e5a1e-32cf-4fa6-b419-b897a435e734",
                             Name = "Student",
                             NormalizedName = "STUDENT"
                         });
@@ -769,6 +1157,56 @@ namespace Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Campus");
+                });
+
+            modelBuilder.Entity("Data.Models.AlumiStudent", b =>
+                {
+                    b.HasOne("Data.Models.Campus", "Campus")
+                        .WithMany("AlumiStudents")
+                        .HasForeignKey("CampusId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Data.Models.SpecializeMajor", "SpecializeMajor")
+                        .WithMany("AlumiStudents")
+                        .HasForeignKey("SpecializeMajorID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Campus");
+
+                    b.Navigation("SpecializeMajor");
+                });
+
+            modelBuilder.Entity("Data.Models.Banner", b =>
+                {
+                    b.HasOne("Data.Models.Campus", "Campus")
+                        .WithMany("Banners")
+                        .HasForeignKey("CampusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Campus");
+                });
+
+            modelBuilder.Entity("Data.Models.BlogCategory", b =>
+                {
+                    b.HasOne("Data.Models.Campus", "Campus")
+                        .WithMany("BlogCategorys")
+                        .HasForeignKey("CampusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Campus");
+                });
+
+            modelBuilder.Entity("Data.Models.Campus", b =>
+                {
+                    b.HasOne("Data.Models.IntroduceCampus", "IntroduceCampus")
+                        .WithOne("Campus")
+                        .HasForeignKey("Data.Models.Campus", "IntroduceId");
+
+                    b.Navigation("IntroduceCampus");
                 });
 
             modelBuilder.Entity("Data.Models.Major", b =>
@@ -898,11 +1336,23 @@ namespace Data.Migrations
                 {
                     b.Navigation("Accounts");
 
+                    b.Navigation("AlumiStudents");
+
+                    b.Navigation("Banners");
+
+                    b.Navigation("BlogCategorys");
+
                     b.Navigation("Majors");
 
                     b.Navigation("StudentConsultations");
 
                     b.Navigation("StudentProfiles");
+                });
+
+            modelBuilder.Entity("Data.Models.IntroduceCampus", b =>
+                {
+                    b.Navigation("Campus")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Data.Models.Major", b =>
@@ -912,6 +1362,8 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Models.SpecializeMajor", b =>
                 {
+                    b.Navigation("AlumiStudents");
+
                     b.Navigation("StudentConsultations");
                 });
 #pragma warning restore 612, 618

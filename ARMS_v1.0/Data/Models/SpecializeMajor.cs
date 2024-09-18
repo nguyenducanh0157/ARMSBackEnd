@@ -13,6 +13,7 @@ namespace Data.Models
         public string MajorID { get; set; }
         public virtual Major Major { get; set; }
         public virtual ICollection<StudentConsultation>? StudentConsultations { get; set; }
+        public virtual ICollection<AlumiStudent>? AlumiStudents { get; set; }
 
     }
 }

@@ -47,6 +47,10 @@ namespace Data.ArmsContext
             modelBuilder.ApplyConfiguration(new SpecializeMajorConfiguration());
             modelBuilder.ApplyConfiguration(new SupplierConfiguration());
             modelBuilder.ApplyConfiguration(new StudentConsultationConfiguration());
+            modelBuilder.ApplyConfiguration(new BannerConfiguration());
+            modelBuilder.ApplyConfiguration(new IntroduceCampusConfiguration());
+            modelBuilder.ApplyConfiguration(new AlumiStudentConfiguration());
+            modelBuilder.ApplyConfiguration(new BlogCategoryConfuguration());
 
             modelBuilder.Entity<IdentityUserLogin<Guid>>(entity =>
             {
@@ -105,6 +109,7 @@ namespace Data.ArmsContext
             new SpecializeMajorSeeder(modelBuilder).Seed();
             new SupplierSeeder(modelBuilder).Seed();
             new StudentConsultationSeeder(modelBuilder).Seed();
+            new BlogSeeder(modelBuilder).Seed();
         }
         #region DbSet
         public DbSet<Account> Accounts { get; set; }
@@ -114,7 +119,11 @@ namespace Data.ArmsContext
         public DbSet<SpecializeMajor> SpecializeMajors { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<StudentConsultation> StudentConsultations { get; set; }
+        public DbSet<Banner> Banners { get; set; }
+        public DbSet<IntroduceCampus> IntroduceCampuses { get; set; }
+        public DbSet<AlumiStudent> AlumiStudents { get; set; }
 
+        public DbSet<BlogCategory> BlogCategories { get; set; }
         #endregion
     }
 

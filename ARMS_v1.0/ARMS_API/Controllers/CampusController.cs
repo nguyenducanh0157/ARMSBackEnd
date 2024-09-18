@@ -45,5 +45,86 @@ namespace ARMS_API.Controllers
                 return BadRequest();
             }
         }
+        [HttpGet("get-banners")]
+        public async Task<IActionResult> GetBanners(string campusId)
+        {
+            try
+            {
+                List<Banner> response = await _campusRepository.GetBanners(campusId);
+                List<BannerDTO> responeResult = _mapper.Map<List<BannerDTO>>(response);
+                return Ok(responeResult);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        [HttpGet("get-history")]
+        public async Task<IActionResult> GetHistory(string campusId)
+        {
+            try
+            {
+                IntroduceCampus response = await _campusRepository.GetIntroduce(campusId);
+                return Ok(response.History);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        [HttpGet("get-achievements")]
+        public async Task<IActionResult> GetAchievements(string campusId)
+        {
+            try
+            {
+                IntroduceCampus response = await _campusRepository.GetIntroduce(campusId);
+                return Ok(response.Achievements);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        [HttpGet("get-whychooseus")]
+        public async Task<IActionResult> GetWhyChooseUs(string campusId)
+        {
+            try
+            {
+                IntroduceCampus response = await _campusRepository.GetIntroduce(campusId);
+                return Ok(response.WhyChooseUs);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        [HttpGet("get-trainingmotto")]
+        public async Task<IActionResult> GetTrainingMotto(string campusId)
+        {
+            try
+            {
+                IntroduceCampus response = await _campusRepository.GetIntroduce(campusId);
+                return Ok(response.TrainingMotto);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        [HttpGet("get-alumi")]
+        public async Task<IActionResult> GetAlumiStudents()
+        {
+            try
+            {
+                List<AlumiStudent> response = await _campusRepository.GetAlumiStudents();
+                List<AlumiStudentDTO> responeResult = _mapper.Map<List<AlumiStudentDTO>>(response);
+                return Ok(responeResult);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
     }
 }

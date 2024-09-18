@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Job\\Đức Anh\\ARMS_v1.0\\Repository\\Repository.csproj": {}
+    "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Repository\\Repository.csproj": {}
   },
   "projects": {
-    "D:\\Job\\Đức Anh\\ARMS_v1.0\\Data\\Data.csproj": {
+    "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Job\\Đức Anh\\ARMS_v1.0\\Data\\Data.csproj",
+        "projectUniqueName": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "D:\\Job\\Đức Anh\\ARMS_v1.0\\Data\\Data.csproj",
+        "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\Data.csproj",
         "packagesPath": "C:\\Users\\-ASUS-\\.nuget\\packages\\",
-        "outputPath": "D:\\Job\\Đức Anh\\ARMS_v1.0\\Data\\obj\\",
+        "outputPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\-ASUS-\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -85,14 +85,14 @@
         }
       }
     },
-    "D:\\Job\\Đức Anh\\ARMS_v1.0\\Repository\\Repository.csproj": {
+    "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Job\\Đức Anh\\ARMS_v1.0\\Repository\\Repository.csproj",
+        "projectUniqueName": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "D:\\Job\\Đức Anh\\ARMS_v1.0\\Repository\\Repository.csproj",
+        "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Repository\\Repository.csproj",
         "packagesPath": "C:\\Users\\-ASUS-\\.nuget\\packages\\",
-        "outputPath": "D:\\Job\\Đức Anh\\ARMS_v1.0\\Repository\\obj\\",
+        "outputPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\-ASUS-\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -109,8 +109,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Job\\Đức Anh\\ARMS_v1.0\\Data\\Data.csproj": {
-                "projectPath": "D:\\Job\\Đức Anh\\ARMS_v1.0\\Data\\Data.csproj"
+              "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\Data.csproj": {
+                "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\Data.csproj"
               }
             }
           }

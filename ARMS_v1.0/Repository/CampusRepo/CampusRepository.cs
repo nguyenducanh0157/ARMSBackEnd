@@ -26,6 +26,40 @@ namespace Repository.CampusRepo
                 throw;
             }
         }
+
+        public async Task<List<AlumiStudent>> GetAlumiStudents()
+        {
+            try
+            {
+                List<AlumiStudent> AlumiStudents = await _context.AlumiStudents
+                    .Include(x=>x.SpecializeMajor)
+                    .Include(x => x.Campus)
+                    .ToListAsync();
+                return AlumiStudents;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
+
+        public async Task<List<Banner>> GetBanners(string campusId)
+        {
+            try
+            {
+                List<Banner> banners = await _context.Banners
+                    .Where(x=>x.CampusId.Equals(campusId))
+                    .ToListAsync();
+                return banners;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
+
         public async Task<List<Campus>> GetCampuses()
         {
             try
@@ -40,6 +74,20 @@ namespace Repository.CampusRepo
                 throw;
             }
 
+        }
+
+        public async Task<IntroduceCampus> GetIntroduce(string campusId)
+        {
+            try
+            {
+                IntroduceCampus intro = await _context.IntroduceCampuses.FirstOrDefaultAsync(x => x.CampusId.Equals(campusId));
+                return intro;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

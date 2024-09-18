@@ -17,7 +17,14 @@ namespace ARMS_API.Config
 
                 config.CreateMap<Campus, CampusDTO>();
 
+                config.CreateMap<Banner, BannerDTO>();
+                
                 config.CreateMap<StudentConsultationDTO, StudentConsultation>();
+                config.CreateMap<AlumiStudent, AlumiStudentDTO>()
+                .ForMember(dest => dest.CampusName, opt => opt.MapFrom(src => src.Campus.CampusName))
+                .ForMember(dest => dest.SpecializeMajorName, opt => opt.MapFrom(src => src.SpecializeMajor.SpecializeMajorName));
+
+                config.CreateMap<BlogCategory, BlogCategoryDTO>();
             });
             return mapperConfig.CreateMapper();
         }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Repository.BlogRepo;
 using Repository.CampusRepo;
 using Repository.MajorRepo;
 using Repository.StudentConsultationRepo;
@@ -108,6 +109,7 @@ builder.Services.AddScoped<IMajorRepository, MajorRepository>();
 builder.Services.AddScoped<ICampusRepository, CampusRepository>();
 builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
 builder.Services.AddScoped<IStudentConsultationRepository, StudentConsultationRepository>();
+builder.Services.AddScoped<IBlogRepository, BlogRepository>();
 // app
 var app = builder.Build();
 
