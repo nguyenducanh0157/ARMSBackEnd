@@ -25,6 +25,9 @@ namespace ARMS_API.Config
                 .ForMember(dest => dest.SpecializeMajorName, opt => opt.MapFrom(src => src.SpecializeMajor.SpecializeMajorName));
 
                 config.CreateMap<BlogCategory, BlogCategoryDTO>();
+                config.CreateMap<Blog, BlogDTO>();
+                config.CreateMap<BlogDetails, BlogDetailsDTO>();
+                config.CreateMap<Comment, CommentDTO>();
             });
             return mapperConfig.CreateMapper();
         }

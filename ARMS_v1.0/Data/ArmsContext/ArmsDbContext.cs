@@ -50,7 +50,10 @@ namespace Data.ArmsContext
             modelBuilder.ApplyConfiguration(new BannerConfiguration());
             modelBuilder.ApplyConfiguration(new IntroduceCampusConfiguration());
             modelBuilder.ApplyConfiguration(new AlumiStudentConfiguration());
-            modelBuilder.ApplyConfiguration(new BlogCategoryConfuguration());
+            modelBuilder.ApplyConfiguration(new BlogCategoryConfiguration());
+            modelBuilder.ApplyConfiguration(new BlogConfiguration());
+            modelBuilder.ApplyConfiguration(new BlogDetailsConfiguration());
+            modelBuilder.ApplyConfiguration(new CommentConfiguration());
 
             modelBuilder.Entity<IdentityUserLogin<Guid>>(entity =>
             {
@@ -110,6 +113,7 @@ namespace Data.ArmsContext
             new SupplierSeeder(modelBuilder).Seed();
             new StudentConsultationSeeder(modelBuilder).Seed();
             new BlogSeeder(modelBuilder).Seed();
+            new CommentSeeder(modelBuilder).Seed();
         }
         #region DbSet
         public DbSet<Account> Accounts { get; set; }
@@ -124,6 +128,9 @@ namespace Data.ArmsContext
         public DbSet<AlumiStudent> AlumiStudents { get; set; }
 
         public DbSet<BlogCategory> BlogCategories { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<BlogDetails> BlogDetails { get; set; }
+        public DbSet<Comment> Comments { get; set; }
         #endregion
     }
 

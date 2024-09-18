@@ -10,5 +10,7 @@ namespace Repository.BlogRepo
     public interface IBlogRepository
     {
         Task<List<BlogCategory>> GetBlogCategories(string CampusId);
+        Task<List<Blog>> GetBlogs(string CampusId);
+        Task<Blog> GetBlog(int BlogId);
     }
 }

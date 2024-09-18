@@ -107,16 +107,16 @@ namespace Data.Migrations
                             Id = new Guid("b8c777a9-55b9-4b3d-860a-d7b56e4c24b7"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "8422e5df-8ad5-4a96-9fc9-270d14fc4828",
+                            ConcurrencyStamp = "c44b9438-b6ec-4fbe-ad43-28c817e60758",
                             Email = "AdminHaNoi@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Admin Hanoi",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMINHANOI@GMAIL.COM",
                             NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAELMPX4CDcG6AAfKQq6DR4FZRMiWhIXAXWWL7Yp1jVhmsFvJxfhc1kAbfXzna3il8jQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMs9fhQoy/5cb0cZmgefotw5nuVdH2wxEMcQe6IPwHOECo1Hgn/FbaCZmE/l5jYRUA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e1783e7d-1499-4aec-84ec-88f1d9bd1068",
+                            SecurityStamp = "70d06c15-3f53-4e4e-97ce-23d36ef21ae0",
                             TwoFactorEnabled = false,
                             UserName = "Administrator",
                             isAccountActive = false
@@ -313,6 +313,109 @@ namespace Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Data.Models.Blog", b =>
+                {
+                    b.Property<int>("BlogId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BlogId"), 1L, 1);
+
+                    b.Property<int>("BlogCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCreate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BlogId");
+
+                    b.HasIndex("BlogCategoryId");
+
+                    b.ToTable("Blog", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            BlogId = 1,
+                            BlogCategoryId = 3,
+                            DateCreate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5052),
+                            Description = "Trăng tròn đã vươn cao tại Hoà Lạc, Rằm tháng Tám đã gần đi qua, các Cóc “ngoan xinh iu” của FPTU đã đi chơi Trung thu về chưa?",
+                            Title = "Trăng tròn đã vươn cao tại Hoà Lạc"
+                        },
+                        new
+                        {
+                            BlogId = 2,
+                            BlogCategoryId = 3,
+                            DateCreate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5067),
+                            Description = " 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 - mang trong mình trọng trách quan trọng nhất đó là bảo vệ và phát triển lãnh thổ với ba đại đội: Cơ bắp, Biết tuốt và Bay bổng.",
+                            Title = "[𝐊𝐈𝐂𝐊 𝐎𝐅𝐅] - 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓"
+                        },
+                        new
+                        {
+                            BlogId = 3,
+                            BlogCategoryId = 2,
+                            DateCreate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5069),
+                            Description = " Giới thiệu các phòng ban tại Đại học FPT",
+                            Title = "🌟[ORIENTATION WEEK]🌟 GIỚI THIỆU CÁC PHÒNG BAN CHỨC NĂNG TẠI ĐẠI HỌC FPT"
+                        },
+                        new
+                        {
+                            BlogId = 4,
+                            BlogCategoryId = 1,
+                            DateCreate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5070),
+                            Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
+                            Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
+                        },
+                        new
+                        {
+                            BlogId = 5,
+                            BlogCategoryId = 1,
+                            DateCreate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5071),
+                            Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
+                            Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
+                        },
+                        new
+                        {
+                            BlogId = 6,
+                            BlogCategoryId = 1,
+                            DateCreate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5072),
+                            Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
+                            Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
+                        },
+                        new
+                        {
+                            BlogId = 7,
+                            BlogCategoryId = 1,
+                            DateCreate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5074),
+                            Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
+                            Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
+                        },
+                        new
+                        {
+                            BlogId = 8,
+                            BlogCategoryId = 1,
+                            DateCreate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5075),
+                            Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
+                            Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
+                        },
+                        new
+                        {
+                            BlogId = 9,
+                            BlogCategoryId = 1,
+                            DateCreate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5076),
+                            Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
+                            Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
+                        });
+                });
+
             modelBuilder.Entity("Data.Models.BlogCategory", b =>
                 {
                     b.Property<int>("BlogCategoryId")
@@ -428,6 +531,134 @@ namespace Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Data.Models.BlogDetails", b =>
+                {
+                    b.Property<int>("BDId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BDId"), 1L, 1);
+
+                    b.Property<int>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Img")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleImg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BDId");
+
+                    b.HasIndex("BlogId");
+
+                    b.ToTable("BlogDetails", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            BDId = 1,
+                            BlogId = 1,
+                            Description = "Trăng tròn đã vươn cao tại Hoà Lạc, Rằm tháng Tám đã gần đi qua, các Cóc “ngoan xinh iu” của FPTU đã đi chơi Trung thu về chưa? \r\n🥮 Trung thu là dịp để chúng ta ngồi lại bên nhau, hàn huyên với gia đình, bạn bè và những người thân yêu. Hãy cùng tận hưởng Tết Trung Thu bên bánh dẻo, bánh nướng và thả mình vào ánh trăng lung linh để cảm nhận những khoảnh khắc tuyệt diệu, đáng quý này nhé!\r\n✨ Nhân dịp Tết Trung thu, xin gửi những lời chúc tốt đẹp nhất đến thầy cô, anh chị cán bộ trường Đại học FPT, cùng các bạn sinh viên thân yêu! Chúc mọi người một mùa trăng an yên hơn sau những ảnh hưởng lớn của bão vừa qua.\r\n 📌 VÀ ĐỪNG QUÊN lên dây cót, bật chế độ sẵn sàng đón chờ những sự kiện “cực kỳ hoành tráng” đang tới gần. Kết nối, khám phá và trải nghiệm hết mình trong kỳ fall này bạn nhé!",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Blog%2FBlog1.jpg?alt=media&token=346b7cd3-c4cb-449c-a586-145f52f63d32"
+                        },
+                        new
+                        {
+                            BDId = 2,
+                            BlogId = 2,
+                            Description = "[𝐊𝐈𝐂𝐊 𝐎𝐅𝐅] - 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓\r\n🏞 Tại vùng đất Hola Campus, nơi mà tinh thần học tập, sáng tạo nghệ thuật và sức mạnh thể chất được đề cao luôn tồn tại một lực lượng quân chủng mang tên 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 - mang trong mình trọng trách quan trọng nhất đó là bảo vệ và phát triển lãnh thổ với ba đại đội: Cơ bắp, Biết tuốt và Bay bổng. \r\n✨ Vào năm 2024, những người đứng đầu của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 đã quyết định tổ chức một sự kiện, một ngày hội đặc biệt mang tên 𝐽𝑖𝑚𝑏𝑜 𝑈𝑛𝑖𝑡𝑦 𝐹𝑒𝑠𝑡. Sự kiện là dịp để các chiến sĩ của cả 3 Đại đội gặp mặt, giao lưu và học hỏi lẫn nhau không chỉ về tinh thần đồng đội mà còn được khám phá thêm những kỹ năng từ các đội khác. \r\n🌷 Đặc biệt, 𝐽𝑖𝑚𝑏𝑜 𝑈𝑛𝑖𝑡𝑦 𝐹𝑒𝑠𝑡 không chỉ giới hạn cho các chiến sĩ của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 mà còn mở cửa chào đón tất cả những người trẻ của vùng đất Hola Campus có quan tâm và muốn trải nghiệm môi trường, văn hóa đặc trưng của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 tham gia sự kiện. Nếu như bạn đã sẵn sàng với các chiến binh bước vào thế giới của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 cùng một tinh thần nhiệt huyết và tràn đầy năng lượng để vượt qua những thử thách đầy cam go thì hãy cùng chúng mình đón chờ hành trình sắp tới nhé!\r\n---------------------------------------\r\n🔥 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓 🔥\r\n◻️ Thời gian: 13h - 17h30 thứ hai, ngày 30/09/2024\r\n◻️ Địa điểm: Đường 30m, Đại học FPT Hà Nội \r\n---------------------------------------\r\nTHÔNG TIN LIÊN HỆ\r\n◻️ Trưởng ban Tổ chức: Kiều Bảo Lộc (0367488155)\r\n◻️ Trưởng ban HR: Nguyễn Ngọc Quỳnh (0865349170)",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Blog%2FBlog2.jpg?alt=media&token=67d34983-366f-4f30-bb7d-e9977dc71193"
+                        },
+                        new
+                        {
+                            BDId = 3,
+                            BlogId = 3,
+                            Description = "🌟[ORIENTATION WEEK]🌟 GIỚI THIỆU CÁC PHÒNG BAN CHỨC NĂNG TẠI ĐẠI HỌC FPT\r\n🔥Ngay lúc này đây, Phòng Hợp tác Quốc tế và Phát triển Cá nhân ICPDP đang có mặt tại Hội trường NIC cùng các tân sinh viên K20 tham gia Buổi học định hướng với chủ đề “Giới thiệu các phòng ban tại Đại học FPT”.\r\n🔥Tại buổi định hướng, các Cóc út đã được lắng nghe anh Lê Huy Hoàng - Cán bộ quản lý IC, đại diện phòng ICPDP chia sẻ về vai trò và chức năng của Phòng ICPDP, về các cơ hội học tập, trải nghiệm trong và ngoài nước dành cho tất cả các bạn sinh viên FPT.\r\n🫶Phòng ICPDP rất sẵn lòng đồng hành cùng các Cóc trong hành trình 4 năm thanh xuân tại Đại học FPT. Hy vọng chúng mình sẽ có thật nhiều kỷ niệm tại Đại học FPT Hà Nội. \r\n-----------------------------------------------------------\r\nMọi thắc mắc vui lòng liên hệ: Phòng Hợp tác Quốc tế và Phát triển cá nhân ICPDP FPTU",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Blog%2FBD3.jpg?alt=media&token=cdd2575f-41b5-4ecd-853a-017ab4a0bebc"
+                        },
+                        new
+                        {
+                            BDId = 4,
+                            BlogId = 4,
+                            Description = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Blog%2FBD4.jpg?alt=media&token=1b920d16-2a60-4fcc-98fb-a2c5bc51aa1a"
+                        },
+                        new
+                        {
+                            BDId = 5,
+                            BlogId = 4,
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Blog%2FBD4.jpg?alt=media&token=1b920d16-2a60-4fcc-98fb-a2c5bc51aa1a"
+                        },
+                        new
+                        {
+                            BDId = 6,
+                            BlogId = 5,
+                            Description = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Blog%2FBD4.jpg?alt=media&token=1b920d16-2a60-4fcc-98fb-a2c5bc51aa1a"
+                        },
+                        new
+                        {
+                            BDId = 7,
+                            BlogId = 5,
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Blog%2FBD4.jpg?alt=media&token=1b920d16-2a60-4fcc-98fb-a2c5bc51aa1a"
+                        },
+                        new
+                        {
+                            BDId = 8,
+                            BlogId = 6,
+                            Description = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Blog%2FBD4.jpg?alt=media&token=1b920d16-2a60-4fcc-98fb-a2c5bc51aa1a"
+                        },
+                        new
+                        {
+                            BDId = 9,
+                            BlogId = 6,
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Blog%2FBD4.jpg?alt=media&token=1b920d16-2a60-4fcc-98fb-a2c5bc51aa1a"
+                        },
+                        new
+                        {
+                            BDId = 10,
+                            BlogId = 7,
+                            Description = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Blog%2FBD4.jpg?alt=media&token=1b920d16-2a60-4fcc-98fb-a2c5bc51aa1a"
+                        },
+                        new
+                        {
+                            BDId = 11,
+                            BlogId = 7,
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Blog%2FBD4.jpg?alt=media&token=1b920d16-2a60-4fcc-98fb-a2c5bc51aa1a"
+                        },
+                        new
+                        {
+                            BDId = 12,
+                            BlogId = 8,
+                            Description = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Blog%2FBD4.jpg?alt=media&token=1b920d16-2a60-4fcc-98fb-a2c5bc51aa1a"
+                        },
+                        new
+                        {
+                            BDId = 13,
+                            BlogId = 8,
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Blog%2FBD4.jpg?alt=media&token=1b920d16-2a60-4fcc-98fb-a2c5bc51aa1a"
+                        },
+                        new
+                        {
+                            BDId = 14,
+                            BlogId = 9,
+                            Description = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Blog%2FBD4.jpg?alt=media&token=1b920d16-2a60-4fcc-98fb-a2c5bc51aa1a"
+                        },
+                        new
+                        {
+                            BDId = 15,
+                            BlogId = 9,
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Blog%2FBD4.jpg?alt=media&token=1b920d16-2a60-4fcc-98fb-a2c5bc51aa1a"
+                        });
+                });
+
             modelBuilder.Entity("Data.Models.Campus", b =>
                 {
                     b.Property<string>("CampusId")
@@ -491,6 +722,73 @@ namespace Data.Migrations
                             Address = "Tòa Beta, Tổ hợp giáo dục FPT, Đại lộ Võ Nguyên Giáp, phường Quảng Thành, TP Thanh Hóa",
                             CampusName = "Thanh Hoá",
                             PhoneNumber = "0913785213"
+                        });
+                });
+
+            modelBuilder.Entity("Data.Models.Comment", b =>
+                {
+                    b.Property<int>("CommentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CommentId"), 1L, 1);
+
+                    b.Property<int>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FacebookUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FacebookUserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ParentCommentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CommentId");
+
+                    b.HasIndex("BlogId");
+
+                    b.HasIndex("ParentCommentId");
+
+                    b.ToTable("Comment", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            CommentId = 1,
+                            BlogId = 1,
+                            Content = "This is the first comment",
+                            CreatedDate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5121),
+                            FacebookUserId = "fb12345",
+                            FacebookUserName = "John Doe"
+                        },
+                        new
+                        {
+                            CommentId = 2,
+                            BlogId = 1,
+                            Content = "This is a reply to the first comment",
+                            CreatedDate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5124),
+                            FacebookUserId = "fb67890",
+                            FacebookUserName = "Jane Smith",
+                            ParentCommentId = 1
+                        },
+                        new
+                        {
+                            CommentId = 3,
+                            BlogId = 2,
+                            Content = "Another comment on the second blog",
+                            CreatedDate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5127),
+                            FacebookUserId = "fb54321",
+                            FacebookUserName = "Alice"
                         });
                 });
 
@@ -1027,14 +1325,14 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("b8fd818f-63f1-49ee-bec5-f7b66cafbfca"),
-                            ConcurrencyStamp = "fea78389-b7ed-4e3c-a7dc-f7123db478f8",
+                            ConcurrencyStamp = "6d26eeaa-4656-4785-9704-01c36f7bfa58",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("d2d63c5b-d09b-4828-8322-f18ba103fe86"),
-                            ConcurrencyStamp = "c74e5a1e-32cf-4fa6-b419-b897a435e734",
+                            ConcurrencyStamp = "6dd3503a-55d0-4afe-9141-4cf5fc0c0587",
                             Name = "Student",
                             NormalizedName = "STUDENT"
                         });
@@ -1189,6 +1487,17 @@ namespace Data.Migrations
                     b.Navigation("Campus");
                 });
 
+            modelBuilder.Entity("Data.Models.Blog", b =>
+                {
+                    b.HasOne("Data.Models.BlogCategory", "BlogCategory")
+                        .WithMany("Blogs")
+                        .HasForeignKey("BlogCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BlogCategory");
+                });
+
             modelBuilder.Entity("Data.Models.BlogCategory", b =>
                 {
                     b.HasOne("Data.Models.Campus", "Campus")
@@ -1200,6 +1509,17 @@ namespace Data.Migrations
                     b.Navigation("Campus");
                 });
 
+            modelBuilder.Entity("Data.Models.BlogDetails", b =>
+                {
+                    b.HasOne("Data.Models.Blog", "Blog")
+                        .WithMany("BlogDetails")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Blog");
+                });
+
             modelBuilder.Entity("Data.Models.Campus", b =>
                 {
                     b.HasOne("Data.Models.IntroduceCampus", "IntroduceCampus")
@@ -1207,6 +1527,24 @@ namespace Data.Migrations
                         .HasForeignKey("Data.Models.Campus", "IntroduceId");
 
                     b.Navigation("IntroduceCampus");
+                });
+
+            modelBuilder.Entity("Data.Models.Comment", b =>
+                {
+                    b.HasOne("Data.Models.Blog", "Blog")
+                        .WithMany("Comments")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Data.Models.Comment", "ParentComment")
+                        .WithMany("Replies")
+                        .HasForeignKey("ParentCommentId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Blog");
+
+                    b.Navigation("ParentComment");
                 });
 
             modelBuilder.Entity("Data.Models.Major", b =>
@@ -1332,6 +1670,18 @@ namespace Data.Migrations
                     b.Navigation("StudentProfile");
                 });
 
+            modelBuilder.Entity("Data.Models.Blog", b =>
+                {
+                    b.Navigation("BlogDetails");
+
+                    b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("Data.Models.BlogCategory", b =>
+                {
+                    b.Navigation("Blogs");
+                });
+
             modelBuilder.Entity("Data.Models.Campus", b =>
                 {
                     b.Navigation("Accounts");
@@ -1347,6 +1697,11 @@ namespace Data.Migrations
                     b.Navigation("StudentConsultations");
 
                     b.Navigation("StudentProfiles");
+                });
+
+            modelBuilder.Entity("Data.Models.Comment", b =>
+                {
+                    b.Navigation("Replies");
                 });
 
             modelBuilder.Entity("Data.Models.IntroduceCampus", b =>

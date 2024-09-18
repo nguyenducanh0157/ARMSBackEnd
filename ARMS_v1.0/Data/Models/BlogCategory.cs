@@ -12,5 +12,6 @@ namespace Data.Models
         public string BlogCategoryName { get; set; }
         public string CampusId { get; set; }
         public virtual Campus Campus { get; set; }
+        public virtual ICollection<Blog>? Blogs { get; set; }
     }
 }
