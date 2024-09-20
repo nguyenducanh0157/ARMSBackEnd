@@ -1,4 +1,5 @@
-﻿using Data.Models;
+﻿using Data.Migrations;
+using Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace Repository.MajorRepo
     public interface IMajorRepository
     {
         Task<List<Major>> GetMajors(string campusId);
+        Task<SpecializeMajor> GetSpecializeMajorAdmission(string MajorId);
     }
 }

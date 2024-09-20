@@ -1,4 +1,5 @@
 ﻿using Data.Configurations;
+using Data.Migrations;
 using Data.Models;
 using Data.Seeding;
 using Microsoft.AspNetCore.Identity;
@@ -48,12 +49,15 @@ namespace Data.ArmsContext
             modelBuilder.ApplyConfiguration(new SupplierConfiguration());
             modelBuilder.ApplyConfiguration(new StudentConsultationConfiguration());
             modelBuilder.ApplyConfiguration(new BannerConfiguration());
-            modelBuilder.ApplyConfiguration(new IntroduceCampusConfiguration());
             modelBuilder.ApplyConfiguration(new AlumiStudentConfiguration());
             modelBuilder.ApplyConfiguration(new BlogCategoryConfiguration());
             modelBuilder.ApplyConfiguration(new BlogConfiguration());
             modelBuilder.ApplyConfiguration(new BlogDetailsConfiguration());
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
+            modelBuilder.ApplyConfiguration(new AdmissionPlanConfiguration());
+            modelBuilder.ApplyConfiguration(new AdmissionTimeConfiguration());
+            modelBuilder.ApplyConfiguration(new TypeOfDiplomaConfiguration());
+            modelBuilder.ApplyConfiguration(new SubjectConfiguration());
 
             modelBuilder.Entity<IdentityUserLogin<Guid>>(entity =>
             {
@@ -114,6 +118,7 @@ namespace Data.ArmsContext
             new StudentConsultationSeeder(modelBuilder).Seed();
             new BlogSeeder(modelBuilder).Seed();
             new CommentSeeder(modelBuilder).Seed();
+            new AdmissionPlanSeeder(modelBuilder).Seed();
         }
         #region DbSet
         public DbSet<Account> Accounts { get; set; }
@@ -124,13 +129,16 @@ namespace Data.ArmsContext
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<StudentConsultation> StudentConsultations { get; set; }
         public DbSet<Banner> Banners { get; set; }
-        public DbSet<IntroduceCampus> IntroduceCampuses { get; set; }
         public DbSet<AlumiStudent> AlumiStudents { get; set; }
 
         public DbSet<BlogCategory> BlogCategories { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<BlogDetails> BlogDetails { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<AdmissionPlan> AdmissionPlans { get; set; }
+        public DbSet<AdmissionTime> AdmissionTimes { get; set; }
+        public DbSet<TypeOfDiploma> TypeOfDiplomas { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
         #endregion
     }
 

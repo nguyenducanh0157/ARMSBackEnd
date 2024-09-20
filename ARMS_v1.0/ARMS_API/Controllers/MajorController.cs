@@ -36,5 +36,23 @@ namespace ARMS_API.Controllers
                 return BadRequest();
             }
         }
+        [HttpGet("get-admission-major")]
+        public async Task<IActionResult> GetAdmissionSpecializeMajor(string SpecializeMajorID)
+        {
+            try
+            {
+
+                SpecializeMajor response = await _majorRepository.GetSpecializeMajorAdmission(SpecializeMajorID);
+
+                AdmissionSpecializeMajorDTO responeResult = _mapper.Map<AdmissionSpecializeMajorDTO>(response);
+                return Ok(responeResult);
+
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
+        }
     }
 }

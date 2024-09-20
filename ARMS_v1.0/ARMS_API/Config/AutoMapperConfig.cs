@@ -28,6 +28,14 @@ namespace ARMS_API.Config
                 config.CreateMap<Blog, BlogDTO>();
                 config.CreateMap<BlogDetails, BlogDetailsDTO>();
                 config.CreateMap<Comment, CommentDTO>();
+
+                config.CreateMap<AdmissionPlan, AdmissionPlanDTO>();
+                config.CreateMap<AdmissionTime, AdmissionTimeDTO>();
+
+                config.CreateMap<SpecializeMajor, AdmissionSpecializeMajorDTO>()
+                .ForMember(dest => dest.MajorID, opt => opt.MapFrom(src => src.Major.MajorID))
+                .ForMember(dest => dest.MajorName, opt => opt.MapFrom(src => src.Major.MajorName));
+                config.CreateMap<Subject, SubjectDTO>();
             });
             return mapperConfig.CreateMapper();
         }

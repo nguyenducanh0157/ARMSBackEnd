@@ -16,7 +16,7 @@ namespace Data.Configurations
             builder.ToTable(nameof(SpecializeMajor));
             builder.Property(x => x.SpecializeMajorID).IsRequired();
             builder.Property(x => x.SpecializeMajorName).IsRequired();
-
+            builder.Property(x => x.MajorCode).IsRequired();
             #region config relation
             builder.HasOne(x => x.Major)
                    .WithMany(c => c.SpecializeMajors)

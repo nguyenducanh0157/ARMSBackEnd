@@ -13,6 +13,24 @@ namespace Repository.MajorRepo
     {
         private readonly ArmsDbContext _context;
         public MajorRepository(ArmsDbContext context) { _context = context; }
+
+        public async Task<SpecializeMajor> GetSpecializeMajorAdmission(string SpecializeMajorID)
+        {
+            try
+            {
+                SpecializeMajor major = await _context.SpecializeMajors
+                    .Include(x=>x.Subjects.OrderBy(x=>x.SemesterNumber))
+                    .Include(x => x.Major)
+                    .SingleOrDefaultAsync(x=>x.SpecializeMajorID.Equals(SpecializeMajorID));
+                return major;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public async Task<List<Major>> GetMajors(string campusId)
         {
             try

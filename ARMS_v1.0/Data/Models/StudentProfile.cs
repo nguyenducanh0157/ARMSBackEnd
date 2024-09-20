@@ -30,7 +30,6 @@ namespace Data.Models
         public string? SpecializeMajor1 { get; set; }
         public string? Major2 { get; set; }
         public string? SpecializeMajor2 { get; set; }
-        public TypeOfDiploma DiplomaType { get; set; }
         public int? YearOfGraduation { get; set; }
         public bool? RecipientResults { get; set; }
         public bool? PermanentAddress { get; set; }

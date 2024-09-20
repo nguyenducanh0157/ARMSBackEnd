@@ -107,19 +107,237 @@ namespace Data.Migrations
                             Id = new Guid("b8c777a9-55b9-4b3d-860a-d7b56e4c24b7"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "c44b9438-b6ec-4fbe-ad43-28c817e60758",
+                            ConcurrencyStamp = "192c146b-db29-401b-9e7e-aa05cb6c64c3",
                             Email = "AdminHaNoi@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Admin Hanoi",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMINHANOI@GMAIL.COM",
                             NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMs9fhQoy/5cb0cZmgefotw5nuVdH2wxEMcQe6IPwHOECo1Hgn/FbaCZmE/l5jYRUA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOjF15dM/NUcsjqsZhVhX+sg1v8upeH6EXo0RF5SFnkp8kMd35ZBw3KJFzTz/GovPA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "70d06c15-3f53-4e4e-97ce-23d36ef21ae0",
+                            SecurityStamp = "887629b5-47ff-4501-8ebf-b35a763a4b9b",
                             TwoFactorEnabled = false,
                             UserName = "Administrator",
                             isAccountActive = false
+                        });
+                });
+
+            modelBuilder.Entity("Data.Models.AdmissionPlan", b =>
+                {
+                    b.Property<int>("AdmissionPlanID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdmissionPlanID"), 1L, 1);
+
+                    b.Property<string>("CampusId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Prioritize")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TotalTarget")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("YearAdmission")
+                        .HasColumnType("int");
+
+                    b.HasKey("AdmissionPlanID");
+
+                    b.ToTable("AdmissionPlan", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            AdmissionPlanID = 1,
+                            CampusId = "Hanoi",
+                            Prioritize = "Điểm ưu tiên đối tượng và khu vực thực hiện theo Quy định của Bộ Giáo dục & Đào tạo.",
+                            TotalTarget = 2000,
+                            YearAdmission = 2024
+                        },
+                        new
+                        {
+                            AdmissionPlanID = 2,
+                            CampusId = "Danang",
+                            Prioritize = "Điểm ưu tiên đối tượng và khu vực thực hiện theo Quy định của Bộ Giáo dục & Đào tạo.",
+                            TotalTarget = 2000,
+                            YearAdmission = 2024
+                        },
+                        new
+                        {
+                            AdmissionPlanID = 3,
+                            CampusId = "Cantho",
+                            Prioritize = "Điểm ưu tiên đối tượng và khu vực thực hiện theo Quy định của Bộ Giáo dục & Đào tạo.",
+                            TotalTarget = 2000,
+                            YearAdmission = 2024
+                        },
+                        new
+                        {
+                            AdmissionPlanID = 4,
+                            CampusId = "HCM",
+                            Prioritize = "Điểm ưu tiên đối tượng và khu vực thực hiện theo Quy định của Bộ Giáo dục & Đào tạo.",
+                            TotalTarget = 2000,
+                            YearAdmission = 2024
+                        },
+                        new
+                        {
+                            AdmissionPlanID = 5,
+                            CampusId = "Thanhhoa",
+                            Prioritize = "Điểm ưu tiên đối tượng và khu vực thực hiện theo Quy định của Bộ Giáo dục & Đào tạo.",
+                            TotalTarget = 2000,
+                            YearAdmission = 2024
+                        });
+                });
+
+            modelBuilder.Entity("Data.Models.AdmissionTime", b =>
+                {
+                    b.Property<int>("AdmissionTimeID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdmissionTimeID"), 1L, 1);
+
+                    b.Property<int>("AdmissionPlanID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("AdmissionTimeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("TimeEnd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("TimeStart")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("AdmissionTimeID");
+
+                    b.HasIndex("AdmissionPlanID");
+
+                    b.ToTable("AdmissionTime", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            AdmissionTimeID = 1,
+                            AdmissionPlanID = 1,
+                            AdmissionTimeName = "Đợt 1",
+                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4941),
+                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4941)
+                        },
+                        new
+                        {
+                            AdmissionTimeID = 2,
+                            AdmissionPlanID = 1,
+                            AdmissionTimeName = "Đợt 2",
+                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4943),
+                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4942)
+                        },
+                        new
+                        {
+                            AdmissionTimeID = 3,
+                            AdmissionPlanID = 1,
+                            AdmissionTimeName = "Đợt 3",
+                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4944),
+                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4943)
+                        },
+                        new
+                        {
+                            AdmissionTimeID = 4,
+                            AdmissionPlanID = 2,
+                            AdmissionTimeName = "Đợt 1",
+                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4944),
+                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4944)
+                        },
+                        new
+                        {
+                            AdmissionTimeID = 5,
+                            AdmissionPlanID = 2,
+                            AdmissionTimeName = "Đợt 2",
+                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4945),
+                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4945)
+                        },
+                        new
+                        {
+                            AdmissionTimeID = 6,
+                            AdmissionPlanID = 2,
+                            AdmissionTimeName = "Đợt 3",
+                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4946),
+                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4946)
+                        },
+                        new
+                        {
+                            AdmissionTimeID = 7,
+                            AdmissionPlanID = 3,
+                            AdmissionTimeName = "Đợt 1",
+                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4947),
+                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4947)
+                        },
+                        new
+                        {
+                            AdmissionTimeID = 8,
+                            AdmissionPlanID = 3,
+                            AdmissionTimeName = "Đợt 2",
+                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4948),
+                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4948)
+                        },
+                        new
+                        {
+                            AdmissionTimeID = 9,
+                            AdmissionPlanID = 3,
+                            AdmissionTimeName = "Đợt 3",
+                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4949),
+                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4949)
+                        },
+                        new
+                        {
+                            AdmissionTimeID = 10,
+                            AdmissionPlanID = 4,
+                            AdmissionTimeName = "Đợt 1",
+                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4950),
+                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4949)
+                        },
+                        new
+                        {
+                            AdmissionTimeID = 11,
+                            AdmissionPlanID = 4,
+                            AdmissionTimeName = "Đợt 2",
+                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4951),
+                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4950)
+                        },
+                        new
+                        {
+                            AdmissionTimeID = 12,
+                            AdmissionPlanID = 4,
+                            AdmissionTimeName = "Đợt 3",
+                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4951),
+                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4951)
+                        },
+                        new
+                        {
+                            AdmissionTimeID = 13,
+                            AdmissionPlanID = 5,
+                            AdmissionTimeName = "Đợt 1",
+                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4952),
+                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4952)
+                        },
+                        new
+                        {
+                            AdmissionTimeID = 14,
+                            AdmissionPlanID = 5,
+                            AdmissionTimeName = "Đợt 2",
+                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4953),
+                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4953)
+                        },
+                        new
+                        {
+                            AdmissionTimeID = 15,
+                            AdmissionPlanID = 5,
+                            AdmissionTimeName = "Đợt 3",
+                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4954),
+                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4954)
                         });
                 });
 
@@ -225,91 +443,61 @@ namespace Data.Migrations
                         {
                             BannerId = 1,
                             CampusId = "Hanoi",
-                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner1.jpg?alt=media&token=3b681990-e08c-4e87-a69b-d1586a72398d"
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FSlider1.jpg?alt=media&token=8018950a-e9d4-4c97-a81c-2bcea05d72ce"
                         },
                         new
                         {
                             BannerId = 2,
                             CampusId = "Hanoi",
-                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner2.jpg?alt=media&token=fcd81d71-4b88-4443-a07d-3e21d2ad19bc"
-                        },
-                        new
-                        {
-                            BannerId = 3,
-                            CampusId = "Hanoi",
-                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner3.jpg?alt=media&token=829186db-6511-49ff-a4b7-48211a4d83db"
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FSlider2.jpg?alt=media&token=cc8a3de5-1155-4aba-9463-d4108b93330d"
                         },
                         new
                         {
                             BannerId = 4,
                             CampusId = "Danang",
-                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner1.jpg?alt=media&token=3b681990-e08c-4e87-a69b-d1586a72398d"
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FSlider1.jpg?alt=media&token=8018950a-e9d4-4c97-a81c-2bcea05d72ce"
                         },
                         new
                         {
                             BannerId = 5,
                             CampusId = "Danang",
-                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner2.jpg?alt=media&token=fcd81d71-4b88-4443-a07d-3e21d2ad19bc"
-                        },
-                        new
-                        {
-                            BannerId = 6,
-                            CampusId = "Danang",
-                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner3.jpg?alt=media&token=829186db-6511-49ff-a4b7-48211a4d83db"
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FSlider2.jpg?alt=media&token=cc8a3de5-1155-4aba-9463-d4108b93330d"
                         },
                         new
                         {
                             BannerId = 7,
                             CampusId = "HCM",
-                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner1.jpg?alt=media&token=3b681990-e08c-4e87-a69b-d1586a72398d"
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FSlider1.jpg?alt=media&token=8018950a-e9d4-4c97-a81c-2bcea05d72ce"
                         },
                         new
                         {
                             BannerId = 8,
                             CampusId = "HCM",
-                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner2.jpg?alt=media&token=fcd81d71-4b88-4443-a07d-3e21d2ad19bc"
-                        },
-                        new
-                        {
-                            BannerId = 9,
-                            CampusId = "HCM",
-                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner3.jpg?alt=media&token=829186db-6511-49ff-a4b7-48211a4d83db"
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FSlider2.jpg?alt=media&token=cc8a3de5-1155-4aba-9463-d4108b93330d"
                         },
                         new
                         {
                             BannerId = 10,
                             CampusId = "Cantho",
-                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner1.jpg?alt=media&token=3b681990-e08c-4e87-a69b-d1586a72398d"
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FSlider1.jpg?alt=media&token=8018950a-e9d4-4c97-a81c-2bcea05d72ce"
                         },
                         new
                         {
                             BannerId = 11,
                             CampusId = "Cantho",
-                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner2.jpg?alt=media&token=fcd81d71-4b88-4443-a07d-3e21d2ad19bc"
-                        },
-                        new
-                        {
-                            BannerId = 12,
-                            CampusId = "Cantho",
-                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner3.jpg?alt=media&token=829186db-6511-49ff-a4b7-48211a4d83db"
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FSlider2.jpg?alt=media&token=cc8a3de5-1155-4aba-9463-d4108b93330d"
                         },
                         new
                         {
                             BannerId = 13,
                             CampusId = "Thanhhoa",
-                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner1.jpg?alt=media&token=3b681990-e08c-4e87-a69b-d1586a72398d"
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FSlider1.jpg?alt=media&token=8018950a-e9d4-4c97-a81c-2bcea05d72ce"
                         },
                         new
                         {
                             BannerId = 14,
                             CampusId = "Thanhhoa",
-                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner2.jpg?alt=media&token=fcd81d71-4b88-4443-a07d-3e21d2ad19bc"
-                        },
-                        new
-                        {
-                            BannerId = 15,
-                            CampusId = "Thanhhoa",
-                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FBanner3.jpg?alt=media&token=829186db-6511-49ff-a4b7-48211a4d83db"
+                            Img = "https://firebasestorage.googleapis.com/v0/b/arms-acdfc.appspot.com/o/Banner%2FSlider2.jpg?alt=media&token=cc8a3de5-1155-4aba-9463-d4108b93330d"
                         });
                 });
 
@@ -346,7 +534,7 @@ namespace Data.Migrations
                         {
                             BlogId = 1,
                             BlogCategoryId = 3,
-                            DateCreate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5052),
+                            DateCreate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4879),
                             Description = "Trăng tròn đã vươn cao tại Hoà Lạc, Rằm tháng Tám đã gần đi qua, các Cóc “ngoan xinh iu” của FPTU đã đi chơi Trung thu về chưa?",
                             Title = "Trăng tròn đã vươn cao tại Hoà Lạc"
                         },
@@ -354,7 +542,7 @@ namespace Data.Migrations
                         {
                             BlogId = 2,
                             BlogCategoryId = 3,
-                            DateCreate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5067),
+                            DateCreate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4887),
                             Description = " 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 - mang trong mình trọng trách quan trọng nhất đó là bảo vệ và phát triển lãnh thổ với ba đại đội: Cơ bắp, Biết tuốt và Bay bổng.",
                             Title = "[𝐊𝐈𝐂𝐊 𝐎𝐅𝐅] - 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓"
                         },
@@ -362,7 +550,7 @@ namespace Data.Migrations
                         {
                             BlogId = 3,
                             BlogCategoryId = 2,
-                            DateCreate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5069),
+                            DateCreate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4888),
                             Description = " Giới thiệu các phòng ban tại Đại học FPT",
                             Title = "🌟[ORIENTATION WEEK]🌟 GIỚI THIỆU CÁC PHÒNG BAN CHỨC NĂNG TẠI ĐẠI HỌC FPT"
                         },
@@ -370,7 +558,7 @@ namespace Data.Migrations
                         {
                             BlogId = 4,
                             BlogCategoryId = 1,
-                            DateCreate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5070),
+                            DateCreate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4888),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -378,7 +566,7 @@ namespace Data.Migrations
                         {
                             BlogId = 5,
                             BlogCategoryId = 1,
-                            DateCreate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5071),
+                            DateCreate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4889),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -386,7 +574,7 @@ namespace Data.Migrations
                         {
                             BlogId = 6,
                             BlogCategoryId = 1,
-                            DateCreate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5072),
+                            DateCreate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4890),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -394,7 +582,7 @@ namespace Data.Migrations
                         {
                             BlogId = 7,
                             BlogCategoryId = 1,
-                            DateCreate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5074),
+                            DateCreate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4890),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -402,7 +590,7 @@ namespace Data.Migrations
                         {
                             BlogId = 8,
                             BlogCategoryId = 1,
-                            DateCreate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5075),
+                            DateCreate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4891),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -410,7 +598,7 @@ namespace Data.Migrations
                         {
                             BlogId = 9,
                             BlogCategoryId = 1,
-                            DateCreate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5076),
+                            DateCreate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4892),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         });
@@ -664,12 +852,21 @@ namespace Data.Migrations
                     b.Property<string>("CampusId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Achievements")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("AdmissionPlanID")
+                        .HasColumnType("int");
+
                     b.Property<string>("CampusName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("History")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("IntroduceId")
@@ -679,11 +876,17 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("TrainingMotto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WhyChooseUs")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("CampusId");
 
-                    b.HasIndex("IntroduceId")
+                    b.HasIndex("AdmissionPlanID")
                         .IsUnique()
-                        .HasFilter("[IntroduceId] IS NOT NULL");
+                        .HasFilter("[AdmissionPlanID] IS NOT NULL");
 
                     b.ToTable("Campus", (string)null);
 
@@ -691,37 +894,62 @@ namespace Data.Migrations
                         new
                         {
                             CampusId = "Hanoi",
+                            Achievements = "Trường Cao đẳng Nghề XYZ đã đạt được nhiều thành tích đáng tự hào trong suốt quá trình phát triển:\r\n\r\nDanh hiệu “Trường nghề xuất sắc” do Bộ Lao động - Thương binh và Xã hội trao tặng trong nhiều năm liên tiếp.\r\nThành tích đào tạo: Hơn 10.000 học viên đã tốt nghiệp và làm việc tại các công ty, tập đoàn lớn trong và ngoài nước.\r\nGiải thưởng về sáng tạo và nghiên cứu khoa học: Học viên của trường đã đạt nhiều giải thưởng tại các cuộc thi tay nghề và sáng tạo kỹ thuật cấp quốc gia.\r\nThành tích hợp tác quốc tế: Nhà trường đã ký kết nhiều chương trình hợp tác đào tạo và trao đổi học viên với các trường nghề uy tín ở nước ngoài, nâng cao chất lượng giáo dục và mở ra cơ hội học tập quốc tế cho học viên.",
                             Address = "Cổng số 1, Tòa nhà FPT Polytechnic, 13 phố Trịnh Văn Bô, phường Phương Canh, quận Nam Từ Liêm, TP Hà NộiKm12 Cầu Diễn, Phường Phúc Diễn, Quận Bắc Từ Liêm, Hà Nội",
+                            AdmissionPlanID = 1,
                             CampusName = "Hà Nội",
-                            PhoneNumber = "02485820808"
+                            History = "Giới thiệu về lịch sử thành lập Trường Cao đẳng Nghề XYZ\r\n\r\nTrường Cao đẳng Nghề XYZ được thành lập vào năm 1995 với sứ mệnh cung cấp nguồn nhân lực chất lượng cao cho các ngành công nghiệp, dịch vụ và nông nghiệp trên cả nước. Trong suốt hơn hai thập kỷ phát triển, nhà trường đã không ngừng cải tiến, mở rộng quy mô đào tạo và nâng cao chất lượng giảng dạy nhằm đáp ứng nhu cầu ngày càng cao của xã hội và thị trường lao động.\r\n\r\nBan đầu, trường chỉ đào tạo một số ngành nghề cơ bản với quy mô nhỏ, nhưng nhờ sự nỗ lực của đội ngũ cán bộ, giảng viên và sự đầu tư của nhà nước, trường đã phát triển thành một cơ sở giáo dục nghề nghiệp đa ngành, đa lĩnh vực. Hiện nay, Trường Cao đẳng Nghề XYZ tự hào là một trong những đơn vị đi đầu trong việc đào tạo các ngành nghề kỹ thuật, công nghệ và dịch vụ, trang bị cho học viên kiến thức thực tiễn và kỹ năng chuyên môn cao.\r\n\r\nVới phương châm “Học đi đôi với hành”, trường luôn chú trọng vào việc kết hợp giữa lý thuyết và thực hành, giúp học viên sẵn sàng tham gia vào thị trường lao động ngay sau khi tốt nghiệp. Trải qua quá trình hình thành và phát triển, Trường Cao đẳng Nghề XYZ đã khẳng định được vị thế của mình trong hệ thống giáo dục nghề nghiệp và góp phần quan trọng vào sự phát triển của ngành nghề tại Việt Nam.",
+                            PhoneNumber = "02485820808",
+                            TrainingMotto = "Với phương châm \"Học đi đôi với hành, vững lý thuyết – chắc tay nghề\", Trường Cao đẳng Nghề XYZ luôn hướng tới việc đào tạo ra những thế hệ học viên có đầy đủ kiến thức chuyên môn và kỹ năng thực hành, đáp ứng tốt yêu cầu của thị trường lao động hiện đại.\r\n\r\nPhương châm này được cụ thể hóa thông qua các yếu tố:\r\n\r\nGiảng dạy bám sát nhu cầu thị trường: Chương trình đào tạo luôn được cập nhật theo xu hướng phát triển của các ngành công nghiệp và dịch vụ, đảm bảo học viên được trang bị những kiến thức và kỹ năng mới nhất.\r\nPhát triển toàn diện: Bên cạnh kỹ năng nghề nghiệp, trường còn chú trọng phát triển kỹ năng mềm, như kỹ năng giao tiếp, làm việc nhóm, và tư duy sáng tạo, giúp học viên tự tin hơn trong công việc.\r\nHọc tập suốt đời: Nhà trường khuyến khích tinh thần học tập không ngừng nghỉ, giúp học viên luôn sẵn sàng thích nghi với những thay đổi của xã hội và công nghệ.",
+                            WhyChooseUs = "Trường Cao đẳng Nghề XYZ luôn được học viên và doanh nghiệp đánh giá cao nhờ vào những ưu điểm vượt trội sau:\r\n\r\nChất lượng đào tạo hàng đầu: Với đội ngũ giảng viên giàu kinh nghiệm và cơ sở vật chất hiện đại, trường đảm bảo cung cấp cho học viên một nền tảng kiến thức vững chắc cùng kỹ năng nghề nghiệp thiết thực.\r\nChương trình đào tạo thực tiễn: Nhà trường luôn chú trọng việc kết hợp lý thuyết với thực hành, giúp học viên không chỉ nắm vững kiến thức mà còn được rèn luyện các kỹ năng cần thiết để làm việc ngay khi ra trường.\r\nMối liên kết chặt chẽ với doanh nghiệp: Trường hợp tác với nhiều doanh nghiệp trong các lĩnh vực khác nhau, tạo điều kiện cho học viên thực tập và có cơ hội việc làm ngay sau khi tốt nghiệp.\r\nMôi trường học tập thân thiện: Nhà trường không chỉ tạo ra một môi trường học tập chuyên nghiệp mà còn thân thiện, tạo điều kiện tốt nhất cho sự phát triển toàn diện của học viên.\r\nCơ hội việc làm cao: Với tỷ lệ học viên có việc làm sau khi ra trường đạt trên 90%, Trường Cao đẳng Nghề XYZ cam kết mang đến cho học viên những cơ hội việc làm tốt nhất."
                         },
                         new
                         {
                             CampusId = "Danang",
+                            Achievements = "Trường Cao đẳng Nghề XYZ đã đạt được nhiều thành tích đáng tự hào trong suốt quá trình phát triển:\r\n\r\nDanh hiệu “Trường nghề xuất sắc” do Bộ Lao động - Thương binh và Xã hội trao tặng trong nhiều năm liên tiếp.\r\nThành tích đào tạo: Hơn 10.000 học viên đã tốt nghiệp và làm việc tại các công ty, tập đoàn lớn trong và ngoài nước.\r\nGiải thưởng về sáng tạo và nghiên cứu khoa học: Học viên của trường đã đạt nhiều giải thưởng tại các cuộc thi tay nghề và sáng tạo kỹ thuật cấp quốc gia.\r\nThành tích hợp tác quốc tế: Nhà trường đã ký kết nhiều chương trình hợp tác đào tạo và trao đổi học viên với các trường nghề uy tín ở nước ngoài, nâng cao chất lượng giáo dục và mở ra cơ hội học tập quốc tế cho học viên.",
                             Address = "219 Nguyễn Sinh Sắc, phường Hoà Minh, quận Liên Chiểu, TP Đà Nẵng",
+                            AdmissionPlanID = 2,
                             CampusName = "Đà Nẵng",
-                            PhoneNumber = "02363710999"
+                            History = "Giới thiệu về lịch sử thành lập Trường Cao đẳng Nghề XYZ\r\n\r\nTrường Cao đẳng Nghề XYZ được thành lập vào năm 1995 với sứ mệnh cung cấp nguồn nhân lực chất lượng cao cho các ngành công nghiệp, dịch vụ và nông nghiệp trên cả nước. Trong suốt hơn hai thập kỷ phát triển, nhà trường đã không ngừng cải tiến, mở rộng quy mô đào tạo và nâng cao chất lượng giảng dạy nhằm đáp ứng nhu cầu ngày càng cao của xã hội và thị trường lao động.\r\n\r\nBan đầu, trường chỉ đào tạo một số ngành nghề cơ bản với quy mô nhỏ, nhưng nhờ sự nỗ lực của đội ngũ cán bộ, giảng viên và sự đầu tư của nhà nước, trường đã phát triển thành một cơ sở giáo dục nghề nghiệp đa ngành, đa lĩnh vực. Hiện nay, Trường Cao đẳng Nghề XYZ tự hào là một trong những đơn vị đi đầu trong việc đào tạo các ngành nghề kỹ thuật, công nghệ và dịch vụ, trang bị cho học viên kiến thức thực tiễn và kỹ năng chuyên môn cao.\r\n\r\nVới phương châm “Học đi đôi với hành”, trường luôn chú trọng vào việc kết hợp giữa lý thuyết và thực hành, giúp học viên sẵn sàng tham gia vào thị trường lao động ngay sau khi tốt nghiệp. Trải qua quá trình hình thành và phát triển, Trường Cao đẳng Nghề XYZ đã khẳng định được vị thế của mình trong hệ thống giáo dục nghề nghiệp và góp phần quan trọng vào sự phát triển của ngành nghề tại Việt Nam.",
+                            PhoneNumber = "02363710999",
+                            TrainingMotto = "Với phương châm \"Học đi đôi với hành, vững lý thuyết – chắc tay nghề\", Trường Cao đẳng Nghề XYZ luôn hướng tới việc đào tạo ra những thế hệ học viên có đầy đủ kiến thức chuyên môn và kỹ năng thực hành, đáp ứng tốt yêu cầu của thị trường lao động hiện đại.\r\n\r\nPhương châm này được cụ thể hóa thông qua các yếu tố:\r\n\r\nGiảng dạy bám sát nhu cầu thị trường: Chương trình đào tạo luôn được cập nhật theo xu hướng phát triển của các ngành công nghiệp và dịch vụ, đảm bảo học viên được trang bị những kiến thức và kỹ năng mới nhất.\r\nPhát triển toàn diện: Bên cạnh kỹ năng nghề nghiệp, trường còn chú trọng phát triển kỹ năng mềm, như kỹ năng giao tiếp, làm việc nhóm, và tư duy sáng tạo, giúp học viên tự tin hơn trong công việc.\r\nHọc tập suốt đời: Nhà trường khuyến khích tinh thần học tập không ngừng nghỉ, giúp học viên luôn sẵn sàng thích nghi với những thay đổi của xã hội và công nghệ.",
+                            WhyChooseUs = "Trường Cao đẳng Nghề XYZ luôn được học viên và doanh nghiệp đánh giá cao nhờ vào những ưu điểm vượt trội sau:\r\n\r\nChất lượng đào tạo hàng đầu: Với đội ngũ giảng viên giàu kinh nghiệm và cơ sở vật chất hiện đại, trường đảm bảo cung cấp cho học viên một nền tảng kiến thức vững chắc cùng kỹ năng nghề nghiệp thiết thực.\r\nChương trình đào tạo thực tiễn: Nhà trường luôn chú trọng việc kết hợp lý thuyết với thực hành, giúp học viên không chỉ nắm vững kiến thức mà còn được rèn luyện các kỹ năng cần thiết để làm việc ngay khi ra trường.\r\nMối liên kết chặt chẽ với doanh nghiệp: Trường hợp tác với nhiều doanh nghiệp trong các lĩnh vực khác nhau, tạo điều kiện cho học viên thực tập và có cơ hội việc làm ngay sau khi tốt nghiệp.\r\nMôi trường học tập thân thiện: Nhà trường không chỉ tạo ra một môi trường học tập chuyên nghiệp mà còn thân thiện, tạo điều kiện tốt nhất cho sự phát triển toàn diện của học viên.\r\nCơ hội việc làm cao: Với tỷ lệ học viên có việc làm sau khi ra trường đạt trên 90%, Trường Cao đẳng Nghề XYZ cam kết mang đến cho học viên những cơ hội việc làm tốt nhất."
                         },
                         new
                         {
                             CampusId = "Cantho",
+                            Achievements = "Trường Cao đẳng Nghề XYZ đã đạt được nhiều thành tích đáng tự hào trong suốt quá trình phát triển:\r\n\r\nDanh hiệu “Trường nghề xuất sắc” do Bộ Lao động - Thương binh và Xã hội trao tặng trong nhiều năm liên tiếp.\r\nThành tích đào tạo: Hơn 10.000 học viên đã tốt nghiệp và làm việc tại các công ty, tập đoàn lớn trong và ngoài nước.\r\nGiải thưởng về sáng tạo và nghiên cứu khoa học: Học viên của trường đã đạt nhiều giải thưởng tại các cuộc thi tay nghề và sáng tạo kỹ thuật cấp quốc gia.\r\nThành tích hợp tác quốc tế: Nhà trường đã ký kết nhiều chương trình hợp tác đào tạo và trao đổi học viên với các trường nghề uy tín ở nước ngoài, nâng cao chất lượng giáo dục và mở ra cơ hội học tập quốc tế cho học viên.",
                             Address = "Toà nhà FPT Polytechnic, đường số 22, phường Thường Thạnh,quận Cái Răng, TP Cần Thơ",
+                            AdmissionPlanID = 3,
                             CampusName = "Cần Thơ",
-                            PhoneNumber = "0983881100"
+                            History = "Giới thiệu về lịch sử thành lập Trường Cao đẳng Nghề XYZ\r\n\r\nTrường Cao đẳng Nghề XYZ được thành lập vào năm 1995 với sứ mệnh cung cấp nguồn nhân lực chất lượng cao cho các ngành công nghiệp, dịch vụ và nông nghiệp trên cả nước. Trong suốt hơn hai thập kỷ phát triển, nhà trường đã không ngừng cải tiến, mở rộng quy mô đào tạo và nâng cao chất lượng giảng dạy nhằm đáp ứng nhu cầu ngày càng cao của xã hội và thị trường lao động.\r\n\r\nBan đầu, trường chỉ đào tạo một số ngành nghề cơ bản với quy mô nhỏ, nhưng nhờ sự nỗ lực của đội ngũ cán bộ, giảng viên và sự đầu tư của nhà nước, trường đã phát triển thành một cơ sở giáo dục nghề nghiệp đa ngành, đa lĩnh vực. Hiện nay, Trường Cao đẳng Nghề XYZ tự hào là một trong những đơn vị đi đầu trong việc đào tạo các ngành nghề kỹ thuật, công nghệ và dịch vụ, trang bị cho học viên kiến thức thực tiễn và kỹ năng chuyên môn cao.\r\n\r\nVới phương châm “Học đi đôi với hành”, trường luôn chú trọng vào việc kết hợp giữa lý thuyết và thực hành, giúp học viên sẵn sàng tham gia vào thị trường lao động ngay sau khi tốt nghiệp. Trải qua quá trình hình thành và phát triển, Trường Cao đẳng Nghề XYZ đã khẳng định được vị thế của mình trong hệ thống giáo dục nghề nghiệp và góp phần quan trọng vào sự phát triển của ngành nghề tại Việt Nam.",
+                            PhoneNumber = "0983881100",
+                            TrainingMotto = "Với phương châm \"Học đi đôi với hành, vững lý thuyết – chắc tay nghề\", Trường Cao đẳng Nghề XYZ luôn hướng tới việc đào tạo ra những thế hệ học viên có đầy đủ kiến thức chuyên môn và kỹ năng thực hành, đáp ứng tốt yêu cầu của thị trường lao động hiện đại.\r\n\r\nPhương châm này được cụ thể hóa thông qua các yếu tố:\r\n\r\nGiảng dạy bám sát nhu cầu thị trường: Chương trình đào tạo luôn được cập nhật theo xu hướng phát triển của các ngành công nghiệp và dịch vụ, đảm bảo học viên được trang bị những kiến thức và kỹ năng mới nhất.\r\nPhát triển toàn diện: Bên cạnh kỹ năng nghề nghiệp, trường còn chú trọng phát triển kỹ năng mềm, như kỹ năng giao tiếp, làm việc nhóm, và tư duy sáng tạo, giúp học viên tự tin hơn trong công việc.\r\nHọc tập suốt đời: Nhà trường khuyến khích tinh thần học tập không ngừng nghỉ, giúp học viên luôn sẵn sàng thích nghi với những thay đổi của xã hội và công nghệ.",
+                            WhyChooseUs = "Trường Cao đẳng Nghề XYZ luôn được học viên và doanh nghiệp đánh giá cao nhờ vào những ưu điểm vượt trội sau:\r\n\r\nChất lượng đào tạo hàng đầu: Với đội ngũ giảng viên giàu kinh nghiệm và cơ sở vật chất hiện đại, trường đảm bảo cung cấp cho học viên một nền tảng kiến thức vững chắc cùng kỹ năng nghề nghiệp thiết thực.\r\nChương trình đào tạo thực tiễn: Nhà trường luôn chú trọng việc kết hợp lý thuyết với thực hành, giúp học viên không chỉ nắm vững kiến thức mà còn được rèn luyện các kỹ năng cần thiết để làm việc ngay khi ra trường.\r\nMối liên kết chặt chẽ với doanh nghiệp: Trường hợp tác với nhiều doanh nghiệp trong các lĩnh vực khác nhau, tạo điều kiện cho học viên thực tập và có cơ hội việc làm ngay sau khi tốt nghiệp.\r\nMôi trường học tập thân thiện: Nhà trường không chỉ tạo ra một môi trường học tập chuyên nghiệp mà còn thân thiện, tạo điều kiện tốt nhất cho sự phát triển toàn diện của học viên.\r\nCơ hội việc làm cao: Với tỷ lệ học viên có việc làm sau khi ra trường đạt trên 90%, Trường Cao đẳng Nghề XYZ cam kết mang đến cho học viên những cơ hội việc làm tốt nhất."
                         },
                         new
                         {
                             CampusId = "HCM",
+                            Achievements = "Trường Cao đẳng Nghề XYZ đã đạt được nhiều thành tích đáng tự hào trong suốt quá trình phát triển:\r\n\r\nDanh hiệu “Trường nghề xuất sắc” do Bộ Lao động - Thương binh và Xã hội trao tặng trong nhiều năm liên tiếp.\r\nThành tích đào tạo: Hơn 10.000 học viên đã tốt nghiệp và làm việc tại các công ty, tập đoàn lớn trong và ngoài nước.\r\nGiải thưởng về sáng tạo và nghiên cứu khoa học: Học viên của trường đã đạt nhiều giải thưởng tại các cuộc thi tay nghề và sáng tạo kỹ thuật cấp quốc gia.\r\nThành tích hợp tác quốc tế: Nhà trường đã ký kết nhiều chương trình hợp tác đào tạo và trao đổi học viên với các trường nghề uy tín ở nước ngoài, nâng cao chất lượng giáo dục và mở ra cơ hội học tập quốc tế cho học viên.",
                             Address = "Tòa nhà QTSC9 (toà T), đường Tô Ký, phường Tân Chánh Hiệp, quận 12, TP HCM.778/B1 Nguyễn Kiệm, phường 04, quận Phú Nhuận, TP HCM",
+                            AdmissionPlanID = 4,
                             CampusName = "Tp HCM",
-                            PhoneNumber = "02866866486"
+                            History = "Giới thiệu về lịch sử thành lập Trường Cao đẳng Nghề XYZ\r\n\r\nTrường Cao đẳng Nghề XYZ được thành lập vào năm 1995 với sứ mệnh cung cấp nguồn nhân lực chất lượng cao cho các ngành công nghiệp, dịch vụ và nông nghiệp trên cả nước. Trong suốt hơn hai thập kỷ phát triển, nhà trường đã không ngừng cải tiến, mở rộng quy mô đào tạo và nâng cao chất lượng giảng dạy nhằm đáp ứng nhu cầu ngày càng cao của xã hội và thị trường lao động.\r\n\r\nBan đầu, trường chỉ đào tạo một số ngành nghề cơ bản với quy mô nhỏ, nhưng nhờ sự nỗ lực của đội ngũ cán bộ, giảng viên và sự đầu tư của nhà nước, trường đã phát triển thành một cơ sở giáo dục nghề nghiệp đa ngành, đa lĩnh vực. Hiện nay, Trường Cao đẳng Nghề XYZ tự hào là một trong những đơn vị đi đầu trong việc đào tạo các ngành nghề kỹ thuật, công nghệ và dịch vụ, trang bị cho học viên kiến thức thực tiễn và kỹ năng chuyên môn cao.\r\n\r\nVới phương châm “Học đi đôi với hành”, trường luôn chú trọng vào việc kết hợp giữa lý thuyết và thực hành, giúp học viên sẵn sàng tham gia vào thị trường lao động ngay sau khi tốt nghiệp. Trải qua quá trình hình thành và phát triển, Trường Cao đẳng Nghề XYZ đã khẳng định được vị thế của mình trong hệ thống giáo dục nghề nghiệp và góp phần quan trọng vào sự phát triển của ngành nghề tại Việt Nam.",
+                            PhoneNumber = "02866866486",
+                            TrainingMotto = "Với phương châm \"Học đi đôi với hành, vững lý thuyết – chắc tay nghề\", Trường Cao đẳng Nghề XYZ luôn hướng tới việc đào tạo ra những thế hệ học viên có đầy đủ kiến thức chuyên môn và kỹ năng thực hành, đáp ứng tốt yêu cầu của thị trường lao động hiện đại.\r\n\r\nPhương châm này được cụ thể hóa thông qua các yếu tố:\r\n\r\nGiảng dạy bám sát nhu cầu thị trường: Chương trình đào tạo luôn được cập nhật theo xu hướng phát triển của các ngành công nghiệp và dịch vụ, đảm bảo học viên được trang bị những kiến thức và kỹ năng mới nhất.\r\nPhát triển toàn diện: Bên cạnh kỹ năng nghề nghiệp, trường còn chú trọng phát triển kỹ năng mềm, như kỹ năng giao tiếp, làm việc nhóm, và tư duy sáng tạo, giúp học viên tự tin hơn trong công việc.\r\nHọc tập suốt đời: Nhà trường khuyến khích tinh thần học tập không ngừng nghỉ, giúp học viên luôn sẵn sàng thích nghi với những thay đổi của xã hội và công nghệ.",
+                            WhyChooseUs = "Trường Cao đẳng Nghề XYZ luôn được học viên và doanh nghiệp đánh giá cao nhờ vào những ưu điểm vượt trội sau:\r\n\r\nChất lượng đào tạo hàng đầu: Với đội ngũ giảng viên giàu kinh nghiệm và cơ sở vật chất hiện đại, trường đảm bảo cung cấp cho học viên một nền tảng kiến thức vững chắc cùng kỹ năng nghề nghiệp thiết thực.\r\nChương trình đào tạo thực tiễn: Nhà trường luôn chú trọng việc kết hợp lý thuyết với thực hành, giúp học viên không chỉ nắm vững kiến thức mà còn được rèn luyện các kỹ năng cần thiết để làm việc ngay khi ra trường.\r\nMối liên kết chặt chẽ với doanh nghiệp: Trường hợp tác với nhiều doanh nghiệp trong các lĩnh vực khác nhau, tạo điều kiện cho học viên thực tập và có cơ hội việc làm ngay sau khi tốt nghiệp.\r\nMôi trường học tập thân thiện: Nhà trường không chỉ tạo ra một môi trường học tập chuyên nghiệp mà còn thân thiện, tạo điều kiện tốt nhất cho sự phát triển toàn diện của học viên.\r\nCơ hội việc làm cao: Với tỷ lệ học viên có việc làm sau khi ra trường đạt trên 90%, Trường Cao đẳng Nghề XYZ cam kết mang đến cho học viên những cơ hội việc làm tốt nhất."
                         },
                         new
                         {
                             CampusId = "Thanhhoa",
+                            Achievements = "Trường Cao đẳng Nghề XYZ đã đạt được nhiều thành tích đáng tự hào trong suốt quá trình phát triển:\r\n\r\nDanh hiệu “Trường nghề xuất sắc” do Bộ Lao động - Thương binh và Xã hội trao tặng trong nhiều năm liên tiếp.\r\nThành tích đào tạo: Hơn 10.000 học viên đã tốt nghiệp và làm việc tại các công ty, tập đoàn lớn trong và ngoài nước.\r\nGiải thưởng về sáng tạo và nghiên cứu khoa học: Học viên của trường đã đạt nhiều giải thưởng tại các cuộc thi tay nghề và sáng tạo kỹ thuật cấp quốc gia.\r\nThành tích hợp tác quốc tế: Nhà trường đã ký kết nhiều chương trình hợp tác đào tạo và trao đổi học viên với các trường nghề uy tín ở nước ngoài, nâng cao chất lượng giáo dục và mở ra cơ hội học tập quốc tế cho học viên.",
                             Address = "Tòa Beta, Tổ hợp giáo dục FPT, Đại lộ Võ Nguyên Giáp, phường Quảng Thành, TP Thanh Hóa",
+                            AdmissionPlanID = 5,
                             CampusName = "Thanh Hoá",
-                            PhoneNumber = "0913785213"
+                            History = "Giới thiệu về lịch sử thành lập Trường Cao đẳng Nghề XYZ\r\n\r\nTrường Cao đẳng Nghề XYZ được thành lập vào năm 1995 với sứ mệnh cung cấp nguồn nhân lực chất lượng cao cho các ngành công nghiệp, dịch vụ và nông nghiệp trên cả nước. Trong suốt hơn hai thập kỷ phát triển, nhà trường đã không ngừng cải tiến, mở rộng quy mô đào tạo và nâng cao chất lượng giảng dạy nhằm đáp ứng nhu cầu ngày càng cao của xã hội và thị trường lao động.\r\n\r\nBan đầu, trường chỉ đào tạo một số ngành nghề cơ bản với quy mô nhỏ, nhưng nhờ sự nỗ lực của đội ngũ cán bộ, giảng viên và sự đầu tư của nhà nước, trường đã phát triển thành một cơ sở giáo dục nghề nghiệp đa ngành, đa lĩnh vực. Hiện nay, Trường Cao đẳng Nghề XYZ tự hào là một trong những đơn vị đi đầu trong việc đào tạo các ngành nghề kỹ thuật, công nghệ và dịch vụ, trang bị cho học viên kiến thức thực tiễn và kỹ năng chuyên môn cao.\r\n\r\nVới phương châm “Học đi đôi với hành”, trường luôn chú trọng vào việc kết hợp giữa lý thuyết và thực hành, giúp học viên sẵn sàng tham gia vào thị trường lao động ngay sau khi tốt nghiệp. Trải qua quá trình hình thành và phát triển, Trường Cao đẳng Nghề XYZ đã khẳng định được vị thế của mình trong hệ thống giáo dục nghề nghiệp và góp phần quan trọng vào sự phát triển của ngành nghề tại Việt Nam.",
+                            PhoneNumber = "0913785213",
+                            TrainingMotto = "Với phương châm \"Học đi đôi với hành, vững lý thuyết – chắc tay nghề\", Trường Cao đẳng Nghề XYZ luôn hướng tới việc đào tạo ra những thế hệ học viên có đầy đủ kiến thức chuyên môn và kỹ năng thực hành, đáp ứng tốt yêu cầu của thị trường lao động hiện đại.\r\n\r\nPhương châm này được cụ thể hóa thông qua các yếu tố:\r\n\r\nGiảng dạy bám sát nhu cầu thị trường: Chương trình đào tạo luôn được cập nhật theo xu hướng phát triển của các ngành công nghiệp và dịch vụ, đảm bảo học viên được trang bị những kiến thức và kỹ năng mới nhất.\r\nPhát triển toàn diện: Bên cạnh kỹ năng nghề nghiệp, trường còn chú trọng phát triển kỹ năng mềm, như kỹ năng giao tiếp, làm việc nhóm, và tư duy sáng tạo, giúp học viên tự tin hơn trong công việc.\r\nHọc tập suốt đời: Nhà trường khuyến khích tinh thần học tập không ngừng nghỉ, giúp học viên luôn sẵn sàng thích nghi với những thay đổi của xã hội và công nghệ.",
+                            WhyChooseUs = "Trường Cao đẳng Nghề XYZ luôn được học viên và doanh nghiệp đánh giá cao nhờ vào những ưu điểm vượt trội sau:\r\n\r\nChất lượng đào tạo hàng đầu: Với đội ngũ giảng viên giàu kinh nghiệm và cơ sở vật chất hiện đại, trường đảm bảo cung cấp cho học viên một nền tảng kiến thức vững chắc cùng kỹ năng nghề nghiệp thiết thực.\r\nChương trình đào tạo thực tiễn: Nhà trường luôn chú trọng việc kết hợp lý thuyết với thực hành, giúp học viên không chỉ nắm vững kiến thức mà còn được rèn luyện các kỹ năng cần thiết để làm việc ngay khi ra trường.\r\nMối liên kết chặt chẽ với doanh nghiệp: Trường hợp tác với nhiều doanh nghiệp trong các lĩnh vực khác nhau, tạo điều kiện cho học viên thực tập và có cơ hội việc làm ngay sau khi tốt nghiệp.\r\nMôi trường học tập thân thiện: Nhà trường không chỉ tạo ra một môi trường học tập chuyên nghiệp mà còn thân thiện, tạo điều kiện tốt nhất cho sự phát triển toàn diện của học viên.\r\nCơ hội việc làm cao: Với tỷ lệ học viên có việc làm sau khi ra trường đạt trên 90%, Trường Cao đẳng Nghề XYZ cam kết mang đến cho học viên những cơ hội việc làm tốt nhất."
                         });
                 });
 
@@ -767,7 +995,7 @@ namespace Data.Migrations
                             CommentId = 1,
                             BlogId = 1,
                             Content = "This is the first comment",
-                            CreatedDate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5121),
+                            CreatedDate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4917),
                             FacebookUserId = "fb12345",
                             FacebookUserName = "John Doe"
                         },
@@ -776,7 +1004,7 @@ namespace Data.Migrations
                             CommentId = 2,
                             BlogId = 1,
                             Content = "This is a reply to the first comment",
-                            CreatedDate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5124),
+                            CreatedDate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4920),
                             FacebookUserId = "fb67890",
                             FacebookUserName = "Jane Smith",
                             ParentCommentId = 1
@@ -786,85 +1014,9 @@ namespace Data.Migrations
                             CommentId = 3,
                             BlogId = 2,
                             Content = "Another comment on the second blog",
-                            CreatedDate = new DateTime(2024, 9, 19, 1, 56, 42, 855, DateTimeKind.Local).AddTicks(5127),
+                            CreatedDate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4921),
                             FacebookUserId = "fb54321",
                             FacebookUserName = "Alice"
-                        });
-                });
-
-            modelBuilder.Entity("Data.Models.IntroduceCampus", b =>
-                {
-                    b.Property<int>("IntroduceId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IntroduceId"), 1L, 1);
-
-                    b.Property<string>("Achievements")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CampusId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("History")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TrainingMotto")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("WhyChooseUs")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IntroduceId");
-
-                    b.ToTable("IntroduceCampus", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            IntroduceId = 1,
-                            Achievements = "Trường Cao đẳng Nghề XYZ đã đạt được nhiều thành tích đáng tự hào trong suốt quá trình phát triển:\r\n\r\nDanh hiệu “Trường nghề xuất sắc” do Bộ Lao động - Thương binh và Xã hội trao tặng trong nhiều năm liên tiếp.\r\nThành tích đào tạo: Hơn 10.000 học viên đã tốt nghiệp và làm việc tại các công ty, tập đoàn lớn trong và ngoài nước.\r\nGiải thưởng về sáng tạo và nghiên cứu khoa học: Học viên của trường đã đạt nhiều giải thưởng tại các cuộc thi tay nghề và sáng tạo kỹ thuật cấp quốc gia.\r\nThành tích hợp tác quốc tế: Nhà trường đã ký kết nhiều chương trình hợp tác đào tạo và trao đổi học viên với các trường nghề uy tín ở nước ngoài, nâng cao chất lượng giáo dục và mở ra cơ hội học tập quốc tế cho học viên.",
-                            CampusId = "Hanoi",
-                            History = "Giới thiệu về lịch sử thành lập Trường Cao đẳng Nghề XYZ\r\n\r\nTrường Cao đẳng Nghề XYZ được thành lập vào năm 1995 với sứ mệnh cung cấp nguồn nhân lực chất lượng cao cho các ngành công nghiệp, dịch vụ và nông nghiệp trên cả nước. Trong suốt hơn hai thập kỷ phát triển, nhà trường đã không ngừng cải tiến, mở rộng quy mô đào tạo và nâng cao chất lượng giảng dạy nhằm đáp ứng nhu cầu ngày càng cao của xã hội và thị trường lao động.\r\n\r\nBan đầu, trường chỉ đào tạo một số ngành nghề cơ bản với quy mô nhỏ, nhưng nhờ sự nỗ lực của đội ngũ cán bộ, giảng viên và sự đầu tư của nhà nước, trường đã phát triển thành một cơ sở giáo dục nghề nghiệp đa ngành, đa lĩnh vực. Hiện nay, Trường Cao đẳng Nghề XYZ tự hào là một trong những đơn vị đi đầu trong việc đào tạo các ngành nghề kỹ thuật, công nghệ và dịch vụ, trang bị cho học viên kiến thức thực tiễn và kỹ năng chuyên môn cao.\r\n\r\nVới phương châm “Học đi đôi với hành”, trường luôn chú trọng vào việc kết hợp giữa lý thuyết và thực hành, giúp học viên sẵn sàng tham gia vào thị trường lao động ngay sau khi tốt nghiệp. Trải qua quá trình hình thành và phát triển, Trường Cao đẳng Nghề XYZ đã khẳng định được vị thế của mình trong hệ thống giáo dục nghề nghiệp và góp phần quan trọng vào sự phát triển của ngành nghề tại Việt Nam.",
-                            TrainingMotto = "Với phương châm \"Học đi đôi với hành, vững lý thuyết – chắc tay nghề\", Trường Cao đẳng Nghề XYZ luôn hướng tới việc đào tạo ra những thế hệ học viên có đầy đủ kiến thức chuyên môn và kỹ năng thực hành, đáp ứng tốt yêu cầu của thị trường lao động hiện đại.\r\n\r\nPhương châm này được cụ thể hóa thông qua các yếu tố:\r\n\r\nGiảng dạy bám sát nhu cầu thị trường: Chương trình đào tạo luôn được cập nhật theo xu hướng phát triển của các ngành công nghiệp và dịch vụ, đảm bảo học viên được trang bị những kiến thức và kỹ năng mới nhất.\r\nPhát triển toàn diện: Bên cạnh kỹ năng nghề nghiệp, trường còn chú trọng phát triển kỹ năng mềm, như kỹ năng giao tiếp, làm việc nhóm, và tư duy sáng tạo, giúp học viên tự tin hơn trong công việc.\r\nHọc tập suốt đời: Nhà trường khuyến khích tinh thần học tập không ngừng nghỉ, giúp học viên luôn sẵn sàng thích nghi với những thay đổi của xã hội và công nghệ.",
-                            WhyChooseUs = "Trường Cao đẳng Nghề XYZ luôn được học viên và doanh nghiệp đánh giá cao nhờ vào những ưu điểm vượt trội sau:\r\n\r\nChất lượng đào tạo hàng đầu: Với đội ngũ giảng viên giàu kinh nghiệm và cơ sở vật chất hiện đại, trường đảm bảo cung cấp cho học viên một nền tảng kiến thức vững chắc cùng kỹ năng nghề nghiệp thiết thực.\r\nChương trình đào tạo thực tiễn: Nhà trường luôn chú trọng việc kết hợp lý thuyết với thực hành, giúp học viên không chỉ nắm vững kiến thức mà còn được rèn luyện các kỹ năng cần thiết để làm việc ngay khi ra trường.\r\nMối liên kết chặt chẽ với doanh nghiệp: Trường hợp tác với nhiều doanh nghiệp trong các lĩnh vực khác nhau, tạo điều kiện cho học viên thực tập và có cơ hội việc làm ngay sau khi tốt nghiệp.\r\nMôi trường học tập thân thiện: Nhà trường không chỉ tạo ra một môi trường học tập chuyên nghiệp mà còn thân thiện, tạo điều kiện tốt nhất cho sự phát triển toàn diện của học viên.\r\nCơ hội việc làm cao: Với tỷ lệ học viên có việc làm sau khi ra trường đạt trên 90%, Trường Cao đẳng Nghề XYZ cam kết mang đến cho học viên những cơ hội việc làm tốt nhất."
-                        },
-                        new
-                        {
-                            IntroduceId = 2,
-                            Achievements = "Trường Cao đẳng Nghề XYZ đã đạt được nhiều thành tích đáng tự hào trong suốt quá trình phát triển:\r\n\r\nDanh hiệu “Trường nghề xuất sắc” do Bộ Lao động - Thương binh và Xã hội trao tặng trong nhiều năm liên tiếp.\r\nThành tích đào tạo: Hơn 10.000 học viên đã tốt nghiệp và làm việc tại các công ty, tập đoàn lớn trong và ngoài nước.\r\nGiải thưởng về sáng tạo và nghiên cứu khoa học: Học viên của trường đã đạt nhiều giải thưởng tại các cuộc thi tay nghề và sáng tạo kỹ thuật cấp quốc gia.\r\nThành tích hợp tác quốc tế: Nhà trường đã ký kết nhiều chương trình hợp tác đào tạo và trao đổi học viên với các trường nghề uy tín ở nước ngoài, nâng cao chất lượng giáo dục và mở ra cơ hội học tập quốc tế cho học viên.",
-                            CampusId = "Danang",
-                            History = "Giới thiệu về lịch sử thành lập Trường Cao đẳng Nghề XYZ\r\n\r\nTrường Cao đẳng Nghề XYZ được thành lập vào năm 1995 với sứ mệnh cung cấp nguồn nhân lực chất lượng cao cho các ngành công nghiệp, dịch vụ và nông nghiệp trên cả nước. Trong suốt hơn hai thập kỷ phát triển, nhà trường đã không ngừng cải tiến, mở rộng quy mô đào tạo và nâng cao chất lượng giảng dạy nhằm đáp ứng nhu cầu ngày càng cao của xã hội và thị trường lao động.\r\n\r\nBan đầu, trường chỉ đào tạo một số ngành nghề cơ bản với quy mô nhỏ, nhưng nhờ sự nỗ lực của đội ngũ cán bộ, giảng viên và sự đầu tư của nhà nước, trường đã phát triển thành một cơ sở giáo dục nghề nghiệp đa ngành, đa lĩnh vực. Hiện nay, Trường Cao đẳng Nghề XYZ tự hào là một trong những đơn vị đi đầu trong việc đào tạo các ngành nghề kỹ thuật, công nghệ và dịch vụ, trang bị cho học viên kiến thức thực tiễn và kỹ năng chuyên môn cao.\r\n\r\nVới phương châm “Học đi đôi với hành”, trường luôn chú trọng vào việc kết hợp giữa lý thuyết và thực hành, giúp học viên sẵn sàng tham gia vào thị trường lao động ngay sau khi tốt nghiệp. Trải qua quá trình hình thành và phát triển, Trường Cao đẳng Nghề XYZ đã khẳng định được vị thế của mình trong hệ thống giáo dục nghề nghiệp và góp phần quan trọng vào sự phát triển của ngành nghề tại Việt Nam.",
-                            TrainingMotto = "Với phương châm \"Học đi đôi với hành, vững lý thuyết – chắc tay nghề\", Trường Cao đẳng Nghề XYZ luôn hướng tới việc đào tạo ra những thế hệ học viên có đầy đủ kiến thức chuyên môn và kỹ năng thực hành, đáp ứng tốt yêu cầu của thị trường lao động hiện đại.\r\n\r\nPhương châm này được cụ thể hóa thông qua các yếu tố:\r\n\r\nGiảng dạy bám sát nhu cầu thị trường: Chương trình đào tạo luôn được cập nhật theo xu hướng phát triển của các ngành công nghiệp và dịch vụ, đảm bảo học viên được trang bị những kiến thức và kỹ năng mới nhất.\r\nPhát triển toàn diện: Bên cạnh kỹ năng nghề nghiệp, trường còn chú trọng phát triển kỹ năng mềm, như kỹ năng giao tiếp, làm việc nhóm, và tư duy sáng tạo, giúp học viên tự tin hơn trong công việc.\r\nHọc tập suốt đời: Nhà trường khuyến khích tinh thần học tập không ngừng nghỉ, giúp học viên luôn sẵn sàng thích nghi với những thay đổi của xã hội và công nghệ.",
-                            WhyChooseUs = "Trường Cao đẳng Nghề XYZ luôn được học viên và doanh nghiệp đánh giá cao nhờ vào những ưu điểm vượt trội sau:\r\n\r\nChất lượng đào tạo hàng đầu: Với đội ngũ giảng viên giàu kinh nghiệm và cơ sở vật chất hiện đại, trường đảm bảo cung cấp cho học viên một nền tảng kiến thức vững chắc cùng kỹ năng nghề nghiệp thiết thực.\r\nChương trình đào tạo thực tiễn: Nhà trường luôn chú trọng việc kết hợp lý thuyết với thực hành, giúp học viên không chỉ nắm vững kiến thức mà còn được rèn luyện các kỹ năng cần thiết để làm việc ngay khi ra trường.\r\nMối liên kết chặt chẽ với doanh nghiệp: Trường hợp tác với nhiều doanh nghiệp trong các lĩnh vực khác nhau, tạo điều kiện cho học viên thực tập và có cơ hội việc làm ngay sau khi tốt nghiệp.\r\nMôi trường học tập thân thiện: Nhà trường không chỉ tạo ra một môi trường học tập chuyên nghiệp mà còn thân thiện, tạo điều kiện tốt nhất cho sự phát triển toàn diện của học viên.\r\nCơ hội việc làm cao: Với tỷ lệ học viên có việc làm sau khi ra trường đạt trên 90%, Trường Cao đẳng Nghề XYZ cam kết mang đến cho học viên những cơ hội việc làm tốt nhất."
-                        },
-                        new
-                        {
-                            IntroduceId = 3,
-                            Achievements = "Trường Cao đẳng Nghề XYZ đã đạt được nhiều thành tích đáng tự hào trong suốt quá trình phát triển:\r\n\r\nDanh hiệu “Trường nghề xuất sắc” do Bộ Lao động - Thương binh và Xã hội trao tặng trong nhiều năm liên tiếp.\r\nThành tích đào tạo: Hơn 10.000 học viên đã tốt nghiệp và làm việc tại các công ty, tập đoàn lớn trong và ngoài nước.\r\nGiải thưởng về sáng tạo và nghiên cứu khoa học: Học viên của trường đã đạt nhiều giải thưởng tại các cuộc thi tay nghề và sáng tạo kỹ thuật cấp quốc gia.\r\nThành tích hợp tác quốc tế: Nhà trường đã ký kết nhiều chương trình hợp tác đào tạo và trao đổi học viên với các trường nghề uy tín ở nước ngoài, nâng cao chất lượng giáo dục và mở ra cơ hội học tập quốc tế cho học viên.",
-                            CampusId = "Cantho",
-                            History = "Giới thiệu về lịch sử thành lập Trường Cao đẳng Nghề XYZ\r\n\r\nTrường Cao đẳng Nghề XYZ được thành lập vào năm 1995 với sứ mệnh cung cấp nguồn nhân lực chất lượng cao cho các ngành công nghiệp, dịch vụ và nông nghiệp trên cả nước. Trong suốt hơn hai thập kỷ phát triển, nhà trường đã không ngừng cải tiến, mở rộng quy mô đào tạo và nâng cao chất lượng giảng dạy nhằm đáp ứng nhu cầu ngày càng cao của xã hội và thị trường lao động.\r\n\r\nBan đầu, trường chỉ đào tạo một số ngành nghề cơ bản với quy mô nhỏ, nhưng nhờ sự nỗ lực của đội ngũ cán bộ, giảng viên và sự đầu tư của nhà nước, trường đã phát triển thành một cơ sở giáo dục nghề nghiệp đa ngành, đa lĩnh vực. Hiện nay, Trường Cao đẳng Nghề XYZ tự hào là một trong những đơn vị đi đầu trong việc đào tạo các ngành nghề kỹ thuật, công nghệ và dịch vụ, trang bị cho học viên kiến thức thực tiễn và kỹ năng chuyên môn cao.\r\n\r\nVới phương châm “Học đi đôi với hành”, trường luôn chú trọng vào việc kết hợp giữa lý thuyết và thực hành, giúp học viên sẵn sàng tham gia vào thị trường lao động ngay sau khi tốt nghiệp. Trải qua quá trình hình thành và phát triển, Trường Cao đẳng Nghề XYZ đã khẳng định được vị thế của mình trong hệ thống giáo dục nghề nghiệp và góp phần quan trọng vào sự phát triển của ngành nghề tại Việt Nam.",
-                            TrainingMotto = "Với phương châm \"Học đi đôi với hành, vững lý thuyết – chắc tay nghề\", Trường Cao đẳng Nghề XYZ luôn hướng tới việc đào tạo ra những thế hệ học viên có đầy đủ kiến thức chuyên môn và kỹ năng thực hành, đáp ứng tốt yêu cầu của thị trường lao động hiện đại.\r\n\r\nPhương châm này được cụ thể hóa thông qua các yếu tố:\r\n\r\nGiảng dạy bám sát nhu cầu thị trường: Chương trình đào tạo luôn được cập nhật theo xu hướng phát triển của các ngành công nghiệp và dịch vụ, đảm bảo học viên được trang bị những kiến thức và kỹ năng mới nhất.\r\nPhát triển toàn diện: Bên cạnh kỹ năng nghề nghiệp, trường còn chú trọng phát triển kỹ năng mềm, như kỹ năng giao tiếp, làm việc nhóm, và tư duy sáng tạo, giúp học viên tự tin hơn trong công việc.\r\nHọc tập suốt đời: Nhà trường khuyến khích tinh thần học tập không ngừng nghỉ, giúp học viên luôn sẵn sàng thích nghi với những thay đổi của xã hội và công nghệ.",
-                            WhyChooseUs = "Trường Cao đẳng Nghề XYZ luôn được học viên và doanh nghiệp đánh giá cao nhờ vào những ưu điểm vượt trội sau:\r\n\r\nChất lượng đào tạo hàng đầu: Với đội ngũ giảng viên giàu kinh nghiệm và cơ sở vật chất hiện đại, trường đảm bảo cung cấp cho học viên một nền tảng kiến thức vững chắc cùng kỹ năng nghề nghiệp thiết thực.\r\nChương trình đào tạo thực tiễn: Nhà trường luôn chú trọng việc kết hợp lý thuyết với thực hành, giúp học viên không chỉ nắm vững kiến thức mà còn được rèn luyện các kỹ năng cần thiết để làm việc ngay khi ra trường.\r\nMối liên kết chặt chẽ với doanh nghiệp: Trường hợp tác với nhiều doanh nghiệp trong các lĩnh vực khác nhau, tạo điều kiện cho học viên thực tập và có cơ hội việc làm ngay sau khi tốt nghiệp.\r\nMôi trường học tập thân thiện: Nhà trường không chỉ tạo ra một môi trường học tập chuyên nghiệp mà còn thân thiện, tạo điều kiện tốt nhất cho sự phát triển toàn diện của học viên.\r\nCơ hội việc làm cao: Với tỷ lệ học viên có việc làm sau khi ra trường đạt trên 90%, Trường Cao đẳng Nghề XYZ cam kết mang đến cho học viên những cơ hội việc làm tốt nhất."
-                        },
-                        new
-                        {
-                            IntroduceId = 4,
-                            Achievements = "Trường Cao đẳng Nghề XYZ đã đạt được nhiều thành tích đáng tự hào trong suốt quá trình phát triển:\r\n\r\nDanh hiệu “Trường nghề xuất sắc” do Bộ Lao động - Thương binh và Xã hội trao tặng trong nhiều năm liên tiếp.\r\nThành tích đào tạo: Hơn 10.000 học viên đã tốt nghiệp và làm việc tại các công ty, tập đoàn lớn trong và ngoài nước.\r\nGiải thưởng về sáng tạo và nghiên cứu khoa học: Học viên của trường đã đạt nhiều giải thưởng tại các cuộc thi tay nghề và sáng tạo kỹ thuật cấp quốc gia.\r\nThành tích hợp tác quốc tế: Nhà trường đã ký kết nhiều chương trình hợp tác đào tạo và trao đổi học viên với các trường nghề uy tín ở nước ngoài, nâng cao chất lượng giáo dục và mở ra cơ hội học tập quốc tế cho học viên.",
-                            CampusId = "HCM",
-                            History = "Giới thiệu về lịch sử thành lập Trường Cao đẳng Nghề XYZ\r\n\r\nTrường Cao đẳng Nghề XYZ được thành lập vào năm 1995 với sứ mệnh cung cấp nguồn nhân lực chất lượng cao cho các ngành công nghiệp, dịch vụ và nông nghiệp trên cả nước. Trong suốt hơn hai thập kỷ phát triển, nhà trường đã không ngừng cải tiến, mở rộng quy mô đào tạo và nâng cao chất lượng giảng dạy nhằm đáp ứng nhu cầu ngày càng cao của xã hội và thị trường lao động.\r\n\r\nBan đầu, trường chỉ đào tạo một số ngành nghề cơ bản với quy mô nhỏ, nhưng nhờ sự nỗ lực của đội ngũ cán bộ, giảng viên và sự đầu tư của nhà nước, trường đã phát triển thành một cơ sở giáo dục nghề nghiệp đa ngành, đa lĩnh vực. Hiện nay, Trường Cao đẳng Nghề XYZ tự hào là một trong những đơn vị đi đầu trong việc đào tạo các ngành nghề kỹ thuật, công nghệ và dịch vụ, trang bị cho học viên kiến thức thực tiễn và kỹ năng chuyên môn cao.\r\n\r\nVới phương châm “Học đi đôi với hành”, trường luôn chú trọng vào việc kết hợp giữa lý thuyết và thực hành, giúp học viên sẵn sàng tham gia vào thị trường lao động ngay sau khi tốt nghiệp. Trải qua quá trình hình thành và phát triển, Trường Cao đẳng Nghề XYZ đã khẳng định được vị thế của mình trong hệ thống giáo dục nghề nghiệp và góp phần quan trọng vào sự phát triển của ngành nghề tại Việt Nam.",
-                            TrainingMotto = "Với phương châm \"Học đi đôi với hành, vững lý thuyết – chắc tay nghề\", Trường Cao đẳng Nghề XYZ luôn hướng tới việc đào tạo ra những thế hệ học viên có đầy đủ kiến thức chuyên môn và kỹ năng thực hành, đáp ứng tốt yêu cầu của thị trường lao động hiện đại.\r\n\r\nPhương châm này được cụ thể hóa thông qua các yếu tố:\r\n\r\nGiảng dạy bám sát nhu cầu thị trường: Chương trình đào tạo luôn được cập nhật theo xu hướng phát triển của các ngành công nghiệp và dịch vụ, đảm bảo học viên được trang bị những kiến thức và kỹ năng mới nhất.\r\nPhát triển toàn diện: Bên cạnh kỹ năng nghề nghiệp, trường còn chú trọng phát triển kỹ năng mềm, như kỹ năng giao tiếp, làm việc nhóm, và tư duy sáng tạo, giúp học viên tự tin hơn trong công việc.\r\nHọc tập suốt đời: Nhà trường khuyến khích tinh thần học tập không ngừng nghỉ, giúp học viên luôn sẵn sàng thích nghi với những thay đổi của xã hội và công nghệ.",
-                            WhyChooseUs = "Trường Cao đẳng Nghề XYZ luôn được học viên và doanh nghiệp đánh giá cao nhờ vào những ưu điểm vượt trội sau:\r\n\r\nChất lượng đào tạo hàng đầu: Với đội ngũ giảng viên giàu kinh nghiệm và cơ sở vật chất hiện đại, trường đảm bảo cung cấp cho học viên một nền tảng kiến thức vững chắc cùng kỹ năng nghề nghiệp thiết thực.\r\nChương trình đào tạo thực tiễn: Nhà trường luôn chú trọng việc kết hợp lý thuyết với thực hành, giúp học viên không chỉ nắm vững kiến thức mà còn được rèn luyện các kỹ năng cần thiết để làm việc ngay khi ra trường.\r\nMối liên kết chặt chẽ với doanh nghiệp: Trường hợp tác với nhiều doanh nghiệp trong các lĩnh vực khác nhau, tạo điều kiện cho học viên thực tập và có cơ hội việc làm ngay sau khi tốt nghiệp.\r\nMôi trường học tập thân thiện: Nhà trường không chỉ tạo ra một môi trường học tập chuyên nghiệp mà còn thân thiện, tạo điều kiện tốt nhất cho sự phát triển toàn diện của học viên.\r\nCơ hội việc làm cao: Với tỷ lệ học viên có việc làm sau khi ra trường đạt trên 90%, Trường Cao đẳng Nghề XYZ cam kết mang đến cho học viên những cơ hội việc làm tốt nhất."
-                        },
-                        new
-                        {
-                            IntroduceId = 5,
-                            Achievements = "Trường Cao đẳng Nghề XYZ đã đạt được nhiều thành tích đáng tự hào trong suốt quá trình phát triển:\r\n\r\nDanh hiệu “Trường nghề xuất sắc” do Bộ Lao động - Thương binh và Xã hội trao tặng trong nhiều năm liên tiếp.\r\nThành tích đào tạo: Hơn 10.000 học viên đã tốt nghiệp và làm việc tại các công ty, tập đoàn lớn trong và ngoài nước.\r\nGiải thưởng về sáng tạo và nghiên cứu khoa học: Học viên của trường đã đạt nhiều giải thưởng tại các cuộc thi tay nghề và sáng tạo kỹ thuật cấp quốc gia.\r\nThành tích hợp tác quốc tế: Nhà trường đã ký kết nhiều chương trình hợp tác đào tạo và trao đổi học viên với các trường nghề uy tín ở nước ngoài, nâng cao chất lượng giáo dục và mở ra cơ hội học tập quốc tế cho học viên.",
-                            CampusId = "Thanhhoa",
-                            History = "Giới thiệu về lịch sử thành lập Trường Cao đẳng Nghề XYZ\r\n\r\nTrường Cao đẳng Nghề XYZ được thành lập vào năm 1995 với sứ mệnh cung cấp nguồn nhân lực chất lượng cao cho các ngành công nghiệp, dịch vụ và nông nghiệp trên cả nước. Trong suốt hơn hai thập kỷ phát triển, nhà trường đã không ngừng cải tiến, mở rộng quy mô đào tạo và nâng cao chất lượng giảng dạy nhằm đáp ứng nhu cầu ngày càng cao của xã hội và thị trường lao động.\r\n\r\nBan đầu, trường chỉ đào tạo một số ngành nghề cơ bản với quy mô nhỏ, nhưng nhờ sự nỗ lực của đội ngũ cán bộ, giảng viên và sự đầu tư của nhà nước, trường đã phát triển thành một cơ sở giáo dục nghề nghiệp đa ngành, đa lĩnh vực. Hiện nay, Trường Cao đẳng Nghề XYZ tự hào là một trong những đơn vị đi đầu trong việc đào tạo các ngành nghề kỹ thuật, công nghệ và dịch vụ, trang bị cho học viên kiến thức thực tiễn và kỹ năng chuyên môn cao.\r\n\r\nVới phương châm “Học đi đôi với hành”, trường luôn chú trọng vào việc kết hợp giữa lý thuyết và thực hành, giúp học viên sẵn sàng tham gia vào thị trường lao động ngay sau khi tốt nghiệp. Trải qua quá trình hình thành và phát triển, Trường Cao đẳng Nghề XYZ đã khẳng định được vị thế của mình trong hệ thống giáo dục nghề nghiệp và góp phần quan trọng vào sự phát triển của ngành nghề tại Việt Nam.",
-                            TrainingMotto = "Với phương châm \"Học đi đôi với hành, vững lý thuyết – chắc tay nghề\", Trường Cao đẳng Nghề XYZ luôn hướng tới việc đào tạo ra những thế hệ học viên có đầy đủ kiến thức chuyên môn và kỹ năng thực hành, đáp ứng tốt yêu cầu của thị trường lao động hiện đại.\r\n\r\nPhương châm này được cụ thể hóa thông qua các yếu tố:\r\n\r\nGiảng dạy bám sát nhu cầu thị trường: Chương trình đào tạo luôn được cập nhật theo xu hướng phát triển của các ngành công nghiệp và dịch vụ, đảm bảo học viên được trang bị những kiến thức và kỹ năng mới nhất.\r\nPhát triển toàn diện: Bên cạnh kỹ năng nghề nghiệp, trường còn chú trọng phát triển kỹ năng mềm, như kỹ năng giao tiếp, làm việc nhóm, và tư duy sáng tạo, giúp học viên tự tin hơn trong công việc.\r\nHọc tập suốt đời: Nhà trường khuyến khích tinh thần học tập không ngừng nghỉ, giúp học viên luôn sẵn sàng thích nghi với những thay đổi của xã hội và công nghệ.",
-                            WhyChooseUs = "Trường Cao đẳng Nghề XYZ luôn được học viên và doanh nghiệp đánh giá cao nhờ vào những ưu điểm vượt trội sau:\r\n\r\nChất lượng đào tạo hàng đầu: Với đội ngũ giảng viên giàu kinh nghiệm và cơ sở vật chất hiện đại, trường đảm bảo cung cấp cho học viên một nền tảng kiến thức vững chắc cùng kỹ năng nghề nghiệp thiết thực.\r\nChương trình đào tạo thực tiễn: Nhà trường luôn chú trọng việc kết hợp lý thuyết với thực hành, giúp học viên không chỉ nắm vững kiến thức mà còn được rèn luyện các kỹ năng cần thiết để làm việc ngay khi ra trường.\r\nMối liên kết chặt chẽ với doanh nghiệp: Trường hợp tác với nhiều doanh nghiệp trong các lĩnh vực khác nhau, tạo điều kiện cho học viên thực tập và có cơ hội việc làm ngay sau khi tốt nghiệp.\r\nMôi trường học tập thân thiện: Nhà trường không chỉ tạo ra một môi trường học tập chuyên nghiệp mà còn thân thiện, tạo điều kiện tốt nhất cho sự phát triển toàn diện của học viên.\r\nCơ hội việc làm cao: Với tỷ lệ học viên có việc làm sau khi ra trường đạt trên 90%, Trường Cao đẳng Nghề XYZ cam kết mang đến cho học viên những cơ hội việc làm tốt nhất."
                         });
                 });
 
@@ -881,6 +1033,9 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("Target")
+                        .HasColumnType("int");
+
                     b.HasKey("MajorID");
 
                     b.HasIndex("CampusId");
@@ -892,31 +1047,36 @@ namespace Data.Migrations
                         {
                             MajorID = "E",
                             CampusId = "Hanoi",
-                            MajorName = "Công nghệ thông tin"
+                            MajorName = "Công nghệ thông tin",
+                            Target = 200
                         },
                         new
                         {
                             MajorID = "A",
                             CampusId = "Hanoi",
-                            MajorName = "Ngôn ngữ"
+                            MajorName = "Ngôn ngữ",
+                            Target = 200
                         },
                         new
                         {
                             MajorID = "S",
                             CampusId = "Hanoi",
-                            MajorName = "Quản trị kinh doanh"
+                            MajorName = "Quản trị kinh doanh",
+                            Target = 200
                         },
                         new
                         {
                             MajorID = "B",
                             CampusId = "Hanoi",
-                            MajorName = "Làm đẹp"
+                            MajorName = "Làm đẹp",
+                            Target = 200
                         },
                         new
                         {
                             MajorID = "O",
                             CampusId = "Hanoi",
-                            MajorName = "Ngành khác"
+                            MajorName = "Ngành khác",
+                            Target = 200
                         });
                 });
 
@@ -925,12 +1085,25 @@ namespace Data.Migrations
                     b.Property<string>("SpecializeMajorID")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MajorCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("MajorID")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SpecializeMajorName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TimeStudy")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SpecializeMajorID");
@@ -943,92 +1116,127 @@ namespace Data.Migrations
                         new
                         {
                             SpecializeMajorID = "ME",
+                            Description = "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.",
+                            MajorCode = "7480201",
                             MajorID = "E",
-                            SpecializeMajorName = "Lập trình mobile"
+                            SpecializeMajorName = "Lập trình mobile",
+                            TimeStudy = "2 năm"
                         },
                         new
                         {
                             SpecializeMajorID = "GE",
+                            Description = "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.",
+                            MajorCode = "7480201",
                             MajorID = "E",
-                            SpecializeMajorName = "Lập trình game"
+                            SpecializeMajorName = "Lập trình game",
+                            TimeStudy = "2 năm"
                         },
                         new
                         {
                             SpecializeMajorID = "WE",
+                            Description = "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.",
+                            MajorCode = "7480201",
                             MajorID = "E",
-                            SpecializeMajorName = "Lập trình web"
+                            SpecializeMajorName = "Lập trình web",
+                            TimeStudy = "2 năm"
                         },
                         new
                         {
                             SpecializeMajorID = "TE",
+                            Description = "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.",
+                            MajorCode = "7480201",
                             MajorID = "E",
-                            SpecializeMajorName = "Kiểm thử"
+                            SpecializeMajorName = "Kiểm thử",
+                            TimeStudy = "2 năm"
                         },
                         new
                         {
                             SpecializeMajorID = "EA",
+                            Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
+                            MajorCode = "7220201",
                             MajorID = "A",
-                            SpecializeMajorName = "Ngôn ngữ anh"
+                            SpecializeMajorName = "Ngôn ngữ anh",
+                            TimeStudy = "2 năm"
                         },
                         new
                         {
                             SpecializeMajorID = "JA",
+                            MajorCode = "7220209",
                             MajorID = "A",
-                            SpecializeMajorName = "Ngôn ngữ nhật"
+                            SpecializeMajorName = "Ngôn ngữ nhật",
+                            TimeStudy = "2 năm"
                         },
                         new
                         {
                             SpecializeMajorID = "KA",
+                            MajorCode = "7220210",
                             MajorID = "A",
-                            SpecializeMajorName = "Ngôn ngữ hàn"
+                            SpecializeMajorName = "Ngôn ngữ hàn",
+                            TimeStudy = "24 năm"
                         },
                         new
                         {
                             SpecializeMajorID = "SM",
+                            MajorCode = "7340101",
                             MajorID = "S",
-                            SpecializeMajorName = "Marketing"
+                            SpecializeMajorName = "Marketing",
+                            TimeStudy = "2 năm"
                         },
                         new
                         {
                             SpecializeMajorID = "HM",
+                            MajorCode = "7340101",
                             MajorID = "S",
-                            SpecializeMajorName = "Quản trị khách sạn"
+                            SpecializeMajorName = "Quản trị khách sạn",
+                            TimeStudy = "24 năm"
                         },
                         new
                         {
                             SpecializeMajorID = "RM",
+                            MajorCode = "7340101",
                             MajorID = "S",
-                            SpecializeMajorName = "Quản trị nhà hàng"
+                            SpecializeMajorName = "Quản trị nhà hàng",
+                            TimeStudy = "24 năm"
                         },
                         new
                         {
                             SpecializeMajorID = "BT",
+                            MajorCode = "71490",
                             MajorID = "B",
-                            SpecializeMajorName = "Phum xăm thẩm mỹ"
+                            SpecializeMajorName = "Phum xăm thẩm mỹ",
+                            TimeStudy = "2 năm"
                         },
                         new
                         {
                             SpecializeMajorID = "BS",
+                            MajorCode = "71490",
                             MajorID = "B",
-                            SpecializeMajorName = "Chăm sóc da và massage"
+                            SpecializeMajorName = "Chăm sóc da và massage",
+                            TimeStudy = "2 năm"
                         },
                         new
                         {
                             SpecializeMajorID = "AO",
+                            MajorCode = "71490",
                             MajorID = "O",
-                            SpecializeMajorName = "Kiểm toán"
+                            SpecializeMajorName = "Kiểm toán",
+                            TimeStudy = "2 năm"
                         },
                         new
                         {
                             SpecializeMajorID = "SO",
+                            MajorCode = "71490",
                             MajorID = "O",
-                            SpecializeMajorName = "Thư ký văn phòng"
+                            SpecializeMajorName = "Thư ký văn phòng",
+                            TimeStudy = "24 năm"
                         },
                         new
                         {
                             SpecializeMajorID = "FO",
+                            MajorCode = "71490",
                             MajorID = "O",
-                            SpecializeMajorName = "Kỹ thuật chế biến món ăn"
+                            SpecializeMajorName = "Kỹ thuật chế biến món ăn",
+                            TimeStudy = "2 năm"
                         });
                 });
 
@@ -1143,9 +1351,6 @@ namespace Data.Migrations
                     b.Property<string>("Diploma")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DiplomaType")
-                        .HasColumnType("int");
-
                     b.Property<string>("District")
                         .HasColumnType("nvarchar(max)");
 
@@ -1231,6 +1436,643 @@ namespace Data.Migrations
                     b.ToTable("StudentProfile", (string)null);
                 });
 
+            modelBuilder.Entity("Data.Models.Subject", b =>
+                {
+                    b.Property<string>("SubjectCode")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("SpecializeMajorID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NumberOfCredits")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SemesterNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StudyTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SubjectName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SubjectCode", "SpecializeMajorID");
+
+                    b.HasIndex("SpecializeMajorID");
+
+                    b.ToTable("Subject", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            SubjectCode = "GDQP",
+                            SpecializeMajorID = "ME",
+                            NumberOfCredits = 0,
+                            SemesterNumber = 0,
+                            StudyTime = "1 tháng",
+                            SubjectName = "Giáo dục quốc phòng"
+                        },
+                        new
+                        {
+                            SubjectCode = "GDQP",
+                            SpecializeMajorID = "GE",
+                            NumberOfCredits = 0,
+                            SemesterNumber = 0,
+                            StudyTime = "1 tháng",
+                            SubjectName = "Giáo dục quốc phòng"
+                        },
+                        new
+                        {
+                            SubjectCode = "GDQP",
+                            SpecializeMajorID = "WE",
+                            NumberOfCredits = 0,
+                            SemesterNumber = 0,
+                            StudyTime = "1 tháng",
+                            SubjectName = "Giáo dục quốc phòng"
+                        },
+                        new
+                        {
+                            SubjectCode = "GDQP",
+                            SpecializeMajorID = "TE",
+                            NumberOfCredits = 0,
+                            SemesterNumber = 0,
+                            StudyTime = "1 tháng",
+                            SubjectName = "Giáo dục quốc phòng"
+                        },
+                        new
+                        {
+                            SubjectCode = "GDQP",
+                            SpecializeMajorID = "EA",
+                            NumberOfCredits = 0,
+                            SemesterNumber = 0,
+                            StudyTime = "1 tháng",
+                            SubjectName = "Giáo dục quốc phòng"
+                        },
+                        new
+                        {
+                            SubjectCode = "GDQP",
+                            SpecializeMajorID = "JA",
+                            NumberOfCredits = 0,
+                            SemesterNumber = 0,
+                            StudyTime = "1 tháng",
+                            SubjectName = "Giáo dục quốc phòng"
+                        },
+                        new
+                        {
+                            SubjectCode = "GDQP",
+                            SpecializeMajorID = "KA",
+                            NumberOfCredits = 0,
+                            SemesterNumber = 0,
+                            StudyTime = "1 tháng",
+                            SubjectName = "Giáo dục quốc phòng"
+                        },
+                        new
+                        {
+                            SubjectCode = "GDQP",
+                            SpecializeMajorID = "SM",
+                            NumberOfCredits = 0,
+                            SemesterNumber = 0,
+                            StudyTime = "1 tháng",
+                            SubjectName = "Giáo dục quốc phòng"
+                        },
+                        new
+                        {
+                            SubjectCode = "GDQP",
+                            SpecializeMajorID = "HM",
+                            NumberOfCredits = 0,
+                            SemesterNumber = 0,
+                            StudyTime = "1 tháng",
+                            SubjectName = "Giáo dục quốc phòng"
+                        },
+                        new
+                        {
+                            SubjectCode = "GDQP",
+                            SpecializeMajorID = "RM",
+                            NumberOfCredits = 0,
+                            SemesterNumber = 0,
+                            StudyTime = "1 tháng",
+                            SubjectName = "Giáo dục quốc phòng"
+                        },
+                        new
+                        {
+                            SubjectCode = "GDQP",
+                            SpecializeMajorID = "BT",
+                            NumberOfCredits = 0,
+                            SemesterNumber = 0,
+                            StudyTime = "1 tháng",
+                            SubjectName = "Giáo dục quốc phòng"
+                        },
+                        new
+                        {
+                            SubjectCode = "GDQP",
+                            SpecializeMajorID = "BS",
+                            NumberOfCredits = 0,
+                            SemesterNumber = 0,
+                            StudyTime = "1 tháng",
+                            SubjectName = "Giáo dục quốc phòng"
+                        },
+                        new
+                        {
+                            SubjectCode = "GDQP",
+                            SpecializeMajorID = "AO",
+                            NumberOfCredits = 0,
+                            SemesterNumber = 0,
+                            StudyTime = "1 tháng",
+                            SubjectName = "Giáo dục quốc phòng"
+                        },
+                        new
+                        {
+                            SubjectCode = "GDQP",
+                            SpecializeMajorID = "SO",
+                            NumberOfCredits = 0,
+                            SemesterNumber = 0,
+                            StudyTime = "1 tháng",
+                            SubjectName = "Giáo dục quốc phòng"
+                        },
+                        new
+                        {
+                            SubjectCode = "GDQP",
+                            SpecializeMajorID = "FO",
+                            NumberOfCredits = 0,
+                            SemesterNumber = 0,
+                            StudyTime = "1 tháng",
+                            SubjectName = "Giáo dục quốc phòng"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG101",
+                            SpecializeMajorID = "ME",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 1"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG101",
+                            SpecializeMajorID = "GE",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 1"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG101",
+                            SpecializeMajorID = "WE",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 1"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG101",
+                            SpecializeMajorID = "TE",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 1"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG101",
+                            SpecializeMajorID = "EA",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 1"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG101",
+                            SpecializeMajorID = "JA",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 1"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG101",
+                            SpecializeMajorID = "KA",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 1"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG101",
+                            SpecializeMajorID = "SM",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 1"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG101",
+                            SpecializeMajorID = "HM",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 1"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG101",
+                            SpecializeMajorID = "RM",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 1"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG101",
+                            SpecializeMajorID = "BT",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 1"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG101",
+                            SpecializeMajorID = "BS",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 1"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG101",
+                            SpecializeMajorID = "AO",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 1"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG101",
+                            SpecializeMajorID = "SO",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 1"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG101",
+                            SpecializeMajorID = "FO",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 1"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG102",
+                            SpecializeMajorID = "ME",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 2"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG102",
+                            SpecializeMajorID = "GE",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 2"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG102",
+                            SpecializeMajorID = "WE",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 2"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG102",
+                            SpecializeMajorID = "TE",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 2"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG102",
+                            SpecializeMajorID = "EA",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 2"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG102",
+                            SpecializeMajorID = "JA",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 2"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG102",
+                            SpecializeMajorID = "KA",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 2"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG102",
+                            SpecializeMajorID = "SM",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 2"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG102",
+                            SpecializeMajorID = "HM",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 2"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG102",
+                            SpecializeMajorID = "RM",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 2"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG102",
+                            SpecializeMajorID = "BT",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 2"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG102",
+                            SpecializeMajorID = "BS",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 2"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG102",
+                            SpecializeMajorID = "AO",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 2"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG102",
+                            SpecializeMajorID = "SO",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 2"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG102",
+                            SpecializeMajorID = "FO",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 2"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG103",
+                            SpecializeMajorID = "ME",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 3"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG103",
+                            SpecializeMajorID = "EA",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 3"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG103",
+                            SpecializeMajorID = "SM",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 3"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG103",
+                            SpecializeMajorID = "HM",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 3"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG103",
+                            SpecializeMajorID = "RM",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 3"
+                        },
+                        new
+                        {
+                            SubjectCode = "ENG103",
+                            SpecializeMajorID = "AO",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 0,
+                            StudyTime = "2 tháng",
+                            SubjectName = "Tiếng anh 3"
+                        },
+                        new
+                        {
+                            SubjectCode = "MAE101",
+                            SpecializeMajorID = "ME",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 1,
+                            StudyTime = "4 tháng",
+                            SubjectName = "Toán rời rạc"
+                        },
+                        new
+                        {
+                            SubjectCode = "MAE101",
+                            SpecializeMajorID = "GE",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 1,
+                            StudyTime = "4 tháng",
+                            SubjectName = "Toán rời rạc"
+                        },
+                        new
+                        {
+                            SubjectCode = "MAE101",
+                            SpecializeMajorID = "WE",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 1,
+                            StudyTime = "4 tháng",
+                            SubjectName = "Toán rời rạc"
+                        },
+                        new
+                        {
+                            SubjectCode = "MAE101",
+                            SpecializeMajorID = "TE",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 1,
+                            StudyTime = "4 tháng",
+                            SubjectName = "Toán rời rạc"
+                        },
+                        new
+                        {
+                            SubjectCode = "PRF101",
+                            SpecializeMajorID = "ME",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 1,
+                            StudyTime = "4 tháng",
+                            SubjectName = "Cơ sở lập trình"
+                        },
+                        new
+                        {
+                            SubjectCode = "PRF101",
+                            SpecializeMajorID = "GE",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 1,
+                            StudyTime = "4 tháng",
+                            SubjectName = "Cơ sở lập trình"
+                        },
+                        new
+                        {
+                            SubjectCode = "PRF101",
+                            SpecializeMajorID = "WE",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 1,
+                            StudyTime = "4 tháng",
+                            SubjectName = "Cơ sở lập trình"
+                        },
+                        new
+                        {
+                            SubjectCode = "PRF101",
+                            SpecializeMajorID = "TE",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 1,
+                            StudyTime = "4 tháng",
+                            SubjectName = "Cơ sở lập trình"
+                        },
+                        new
+                        {
+                            SubjectCode = "MAD101",
+                            SpecializeMajorID = "ME",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 2,
+                            StudyTime = "4 tháng",
+                            SubjectName = "Toán cho ngành kỹ thuật"
+                        },
+                        new
+                        {
+                            SubjectCode = "MAD101",
+                            SpecializeMajorID = "GE",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 2,
+                            StudyTime = "4 tháng",
+                            SubjectName = "Toán cho ngành kỹ thuật"
+                        },
+                        new
+                        {
+                            SubjectCode = "MAD101",
+                            SpecializeMajorID = "WE",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 2,
+                            StudyTime = "4 tháng",
+                            SubjectName = "Toán cho ngành kỹ thuật"
+                        },
+                        new
+                        {
+                            SubjectCode = "MAD101",
+                            SpecializeMajorID = "TE",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 2,
+                            StudyTime = "4 tháng",
+                            SubjectName = "Toán cho ngành kỹ thuật"
+                        },
+                        new
+                        {
+                            SubjectCode = "DBI101",
+                            SpecializeMajorID = "ME",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 3,
+                            StudyTime = "4 tháng",
+                            SubjectName = "Cơ sở lập trình"
+                        },
+                        new
+                        {
+                            SubjectCode = "DBI101",
+                            SpecializeMajorID = "GE",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 3,
+                            StudyTime = "4 tháng",
+                            SubjectName = "Cơ sở lập trình"
+                        },
+                        new
+                        {
+                            SubjectCode = "DBI101",
+                            SpecializeMajorID = "WE",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 3,
+                            StudyTime = "4 tháng",
+                            SubjectName = "Cơ sở lập trình"
+                        },
+                        new
+                        {
+                            SubjectCode = "DBI101",
+                            SpecializeMajorID = "TE",
+                            NumberOfCredits = 3,
+                            SemesterNumber = 3,
+                            StudyTime = "4 tháng",
+                            SubjectName = "Cơ sở lập trình"
+                        });
+                });
+
             modelBuilder.Entity("Data.Models.Supplier", b =>
                 {
                     b.Property<int>("SupplierId")
@@ -1302,6 +2144,150 @@ namespace Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Data.Models.TypeOfDiploma", b =>
+                {
+                    b.Property<int>("DiplomaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DiplomaId"), 1L, 1);
+
+                    b.Property<int>("AdmissionPlanID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DiplomaName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("DiplomaId");
+
+                    b.HasIndex("AdmissionPlanID");
+
+                    b.ToTable("TypeOfDiploma", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            DiplomaId = 1,
+                            AdmissionPlanID = 1,
+                            DiplomaName = "Tốt nghiệp THCS, học lớp 10,11,12 - học 2 năm"
+                        },
+                        new
+                        {
+                            DiplomaId = 2,
+                            AdmissionPlanID = 1,
+                            DiplomaName = "Tốt nghiệp THCS"
+                        },
+                        new
+                        {
+                            DiplomaId = 3,
+                            AdmissionPlanID = 1,
+                            DiplomaName = "Tốt nghiệp THPT hoặc bổ túc THPT - Học 1 năm đến 1,5 năm"
+                        },
+                        new
+                        {
+                            DiplomaId = 4,
+                            AdmissionPlanID = 1,
+                            DiplomaName = "Tốt nghiệp ĐH-CD-TC- Học 1 năm"
+                        },
+                        new
+                        {
+                            DiplomaId = 5,
+                            AdmissionPlanID = 2,
+                            DiplomaName = "Tốt nghiệp THCS, học lớp 10,11,12 - học 2 năm"
+                        },
+                        new
+                        {
+                            DiplomaId = 6,
+                            AdmissionPlanID = 2,
+                            DiplomaName = "Tốt nghiệp THCS"
+                        },
+                        new
+                        {
+                            DiplomaId = 7,
+                            AdmissionPlanID = 2,
+                            DiplomaName = "Tốt nghiệp THPT hoặc bổ túc THPT - Học 1 năm đến 1,5 năm"
+                        },
+                        new
+                        {
+                            DiplomaId = 8,
+                            AdmissionPlanID = 2,
+                            DiplomaName = "Tốt nghiệp ĐH-CD-TC- Học 1 năm"
+                        },
+                        new
+                        {
+                            DiplomaId = 9,
+                            AdmissionPlanID = 3,
+                            DiplomaName = "Tốt nghiệp THCS, học lớp 10,11,12 - học 2 năm"
+                        },
+                        new
+                        {
+                            DiplomaId = 10,
+                            AdmissionPlanID = 3,
+                            DiplomaName = "Tốt nghiệp THCS"
+                        },
+                        new
+                        {
+                            DiplomaId = 11,
+                            AdmissionPlanID = 3,
+                            DiplomaName = "Tốt nghiệp THPT hoặc bổ túc THPT - Học 1 năm đến 1,5 năm"
+                        },
+                        new
+                        {
+                            DiplomaId = 12,
+                            AdmissionPlanID = 3,
+                            DiplomaName = "Tốt nghiệp ĐH-CD-TC- Học 1 năm"
+                        },
+                        new
+                        {
+                            DiplomaId = 13,
+                            AdmissionPlanID = 4,
+                            DiplomaName = "Tốt nghiệp THCS, học lớp 10,11,12 - học 2 năm"
+                        },
+                        new
+                        {
+                            DiplomaId = 14,
+                            AdmissionPlanID = 4,
+                            DiplomaName = "Tốt nghiệp THCS"
+                        },
+                        new
+                        {
+                            DiplomaId = 15,
+                            AdmissionPlanID = 4,
+                            DiplomaName = "Tốt nghiệp THPT hoặc bổ túc THPT - Học 1 năm đến 1,5 năm"
+                        },
+                        new
+                        {
+                            DiplomaId = 16,
+                            AdmissionPlanID = 4,
+                            DiplomaName = "Tốt nghiệp ĐH-CD-TC- Học 1 năm"
+                        },
+                        new
+                        {
+                            DiplomaId = 17,
+                            AdmissionPlanID = 5,
+                            DiplomaName = "Tốt nghiệp THCS, học lớp 10,11,12 - học 2 năm"
+                        },
+                        new
+                        {
+                            DiplomaId = 18,
+                            AdmissionPlanID = 5,
+                            DiplomaName = "Tốt nghiệp THCS"
+                        },
+                        new
+                        {
+                            DiplomaId = 19,
+                            AdmissionPlanID = 5,
+                            DiplomaName = "Tốt nghiệp THPT hoặc bổ túc THPT - Học 1 năm đến 1,5 năm"
+                        },
+                        new
+                        {
+                            DiplomaId = 20,
+                            AdmissionPlanID = 5,
+                            DiplomaName = "Tốt nghiệp ĐH-CD-TC- Học 1 năm"
+                        });
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1325,14 +2311,14 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("b8fd818f-63f1-49ee-bec5-f7b66cafbfca"),
-                            ConcurrencyStamp = "6d26eeaa-4656-4785-9704-01c36f7bfa58",
+                            ConcurrencyStamp = "1e31e0cc-7fbd-4f20-baf7-fc08b3ea9812",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("d2d63c5b-d09b-4828-8322-f18ba103fe86"),
-                            ConcurrencyStamp = "6dd3503a-55d0-4afe-9141-4cf5fc0c0587",
+                            ConcurrencyStamp = "8db44d5c-c0c4-414b-ae1d-600c28cc5b53",
                             Name = "Student",
                             NormalizedName = "STUDENT"
                         });
@@ -1457,6 +2443,17 @@ namespace Data.Migrations
                     b.Navigation("Campus");
                 });
 
+            modelBuilder.Entity("Data.Models.AdmissionTime", b =>
+                {
+                    b.HasOne("Data.Models.AdmissionPlan", "AdmissionPlan")
+                        .WithMany("AdmissionTimes")
+                        .HasForeignKey("AdmissionPlanID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("AdmissionPlan");
+                });
+
             modelBuilder.Entity("Data.Models.AlumiStudent", b =>
                 {
                     b.HasOne("Data.Models.Campus", "Campus")
@@ -1522,11 +2519,12 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Models.Campus", b =>
                 {
-                    b.HasOne("Data.Models.IntroduceCampus", "IntroduceCampus")
+                    b.HasOne("Data.Models.AdmissionPlan", "AdmissionPlan")
                         .WithOne("Campus")
-                        .HasForeignKey("Data.Models.Campus", "IntroduceId");
+                        .HasForeignKey("Data.Models.Campus", "AdmissionPlanID")
+                        .OnDelete(DeleteBehavior.NoAction);
 
-                    b.Navigation("IntroduceCampus");
+                    b.Navigation("AdmissionPlan");
                 });
 
             modelBuilder.Entity("Data.Models.Comment", b =>
@@ -1612,6 +2610,28 @@ namespace Data.Migrations
                     b.Navigation("Campus");
                 });
 
+            modelBuilder.Entity("Data.Models.Subject", b =>
+                {
+                    b.HasOne("Data.Models.SpecializeMajor", "SpecializeMajor")
+                        .WithMany("Subjects")
+                        .HasForeignKey("SpecializeMajorID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("SpecializeMajor");
+                });
+
+            modelBuilder.Entity("Data.Models.TypeOfDiploma", b =>
+                {
+                    b.HasOne("Data.Models.AdmissionPlan", "AdmissionPlan")
+                        .WithMany("TypeOfDiplomas")
+                        .HasForeignKey("AdmissionPlanID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("AdmissionPlan");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
                     b.HasOne("Data.Models.Account", null)
@@ -1670,6 +2690,15 @@ namespace Data.Migrations
                     b.Navigation("StudentProfile");
                 });
 
+            modelBuilder.Entity("Data.Models.AdmissionPlan", b =>
+                {
+                    b.Navigation("AdmissionTimes");
+
+                    b.Navigation("Campus");
+
+                    b.Navigation("TypeOfDiplomas");
+                });
+
             modelBuilder.Entity("Data.Models.Blog", b =>
                 {
                     b.Navigation("BlogDetails");
@@ -1704,12 +2733,6 @@ namespace Data.Migrations
                     b.Navigation("Replies");
                 });
 
-            modelBuilder.Entity("Data.Models.IntroduceCampus", b =>
-                {
-                    b.Navigation("Campus")
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Data.Models.Major", b =>
                 {
                     b.Navigation("SpecializeMajors");
@@ -1720,6 +2743,8 @@ namespace Data.Migrations
                     b.Navigation("AlumiStudents");
 
                     b.Navigation("StudentConsultations");
+
+                    b.Navigation("Subjects");
                 });
 #pragma warning restore 612, 618
         }

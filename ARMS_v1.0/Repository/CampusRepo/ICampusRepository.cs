@@ -12,7 +12,7 @@ namespace Repository.CampusRepo
         Task<int> CountCampus();
         Task<List<Campus>> GetCampuses();
         Task<List<Banner>> GetBanners(string campusId);
-        Task<IntroduceCampus> GetIntroduce(string campusId);
+        Task<Campus> GetCampus(string campusId);
         Task<List<AlumiStudent>> GetAlumiStudents();
     }
 }

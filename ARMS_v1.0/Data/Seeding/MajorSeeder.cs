@@ -20,11 +20,11 @@ namespace Data.Seeding
         {
             // seed Major
             modelBuilder.Entity<Major>().HasData(
-                new Major() { MajorID = "E", MajorName = "Công nghệ thông tin", CampusId = "Hanoi" },
-                new Major() { MajorID = "A", MajorName = "Ngôn ngữ", CampusId = "Hanoi" },
-                new Major() { MajorID = "S", MajorName = "Quản trị kinh doanh", CampusId = "Hanoi" },
-                new Major() { MajorID = "B", MajorName = "Làm đẹp", CampusId = "Hanoi" },
-                new Major() { MajorID = "O", MajorName = "Ngành khác", CampusId = "Hanoi" }
+                new Major() { MajorID = "E", MajorName = "Công nghệ thông tin", CampusId = "Hanoi",Target=200 },
+                new Major() { MajorID = "A", MajorName = "Ngôn ngữ", CampusId = "Hanoi", Target = 200 },
+                new Major() { MajorID = "S", MajorName = "Quản trị kinh doanh", CampusId = "Hanoi", Target = 200 },
+                new Major() { MajorID = "B", MajorName = "Làm đẹp", CampusId = "Hanoi", Target = 200 },
+                new Major() { MajorID = "O", MajorName = "Ngành khác", CampusId = "Hanoi", Target = 200 }
                 );
 
         }

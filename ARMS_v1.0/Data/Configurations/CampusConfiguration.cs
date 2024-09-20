@@ -16,11 +16,15 @@ namespace Data.Configurations
             builder.ToTable(nameof(Campus));
             builder.Property(x => x.CampusId).IsRequired();
             builder.Property(x => x.CampusName).IsRequired();
+            builder.Property(x => x.History).IsRequired(false);
+            builder.Property(x => x.TrainingMotto).IsRequired(false);
+            builder.Property(x => x.Achievements).IsRequired(false);
+            builder.Property(x => x.WhyChooseUs).IsRequired(false);
 
             #region config relation
-            builder.HasOne(x => x.IntroduceCampus)
-                   .WithOne(sp => sp.Campus)
-                   .HasForeignKey<IntroduceCampus>(sp => sp.CampusId);
+            builder.HasOne(x => x.AdmissionPlan)
+               .WithOne(c => c.Campus)
+               .HasForeignKey<AdmissionPlan>(x => x.CampusId).OnDelete(DeleteBehavior.NoAction);
             #endregion
         }
     }

@@ -76,12 +76,12 @@ namespace Repository.CampusRepo
 
         }
 
-        public async Task<IntroduceCampus> GetIntroduce(string campusId)
+        public async Task<Campus> GetCampus(string campusId)
         {
             try
             {
-                IntroduceCampus intro = await _context.IntroduceCampuses.FirstOrDefaultAsync(x => x.CampusId.Equals(campusId));
-                return intro;
+                Campus Campus = await _context.Campuses.FirstOrDefaultAsync(x => x.CampusId.Equals(campusId));
+                return Campus;
             }
             catch (Exception)
             {

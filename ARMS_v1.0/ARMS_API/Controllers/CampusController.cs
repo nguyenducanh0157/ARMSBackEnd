@@ -31,7 +31,7 @@ namespace ARMS_API.Controllers
                 return BadRequest();
             }
         }
-        [HttpGet("get-campus")]
+        [HttpGet("get-campuses")]
         public async Task<IActionResult> GetCampuses()
         {
             try
@@ -64,7 +64,7 @@ namespace ARMS_API.Controllers
         {
             try
             {
-                IntroduceCampus response = await _campusRepository.GetIntroduce(campusId);
+                Campus response = await _campusRepository.GetCampus(campusId);
                 return Ok(response.History);
             }
             catch (Exception)
@@ -77,7 +77,7 @@ namespace ARMS_API.Controllers
         {
             try
             {
-                IntroduceCampus response = await _campusRepository.GetIntroduce(campusId);
+                Campus response = await _campusRepository.GetCampus(campusId);
                 return Ok(response.Achievements);
             }
             catch (Exception)
@@ -90,7 +90,7 @@ namespace ARMS_API.Controllers
         {
             try
             {
-                IntroduceCampus response = await _campusRepository.GetIntroduce(campusId);
+                Campus response = await _campusRepository.GetCampus(campusId);
                 return Ok(response.WhyChooseUs);
             }
             catch (Exception)
@@ -103,7 +103,7 @@ namespace ARMS_API.Controllers
         {
             try
             {
-                IntroduceCampus response = await _campusRepository.GetIntroduce(campusId);
+                Campus response = await _campusRepository.GetCampus(campusId);
                 return Ok(response.TrainingMotto);
             }
             catch (Exception)
