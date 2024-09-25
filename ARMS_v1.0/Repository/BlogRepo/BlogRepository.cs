@@ -61,5 +61,78 @@ namespace Repository.BlogRepo
                 throw;
             }
         }
+        public async Task<Comment> AddComment(Comment comment)
+        {
+            try
+            {
+                await _context.Comments.AddAsync(comment);
+                _context.SaveChanges();
+                return comment;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public async Task<Comment> UpdateComment(Comment comment)
+        {
+            try
+            {
+                _context.Entry<Comment>(comment).State = EntityState.Modified;
+                _context.SaveChanges();
+                return comment;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public async Task<Comment> GetComment(int CommentId)
+        {
+            try
+            {
+                var comment = await _context.Comments.SingleOrDefaultAsync(x=>x.CommentId==CommentId);
+                return comment;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task DeleteComment(int CommentId)
+        {
+            try
+            {
+               var comment = _context.Comments.Include(x=>x.Replies).SingleOrDefault(x=>x.CommentId==CommentId);
+                _context.Comments.RemoveRange(comment.Replies);
+                _context.Comments.Remove(comment);
+                _context.SaveChanges();
+                
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<bool> CheckFBID(string FacebookUserId)
+        {
+            try
+            {
+                var comment = await _context.Comments.SingleOrDefaultAsync(x=>x.FacebookUserId.Equals(FacebookUserId));
+                if (comment != null) return true;
+                return false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

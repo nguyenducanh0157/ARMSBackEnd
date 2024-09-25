@@ -28,6 +28,7 @@ namespace ARMS_API.Config
                 config.CreateMap<Blog, BlogDTO>();
                 config.CreateMap<BlogDetails, BlogDetailsDTO>();
                 config.CreateMap<Comment, CommentDTO>();
+                config.CreateMap<CommentDTO, Comment>();
 
                 config.CreateMap<AdmissionPlan, AdmissionPlanDTO>();
                 config.CreateMap<AdmissionTime, AdmissionTimeDTO>();

@@ -105,6 +105,66 @@ namespace ARMS_API.Controllers
                 return BadRequest();
             }
         }
+        [HttpPost("add-comment")]
+        public async Task<IActionResult> AddComment(int BlogId, CommentDTO commentDTO)
+        {
+            try
+            {
+                Comment comment = _mapper.Map<Comment>(commentDTO);
+                comment.BlogId = BlogId;
+                Comment newComment = await _blogRepository.AddComment(comment);
+                CommentDTO respone  = _mapper.Map<CommentDTO>(newComment);
+                return Ok(respone);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        [HttpPut("update-comment")]
+        public async Task<IActionResult> UpdateComment(int CommentId, string Content, string FacebookUserId)
+        {
+            try
+            {
+                if (CommentId == 0) return NotFound();
+                //check user
+                bool check = await _blogRepository.CheckFBID(FacebookUserId);
+                if (!check) { return BadRequest(); }
+                //get comment
+                var comment = await _blogRepository.GetComment(CommentId);
+                if (comment==null) return NotFound();
+                comment.Content = Content;
+                //update
+                Comment updateComment = await _blogRepository.UpdateComment(comment);
+                CommentDTO resspone = _mapper.Map<CommentDTO>(updateComment);
+                return Ok(resspone);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        [HttpDelete("delete-comment")]
+        public async Task<IActionResult> DeleteComment(int CommentId, string FacebookUserId)
+        {
+            try
+            {
+                if (CommentId == 0) return NotFound();
+                //check user
+                bool check = await _blogRepository.CheckFBID(FacebookUserId);
+                if (!check) { return BadRequest(); }
+                //get comment
+                var comment = await _blogRepository.GetComment(CommentId);
+                if (comment==null) return NotFound();
+                //delete comment
+                await _blogRepository.DeleteComment(CommentId);
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
         [HttpGet("get-top5blogs")]
         public async Task<IActionResult> GetBlogs(string? CampusId, int BlogCategoryId)
         {

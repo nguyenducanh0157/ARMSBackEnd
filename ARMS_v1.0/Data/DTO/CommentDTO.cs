@@ -14,7 +14,6 @@ namespace Data.DTO
         public DateTime CreatedDate { get; set; } = DateTime.Now; // Comment creation date
         public string FacebookUserId { get; set; } // ID user Facebook
         public string? FacebookUserName { get; set; } // User name FB Facebook
-
         public int? ParentCommentId { get; set; } // Nullable, parent comment ID if reply
     }
 }
