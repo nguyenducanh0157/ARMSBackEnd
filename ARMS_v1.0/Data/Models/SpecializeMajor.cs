@@ -18,5 +18,7 @@ namespace Data.Models
         public virtual ICollection<StudentConsultation>? StudentConsultations { get; set; }
         public virtual ICollection<AlumiStudent>? AlumiStudents { get; set; }
         public virtual ICollection<Subject>? Subjects { get; set; }
+        public virtual ICollection<TypeAdmissionForMajor>? TypeAdmissionForMajors { get; set; }
+
     }
 }

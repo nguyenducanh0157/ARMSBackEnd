@@ -35,6 +35,9 @@ namespace ARMS_API.Config
                 config.CreateMap<SpecializeMajor, AdmissionSpecializeMajorDTO>()
                 .ForMember(dest => dest.MajorID, opt => opt.MapFrom(src => src.Major.MajorID))
                 .ForMember(dest => dest.MajorName, opt => opt.MapFrom(src => src.Major.MajorName));
+                config.CreateMap<TypeOfDiploma, TypeOfDiplomaDTO>();
+                config.CreateMap<TypeAcademicRecord, TypeAcademicRecordDTO>();
+                config.CreateMap<TypeAdmissionForMajor, TypeAdmissionForMajorDTO>();
                 config.CreateMap<Subject, SubjectDTO>();
             });
             return mapperConfig.CreateMapper();

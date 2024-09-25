@@ -136,6 +136,25 @@ namespace Data.Seeding
                 new Subject() { SubjectCode = "DBI101", SubjectName = "Cơ sở lập trình", StudyTime = "4 tháng", NumberOfCredits = 3, SemesterNumber = 3, SpecializeMajorID = "WE" },
                 new Subject() { SubjectCode = "DBI101", SubjectName = "Cơ sở lập trình", StudyTime = "4 tháng", NumberOfCredits = 3, SemesterNumber = 3, SpecializeMajorID = "TE" }
                 );
+
+            // seed TypeAdmissionForMajor
+            modelBuilder.Entity<TypeAdmissionForMajor>().HasData(
+                new TypeAdmissionForMajor() { DiplomaId = 3 ,SpecializeMajorID = "ME",ARId = "Xet_1nam" },
+                new TypeAdmissionForMajor() { DiplomaId = 3, SpecializeMajorID = "GE",ARId="Xet_5ky" },
+                new TypeAdmissionForMajor() { DiplomaId = 3, SpecializeMajorID = "WE",ARId = "Xet_3ky" },
+                new TypeAdmissionForMajor() { DiplomaId = 3, SpecializeMajorID = "TE",ARId = "Xet_3nam" },
+                new TypeAdmissionForMajor() { DiplomaId = 3, SpecializeMajorID = "EA",ARId = "Xet_lop10_lop11_Hk1_12" },
+                new TypeAdmissionForMajor() { DiplomaId = 1, SpecializeMajorID = "JA" },
+                new TypeAdmissionForMajor() { DiplomaId = 1, SpecializeMajorID = "KA" },
+                new TypeAdmissionForMajor() { DiplomaId = 1, SpecializeMajorID = "SM" },
+                new TypeAdmissionForMajor() { DiplomaId = 1, SpecializeMajorID = "HM" },
+                new TypeAdmissionForMajor() { DiplomaId = 1, SpecializeMajorID = "RM" },
+                new TypeAdmissionForMajor() { DiplomaId = 1, SpecializeMajorID = "BT" },
+                new TypeAdmissionForMajor() { DiplomaId = 1, SpecializeMajorID = "BS" },
+                new TypeAdmissionForMajor() { DiplomaId = 1, SpecializeMajorID = "AO" },
+                new TypeAdmissionForMajor() { DiplomaId = 1, SpecializeMajorID = "SO" },
+                new TypeAdmissionForMajor() { DiplomaId = 1, SpecializeMajorID = "FO" }
+                );
         }
     }
 }

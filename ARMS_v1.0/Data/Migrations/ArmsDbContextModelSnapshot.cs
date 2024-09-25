@@ -107,16 +107,16 @@ namespace Data.Migrations
                             Id = new Guid("b8c777a9-55b9-4b3d-860a-d7b56e4c24b7"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "192c146b-db29-401b-9e7e-aa05cb6c64c3",
+                            ConcurrencyStamp = "57801493-adbe-4ab7-9633-13f109a96c77",
                             Email = "AdminHaNoi@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Admin Hanoi",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMINHANOI@GMAIL.COM",
                             NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOjF15dM/NUcsjqsZhVhX+sg1v8upeH6EXo0RF5SFnkp8kMd35ZBw3KJFzTz/GovPA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJRNLrV+xGkNPfCyghxBUuFSodhH3vwomJ4rKvCARtwDszxkr9zsobJzHCONE9a6LA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "887629b5-47ff-4501-8ebf-b35a763a4b9b",
+                            SecurityStamp = "da1820e0-2ab3-468c-8dcb-c623c860a0b0",
                             TwoFactorEnabled = false,
                             UserName = "Administrator",
                             isAccountActive = false
@@ -224,120 +224,120 @@ namespace Data.Migrations
                             AdmissionTimeID = 1,
                             AdmissionPlanID = 1,
                             AdmissionTimeName = "Đợt 1",
-                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4941),
-                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4941)
+                            TimeEnd = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5157),
+                            TimeStart = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5157)
                         },
                         new
                         {
                             AdmissionTimeID = 2,
                             AdmissionPlanID = 1,
                             AdmissionTimeName = "Đợt 2",
-                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4943),
-                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4942)
+                            TimeEnd = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5158),
+                            TimeStart = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5158)
                         },
                         new
                         {
                             AdmissionTimeID = 3,
                             AdmissionPlanID = 1,
                             AdmissionTimeName = "Đợt 3",
-                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4944),
-                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4943)
+                            TimeEnd = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5159),
+                            TimeStart = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5159)
                         },
                         new
                         {
                             AdmissionTimeID = 4,
                             AdmissionPlanID = 2,
                             AdmissionTimeName = "Đợt 1",
-                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4944),
-                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4944)
+                            TimeEnd = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5160),
+                            TimeStart = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5160)
                         },
                         new
                         {
                             AdmissionTimeID = 5,
                             AdmissionPlanID = 2,
                             AdmissionTimeName = "Đợt 2",
-                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4945),
-                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4945)
+                            TimeEnd = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5161),
+                            TimeStart = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5161)
                         },
                         new
                         {
                             AdmissionTimeID = 6,
                             AdmissionPlanID = 2,
                             AdmissionTimeName = "Đợt 3",
-                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4946),
-                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4946)
+                            TimeEnd = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5162),
+                            TimeStart = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5162)
                         },
                         new
                         {
                             AdmissionTimeID = 7,
                             AdmissionPlanID = 3,
                             AdmissionTimeName = "Đợt 1",
-                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4947),
-                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4947)
+                            TimeEnd = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5163),
+                            TimeStart = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5163)
                         },
                         new
                         {
                             AdmissionTimeID = 8,
                             AdmissionPlanID = 3,
                             AdmissionTimeName = "Đợt 2",
-                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4948),
-                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4948)
+                            TimeEnd = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5165),
+                            TimeStart = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5164)
                         },
                         new
                         {
                             AdmissionTimeID = 9,
                             AdmissionPlanID = 3,
                             AdmissionTimeName = "Đợt 3",
-                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4949),
-                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4949)
+                            TimeEnd = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5165),
+                            TimeStart = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5165)
                         },
                         new
                         {
                             AdmissionTimeID = 10,
                             AdmissionPlanID = 4,
                             AdmissionTimeName = "Đợt 1",
-                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4950),
-                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4949)
+                            TimeEnd = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5168),
+                            TimeStart = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5168)
                         },
                         new
                         {
                             AdmissionTimeID = 11,
                             AdmissionPlanID = 4,
                             AdmissionTimeName = "Đợt 2",
-                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4951),
-                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4950)
+                            TimeEnd = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5170),
+                            TimeStart = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5170)
                         },
                         new
                         {
                             AdmissionTimeID = 12,
                             AdmissionPlanID = 4,
                             AdmissionTimeName = "Đợt 3",
-                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4951),
-                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4951)
+                            TimeEnd = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5171),
+                            TimeStart = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5171)
                         },
                         new
                         {
                             AdmissionTimeID = 13,
                             AdmissionPlanID = 5,
                             AdmissionTimeName = "Đợt 1",
-                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4952),
-                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4952)
+                            TimeEnd = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5172),
+                            TimeStart = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5172)
                         },
                         new
                         {
                             AdmissionTimeID = 14,
                             AdmissionPlanID = 5,
                             AdmissionTimeName = "Đợt 2",
-                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4953),
-                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4953)
+                            TimeEnd = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5173),
+                            TimeStart = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5173)
                         },
                         new
                         {
                             AdmissionTimeID = 15,
                             AdmissionPlanID = 5,
                             AdmissionTimeName = "Đợt 3",
-                            TimeEnd = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4954),
-                            TimeStart = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4954)
+                            TimeEnd = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5174),
+                            TimeStart = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5173)
                         });
                 });
 
@@ -534,7 +534,7 @@ namespace Data.Migrations
                         {
                             BlogId = 1,
                             BlogCategoryId = 3,
-                            DateCreate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4879),
+                            DateCreate = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5087),
                             Description = "Trăng tròn đã vươn cao tại Hoà Lạc, Rằm tháng Tám đã gần đi qua, các Cóc “ngoan xinh iu” của FPTU đã đi chơi Trung thu về chưa?",
                             Title = "Trăng tròn đã vươn cao tại Hoà Lạc"
                         },
@@ -542,7 +542,7 @@ namespace Data.Migrations
                         {
                             BlogId = 2,
                             BlogCategoryId = 3,
-                            DateCreate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4887),
+                            DateCreate = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5095),
                             Description = " 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 - mang trong mình trọng trách quan trọng nhất đó là bảo vệ và phát triển lãnh thổ với ba đại đội: Cơ bắp, Biết tuốt và Bay bổng.",
                             Title = "[𝐊𝐈𝐂𝐊 𝐎𝐅𝐅] - 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓"
                         },
@@ -550,7 +550,7 @@ namespace Data.Migrations
                         {
                             BlogId = 3,
                             BlogCategoryId = 2,
-                            DateCreate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4888),
+                            DateCreate = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5096),
                             Description = " Giới thiệu các phòng ban tại Đại học FPT",
                             Title = "🌟[ORIENTATION WEEK]🌟 GIỚI THIỆU CÁC PHÒNG BAN CHỨC NĂNG TẠI ĐẠI HỌC FPT"
                         },
@@ -558,7 +558,7 @@ namespace Data.Migrations
                         {
                             BlogId = 4,
                             BlogCategoryId = 1,
-                            DateCreate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4888),
+                            DateCreate = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5097),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -566,7 +566,7 @@ namespace Data.Migrations
                         {
                             BlogId = 5,
                             BlogCategoryId = 1,
-                            DateCreate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4889),
+                            DateCreate = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5097),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -574,7 +574,7 @@ namespace Data.Migrations
                         {
                             BlogId = 6,
                             BlogCategoryId = 1,
-                            DateCreate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4890),
+                            DateCreate = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5098),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -582,7 +582,7 @@ namespace Data.Migrations
                         {
                             BlogId = 7,
                             BlogCategoryId = 1,
-                            DateCreate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4890),
+                            DateCreate = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5099),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -590,7 +590,7 @@ namespace Data.Migrations
                         {
                             BlogId = 8,
                             BlogCategoryId = 1,
-                            DateCreate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4891),
+                            DateCreate = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5099),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -598,7 +598,7 @@ namespace Data.Migrations
                         {
                             BlogId = 9,
                             BlogCategoryId = 1,
-                            DateCreate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4892),
+                            DateCreate = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5100),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         });
@@ -995,7 +995,7 @@ namespace Data.Migrations
                             CommentId = 1,
                             BlogId = 1,
                             Content = "This is the first comment",
-                            CreatedDate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4917),
+                            CreatedDate = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5132),
                             FacebookUserId = "fb12345",
                             FacebookUserName = "John Doe"
                         },
@@ -1004,7 +1004,7 @@ namespace Data.Migrations
                             CommentId = 2,
                             BlogId = 1,
                             Content = "This is a reply to the first comment",
-                            CreatedDate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4920),
+                            CreatedDate = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5135),
                             FacebookUserId = "fb67890",
                             FacebookUserName = "Jane Smith",
                             ParentCommentId = 1
@@ -1014,7 +1014,7 @@ namespace Data.Migrations
                             CommentId = 3,
                             BlogId = 2,
                             Content = "Another comment on the second blog",
-                            CreatedDate = new DateTime(2024, 9, 21, 0, 42, 31, 104, DateTimeKind.Local).AddTicks(4921),
+                            CreatedDate = new DateTime(2024, 9, 25, 22, 41, 58, 367, DateTimeKind.Local).AddTicks(5136),
                             FacebookUserId = "fb54321",
                             FacebookUserName = "Alice"
                         });
@@ -1095,9 +1095,6 @@ namespace Data.Migrations
                     b.Property<string>("MajorID")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Note")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SpecializeMajorName")
                         .IsRequired()
@@ -2144,6 +2141,159 @@ namespace Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Data.Models.TypeAcademicRecord", b =>
+                {
+                    b.Property<string>("ARId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ARName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DiplomaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ARId");
+
+                    b.HasIndex("DiplomaId");
+
+                    b.ToTable("TypeAcademicRecord", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            ARId = "Xet_5ky",
+                            ARName = "Xét học bạ 5 kỳ",
+                            DiplomaId = 3
+                        },
+                        new
+                        {
+                            ARId = "Xet_3ky",
+                            ARName = "Xét học bạ 3 kỳ",
+                            DiplomaId = 3
+                        },
+                        new
+                        {
+                            ARId = "Xet_1nam",
+                            ARName = "Xét học bạ năm 12",
+                            DiplomaId = 3
+                        },
+                        new
+                        {
+                            ARId = "Xet_3nam",
+                            ARName = "Xét học bạ 3 năm",
+                            DiplomaId = 3
+                        },
+                        new
+                        {
+                            ARId = "Xet_lop10_lop11_Hk1_12",
+                            ARName = "Xét học bạ lớp 10, lớp 11, HK1 lớp 12",
+                            DiplomaId = 3
+                        });
+                });
+
+            modelBuilder.Entity("Data.Models.TypeAdmissionForMajor", b =>
+                {
+                    b.Property<int>("DiplomaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SpecializeMajorID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ARId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("DiplomaId", "SpecializeMajorID");
+
+                    b.HasIndex("ARId");
+
+                    b.HasIndex("SpecializeMajorID");
+
+                    b.ToTable("TypeAdmissionForMajor", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            DiplomaId = 3,
+                            SpecializeMajorID = "ME",
+                            ARId = "Xet_1nam"
+                        },
+                        new
+                        {
+                            DiplomaId = 3,
+                            SpecializeMajorID = "GE",
+                            ARId = "Xet_5ky"
+                        },
+                        new
+                        {
+                            DiplomaId = 3,
+                            SpecializeMajorID = "WE",
+                            ARId = "Xet_3ky"
+                        },
+                        new
+                        {
+                            DiplomaId = 3,
+                            SpecializeMajorID = "TE",
+                            ARId = "Xet_3nam"
+                        },
+                        new
+                        {
+                            DiplomaId = 3,
+                            SpecializeMajorID = "EA",
+                            ARId = "Xet_lop10_lop11_Hk1_12"
+                        },
+                        new
+                        {
+                            DiplomaId = 1,
+                            SpecializeMajorID = "JA"
+                        },
+                        new
+                        {
+                            DiplomaId = 1,
+                            SpecializeMajorID = "KA"
+                        },
+                        new
+                        {
+                            DiplomaId = 1,
+                            SpecializeMajorID = "SM"
+                        },
+                        new
+                        {
+                            DiplomaId = 1,
+                            SpecializeMajorID = "HM"
+                        },
+                        new
+                        {
+                            DiplomaId = 1,
+                            SpecializeMajorID = "RM"
+                        },
+                        new
+                        {
+                            DiplomaId = 1,
+                            SpecializeMajorID = "BT"
+                        },
+                        new
+                        {
+                            DiplomaId = 1,
+                            SpecializeMajorID = "BS"
+                        },
+                        new
+                        {
+                            DiplomaId = 1,
+                            SpecializeMajorID = "AO"
+                        },
+                        new
+                        {
+                            DiplomaId = 1,
+                            SpecializeMajorID = "SO"
+                        },
+                        new
+                        {
+                            DiplomaId = 1,
+                            SpecializeMajorID = "FO"
+                        });
+                });
+
             modelBuilder.Entity("Data.Models.TypeOfDiploma", b =>
                 {
                     b.Property<int>("DiplomaId")
@@ -2152,7 +2302,7 @@ namespace Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DiplomaId"), 1L, 1);
 
-                    b.Property<int>("AdmissionPlanID")
+                    b.Property<int?>("AdmissionPlanID")
                         .HasColumnType("int");
 
                     b.Property<string>("DiplomaName")
@@ -2169,122 +2319,27 @@ namespace Data.Migrations
                         new
                         {
                             DiplomaId = 1,
-                            AdmissionPlanID = 1,
-                            DiplomaName = "Tốt nghiệp THCS, học lớp 10,11,12 - học 2 năm"
+                            DiplomaName = "Tốt nghiệp THCS"
                         },
                         new
                         {
                             DiplomaId = 2,
-                            AdmissionPlanID = 1,
-                            DiplomaName = "Tốt nghiệp THCS"
+                            DiplomaName = "Tốt nghiệp Trung cấp loại giỏi"
                         },
                         new
                         {
                             DiplomaId = 3,
-                            AdmissionPlanID = 1,
-                            DiplomaName = "Tốt nghiệp THPT hoặc bổ túc THPT - Học 1 năm đến 1,5 năm"
+                            DiplomaName = "Xét học bạ THPT"
                         },
                         new
                         {
                             DiplomaId = 4,
-                            AdmissionPlanID = 1,
-                            DiplomaName = "Tốt nghiệp ĐH-CD-TC- Học 1 năm"
+                            DiplomaName = "Tốt nghiệp THPT"
                         },
                         new
                         {
                             DiplomaId = 5,
-                            AdmissionPlanID = 2,
-                            DiplomaName = "Tốt nghiệp THCS, học lớp 10,11,12 - học 2 năm"
-                        },
-                        new
-                        {
-                            DiplomaId = 6,
-                            AdmissionPlanID = 2,
-                            DiplomaName = "Tốt nghiệp THCS"
-                        },
-                        new
-                        {
-                            DiplomaId = 7,
-                            AdmissionPlanID = 2,
-                            DiplomaName = "Tốt nghiệp THPT hoặc bổ túc THPT - Học 1 năm đến 1,5 năm"
-                        },
-                        new
-                        {
-                            DiplomaId = 8,
-                            AdmissionPlanID = 2,
-                            DiplomaName = "Tốt nghiệp ĐH-CD-TC- Học 1 năm"
-                        },
-                        new
-                        {
-                            DiplomaId = 9,
-                            AdmissionPlanID = 3,
-                            DiplomaName = "Tốt nghiệp THCS, học lớp 10,11,12 - học 2 năm"
-                        },
-                        new
-                        {
-                            DiplomaId = 10,
-                            AdmissionPlanID = 3,
-                            DiplomaName = "Tốt nghiệp THCS"
-                        },
-                        new
-                        {
-                            DiplomaId = 11,
-                            AdmissionPlanID = 3,
-                            DiplomaName = "Tốt nghiệp THPT hoặc bổ túc THPT - Học 1 năm đến 1,5 năm"
-                        },
-                        new
-                        {
-                            DiplomaId = 12,
-                            AdmissionPlanID = 3,
-                            DiplomaName = "Tốt nghiệp ĐH-CD-TC- Học 1 năm"
-                        },
-                        new
-                        {
-                            DiplomaId = 13,
-                            AdmissionPlanID = 4,
-                            DiplomaName = "Tốt nghiệp THCS, học lớp 10,11,12 - học 2 năm"
-                        },
-                        new
-                        {
-                            DiplomaId = 14,
-                            AdmissionPlanID = 4,
-                            DiplomaName = "Tốt nghiệp THCS"
-                        },
-                        new
-                        {
-                            DiplomaId = 15,
-                            AdmissionPlanID = 4,
-                            DiplomaName = "Tốt nghiệp THPT hoặc bổ túc THPT - Học 1 năm đến 1,5 năm"
-                        },
-                        new
-                        {
-                            DiplomaId = 16,
-                            AdmissionPlanID = 4,
-                            DiplomaName = "Tốt nghiệp ĐH-CD-TC- Học 1 năm"
-                        },
-                        new
-                        {
-                            DiplomaId = 17,
-                            AdmissionPlanID = 5,
-                            DiplomaName = "Tốt nghiệp THCS, học lớp 10,11,12 - học 2 năm"
-                        },
-                        new
-                        {
-                            DiplomaId = 18,
-                            AdmissionPlanID = 5,
-                            DiplomaName = "Tốt nghiệp THCS"
-                        },
-                        new
-                        {
-                            DiplomaId = 19,
-                            AdmissionPlanID = 5,
-                            DiplomaName = "Tốt nghiệp THPT hoặc bổ túc THPT - Học 1 năm đến 1,5 năm"
-                        },
-                        new
-                        {
-                            DiplomaId = 20,
-                            AdmissionPlanID = 5,
-                            DiplomaName = "Tốt nghiệp ĐH-CD-TC- Học 1 năm"
+                            DiplomaName = "Tốt nghiệp đại học, cao đẳng "
                         });
                 });
 
@@ -2311,14 +2366,14 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("b8fd818f-63f1-49ee-bec5-f7b66cafbfca"),
-                            ConcurrencyStamp = "1e31e0cc-7fbd-4f20-baf7-fc08b3ea9812",
+                            ConcurrencyStamp = "3cb1200c-8814-458e-b03f-420417da6ee7",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("d2d63c5b-d09b-4828-8322-f18ba103fe86"),
-                            ConcurrencyStamp = "8db44d5c-c0c4-414b-ae1d-600c28cc5b53",
+                            ConcurrencyStamp = "1f57ab74-e87b-469c-910b-5e79c3b92d32",
                             Name = "Student",
                             NormalizedName = "STUDENT"
                         });
@@ -2621,15 +2676,48 @@ namespace Data.Migrations
                     b.Navigation("SpecializeMajor");
                 });
 
-            modelBuilder.Entity("Data.Models.TypeOfDiploma", b =>
+            modelBuilder.Entity("Data.Models.TypeAcademicRecord", b =>
                 {
-                    b.HasOne("Data.Models.AdmissionPlan", "AdmissionPlan")
-                        .WithMany("TypeOfDiplomas")
-                        .HasForeignKey("AdmissionPlanID")
+                    b.HasOne("Data.Models.TypeOfDiploma", "TypeOfDiploma")
+                        .WithMany("TypeAcademicRecords")
+                        .HasForeignKey("DiplomaId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.Navigation("AdmissionPlan");
+                    b.Navigation("TypeOfDiploma");
+                });
+
+            modelBuilder.Entity("Data.Models.TypeAdmissionForMajor", b =>
+                {
+                    b.HasOne("Data.Models.TypeAcademicRecord", "TypeAcademicRecord")
+                        .WithMany("TypeAdmissionForMajors")
+                        .HasForeignKey("ARId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("Data.Models.TypeOfDiploma", "TypeOfDiploma")
+                        .WithMany("TypeAdmissionForMajors")
+                        .HasForeignKey("DiplomaId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Data.Models.SpecializeMajor", "SpecializeMajor")
+                        .WithMany("TypeAdmissionForMajors")
+                        .HasForeignKey("SpecializeMajorID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("SpecializeMajor");
+
+                    b.Navigation("TypeAcademicRecord");
+
+                    b.Navigation("TypeOfDiploma");
+                });
+
+            modelBuilder.Entity("Data.Models.TypeOfDiploma", b =>
+                {
+                    b.HasOne("Data.Models.AdmissionPlan", null)
+                        .WithMany("TypeOfDiplomas")
+                        .HasForeignKey("AdmissionPlanID");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -2745,6 +2833,20 @@ namespace Data.Migrations
                     b.Navigation("StudentConsultations");
 
                     b.Navigation("Subjects");
+
+                    b.Navigation("TypeAdmissionForMajors");
+                });
+
+            modelBuilder.Entity("Data.Models.TypeAcademicRecord", b =>
+                {
+                    b.Navigation("TypeAdmissionForMajors");
+                });
+
+            modelBuilder.Entity("Data.Models.TypeOfDiploma", b =>
+                {
+                    b.Navigation("TypeAcademicRecords");
+
+                    b.Navigation("TypeAdmissionForMajors");
                 });
 #pragma warning restore 612, 618
         }

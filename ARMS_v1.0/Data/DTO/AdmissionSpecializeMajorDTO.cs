@@ -16,6 +16,7 @@ namespace Data.DTO
         public string MajorCode { get; set; }
         public string MajorID { get; set; }
         public string MajorName { get; set; }
+        public virtual ICollection<TypeAdmissionForMajorDTO>? TypeAdmissionForMajors { get; set; }
         public virtual ICollection<SubjectDTO>? Subjects { get; set; }
     }
 }

@@ -17,9 +17,7 @@ namespace Data.Configurations
             builder.HasKey(x => x.DiplomaId);
             builder.Property(x => x.DiplomaName).IsRequired();
             #region config relation
-            builder.HasOne(x => x.AdmissionPlan)
-                   .WithMany(c => c.TypeOfDiplomas)
-                   .HasForeignKey(x => x.AdmissionPlanID).OnDelete(DeleteBehavior.NoAction);
+
             #endregion
         }
     }

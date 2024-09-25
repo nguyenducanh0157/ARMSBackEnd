@@ -48,33 +48,6 @@ namespace Data.Seeding
                 new AdmissionTime() { AdmissionPlanID = 5, AdmissionTimeID = 14, AdmissionTimeName = "Đợt 2", TimeStart = DateTime.Now, TimeEnd = DateTime.Now },
                 new AdmissionTime() { AdmissionPlanID = 5, AdmissionTimeID = 15, AdmissionTimeName = "Đợt 3", TimeStart = DateTime.Now, TimeEnd = DateTime.Now }
                 );
-            // seed TypeOfDiploma
-            modelBuilder.Entity<TypeOfDiploma>().HasData(
-                new TypeOfDiploma() { AdmissionPlanID = 1, DiplomaId = 1, DiplomaName = "Tốt nghiệp THCS, học lớp 10,11,12 - học 2 năm" },
-                new TypeOfDiploma() { AdmissionPlanID = 1, DiplomaId = 2, DiplomaName = "Tốt nghiệp THCS" },
-                new TypeOfDiploma() { AdmissionPlanID = 1, DiplomaId = 3, DiplomaName = "Tốt nghiệp THPT hoặc bổ túc THPT - Học 1 năm đến 1,5 năm" },
-                new TypeOfDiploma() { AdmissionPlanID = 1, DiplomaId = 4, DiplomaName = "Tốt nghiệp ĐH-CD-TC- Học 1 năm" },
-
-                new TypeOfDiploma() { AdmissionPlanID = 2, DiplomaId = 5, DiplomaName = "Tốt nghiệp THCS, học lớp 10,11,12 - học 2 năm" },
-                new TypeOfDiploma() { AdmissionPlanID = 2, DiplomaId = 6, DiplomaName = "Tốt nghiệp THCS" },
-                new TypeOfDiploma() { AdmissionPlanID = 2, DiplomaId = 7, DiplomaName = "Tốt nghiệp THPT hoặc bổ túc THPT - Học 1 năm đến 1,5 năm" },
-                new TypeOfDiploma() { AdmissionPlanID = 2, DiplomaId = 8, DiplomaName = "Tốt nghiệp ĐH-CD-TC- Học 1 năm" },
-
-                new TypeOfDiploma() { AdmissionPlanID = 3, DiplomaId = 9, DiplomaName = "Tốt nghiệp THCS, học lớp 10,11,12 - học 2 năm" },
-                new TypeOfDiploma() { AdmissionPlanID = 3, DiplomaId = 10, DiplomaName = "Tốt nghiệp THCS" },
-                new TypeOfDiploma() { AdmissionPlanID = 3, DiplomaId = 11, DiplomaName = "Tốt nghiệp THPT hoặc bổ túc THPT - Học 1 năm đến 1,5 năm" },
-                new TypeOfDiploma() { AdmissionPlanID = 3, DiplomaId = 12, DiplomaName = "Tốt nghiệp ĐH-CD-TC- Học 1 năm" },
-
-                new TypeOfDiploma() { AdmissionPlanID = 4, DiplomaId = 13, DiplomaName = "Tốt nghiệp THCS, học lớp 10,11,12 - học 2 năm" },
-                new TypeOfDiploma() { AdmissionPlanID = 4, DiplomaId = 14, DiplomaName = "Tốt nghiệp THCS" },
-                new TypeOfDiploma() { AdmissionPlanID = 4, DiplomaId = 15, DiplomaName = "Tốt nghiệp THPT hoặc bổ túc THPT - Học 1 năm đến 1,5 năm" },
-                new TypeOfDiploma() { AdmissionPlanID = 4, DiplomaId = 16, DiplomaName = "Tốt nghiệp ĐH-CD-TC- Học 1 năm" },
-
-                new TypeOfDiploma() { AdmissionPlanID = 5, DiplomaId = 17, DiplomaName = "Tốt nghiệp THCS, học lớp 10,11,12 - học 2 năm" },
-                new TypeOfDiploma() { AdmissionPlanID = 5, DiplomaId = 18, DiplomaName = "Tốt nghiệp THCS" },
-                new TypeOfDiploma() { AdmissionPlanID = 5, DiplomaId = 19, DiplomaName = "Tốt nghiệp THPT hoặc bổ túc THPT - Học 1 năm đến 1,5 năm" },
-                new TypeOfDiploma() { AdmissionPlanID = 5, DiplomaId = 20, DiplomaName = "Tốt nghiệp ĐH-CD-TC- Học 1 năm" }
-                );
         }
     }
 }

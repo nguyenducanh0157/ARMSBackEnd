@@ -10,7 +10,7 @@ namespace Data.Models
     {
         public int DiplomaId { get; set; }
         public string DiplomaName { get; set; }
-        public int AdmissionPlanID { get; set; }
-        public virtual AdmissionPlan AdmissionPlan { get; set; }
+        public virtual ICollection<TypeAcademicRecord>? TypeAcademicRecords { get; set; }
+        public virtual ICollection<TypeAdmissionForMajor>? TypeAdmissionForMajors { get; set; }
     }
 }

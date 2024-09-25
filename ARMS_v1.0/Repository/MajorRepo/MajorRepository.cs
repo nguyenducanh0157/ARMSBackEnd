@@ -20,6 +20,10 @@ namespace Repository.MajorRepo
             {
                 SpecializeMajor major = await _context.SpecializeMajors
                     .Include(x=>x.Subjects.OrderBy(x=>x.SemesterNumber))
+                    .Include(x=>x.TypeAdmissionForMajors)
+                        .ThenInclude(tafm => tafm.TypeOfDiploma)
+                    .Include(x => x.TypeAdmissionForMajors)
+                        .ThenInclude(tafm => tafm.TypeAcademicRecord)
                     .Include(x => x.Major)
                     .SingleOrDefaultAsync(x=>x.SpecializeMajorID.Equals(SpecializeMajorID));
                 return major;

@@ -52,6 +52,7 @@ namespace Repository.BlogRepo
                 List<Blog> blogs = await _context.Blogs
                     .Include(x=>x.BlogCategory)
                     .Include(x=>x.BlogDetails)
+                    .Include(x => x.Comments)
                     .Where(x => x.BlogCategory.CampusId.Equals(CampusId)).ToListAsync();
                 return blogs;
             }
