@@ -1,15 +1,14 @@
-﻿using System;
+﻿using Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Models
+namespace Data.DTO
 {
-    public class StudentProfile
+    public class RegisterAdmissionProfileDTO
     {
-        public Guid SpId { get; set; }
-        public string? StudentCode { get; set; } // mã học sinh Mã cơ sở + mã ngành + mã khóa học + mã học sinh
         public string Fullname { get; set; }
         public DateTime? Dob { get; set; }
         public bool? Gender { get; set; }
@@ -44,12 +43,5 @@ namespace Data.Models
         public string? ImgAcademicTranscript3 { get; set; } // kỳ 1_11 | lop12  |       | Kỳ 1_12 | HK1 12 |
         public string? ImgAcademicTranscript4 { get; set; } // kỳ 2_11 |        |       |         |        |
         public string? ImgAcademicTranscript5 { get; set; } // kỳ 1_12 |        |       |         |        |
-
-        public virtual TypeAcademicRecord? TypeAcademicRecord { get; set; }
-        public virtual TypeOfDiploma TypeOfDiploma { get; set; }
-        public Guid? AccountId { get; set; }
-        public virtual Account? Account { get; set; }
-        public virtual Campus Campus { get; set; }
-
     }
 }

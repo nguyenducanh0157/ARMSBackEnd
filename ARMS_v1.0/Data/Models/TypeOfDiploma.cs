@@ -11,6 +11,7 @@ namespace Data.Models
         public int DiplomaId { get; set; }
         public string DiplomaName { get; set; }
         public virtual ICollection<TypeAcademicRecord>? TypeAcademicRecords { get; set; }
+        public virtual ICollection<StudentProfile>? StudentProfiles { get; set; }
         public virtual ICollection<TypeAdmissionForMajor>? TypeAdmissionForMajors { get; set; }
     }
 }

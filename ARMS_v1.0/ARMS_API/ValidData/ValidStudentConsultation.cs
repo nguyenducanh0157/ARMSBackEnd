@@ -14,7 +14,6 @@ namespace ARMS_API.ValidData
         }
         public void InputStudentConsultation(StudentConsultationDTO studentConsultationDTO)
         {
-            ResponseViewModel result = new ResponseViewModel();
             try
             {
                 if (studentConsultationDTO == null) throw new Exception("Không nhận được dữ liệu");
@@ -28,8 +27,7 @@ namespace ARMS_API.ValidData
             }
             catch (Exception ex)
             {
-                result.Status = false;
-                result.Message = ex.Message;
+                throw new Exception(ex.Message);
             }
         }
     }

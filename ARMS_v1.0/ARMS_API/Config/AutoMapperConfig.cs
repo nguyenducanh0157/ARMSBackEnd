@@ -40,6 +40,11 @@ namespace ARMS_API.Config
                 config.CreateMap<TypeAcademicRecord, TypeAcademicRecordDTO>();
                 config.CreateMap<TypeAdmissionForMajor, TypeAdmissionForMajorDTO>();
                 config.CreateMap<Subject, SubjectDTO>();
+
+
+                // register admission
+                config.CreateMap<StudentProfile, RegisterAdmissionProfileDTO>();
+                config.CreateMap<RegisterAdmissionProfileDTO, StudentProfile>();
             });
             return mapperConfig.CreateMapper();
         }

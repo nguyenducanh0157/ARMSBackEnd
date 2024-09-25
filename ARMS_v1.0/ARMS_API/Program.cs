@@ -12,6 +12,7 @@ using Repository.BlogRepo;
 using Repository.CampusRepo;
 using Repository.MajorRepo;
 using Repository.StudentConsultationRepo;
+using Repository.StudentProfileRepo;
 using Repository.SupplierRepo;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -112,6 +113,7 @@ builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
 builder.Services.AddScoped<IStudentConsultationRepository, StudentConsultationRepository>();
 builder.Services.AddScoped<IBlogRepository, BlogRepository>();
 builder.Services.AddScoped<IAdmissionPlanRepository,AdmissionPlanRepository>();
+builder.Services.AddScoped<IStudentProfileRepository, StudentProfileRepository>();
 // app
 var app = builder.Build();
 

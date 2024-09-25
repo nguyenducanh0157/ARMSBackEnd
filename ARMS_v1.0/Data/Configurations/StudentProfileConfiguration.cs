@@ -14,13 +14,27 @@ namespace Data.Configurations
         public void Configure(EntityTypeBuilder<StudentProfile> builder)
         {
             builder.ToTable(nameof(StudentProfile));
-            builder.Property(x => x.Id).IsRequired();
+            builder.HasKey(x => x.SpId);
+            builder.Property(x => x.SpId)
+               .ValueGeneratedOnAdd();
+            builder.Property(x => x.ARId).IsRequired(false);
+            builder.Property(x => x.AccountId).IsRequired(false);
+            builder.Property(x => x.ARId).IsRequired(false);
 
             #region config relation
             builder.HasOne(x => x.Campus).WithMany(x => x.StudentProfiles).HasForeignKey(x => x.CampusId);
             builder.HasOne(sp => sp.Account)
                .WithOne(a => a.StudentProfile)
                .HasForeignKey<StudentProfile>(sp => sp.AccountId);
+            builder.HasOne(x => x.TypeAcademicRecord)
+                   .WithMany(c => c.StudentProfiles)
+                   .HasForeignKey(x => x.ARId)
+                   .OnDelete(DeleteBehavior.NoAction);
+            builder.HasOne(x => x.TypeOfDiploma)
+                   .WithMany(c => c.StudentProfiles)
+                   .HasForeignKey(x => x.DiplomaId)
+                   .OnDelete(DeleteBehavior.NoAction);
+
             #endregion
         }
     }
