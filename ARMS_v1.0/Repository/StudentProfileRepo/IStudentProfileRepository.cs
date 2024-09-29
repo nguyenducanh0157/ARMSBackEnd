@@ -10,5 +10,8 @@ namespace Repository.StudentProfileRepo
     public interface IStudentProfileRepository
     {
         Task AddStudentProfile(StudentProfile StudentProfile);
+        Task<bool> isExistEmailStudent(string email);
+        Task<bool> isExistPhoneNumberStudent(string phonenumber);
+        Task<bool> isExistCCCDStudent(string CID);
     }
 }

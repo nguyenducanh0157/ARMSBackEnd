@@ -1,5 +1,4 @@
-﻿using ARMS_API.Models;
-using ARMS_API.ValidData;
+﻿using ARMS_API.ValidData;
 using AutoMapper;
 using Data.DTO;
 using Data.Models;
@@ -32,6 +31,8 @@ namespace ARMS_API.Controllers
                 _validInput.InputAddRegisterAdmission(registerAdmissionProfileDTO);
                 //mapper
                 StudentProfile studentProfile = _mapper.Map<StudentProfile>(registerAdmissionProfileDTO);
+                // vnpay here
+
                 //add new
                 await _studentProfileRepository.AddStudentProfile(studentProfile);
                 return Ok(new ResponseViewModel()

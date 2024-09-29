@@ -1,10 +1,12 @@
 ﻿using ARMS_API.Config;
+using ARMS_API.Service;
 using ARMS_API.ValidData;
 using Data.ArmsContext;
 using Data.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Repository.AdmissionPlanRepo;
@@ -14,6 +16,7 @@ using Repository.MajorRepo;
 using Repository.StudentConsultationRepo;
 using Repository.StudentProfileRepo;
 using Repository.SupplierRepo;
+using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -59,7 +62,7 @@ builder.Services.AddAuthentication(options =>
         ClockSkew = TimeSpan.FromDays(5)
     };
 });
-
+builder.Services.AddMemoryCache();
 builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -67,6 +70,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors();
+
 
 builder.Services.AddSwaggerGen(config =>
 {
@@ -81,6 +85,7 @@ builder.Services.AddSwaggerGen(config =>
         Type = SecuritySchemeType.ApiKey,
         Scheme = "Bearer"
     });
+
     config.AddSecurityRequirement(new OpenApiSecurityRequirement()
     {
         {
@@ -99,9 +104,12 @@ builder.Services.AddSwaggerGen(config =>
         }
     });
 });
+
+builder.Services.Configure<EmailSetting>(configuration.GetSection("EmailSettings"));
+
 builder.Services.AddHttpsRedirection(options =>
 {
-    options.HttpsPort = 5001; // Đảm bảo rằng cổng HTTPS đúng
+    options.HttpsPort = 5001; 
 });
 
 //Config Repository 
@@ -114,6 +122,7 @@ builder.Services.AddScoped<IStudentConsultationRepository, StudentConsultationRe
 builder.Services.AddScoped<IBlogRepository, BlogRepository>();
 builder.Services.AddScoped<IAdmissionPlanRepository,AdmissionPlanRepository>();
 builder.Services.AddScoped<IStudentProfileRepository, StudentProfileRepository>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 // app
 var app = builder.Build();
 

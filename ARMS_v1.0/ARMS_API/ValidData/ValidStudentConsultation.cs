@@ -1,5 +1,4 @@
-﻿using ARMS_API.Models;
-using AutoMapper;
+﻿using AutoMapper;
 using Data.DTO;
 using Repository.StudentConsultationRepo;
 

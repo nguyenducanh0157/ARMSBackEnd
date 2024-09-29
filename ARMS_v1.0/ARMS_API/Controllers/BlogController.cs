@@ -1,5 +1,4 @@
-﻿using ARMS_API.Models;
-using ARMS_API.ValidData;
+﻿using ARMS_API.ValidData;
 using AutoMapper;
 using Data.DTO;
 using Data.Models;

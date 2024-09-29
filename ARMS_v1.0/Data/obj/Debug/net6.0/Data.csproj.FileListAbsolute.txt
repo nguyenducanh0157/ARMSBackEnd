@@ -210,3 +210,9 @@ D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\Data\bin\Debug\net6.0\runtimes\win\lib\n
 D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\Data\obj\Debug\net6.0\Data.csproj.CopyComplete
 D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\Data\obj\Debug\net6.0\Data.genruntimeconfig.cache
 D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\Data\obj\Debug\net6.0\ref\Data.dll
+D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\Data\bin\Debug\net6.0\BouncyCastle.Cryptography.dll
+D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\Data\bin\Debug\net6.0\MailKit.dll
+D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\Data\bin\Debug\net6.0\MimeKit.dll
+D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\Data\bin\Debug\net6.0\System.Formats.Asn1.dll
+D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\Data\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
+D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\Data\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll

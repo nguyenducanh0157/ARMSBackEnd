@@ -29,7 +29,7 @@ namespace Data.DTO
         public string? SpecializeMajor1 { get; set; }
         public int? YearOfGraduation { get; set; }
         public string? SchoolName { get; set; }
-        public bool? RecipientResults { get; set; } // true học sinh nhận 
+        public bool? RecipientResults { get; set; } // true học sinh nhận kết quả
         public bool? PermanentAddress { get; set; } // true - địa chỉ thường trú
         public string? AddressRecipientResults { get; set; } // lưu địa chỉ nhận khác
         public string? FacebookUrl { get; set; }

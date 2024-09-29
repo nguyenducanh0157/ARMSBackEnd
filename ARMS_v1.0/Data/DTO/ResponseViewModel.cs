@@ -1,4 +1,4 @@
-﻿namespace ARMS_API.Models
+﻿namespace Data.DTO
 {
     public class ResponseViewModel
     {
