@@ -2,6 +2,7 @@
 using ARMS_API.Service;
 using ARMS_API.ValidData;
 using Data.ArmsContext;
+using Data.DTO;
 using Data.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -16,6 +17,7 @@ using Repository.MajorRepo;
 using Repository.StudentConsultationRepo;
 using Repository.StudentProfileRepo;
 using Repository.SupplierRepo;
+using Service;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -74,7 +76,7 @@ builder.Services.AddCors();
 
 builder.Services.AddSwaggerGen(config =>
 {
-    config.SwaggerDoc("v1", new OpenApiInfo { Title = "Swagger MWM", Version = "v1" });
+    config.SwaggerDoc("v1", new OpenApiInfo { Title = "Swagger ARMS", Version = "v1" });
     config.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "@JWT Authorization header using the Bearer schema. \r\n\r\n" +
@@ -104,7 +106,7 @@ builder.Services.AddSwaggerGen(config =>
         }
     });
 });
-
+builder.Services.Configure<VNPaySettings>(configuration.GetSection("VNPay"));
 builder.Services.Configure<EmailSetting>(configuration.GetSection("EmailSettings"));
 
 builder.Services.AddHttpsRedirection(options =>
@@ -122,7 +124,10 @@ builder.Services.AddScoped<IStudentConsultationRepository, StudentConsultationRe
 builder.Services.AddScoped<IBlogRepository, BlogRepository>();
 builder.Services.AddScoped<IAdmissionPlanRepository,AdmissionPlanRepository>();
 builder.Services.AddScoped<IStudentProfileRepository, StudentProfileRepository>();
+
+//Services
 builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IVnPayService, VnPayService>();
 // app
 var app = builder.Build();
 

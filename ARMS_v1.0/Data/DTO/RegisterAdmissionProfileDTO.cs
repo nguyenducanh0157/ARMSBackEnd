@@ -43,5 +43,6 @@ namespace Data.DTO
         public string? ImgAcademicTranscript3 { get; set; } // kỳ 1_11 | lop12  |       | Kỳ 1_12 | HK1 12 |
         public string? ImgAcademicTranscript4 { get; set; } // kỳ 2_11 |        |       |         |        |
         public string? ImgAcademicTranscript5 { get; set; } // kỳ 1_12 |        |       |         |        |
+        public bool? PayFee { get; set; }
     }
 }

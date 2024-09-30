@@ -29,10 +29,19 @@ namespace ARMS_API.Controllers
             {
                 //check data
                 _validInput.InputAddRegisterAdmission(registerAdmissionProfileDTO);
+                // check status pay fee
+                if (registerAdmissionProfileDTO.PayFee == null || registerAdmissionProfileDTO.PayFee== false) 
+                {
+                    return BadRequest(new ResponseViewModel()
+                    {
+                        Status = false,
+                        Message = "Vui lòng hoàn thành khoản thanh toán"
+                    });
+                }
                 //mapper
                 StudentProfile studentProfile = _mapper.Map<StudentProfile>(registerAdmissionProfileDTO);
-                // vnpay here
-
+                
+                
                 //add new
                 await _studentProfileRepository.AddStudentProfile(studentProfile);
                 return Ok(new ResponseViewModel()
@@ -43,7 +52,7 @@ namespace ARMS_API.Controllers
             }
             catch (Exception ex)
             {
-                return Ok(new ResponseViewModel()
+                return BadRequest(new ResponseViewModel()
                 {
                     Status = false,
                     Message = ex.Message

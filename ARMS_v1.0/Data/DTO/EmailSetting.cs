@@ -1,4 +1,4 @@
-﻿namespace ARMS_API.Service
+﻿namespace Data.DTO
 {
     public class EmailSetting
     {
