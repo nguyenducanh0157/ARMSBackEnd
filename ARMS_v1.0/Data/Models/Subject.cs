@@ -14,7 +14,7 @@ namespace Data.Models
         public int SemesterNumber { get; set; }
         public string StudyTime { get; set; }
         public string? Note { get; set; }
-        public string SpecializeMajorID { get; set; }
-        public virtual SpecializeMajor SpecializeMajor { get; set; }
+        public string MajorID { get; set; }
+        public virtual Major Major { get; set; }
     }
 }

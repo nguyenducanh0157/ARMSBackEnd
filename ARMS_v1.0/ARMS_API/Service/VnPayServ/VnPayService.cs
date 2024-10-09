@@ -39,7 +39,8 @@ namespace Service
             vnpay.AddRequestData("vnp_TxnRef", tick); 
 
             var paymentUrl = vnpay.CreateRequestUrl(_config["VNPay:BaseUrl"], _config["VNPay:HashSecret"]);
-
+            Console.WriteLine(_config["VNPay:HashSecret"]);
+            Console.WriteLine(_config["VNPay:TmnCode"]);
             return _config["VNPay:Url"] +paymentUrl;
         }
 
@@ -60,7 +61,7 @@ namespace Service
             var vnp_ResponseCode = vnpay.GetResponseData("vnp_ResponseCode");
             var vnp_OrderInfo = vnpay.GetResponseData("vnp_OrderInfo");
 
-            bool checkSignature = vnpay.ValidateSignature(vnp_SecureHash, _config["VnPay:HashSecret"]);
+            bool checkSignature = vnpay.ValidateSignature(vnp_SecureHash, _config["VNPay:HashSecret"]);
             if (!checkSignature)
             {
                 return new VnPaymentResponseModel
@@ -72,7 +73,7 @@ namespace Service
             return new VnPaymentResponseModel
             {
                 Success = true,
-                PaymentMethod = "VnPay",
+                PaymentMethod = "VNPay",
                 OrderDescription = vnp_OrderInfo,
                 OrderId = vnp_orderId.ToString(),
                 TransactionId = vnp_TransactionId.ToString(),

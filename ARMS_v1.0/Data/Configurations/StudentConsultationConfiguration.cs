@@ -14,23 +14,25 @@ namespace Data.Configurations
         public void Configure(EntityTypeBuilder<StudentConsultation> builder)
         {
             builder.ToTable(nameof(StudentConsultation));
-            builder.HasKey(x => x.SCId);
+            builder.HasKey(x => x.StudentConsultationId);
+            builder.Property(x => x.StudentConsultationId)
+       .HasDefaultValueSql("NEWID()") 
+       .IsRequired();
             builder.Property(x => x.FullName).IsRequired();
             builder.Property(x => x.Email).IsRequired();
             builder.Property(x => x.LinkFB).IsRequired();
             builder.Property(x => x.Status).IsRequired();
             builder.Property(x => x.DateReceive).IsRequired();
-            builder.Property(x => x.ProcessDate).IsRequired(false);
+            builder.Property(x => x.Status).IsRequired();
             builder.Property(x => x.CampusId).IsRequired();
-            builder.Property(x => x.SpecializeMajorID).IsRequired();
-            builder.Property(x => x.UserID).IsRequired(false);
+            builder.Property(x => x.MajorID).IsRequired();
+            builder.Property(x => x.Notes).IsRequired(false);
             builder.Property(x => x.PhoneNumber).IsRequired();
 
 
             #region config relation
             builder.HasOne(x => x.Campus).WithMany(x => x.StudentConsultations).HasForeignKey(x => x.CampusId).OnDelete(DeleteBehavior.NoAction);
-            builder.HasOne(x => x.SpecializeMajor).WithMany(x => x.StudentConsultations).HasForeignKey(x => x.SpecializeMajorID).OnDelete(DeleteBehavior.NoAction);
-            builder.HasOne(x => x.Account).WithMany(x => x.StudentConsultations).HasForeignKey(x => x.UserID).IsRequired(false).OnDelete(DeleteBehavior.NoAction);
+            builder.HasOne(x => x.Major).WithMany(x => x.StudentConsultations).HasForeignKey(x => x.MajorID).OnDelete(DeleteBehavior.NoAction);
             #endregion
         }
     }

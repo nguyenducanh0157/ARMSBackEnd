@@ -15,6 +15,6 @@ namespace Data.DTO
         public string LinkFB { get; set; }
         public DateTime DateReceive { get; set; }
         public string CampusId { get; set; }
-        public string SpecializeMajorID { get; set; }
+        public string MajorID { get; set; }
     }
 }

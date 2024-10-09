@@ -8,21 +8,19 @@ namespace Data.Models
 {
     public class StudentConsultation
     {
-        public int SCId { get; set; }
-        public string FullName { get; set;}
+        public Guid StudentConsultationId { get; set; }
+        public string FullName { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public string LinkFB { get; set; }
-        public bool Status { get; set; }
+        public StatusConsultation Status { get; set; }
         public DateTime DateReceive { get; set; }
-        public DateTime? ProcessDate { get; set; }
-        
+        public string? Notes { get; set; }
+
         //FK
         public string CampusId { get; set; }
-        public string SpecializeMajorID { get; set; }
-        public Guid? UserID { get; set; }
-        public virtual Campus Campus { get; set; }
-        public virtual SpecializeMajor SpecializeMajor { get; set; }
-        public virtual Account? Account { get; set; }
+        public string MajorID { get; set; }
+        public virtual Campus? Campus { get; set; }
+        public virtual Major? Major { get; set; }
     }
 }

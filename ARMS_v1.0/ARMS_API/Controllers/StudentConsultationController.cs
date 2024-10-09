@@ -5,7 +5,7 @@ using Data.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Repository.MajorRepo;
-using Repository.StudentConsultationRepo;
+using Service.StudentConsultationSer;
 
 namespace ARMS_API.Controllers
 {
@@ -13,12 +13,12 @@ namespace ARMS_API.Controllers
     [ApiController]
     public class StudentConsultationController : ControllerBase
     {
-        private IStudentConsultationRepository _studentConsultationRepository;
+        private IStudentConsultationService _studentConsultationService;
         private readonly IMapper _mapper;
         private ValidStudentConsultation _validInput;
-        public StudentConsultationController(IStudentConsultationRepository studentConsultationRepository, IMapper mapper, ValidStudentConsultation validInput)
+        public StudentConsultationController(IStudentConsultationService studentConsultationService, IMapper mapper, ValidStudentConsultation validInput)
         {
-            _studentConsultationRepository = studentConsultationRepository;
+            _studentConsultationService = studentConsultationService;
             _mapper = mapper;
             _validInput = validInput;
         }
@@ -31,10 +31,11 @@ namespace ARMS_API.Controllers
                 _validInput.InputStudentConsultation(studentConsultationDTO);
                 //mapper
                 StudentConsultation studentConsultation = _mapper.Map<StudentConsultation>(studentConsultationDTO);
-                studentConsultation.Status = false;
+                studentConsultation.StudentConsultationId = Guid.NewGuid();
+                studentConsultation.Status = StatusConsultation.Reception;
                 studentConsultation.DateReceive = DateTime.Now;
                 //add new
-                await _studentConsultationRepository.AddNewStudentConsultation(studentConsultation);
+                await _studentConsultationService.AddNewStudentConsultation(studentConsultation);
                 return Ok(new ResponseViewModel()
                 {
                     Status = true,

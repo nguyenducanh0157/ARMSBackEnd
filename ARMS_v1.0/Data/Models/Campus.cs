@@ -17,15 +17,16 @@ namespace Data.Models
         public string? TrainingMotto { get; set; }
         public string? Achievements { get; set; }
         public string? WhyChooseUs { get; set; }
-        public int? IntroduceId { get; set; }
-        public int? AdmissionPlanID { get; set; }
         public virtual ICollection<Major>? Majors { get; set; }
-        public virtual ICollection<BlogCategory>? BlogCategorys { get; set; }
         public virtual ICollection<Account>? Accounts { get; set; }
-        public virtual ICollection<StudentProfile>? StudentProfiles { get; set; }
+        public virtual ICollection<Slider>? Sliders { get; set; }
+        public virtual ICollection<BlogCategory>? BlogCategories { get; set; }
         public virtual ICollection<StudentConsultation>? StudentConsultations { get; set; }
-        public virtual ICollection<Banner>? Banners { get; set; }
-        public virtual ICollection<AlumiStudent>? AlumiStudents { get; set; }
-        public virtual AdmissionPlan? AdmissionPlan { get; set; }
+        public virtual ICollection<AdmissionInformation>? AdmissionInformations { get; set; }
+
+        //public int? AdmissionPlanID { get; set; }
+        //public virtual ICollection<StudentProfile>? StudentProfiles { get; set; }
+        //public virtual ICollection<AlumiStudent>? AlumiStudents { get; set; }
+        //public virtual AdmissionPlan? AdmissionPlan { get; set; }
     }
 }

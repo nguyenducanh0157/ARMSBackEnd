@@ -189,3 +189,8 @@ D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\ARMS_API\bin\Debug\net6.0\Microsoft.Exte
 D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\ARMS_API\bin\Debug\net6.0\Scrutor.dll
 D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\ARMS_API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.dll
 D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\ARMS_API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
+D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\ARMS_API\bin\Debug\net6.0\Service.deps.json
+D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\ARMS_API\bin\Debug\net6.0\Service.runtimeconfig.json
+D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\ARMS_API\bin\Debug\net6.0\Service.exe
+D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\ARMS_API\bin\Debug\net6.0\Service.dll
+D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\ARMS_API\bin\Debug\net6.0\Service.pdb

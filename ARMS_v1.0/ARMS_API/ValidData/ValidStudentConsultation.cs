@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Data.DTO;
-using Repository.StudentConsultationRepo;
 
 namespace ARMS_API.ValidData
 {
@@ -21,7 +20,7 @@ namespace ARMS_API.ValidData
                 if (!_userInput.IsValidEmail(studentConsultationDTO.Email)) throw new Exception("Email không hợp lệ!");
                 if (string.IsNullOrEmpty(studentConsultationDTO.PhoneNumber)) throw new Exception("Không được để trống số điện thoại");
                 if (!_userInput.IsValidPhoneNumber(studentConsultationDTO.PhoneNumber)) throw new Exception("Số điện thoại không hợp lệ!");
-                if (studentConsultationDTO.SpecializeMajorID == null) throw new Exception("Không được để trống ngành học");
+                if (studentConsultationDTO.MajorID == null) throw new Exception("Không được để trống ngành học");
                 if (string.IsNullOrEmpty(studentConsultationDTO.LinkFB)) throw new Exception("Không được để trống link facebook");
             }
             catch (Exception ex)

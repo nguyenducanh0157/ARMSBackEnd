@@ -10,14 +10,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Repository.AdmissionPlanRepo;
-using Repository.BlogRepo;
-using Repository.CampusRepo;
+using Repository;
 using Repository.MajorRepo;
-using Repository.StudentConsultationRepo;
-using Repository.StudentProfileRepo;
-using Repository.SupplierRepo;
 using Service;
+using Service.BlogSer;
+using Service.CampusSer;
+using Service.MajorSer;
+using Service.StudentConsultationSer;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -117,13 +116,15 @@ builder.Services.AddHttpsRedirection(options =>
 //Config Repository 
 builder.Services.AddScoped<UserInput>();
 builder.Services.AddScoped<ValidStudentConsultation>();
-builder.Services.AddScoped<IMajorRepository, MajorRepository>();
-builder.Services.AddScoped<ICampusRepository, CampusRepository>();
-builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
-builder.Services.AddScoped<IStudentConsultationRepository, StudentConsultationRepository>();
-builder.Services.AddScoped<IBlogRepository, BlogRepository>();
-builder.Services.AddScoped<IAdmissionPlanRepository,AdmissionPlanRepository>();
-builder.Services.AddScoped<IStudentProfileRepository, StudentProfileRepository>();
+builder.Services.AddScoped<ICampusService, CampusService>();
+
+builder.Services.AddScoped<IMajorService, MajorService>();
+builder.Services.AddScoped<IBlogService, BlogService>();
+builder.Services.AddScoped<IStudentConsultationService, StudentConsultationService>();
+
+//builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
+//builder.Services.AddScoped<IAdmissionPlanRepository,AdmissionPlanRepository>();
+//builder.Services.AddScoped<IStudentProfileRepository, StudentProfileRepository>();
 
 //Services
 builder.Services.AddScoped<IEmailService, EmailService>();

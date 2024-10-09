@@ -12,9 +12,8 @@ namespace Data.DTO
         public int BlogId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public string Content { get; set; }
         public DateTime DateCreate { get; set; }
         public BlogCategoryDTO? BlogCategory { get; set; }
-        public virtual ICollection<BlogDetailsDTO>? BlogDetails { get; set; }
-        public virtual ICollection<CommentDTO>? Comments { get; set; }
     }
 }

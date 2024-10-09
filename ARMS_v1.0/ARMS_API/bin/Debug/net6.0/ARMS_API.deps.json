@@ -18,6 +18,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "6.0.33",
           "Newtonsoft.Json": "13.0.3",
           "Repository": "1.0.0",
+          "Service": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0",
           "Swashbuckle.AspNetCore.Filters": "8.0.2",
           "System.Net.Mail": "1.0.0-rtm-00002"
@@ -1060,6 +1061,15 @@
         "runtime": {
           "Repository.dll": {}
         }
+      },
+      "Service/1.0.0": {
+        "dependencies": {
+          "Data": "1.0.0",
+          "Repository": "1.0.0"
+        },
+        "runtime": {
+          "Service.dll": {}
+        }
       }
     }
   },
@@ -1824,6 +1834,11 @@
       "sha512": ""
     },
     "Repository/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Service/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

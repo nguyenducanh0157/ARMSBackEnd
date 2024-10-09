@@ -17,6 +17,7 @@ namespace Data.Configurations
             builder.HasKey(x => x.BlogId);
             builder.Property(x => x.Title).IsRequired();
             builder.Property(x => x.Description).IsRequired();
+            builder.Property(x => x.Content).IsRequired();
             builder.Property(x => x.DateCreate).IsRequired();
             builder.Property(x => x.BlogCategoryId).IsRequired();
 

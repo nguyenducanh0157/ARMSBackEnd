@@ -1865,6 +1865,20 @@
         "runtime": {
           "bin/placeholder/Repository.dll": {}
         }
+      },
+      "Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Data": "1.0.0",
+          "Repository": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Service.dll": {}
+        }
       }
     }
   },
@@ -5788,6 +5802,11 @@
       "type": "project",
       "path": "../Repository/Repository.csproj",
       "msbuildProject": "../Repository/Repository.csproj"
+    },
+    "Service/1.0.0": {
+      "type": "project",
+      "path": "../Service/Service.csproj",
+      "msbuildProject": "../Service/Service.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5802,6 +5821,7 @@
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.33",
       "Newtonsoft.Json >= 13.0.3",
       "Repository >= 1.0.0",
+      "Service >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0",
       "Swashbuckle.AspNetCore.Filters >= 8.0.2",
       "System.Net.Mail >= 1.0.0-rtm-00002"
@@ -5839,6 +5859,9 @@
             },
             "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Repository\\Repository.csproj": {
               "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Repository\\Repository.csproj"
+            },
+            "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Service\\Service.csproj": {
+              "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Service\\Service.csproj"
             }
           }
         }

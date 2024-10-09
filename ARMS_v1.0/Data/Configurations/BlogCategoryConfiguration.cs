@@ -20,7 +20,7 @@ namespace Data.Configurations
 
             #region config relation
             builder.HasOne(x => x.Campus)
-                   .WithMany(c => c.BlogCategorys)
+                   .WithMany(c => c.BlogCategories)
                    .HasForeignKey(x => x.CampusId);
             #endregion
         }

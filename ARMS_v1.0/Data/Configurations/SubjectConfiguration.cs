@@ -14,7 +14,7 @@ namespace Data.Configurations
         public void Configure(EntityTypeBuilder<Subject> builder)
         {
             builder.ToTable(nameof(Subject));
-            builder.HasKey(x => new { x.SubjectCode, x.SpecializeMajorID });
+            builder.HasKey(x => new { x.SubjectCode, x.MajorID });
             builder.Property(x => x.SubjectName).IsRequired();
             builder.Property(x => x.SemesterNumber).IsRequired();
             builder.Property(x => x.NumberOfCredits).IsRequired();
@@ -22,7 +22,7 @@ namespace Data.Configurations
             builder.Property(x => x.Note).IsRequired(false);
 
             #region config relation
-            builder.HasOne(x => x.SpecializeMajor).WithMany(x => x.Subjects).HasForeignKey(x => x.SpecializeMajorID).OnDelete(DeleteBehavior.NoAction);
+            builder.HasOne(x => x.Major).WithMany(x => x.Subjects).HasForeignKey(x => x.MajorID).OnDelete(DeleteBehavior.NoAction);
             #endregion
         }
     }

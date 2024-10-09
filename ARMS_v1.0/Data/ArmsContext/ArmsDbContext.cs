@@ -1,5 +1,4 @@
 ﻿using Data.Configurations;
-using Data.Migrations;
 using Data.Models;
 using Data.Seeding;
 using Microsoft.AspNetCore.Identity;
@@ -43,23 +42,18 @@ namespace Data.ArmsContext
         {
             modelBuilder.ApplyConfiguration(new CampusConfiguration());
             modelBuilder.ApplyConfiguration(new AccountConfiguration());
-            modelBuilder.ApplyConfiguration(new StudentProfileConfiguration());
             modelBuilder.ApplyConfiguration(new MajorConfiguration());
-            modelBuilder.ApplyConfiguration(new SpecializeMajorConfiguration());
-            modelBuilder.ApplyConfiguration(new SupplierConfiguration());
-            modelBuilder.ApplyConfiguration(new StudentConsultationConfiguration());
-            modelBuilder.ApplyConfiguration(new BannerConfiguration());
-            modelBuilder.ApplyConfiguration(new AlumiStudentConfiguration());
+            modelBuilder.ApplyConfiguration(new SliderConfiguration());
+            modelBuilder.ApplyConfiguration(new SubjectConfiguration());
             modelBuilder.ApplyConfiguration(new BlogCategoryConfiguration());
             modelBuilder.ApplyConfiguration(new BlogConfiguration());
-            modelBuilder.ApplyConfiguration(new BlogDetailsConfiguration());
-            modelBuilder.ApplyConfiguration(new CommentConfiguration());
-            modelBuilder.ApplyConfiguration(new AdmissionPlanConfiguration());
-            modelBuilder.ApplyConfiguration(new AdmissionTimeConfiguration());
-            modelBuilder.ApplyConfiguration(new TypeOfDiplomaConfiguration());
-            modelBuilder.ApplyConfiguration(new SubjectConfiguration());
-            modelBuilder.ApplyConfiguration(new TypeAcademicRecordConfiguration());
-            modelBuilder.ApplyConfiguration(new TypeAdmissionForMajorConfiguration());
+            modelBuilder.ApplyConfiguration(new StudentConsultationConfiguration());
+            modelBuilder.ApplyConfiguration(new TypeAdmissionConfiguration());
+            modelBuilder.ApplyConfiguration(new AdmissionInformationConfiguration());
+
+            //modelBuilder.ApplyConfiguration(new StudentProfileConfiguration());
+            //modelBuilder.ApplyConfiguration(new AdmissionPlanConfiguration());
+            //modelBuilder.ApplyConfiguration(new AdmissionTimeConfiguration());
 
             modelBuilder.Entity<IdentityUserLogin<Guid>>(entity =>
             {
@@ -115,34 +109,30 @@ namespace Data.ArmsContext
             new CampusSeeder(modelBuilder).Seed();
             new AccountSeeder(modelBuilder).Seed();
             new MajorSeeder(modelBuilder).Seed();
-            new SpecializeMajorSeeder(modelBuilder).Seed();
-            new SupplierSeeder(modelBuilder).Seed();
-            new StudentConsultationSeeder(modelBuilder).Seed();
+            new SubjectSeeder(modelBuilder).Seed();
             new BlogSeeder(modelBuilder).Seed();
-            new CommentSeeder(modelBuilder).Seed();
-            new AdmissionPlanSeeder(modelBuilder).Seed();
-            new TypeOfDiplomaSeeder(modelBuilder).Seed();
+            new StudentConsultationSeeder(modelBuilder).Seed();
+            new TypeAdmissionSeeder(modelBuilder).Seed();
+
+            //new AdmissionPlanSeeder(modelBuilder).Seed();
+            //new TypeOfDiplomaSeeder(modelBuilder).Seed();
         }
         #region DbSet
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Campus> Campuses { get; set; }
-        public DbSet<StudentProfile> StudentProfiles { get; set; }
+        public DbSet<Slider> Sliders { get; set; }
         public DbSet<Major> Majors { get; set; }
-        public DbSet<SpecializeMajor> SpecializeMajors { get; set; }
-        public DbSet<Supplier> Suppliers { get; set; }
-        public DbSet<StudentConsultation> StudentConsultations { get; set; }
-        public DbSet<Banner> Banners { get; set; }
-        public DbSet<AlumiStudent> AlumiStudents { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
         public DbSet<BlogCategory> BlogCategories { get; set; }
         public DbSet<Blog> Blogs { get; set; }
-        public DbSet<BlogDetails> BlogDetails { get; set; }
-        public DbSet<Comment> Comments { get; set; }
-        public DbSet<AdmissionPlan> AdmissionPlans { get; set; }
-        public DbSet<AdmissionTime> AdmissionTimes { get; set; }
-        public DbSet<TypeAcademicRecord> TypeAcademicRecords { get; set; }
-        public DbSet<TypeOfDiploma> TypeOfDiplomas { get; set; }
-        public DbSet<Subject> Subjects { get; set; }
-        public DbSet<TypeAdmissionForMajor> TypeAdmissionForMajors { get; set; }
+        public DbSet<StudentConsultation> StudentConsultations { get; set; }
+        public DbSet<TypeAdmission> TypeAdmissions { get; set; }
+        public DbSet<AdmissionInformation> AdmissionInformations { get; set; }
+
+        //public DbSet<StudentProfile> StudentProfiles { get; set; }
+
+        //public DbSet<AdmissionPlan> AdmissionPlans { get; set; }
+        //public DbSet<AdmissionTime> AdmissionTimes { get; set; }
         #endregion
     }
 

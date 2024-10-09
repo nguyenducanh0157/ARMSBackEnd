@@ -4,6 +4,7 @@ using Data.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Repository.MajorRepo;
+using Service.MajorSer;
 
 namespace ARMS_API.Controllers
 {
@@ -11,20 +12,20 @@ namespace ARMS_API.Controllers
     [ApiController]
     public class MajorController : ControllerBase
     {
-        private IMajorRepository _majorRepository;
+        private IMajorService _majorService;
         private readonly IMapper _mapper;
-        public MajorController(IMajorRepository majorRepository, IMapper mapper)
+        public MajorController(IMajorService majorService, IMapper mapper)
         {
-            _majorRepository = majorRepository;
+            _majorService = majorService;
             _mapper = mapper;
         }
-        [HttpGet("get-majors")]
-        public async Task<IActionResult> GetMajors(string campus)
+        [HttpGet("get-majors-vocational-school")]
+        public async Task<IActionResult> GetMajorsVocationalSchool(string campus)
         {
             try
             {
 
-                List<Major> response = await _majorRepository.GetMajors(campus);
+                List<Major> response = await _majorService.GetMajorsIsVocationalSchool(campus);
 
                 List<MajorForGuestDTO> responeResult = _mapper.Map<List<MajorForGuestDTO>>(response);
                 return Ok(responeResult);
@@ -36,15 +37,32 @@ namespace ARMS_API.Controllers
                 return BadRequest();
             }
         }
-        [HttpGet("get-admission-major")]
-        public async Task<IActionResult> GetAdmissionSpecializeMajor(string SpecializeMajorID)
+        [HttpGet("get-majors-college")]
+        public async Task<IActionResult> GetMajorsCollege(string campus)
         {
             try
             {
 
-                SpecializeMajor response = await _majorRepository.GetSpecializeMajorAdmission(SpecializeMajorID);
+                List<Major> response = await _majorService.GetMajorsIsCollege(campus);
 
-                AdmissionSpecializeMajorDTO responeResult = _mapper.Map<AdmissionSpecializeMajorDTO>(response);
+                List<MajorForGuestDTO> responeResult = _mapper.Map<List<MajorForGuestDTO>>(response);
+                return Ok(responeResult);
+
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
+        }
+        [HttpGet("get-major-details")]
+        public async Task<IActionResult> GetMajorDetail(string MajorId)
+        {
+            try
+            {
+
+                Major response = await _majorService.GetMajorDetail(MajorId);
+                MajorForGuestDTO responeResult = _mapper.Map<MajorForGuestDTO>(response);
                 return Ok(responeResult);
 
             }

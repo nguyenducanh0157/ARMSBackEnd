@@ -18,29 +18,31 @@ namespace Data.Seeding
         }
         public void Seed()
         {
-            // seed SpecializeMajor
+            // seed TypeAdmission
             modelBuilder.Entity<StudentConsultation>().HasData(
-                new StudentConsultation() { 
-                    SCId=1,
-                    FullName="Nguyen Đức Anh",
-                    CampusId="Hanoi",
-                    Email= "nguyenducanh01.57@gmail.com", 
-                    LinkFB= "https://www.facebook.com/profile.php?id=61551770462937",
-                    DateReceive= new DateTime(2024, 9, 18, 14, 30, 0),
-                    Status = false,
-                    SpecializeMajorID= "ME",
-                    PhoneNumber ="0123456789"
-                },
                 new StudentConsultation()
                 {
-                    SCId = 2,
+                    StudentConsultationId = Guid.NewGuid(),
                     FullName = "Nguyen Đức Anh",
                     CampusId = "Hanoi",
                     Email = "nguyenducanh01.57@gmail.com",
                     LinkFB = "https://www.facebook.com/profile.php?id=61551770462937",
                     DateReceive = new DateTime(2024, 9, 18, 14, 30, 0),
-                    Status = false,
-                    SpecializeMajorID = "ME",
+                    Status = StatusConsultation.Reception,
+                    MajorID = "HME",
+                    PhoneNumber = "0123456789",
+                    
+                },
+                new StudentConsultation()
+                {
+                    StudentConsultationId = Guid.NewGuid(),
+                    FullName = "Nguyen Đức Anh",
+                    CampusId = "Hanoi",
+                    Email = "nguyenducanh01.57@gmail.com",
+                    LinkFB = "https://www.facebook.com/profile.php?id=61551770462937",
+                    DateReceive = new DateTime(2024, 9, 18, 14, 30, 0),
+                    Status = StatusConsultation.Uncontact1,
+                    MajorID = "HME",
                     PhoneNumber = "0123456789"
                 }
                 );

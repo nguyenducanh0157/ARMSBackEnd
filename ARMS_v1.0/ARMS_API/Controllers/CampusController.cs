@@ -3,7 +3,7 @@ using Data.DTO;
 using Data.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Repository.CampusRepo;
+using Service.CampusSer;
 
 namespace ARMS_API.Controllers
 {
@@ -11,11 +11,11 @@ namespace ARMS_API.Controllers
     [ApiController]
     public class CampusController : ControllerBase
     {
-        private ICampusRepository _campusRepository;
+        private ICampusService _campusService;
         private readonly IMapper _mapper;
-        public CampusController(ICampusRepository campusRepository, IMapper mapper)
+        public CampusController(ICampusService campusService, IMapper mapper)
         {
-            _campusRepository = campusRepository;
+            _campusService = campusService;
             _mapper = mapper;
         }
         [HttpGet("count-campus")]
@@ -23,7 +23,7 @@ namespace ARMS_API.Controllers
         {
             try
             {
-                int response = await _campusRepository.CountCampus();
+                int response = await _campusService.CountCampus();
                 return Ok(response);
             }
             catch (Exception)
@@ -36,7 +36,7 @@ namespace ARMS_API.Controllers
         {
             try
             {
-                List<Campus> response = await _campusRepository.GetCampuses();
+                List<Campus> response = await _campusService.GetCampuses();
                 List<CampusDTO> responeResult = _mapper.Map<List<CampusDTO>>(response);
                 return Ok(responeResult);
             }
@@ -45,13 +45,13 @@ namespace ARMS_API.Controllers
                 return BadRequest();
             }
         }
-        [HttpGet("get-banners")]
-        public async Task<IActionResult> GetBanners(string campusId)
+        [HttpGet("get-sliders")]
+        public async Task<IActionResult> GetSliders(string campusId)
         {
             try
             {
-                List<Banner> response = await _campusRepository.GetBanners(campusId);
-                List<BannerDTO> responeResult = _mapper.Map<List<BannerDTO>>(response);
+                List<Slider> response = await _campusService.GetSliders(campusId);
+                List<SliderDTO> responeResult = _mapper.Map<List<SliderDTO>>(response);
                 return Ok(responeResult);
             }
             catch (Exception)
@@ -64,7 +64,7 @@ namespace ARMS_API.Controllers
         {
             try
             {
-                Campus response = await _campusRepository.GetCampus(campusId);
+                Campus response = await _campusService.GetCampus(campusId);
                 return Ok(response.History);
             }
             catch (Exception)
@@ -77,7 +77,7 @@ namespace ARMS_API.Controllers
         {
             try
             {
-                Campus response = await _campusRepository.GetCampus(campusId);
+                Campus response = await _campusService.GetCampus(campusId);
                 return Ok(response.Achievements);
             }
             catch (Exception)
@@ -90,7 +90,7 @@ namespace ARMS_API.Controllers
         {
             try
             {
-                Campus response = await _campusRepository.GetCampus(campusId);
+                Campus response = await _campusService.GetCampus(campusId);
                 return Ok(response.WhyChooseUs);
             }
             catch (Exception)
@@ -103,22 +103,8 @@ namespace ARMS_API.Controllers
         {
             try
             {
-                Campus response = await _campusRepository.GetCampus(campusId);
+                Campus response = await _campusService.GetCampus(campusId);
                 return Ok(response.TrainingMotto);
-            }
-            catch (Exception)
-            {
-                return BadRequest();
-            }
-        }
-        [HttpGet("get-alumi")]
-        public async Task<IActionResult> GetAlumiStudents()
-        {
-            try
-            {
-                List<AlumiStudent> response = await _campusRepository.GetAlumiStudents();
-                List<AlumiStudentDTO> responeResult = _mapper.Map<List<AlumiStudentDTO>>(response);
-                return Ok(responeResult);
             }
             catch (Exception)
             {

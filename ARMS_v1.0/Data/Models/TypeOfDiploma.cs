@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Data.Models
 {
-    public class TypeOfDiploma
+    public enum TypeOfDiploma
     {
-        public int DiplomaId { get; set; }
-        public string DiplomaName { get; set; }
-        public virtual ICollection<TypeAcademicRecord>? TypeAcademicRecords { get; set; }
-        public virtual ICollection<StudentProfile>? StudentProfiles { get; set; }
-        public virtual ICollection<TypeAdmissionForMajor>? TypeAdmissionForMajors { get; set; }
+        Tot_nghiep_THCS,
+        Tot_nghiep_THPT,
+        Tot_nghiep_CD_DH,
+        Xet_hoc_ba_THPT,
+        LienThong
     }
 }
