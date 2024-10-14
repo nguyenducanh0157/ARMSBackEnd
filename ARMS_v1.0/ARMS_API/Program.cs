@@ -1,5 +1,4 @@
 ﻿using ARMS_API.Config;
-using ARMS_API.Service;
 using ARMS_API.ValidData;
 using Data.ArmsContext;
 using Data.DTO;
@@ -15,8 +14,10 @@ using Repository.MajorRepo;
 using Service;
 using Service.BlogSer;
 using Service.CampusSer;
+using Service.EmailSer;
 using Service.MajorSer;
 using Service.StudentConsultationSer;
+using Service.VnPaySer;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 using System.Text.Json.Serialization;

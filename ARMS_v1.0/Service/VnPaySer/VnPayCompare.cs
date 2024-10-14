@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Service
+namespace Service.VnPaySer
 {
     public class VnPayCompare : IComparer<string>
     {

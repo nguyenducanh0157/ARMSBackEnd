@@ -1,12 +1,13 @@
 ﻿using Data.DTO;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Service
+namespace Service.VnPaySer
 {
     public class VnPayService : IVnPayService
     {
@@ -25,7 +26,7 @@ namespace Service
             vnpay.AddRequestData("vnp_Version", _config["VNPay:Version"]);
             vnpay.AddRequestData("vnp_Command", _config["VNPay:Command"]);
             vnpay.AddRequestData("vnp_TmnCode", _config["VNPay:TmnCode"]);
-            vnpay.AddRequestData("vnp_Amount", (model.Amount * 100).ToString()); 
+            vnpay.AddRequestData("vnp_Amount", (model.Amount * 100).ToString());
 
             vnpay.AddRequestData("vnp_CreateDate", model.CreatedDate.ToString("yyyyMMddHHmmss"));
             vnpay.AddRequestData("vnp_CurrCode", _config["VNPay:CurrCode"]);
@@ -36,12 +37,12 @@ namespace Service
             vnpay.AddRequestData("vnp_OrderType", "other");
             vnpay.AddRequestData("vnp_ReturnUrl", _config["VNPay:PaymentBackReturnUrl"]);
 
-            vnpay.AddRequestData("vnp_TxnRef", tick); 
+            vnpay.AddRequestData("vnp_TxnRef", tick);
 
             var paymentUrl = vnpay.CreateRequestUrl(_config["VNPay:BaseUrl"], _config["VNPay:HashSecret"]);
             Console.WriteLine(_config["VNPay:HashSecret"]);
             Console.WriteLine(_config["VNPay:TmnCode"]);
-            return _config["VNPay:Url"] +paymentUrl;
+            return _config["VNPay:Url"] + paymentUrl;
         }
 
         public VnPaymentResponseModel PaymentExecute(IQueryCollection collections)

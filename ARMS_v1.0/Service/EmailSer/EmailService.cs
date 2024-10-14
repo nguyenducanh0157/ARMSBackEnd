@@ -1,14 +1,15 @@
-﻿
-using Data.DTO;
-using Google.Apis.Auth.OAuth2;
-using Google.Apis.Util.Store;
+﻿using Data.DTO;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.Extensions.Options;
 using MimeKit;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace ARMS_API.Service
+namespace Service.EmailSer
 {
     public class EmailService : IEmailService
     {
