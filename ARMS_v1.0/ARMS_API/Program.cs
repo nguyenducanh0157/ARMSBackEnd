@@ -120,14 +120,13 @@ builder.Services.AddScoped<UserInput>();
 builder.Services.AddScoped<ValidStudentConsultation>();
 builder.Services.AddScoped<ValidRegisterAdmission>();
 builder.Services.AddScoped<ValidBlog>();
+builder.Services.AddScoped<ValidMajor>();
 builder.Services.AddScoped<ICampusService, CampusService>();
 
 builder.Services.AddScoped<IMajorService, MajorService>();
 builder.Services.AddScoped<IBlogService, BlogService>();
 builder.Services.AddScoped<IStudentConsultationService, StudentConsultationService>();
 builder.Services.AddScoped<IStudentProfileService, StudentProfileService>();
-
-//builder.Services.AddScoped<IAdmissionPlanRepository,AdmissionPlanRepository>();
 
 //Services
 builder.Services.AddScoped<IEmailService, EmailService>();

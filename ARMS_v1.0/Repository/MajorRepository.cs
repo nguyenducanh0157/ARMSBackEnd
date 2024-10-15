@@ -19,7 +19,7 @@ namespace Repository.MajorRepo
             try
             {
                 List<Major> majors = await _context.Majors
-                    .Where(x => x.CampusId.Equals(campusId))
+                    .Where(x => x.CampusId.Equals(campusId) && x.Status==true)
                     .ToListAsync();
                 return majors;
             }
@@ -50,6 +50,30 @@ namespace Repository.MajorRepo
                 throw;
             }
 
+        }
+        public async Task AddNewMajor(Major major)
+        {
+            try
+            {
+                await _context.Majors.AddAsync(major);
+                _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Tạo mới không thành công");
+            }
+        }
+        public async Task UpdateMajor(Major major)
+        {
+            try
+            {
+                _context.Entry<Major>(major).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Chỉnh sửa không thành công");
+            }
         }
     }
 }

@@ -8,8 +8,8 @@ namespace Data.Models
 {
     public class Major
     {
-        public string MajorID { get; set; }
-        public string MajorCode { get; set; }
+        public string MajorID { get; set; }// mã ngành
+        public string MajorCode { get; set; }// số mã ngành
         public string MajorName { get; set; }
         public string? Description { get; set; }
         public int? Target { get; set; }

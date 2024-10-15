@@ -27,7 +27,7 @@ namespace ARMS_API.Controllers
 
                 List<Major> response = await _majorService.GetMajorsIsVocationalSchool(campus);
 
-                List<MajorForGuestDTO> responeResult = _mapper.Map<List<MajorForGuestDTO>>(response);
+                List<MajorDTO> responeResult = _mapper.Map<List<MajorDTO>>(response);
                 return Ok(responeResult);
 
             }
@@ -45,7 +45,7 @@ namespace ARMS_API.Controllers
 
                 List<Major> response = await _majorService.GetMajorsIsCollege(campus);
 
-                List<MajorForGuestDTO> responeResult = _mapper.Map<List<MajorForGuestDTO>>(response);
+                List<MajorDTO> responeResult = _mapper.Map<List<MajorDTO>>(response);
                 return Ok(responeResult);
 
             }
@@ -62,7 +62,7 @@ namespace ARMS_API.Controllers
             {
 
                 Major response = await _majorService.GetMajorDetail(MajorId);
-                MajorForGuestDTO responeResult = _mapper.Map<MajorForGuestDTO>(response);
+                MajorDTO responeResult = _mapper.Map<MajorDTO>(response);
                 return Ok(responeResult);
 
             }

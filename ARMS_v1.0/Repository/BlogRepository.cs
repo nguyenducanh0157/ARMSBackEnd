@@ -69,7 +69,7 @@ namespace Repository
             }
             catch (Exception)
             {
-                throw new Exception("Đăng ký không thành công");
+                throw new Exception("Tạo mới không thành công");
             }
         }
         public async Task<BlogCategory> GetBlogCategory(int BlogCategoryId)
@@ -87,8 +87,15 @@ namespace Repository
         }
         public async Task UpdateBlog(Blog blog)
         {
-            _context.Entry<Blog>(blog).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            try
+            {
+                _context.Entry<Blog>(blog).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Chỉnh sửa không thành công");
+            }
         }
     }
 }

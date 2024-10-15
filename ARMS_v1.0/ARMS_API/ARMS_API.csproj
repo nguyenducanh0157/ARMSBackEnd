@@ -33,8 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Admin\" />
-    <Folder Include="Controllers\AdmissionCouncil\" />
     <Folder Include="Controllers\Student\" />
   </ItemGroup>
 

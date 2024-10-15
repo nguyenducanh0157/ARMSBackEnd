@@ -6,34 +6,35 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.BlogSer;
+using Service.MajorSer;
 
-namespace ARMS_API.Controllers.SchoolService
+namespace ARMS_API.Controllers.Admin
 {
-    [Route("api/school-service/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "SchoolService")]
-    public class BlogController : ControllerBase
+    [Authorize(Roles ="Admin")]
+    public class MajorController : ControllerBase
     {
-        private IBlogService _blogService;
-        private ValidBlog _validBlog;
+        private IMajorService _majorService;
+        private ValidMajor _validMajor;
         private readonly IMapper _mapper;
-        public BlogController(IBlogService blogService, IMapper mapper, ValidBlog validBlog)
+        public MajorController(IMajorService majorService, IMapper mapper, ValidMajor validMajor)
         {
-            _blogService = blogService;
-            _validBlog = validBlog;
+            _majorService = majorService;
             _mapper = mapper;
+            _validMajor = validMajor;
         }
-        [HttpPost("add-blog")]
-        public async Task<IActionResult> AddBlog([FromBody] Blog_SS_DTO BlogDTO)
+        [HttpPost("add-major")]
+        public async Task<IActionResult> AddMajor([FromBody] Major_Manage_DTO MajorDTO)
         {
             try
             {
                 //check data
-                _validBlog.InputBlog(BlogDTO);
+                _validMajor.InputMajor(MajorDTO);
                 //mapper
-                Blog blog = _mapper.Map<Blog>(BlogDTO);
+                Major major = _mapper.Map<Major>(MajorDTO);
                 //add new
-                await _blogService.AddNewBlog(blog);
+                await _majorService.AddNewMajor(major);
                 return Ok(new ResponseViewModel()
                 {
                     Status = true,
@@ -49,16 +50,16 @@ namespace ARMS_API.Controllers.SchoolService
                 });
             }
         }
-        [HttpPut("update-blog")]
-        public async Task<IActionResult> UpdateBlog(Blog_SS_DTO BlogDTO)
+        [HttpPut("update-major")]
+        public async Task<IActionResult> UpdateMajor(Major_Manage_DTO MajorDTO)
         {
             try
             {
                 //check data
-                _validBlog.InputBlog(BlogDTO);
+                _validMajor.InputMajor(MajorDTO);
                 //mapper
-                Blog blog = _mapper.Map<Blog>(BlogDTO);
-                await _blogService.UpdateBlog(blog);
+                Major major = _mapper.Map<Major>(MajorDTO);
+                await _majorService.UpdateMajor(major);
                 return Ok(new ResponseViewModel()
                 {
                     Status = true,

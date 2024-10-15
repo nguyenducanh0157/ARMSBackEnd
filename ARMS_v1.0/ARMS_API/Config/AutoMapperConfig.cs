@@ -12,9 +12,17 @@ namespace ARMS_API.Config
             {
 
                 config.CreateMap<Campus, CampusDTO>();
-                config.CreateMap<Major, MajorForGuestDTO>();
-                config.CreateMap<TypeAdmission, TypeAdmissionDTO>();
+                //major
+                config.CreateMap<Major, MajorDTO>();
+                config.CreateMap<Major_Manage_DTO, Major>();
+                config.CreateMap<Major_Admission_DTO, Major>();
+                // subject of major
+                config.CreateMap<SubjectDTO, Subject>();
                 config.CreateMap<Subject, SubjectDTO>();
+                // type admission
+                config.CreateMap<TypeAdmission, TypeAdmissionDTO>();
+                config.CreateMap<TypeAdmissionDTO, TypeAdmission>();
+                // slider
                 config.CreateMap<Slider, SliderDTO>();
 
                 //blog
@@ -29,12 +37,6 @@ namespace ARMS_API.Config
                 //register admission
                 config.CreateMap<StudentProfile, RegisterAdmissionProfileDTO>();
                 config.CreateMap<RegisterAdmissionProfileDTO, StudentProfile>();
-
-
-                //config.CreateMap<AdmissionPlan, AdmissionPlanDTO>();
-                //config.CreateMap<AdmissionTime, AdmissionTimeDTO>();
-
-
 
             })
             {
