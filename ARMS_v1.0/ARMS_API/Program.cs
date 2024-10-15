@@ -119,6 +119,7 @@ builder.Services.AddHttpsRedirection(options =>
 builder.Services.AddScoped<UserInput>();
 builder.Services.AddScoped<ValidStudentConsultation>();
 builder.Services.AddScoped<ValidRegisterAdmission>();
+builder.Services.AddScoped<ValidBlog>();
 builder.Services.AddScoped<ICampusService, CampusService>();
 
 builder.Services.AddScoped<IMajorService, MajorService>();

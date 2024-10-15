@@ -12,5 +12,7 @@ namespace Service.BlogSer
         Task<Blog> GetBlog(int BlogId);
         Task<List<BlogCategory>> GetBlogCategories(string CampusId);
         Task<List<Blog>> GetBlogs(string CampusId);
+        Task AddNewBlog(Blog blog);
+        Task UpdateBlog(Blog blog);
     }
 }

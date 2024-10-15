@@ -16,10 +16,29 @@ namespace Service.BlogSer
         {
             _blogRepository = new BlogRepository(context);
         }
+
+        public async Task AddNewBlog(Blog blog)
+        {
+            //check category
+            var blogcategory = await _blogRepository.GetBlogCategory(blog.BlogCategoryId);
+            if (blogcategory == null) throw new Exception("Không tồn tại loại bài viết!");
+            blog.DateCreate = DateTime.Now;
+            await _blogRepository.AddNewBlog(blog);
+        } 
+
         public async Task<Blog> GetBlog(int BlogId) => await _blogRepository.GetBlog(BlogId);
 
         public async Task<List<BlogCategory>> GetBlogCategories(string CampusId) => await _blogRepository.GetBlogCategories(CampusId);
 
         public async Task<List<Blog>> GetBlogs(string CampusId) => await _blogRepository.GetBlogs(CampusId);
+
+        public async Task UpdateBlog(Blog blog)
+        {
+            //check category
+            var blogcategory = await _blogRepository.GetBlogCategory(blog.BlogCategoryId);
+            if (blogcategory == null) throw new Exception("Không tồn tại loại bài viết!");
+            blog.DateCreate = DateTime.Now;
+            await _blogRepository.UpdateBlog(blog);
+        }
     }
 }

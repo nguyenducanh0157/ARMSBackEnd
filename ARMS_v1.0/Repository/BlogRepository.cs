@@ -59,5 +59,36 @@ namespace Repository
                 throw;
             }
         }
+        public async Task<Blog> AddNewBlog(Blog blog)
+        {
+            try
+            {
+                await _context.Blogs.AddAsync(blog);
+                _context.SaveChanges();
+                return blog;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Đăng ký không thành công");
+            }
+        }
+        public async Task<BlogCategory> GetBlogCategory(int BlogCategoryId)
+        {
+            try
+            {
+                BlogCategory BlogCategory = await _context.BlogCategories
+                    .FirstOrDefaultAsync(x => x.BlogCategoryId == BlogCategoryId);
+                return BlogCategory;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public async Task UpdateBlog(Blog blog)
+        {
+            _context.Entry<Blog>(blog).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
     }
 }

@@ -20,6 +20,7 @@ namespace ARMS_API.Config
                 //blog
                 config.CreateMap<BlogCategory, BlogCategoryDTO>();
                 config.CreateMap<Blog, BlogDTO>();
+                config.CreateMap<Blog_SS_DTO, Blog>();
                 // consultation
                 config.CreateMap<StudentConsultationDTO, StudentConsultation>();
                 config.CreateMap<StudentConsultation, StudentConsultation_AO_DTO>()
