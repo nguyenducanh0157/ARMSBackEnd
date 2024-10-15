@@ -50,8 +50,8 @@ namespace Data.ArmsContext
             modelBuilder.ApplyConfiguration(new StudentConsultationConfiguration());
             modelBuilder.ApplyConfiguration(new TypeAdmissionConfiguration());
             modelBuilder.ApplyConfiguration(new AdmissionInformationConfiguration());
+            modelBuilder.ApplyConfiguration(new StudentProfileConfiguration());
 
-            //modelBuilder.ApplyConfiguration(new StudentProfileConfiguration());
             //modelBuilder.ApplyConfiguration(new AdmissionPlanConfiguration());
             //modelBuilder.ApplyConfiguration(new AdmissionTimeConfiguration());
 
@@ -128,8 +128,7 @@ namespace Data.ArmsContext
         public DbSet<StudentConsultation> StudentConsultations { get; set; }
         public DbSet<TypeAdmission> TypeAdmissions { get; set; }
         public DbSet<AdmissionInformation> AdmissionInformations { get; set; }
-
-        //public DbSet<StudentProfile> StudentProfiles { get; set; }
+        public DbSet<StudentProfile> StudentProfiles { get; set; }
 
         //public DbSet<AdmissionPlan> AdmissionPlans { get; set; }
         //public DbSet<AdmissionTime> AdmissionTimes { get; set; }

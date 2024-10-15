@@ -1,5 +1,6 @@
 ﻿using Data.ArmsContext;
 using Data.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,36 @@ namespace Repository
             catch (Exception)
             {
                 throw new Exception("Đăng ký không thành công");
+            }
+        }
+        public async Task<List<StudentConsultation>> GetListStudentConsultation(string campusId)
+        {
+            try
+            {
+                var studentConsultations = _context.StudentConsultations.
+                    OrderByDescending(x=>x.DateReceive)
+                    .Include(x=>x.Major)
+                    .Where(x => x.CampusId.Equals(campusId))
+                    .ToList();
+                return studentConsultations;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public async Task UpdateStudentConsultation(StudentConsultation StudentConsultation) 
+        {
+            try
+            {
+                 _context.Entry<StudentConsultation>(StudentConsultation).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

@@ -17,6 +17,7 @@ using Service.CampusSer;
 using Service.EmailSer;
 using Service.MajorSer;
 using Service.StudentConsultationSer;
+using Service.StudentProfileServ;
 using Service.VnPaySer;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
@@ -117,15 +118,15 @@ builder.Services.AddHttpsRedirection(options =>
 //Config Repository 
 builder.Services.AddScoped<UserInput>();
 builder.Services.AddScoped<ValidStudentConsultation>();
+builder.Services.AddScoped<ValidRegisterAdmission>();
 builder.Services.AddScoped<ICampusService, CampusService>();
 
 builder.Services.AddScoped<IMajorService, MajorService>();
 builder.Services.AddScoped<IBlogService, BlogService>();
 builder.Services.AddScoped<IStudentConsultationService, StudentConsultationService>();
+builder.Services.AddScoped<IStudentProfileService, StudentProfileService>();
 
-//builder.Services.AddScoped<ISupplierRepository, SupplierRepository>();
 //builder.Services.AddScoped<IAdmissionPlanRepository,AdmissionPlanRepository>();
-//builder.Services.AddScoped<IStudentProfileRepository, StudentProfileRepository>();
 
 //Services
 builder.Services.AddScoped<IEmailService, EmailService>();

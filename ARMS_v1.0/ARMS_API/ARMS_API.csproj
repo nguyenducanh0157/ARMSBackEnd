@@ -32,4 +32,11 @@
     <ProjectReference Include="..\Service\Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\Admin\" />
+    <Folder Include="Controllers\AdmissionCouncil\" />
+    <Folder Include="Controllers\SchoolService\" />
+    <Folder Include="Controllers\Student\" />
+  </ItemGroup>
+
 </Project>

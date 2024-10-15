@@ -18,8 +18,7 @@ namespace Data.Models
         public string CampusId { get; set; }
         public virtual Campus Campus { get; set; }
 
-        //public int? SPId{ get; set; }
-        //public virtual StudentProfile? StudentProfile { get; set; }
-        //public virtual ICollection<StudentConsultation>? StudentConsultations { get; set; }
+        public int? SPId { get; set; }
+        public virtual StudentProfile? StudentProfile { get; set; }
     }
 }

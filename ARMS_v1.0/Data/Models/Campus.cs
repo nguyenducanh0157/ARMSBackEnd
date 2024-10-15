@@ -24,8 +24,8 @@ namespace Data.Models
         public virtual ICollection<StudentConsultation>? StudentConsultations { get; set; }
         public virtual ICollection<AdmissionInformation>? AdmissionInformations { get; set; }
 
+        public virtual ICollection<StudentProfile>? StudentProfiles { get; set; }
         //public int? AdmissionPlanID { get; set; }
-        //public virtual ICollection<StudentProfile>? StudentProfiles { get; set; }
         //public virtual ICollection<AlumiStudent>? AlumiStudents { get; set; }
         //public virtual AdmissionPlan? AdmissionPlan { get; set; }
     }

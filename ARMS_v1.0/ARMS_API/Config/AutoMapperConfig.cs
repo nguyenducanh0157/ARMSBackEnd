@@ -22,19 +22,19 @@ namespace ARMS_API.Config
                 config.CreateMap<Blog, BlogDTO>();
                 // consultation
                 config.CreateMap<StudentConsultationDTO, StudentConsultation>();
+                config.CreateMap<StudentConsultation, StudentConsultation_AO_DTO>()
+                .ForMember(dest => dest.MajorName, opt => opt.MapFrom(src => src.Major.MajorName));
+                config.CreateMap<StudentConsultation_AO_DTO, StudentConsultation>();
+                //register admission
+                config.CreateMap<StudentProfile, RegisterAdmissionProfileDTO>();
+                config.CreateMap<RegisterAdmissionProfileDTO, StudentProfile>();
 
 
                 //config.CreateMap<AdmissionPlan, AdmissionPlanDTO>();
                 //config.CreateMap<AdmissionTime, AdmissionTimeDTO>();
 
-                //config.CreateMap<TypeOfDiploma, TypeOfDiplomaDTO>();
-                //config.CreateMap<TypeAcademicRecord, TypeAcademicRecordDTO>();
-                //config.CreateMap<TypeAdmissionForMajor, TypeAdmissionForMajorDTO>();
 
 
-                //register admission
-                //config.CreateMap<StudentProfile, RegisterAdmissionProfileDTO>();
-                //config.CreateMap<RegisterAdmissionProfileDTO, StudentProfile>();
             })
             {
 

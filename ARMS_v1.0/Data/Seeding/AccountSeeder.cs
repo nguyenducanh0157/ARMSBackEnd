@@ -24,7 +24,8 @@ namespace Data.Seeding
             // Seed role data
             modelBuilder.Entity<IdentityRole<Guid>>().HasData(
                 new IdentityRole<Guid>() { Id = Guid.Parse("B8FD818F-63F1-49EE-BEC5-F7B66CAFBFCA"), Name = "Admin", NormalizedName = "ADMIN" },
-                new IdentityRole<Guid>() { Id = Guid.Parse("D2D63C5B-D09B-4828-8322-F18BA103FE86"), Name = "Student", NormalizedName = "STUDENT" }
+                new IdentityRole<Guid>() { Id = Guid.Parse("D2D63C5B-D09B-4828-8322-F18BA103FE86"), Name = "Student", NormalizedName = "STUDENT" },
+                new IdentityRole<Guid>() { Id = Guid.Parse("62378687-E16C-4D94-B767-DE9F0BFE9498"), Name = "AdminOfficer", NormalizedName = "ADMINOFFICER" }
             );
 
             //Seed Account
@@ -41,14 +42,32 @@ namespace Data.Seeding
                     SecurityStamp = Guid.NewGuid().ToString(),
                     CampusId = "Hanoi",
                     Fullname = "Admin Hanoi"
-                });
+                },
+                 new Account()
+                 {
+                     Id = Guid.Parse("5738248D-B40E-4332-9B9E-DEB0ABC8F8DD"),
+                     UserName = "adminofficer",
+                     NormalizedUserName = "ADMINOFFICER",
+                     Email = "adminofficer@gmail.com",
+                     NormalizedEmail = "ADMINOFFICER@GMAIL.COM",
+                     EmailConfirmed = true,
+                     PasswordHash = new PasswordHasher<Account>().HashPassword(null, "adminofficer@123"),
+                     SecurityStamp = Guid.NewGuid().ToString(),
+                     CampusId = "Hanoi",
+                     Fullname = "Admin Officer Hanoi"
+                 });
 
             // Seed User in role
             modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(
                 //Seed admin
 
-                new IdentityUserRole<Guid> { UserId = Guid.Parse("B8C777A9-55B9-4B3D-860A-D7B56E4C24B7"), RoleId = Guid.Parse("B8FD818F-63F1-49EE-BEC5-F7B66CAFBFCA") }
-
+                new IdentityUserRole<Guid> { UserId = Guid.Parse("B8C777A9-55B9-4B3D-860A-D7B56E4C24B7"), RoleId = Guid.Parse("B8FD818F-63F1-49EE-BEC5-F7B66CAFBFCA") },
+                //seed admin officer
+                new IdentityUserRole<Guid> { UserId = Guid.Parse("5738248D-B40E-4332-9B9E-DEB0ABC8F8DD"), RoleId = Guid.Parse("62378687-E16C-4D94-B767-DE9F0BFE9498") }
+                 ////seed admin council
+                 //new IdentityUserRole<Guid> { UserId = Guid.Parse("5738248D-B40E-4332-9B9E-DEB0ABC8F8DD"), RoleId = Guid.Parse("62378687-E16C-4D94-B767-DE9F0BFE9498") },
+                 ////seed student
+                 //new IdentityUserRole<Guid> { UserId = Guid.Parse("5738248D-B40E-4332-9B9E-DEB0ABC8F8DD"), RoleId = Guid.Parse("62378687-E16C-4D94-B767-DE9F0BFE9498") },
                 );
         }
     }

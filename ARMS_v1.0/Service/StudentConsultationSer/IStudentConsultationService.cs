@@ -10,5 +10,7 @@ namespace Service.StudentConsultationSer
     public interface IStudentConsultationService
     {
         Task AddNewStudentConsultation(StudentConsultation studentConsultation);
+        Task<List<StudentConsultation>> GetListStudentConsultation(string campusId);
+        Task UpdateStudentConsultation(StudentConsultation StudentConsultation);
     }
 }

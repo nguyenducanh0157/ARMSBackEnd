@@ -83,3 +83,5 @@ D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\Service\obj\Debug\net6.0\refint\Service.
 D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\Service\obj\Debug\net6.0\Service.pdb
 D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\Service\obj\Debug\net6.0\Service.genruntimeconfig.cache
 D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\Service\obj\Debug\net6.0\ref\Service.dll
+D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\Service\bin\Debug\net6.0\Microsoft.AspNetCore.Http.Abstractions.dll
+D:\Job\Đức Anh\ARMSBackEnd\ARMS_v1.0\Service\bin\Debug\net6.0\Microsoft.AspNetCore.Http.Features.dll

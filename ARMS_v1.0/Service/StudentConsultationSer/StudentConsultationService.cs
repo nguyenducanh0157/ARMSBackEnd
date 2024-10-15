@@ -17,6 +17,13 @@ namespace Service.StudentConsultationSer
         {
             _studentConsultationRepository = new StudentConsultationRepository(context);
         }
-        public Task AddNewStudentConsultation(StudentConsultation studentConsultation) => _studentConsultationRepository.AddNewStudentConsultation(studentConsultation);
+        public async Task AddNewStudentConsultation(StudentConsultation studentConsultation) 
+            => await _studentConsultationRepository.AddNewStudentConsultation(studentConsultation);
+
+        public async Task<List<StudentConsultation>> GetListStudentConsultation(string campusId) 
+            => await _studentConsultationRepository.GetListStudentConsultation(campusId);
+
+        public Task UpdateStudentConsultation(StudentConsultation StudentConsultation)
+            => _studentConsultationRepository.UpdateStudentConsultation(StudentConsultation);
     }
 }
