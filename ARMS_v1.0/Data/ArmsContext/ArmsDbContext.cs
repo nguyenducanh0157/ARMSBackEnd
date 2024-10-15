@@ -49,11 +49,8 @@ namespace Data.ArmsContext
             modelBuilder.ApplyConfiguration(new BlogConfiguration());
             modelBuilder.ApplyConfiguration(new StudentConsultationConfiguration());
             modelBuilder.ApplyConfiguration(new TypeAdmissionConfiguration());
-            modelBuilder.ApplyConfiguration(new AdmissionInformationConfiguration());
+            modelBuilder.ApplyConfiguration(new AdmissionTimeConfiguration());
             modelBuilder.ApplyConfiguration(new StudentProfileConfiguration());
-
-            //modelBuilder.ApplyConfiguration(new AdmissionPlanConfiguration());
-            //modelBuilder.ApplyConfiguration(new AdmissionTimeConfiguration());
 
             modelBuilder.Entity<IdentityUserLogin<Guid>>(entity =>
             {
@@ -113,9 +110,7 @@ namespace Data.ArmsContext
             new BlogSeeder(modelBuilder).Seed();
             new StudentConsultationSeeder(modelBuilder).Seed();
             new TypeAdmissionSeeder(modelBuilder).Seed();
-
-            //new AdmissionPlanSeeder(modelBuilder).Seed();
-            //new TypeOfDiplomaSeeder(modelBuilder).Seed();
+            new AdmissionTimeSeeder(modelBuilder).Seed();
         }
         #region DbSet
         public DbSet<Account> Accounts { get; set; }
@@ -127,11 +122,9 @@ namespace Data.ArmsContext
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<StudentConsultation> StudentConsultations { get; set; }
         public DbSet<TypeAdmission> TypeAdmissions { get; set; }
-        public DbSet<AdmissionInformation> AdmissionInformations { get; set; }
+        public DbSet<AdmissionTime> AdmissionTimes { get; set; }
         public DbSet<StudentProfile> StudentProfiles { get; set; }
 
-        //public DbSet<AdmissionPlan> AdmissionPlans { get; set; }
-        //public DbSet<AdmissionTime> AdmissionTimes { get; set; }
         #endregion
     }
 

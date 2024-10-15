@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace Data.Seeding
 {
-    public class AdmissionInformationSeeder
+    public class AdmissionTimeSeeder
     {
         private readonly ModelBuilder modelBuilder;
 
-        public AdmissionInformationSeeder(ModelBuilder modelBuilder)
+        public AdmissionTimeSeeder(ModelBuilder modelBuilder)
         {
             this.modelBuilder = modelBuilder;
         }
         public void Seed()
         {
             // seed SpecializeMajor
-            modelBuilder.Entity<AdmissionInformation>().HasData(
-               new AdmissionInformation()
+            modelBuilder.Entity<AdmissionTime>().HasData(
+               new AdmissionTime()
                {
                    AIId = 1,
                    AdmissionInformationName = "Đợt 1",
@@ -31,7 +31,7 @@ namespace Data.Seeding
                    StartAdmission = new DateTime(2024, 4, 01, 00, 00, 0),
                    EndAdmission = new DateTime(2024, 4, 30, 23, 59, 59),
                },
-               new AdmissionInformation()
+               new AdmissionTime()
                {
                    AIId = 2,
                    AdmissionInformationName = "Đợt 2",
@@ -42,7 +42,7 @@ namespace Data.Seeding
                    StartAdmission = new DateTime(2024, 7, 01, 00, 00, 0),
                    EndAdmission = new DateTime(2024, 7, 30, 23, 59, 59),
                },
-               new AdmissionInformation()
+               new AdmissionTime()
                {
                    AIId = 3,
                    AdmissionInformationName = "Đợt 3",

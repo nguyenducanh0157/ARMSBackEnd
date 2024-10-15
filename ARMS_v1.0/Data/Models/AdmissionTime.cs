@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data.Models
 {
-    public class AdmissionInformation
+    public class AdmissionTime
     {
         public int AIId { get; set; }
         public string AdmissionInformationName { get; set; }

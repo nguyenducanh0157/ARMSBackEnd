@@ -37,7 +37,9 @@ namespace ARMS_API.Config
                 //register admission
                 config.CreateMap<StudentProfile, RegisterAdmissionProfileDTO>();
                 config.CreateMap<RegisterAdmissionProfileDTO, StudentProfile>();
-
+                //admission time
+                config.CreateMap<AdmissionTime, AdmissionTime_Admission_DTO>();
+                config.CreateMap<AdmissionTime, AdmissionTimeDTO>();
             })
             {
 

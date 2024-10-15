@@ -12,6 +12,7 @@ using Microsoft.OpenApi.Models;
 using Repository;
 using Repository.MajorRepo;
 using Service;
+using Service.AdmissionTimeSer;
 using Service.BlogSer;
 using Service.CampusSer;
 using Service.EmailSer;
@@ -127,6 +128,7 @@ builder.Services.AddScoped<IMajorService, MajorService>();
 builder.Services.AddScoped<IBlogService, BlogService>();
 builder.Services.AddScoped<IStudentConsultationService, StudentConsultationService>();
 builder.Services.AddScoped<IStudentProfileService, StudentProfileService>();
+builder.Services.AddScoped<IAdmissionTimeService, AdmissionTimeService>();
 
 //Services
 builder.Services.AddScoped<IEmailService, EmailService>();
