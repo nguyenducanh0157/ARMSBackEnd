@@ -18,7 +18,7 @@ namespace Data.Seeding
         }
         public void Seed()
         {
-            // seed SpecializeMajor
+            // seed AdmissionTime
             modelBuilder.Entity<AdmissionTime>().HasData(
                new AdmissionTime()
                {

@@ -89,5 +89,17 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 return BadRequest();
             }
         }
+        [HttpGet("get-admission-fee")]
+        public async Task<IActionResult> GetAdmissionTimeFee(string CampusId)
+        {
+            try
+            { 
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

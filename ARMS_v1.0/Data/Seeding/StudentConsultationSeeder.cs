@@ -18,7 +18,7 @@ namespace Data.Seeding
         }
         public void Seed()
         {
-            // seed TypeAdmission
+            // seed StudentConsultation
             modelBuilder.Entity<StudentConsultation>().HasData(
                 new StudentConsultation()
                 {

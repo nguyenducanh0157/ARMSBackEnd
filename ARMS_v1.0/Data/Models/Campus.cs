@@ -22,11 +22,9 @@ namespace Data.Models
         public virtual ICollection<Slider>? Sliders { get; set; }
         public virtual ICollection<BlogCategory>? BlogCategories { get; set; }
         public virtual ICollection<StudentConsultation>? StudentConsultations { get; set; }
-        public virtual ICollection<AdmissionTime>? AdmissionInformations { get; set; }
-
+        public virtual ICollection<AdmissionTime>? AdmissionTimes { get; set; }
         public virtual ICollection<StudentProfile>? StudentProfiles { get; set; }
-        //public int? AdmissionPlanID { get; set; }
-        //public virtual ICollection<AlumiStudent>? AlumiStudents { get; set; }
-        //public virtual AdmissionPlan? AdmissionPlan { get; set; }
+        public virtual AdmissionInformation? AdmissionInformation { get; set; }
+
     }
 }

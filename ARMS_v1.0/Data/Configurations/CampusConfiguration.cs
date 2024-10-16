@@ -21,11 +21,9 @@ namespace Data.Configurations
             builder.Property(x => x.Achievements).IsRequired(false);
             builder.Property(x => x.WhyChooseUs).IsRequired(false);
 
-            //#region config relation
-            //builder.HasOne(x => x.AdmissionPlan)
-            //   .WithOne(c => c.Campus)
-            //   .HasForeignKey<AdmissionPlan>(x => x.CampusId).OnDelete(DeleteBehavior.NoAction);
-            //#endregion
+            #region config relation
+
+            #endregion
         }
     }
 }

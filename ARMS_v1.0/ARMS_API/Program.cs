@@ -12,6 +12,7 @@ using Microsoft.OpenApi.Models;
 using Repository;
 using Repository.MajorRepo;
 using Service;
+using Service.AdmissionInformationSer;
 using Service.AdmissionTimeSer;
 using Service.BlogSer;
 using Service.CampusSer;
@@ -123,6 +124,7 @@ builder.Services.AddScoped<ValidRegisterAdmission>();
 builder.Services.AddScoped<ValidBlog>();
 builder.Services.AddScoped<ValidMajor>();
 builder.Services.AddScoped<ValidAdmissionTime>();
+builder.Services.AddScoped<ValidAdmissionInformation>();
 
 builder.Services.AddScoped<ICampusService, CampusService>();
 builder.Services.AddScoped<IMajorService, MajorService>();
@@ -130,6 +132,7 @@ builder.Services.AddScoped<IBlogService, BlogService>();
 builder.Services.AddScoped<IStudentConsultationService, StudentConsultationService>();
 builder.Services.AddScoped<IStudentProfileService, StudentProfileService>();
 builder.Services.AddScoped<IAdmissionTimeService, AdmissionTimeService>();
+builder.Services.AddScoped<IAdmissionInformationService, AdmissionInformationService>();
 
 //Services
 builder.Services.AddScoped<IEmailService, EmailService>();
