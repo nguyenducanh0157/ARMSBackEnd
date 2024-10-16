@@ -12,15 +12,17 @@ namespace ARMS_API.Controllers.AdmissionCouncil
 {
     [Route("api/admission-council/[controller]")]
     [ApiController]
-    [Authorize(Roles = "AdmissionCouncil")]
+    //[Authorize(Roles = "AdmissionCouncil")]
     public class AdmissionTimeController : ControllerBase
     {
         private IAdmissionTimeService _admissionTimeService;
         private readonly IMapper _mapper;
-        public AdmissionTimeController(IAdmissionTimeService admissionTimeService, IMapper mapper)
+        private ValidAdmissionTime _validAdmissionTime;
+        public AdmissionTimeController(IAdmissionTimeService admissionTimeService, IMapper mapper, ValidAdmissionTime validAdmissionTime)
         {
             _admissionTimeService = admissionTimeService;
             _mapper = mapper;
+            _validAdmissionTime = validAdmissionTime;
         }
         [HttpGet("get-admission-time")]
         public async Task<IActionResult> GetAdmissionTimes(string CampusId, int year)
@@ -33,6 +35,57 @@ namespace ARMS_API.Controllers.AdmissionCouncil
             }
             catch (Exception)
             {
+                return BadRequest();
+            }
+        }
+        [HttpPost("add-admission-time")]
+        public async Task<IActionResult> AddAdmissionTime([FromBody] AdmissionTime_Add_DTO admissionTimeDTO)
+        {
+            try
+            {
+                //check data
+                _validAdmissionTime.ValidDataAdmissionTime
+                    (admissionTimeDTO.Year, admissionTimeDTO.StartAdmission, admissionTimeDTO.EndAdmission, admissionTimeDTO.StartRegister, admissionTimeDTO.EndRegister, admissionTimeDTO.AdmissionInformationName);
+                //mapper
+                AdmissionTime AdmissionTime = _mapper.Map<AdmissionTime>(admissionTimeDTO);
+                //add new
+                await _admissionTimeService.AddAdmissionTime(AdmissionTime);
+                return Ok(new ResponseViewModel()
+                {
+                    Status = true,
+                    Message = "Tạo mới mới thành công!"
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResponseViewModel()
+                {
+                    Status = false,
+                    Message = ex.Message
+                });
+            }
+        }
+        [HttpPut("update-admission-time")]
+        public async Task<IActionResult> UpdateAdmissionTime(AdmissionTime_Admission_DTO admissionTimeDTO)
+        {
+            try
+            {
+                //check data
+                _validAdmissionTime.ValidDataAdmissionTime
+                    (admissionTimeDTO.Year, admissionTimeDTO.StartAdmission, admissionTimeDTO.EndAdmission, admissionTimeDTO.StartRegister, admissionTimeDTO.EndRegister, admissionTimeDTO.AdmissionInformationName);
+                //mapper
+                AdmissionTime AdmissionTime = _mapper.Map<AdmissionTime>(admissionTimeDTO);
+                await _admissionTimeService.UpdateAdmissionTime(AdmissionTime);
+                return Ok(new ResponseViewModel()
+                {
+                    Status = true,
+                    Message = "Cập nhật thành công!"
+                });
+
+            }
+            catch (Exception)
+            {
+
                 return BadRequest();
             }
         }

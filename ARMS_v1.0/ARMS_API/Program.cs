@@ -122,8 +122,9 @@ builder.Services.AddScoped<ValidStudentConsultation>();
 builder.Services.AddScoped<ValidRegisterAdmission>();
 builder.Services.AddScoped<ValidBlog>();
 builder.Services.AddScoped<ValidMajor>();
-builder.Services.AddScoped<ICampusService, CampusService>();
+builder.Services.AddScoped<ValidAdmissionTime>();
 
+builder.Services.AddScoped<ICampusService, CampusService>();
 builder.Services.AddScoped<IMajorService, MajorService>();
 builder.Services.AddScoped<IBlogService, BlogService>();
 builder.Services.AddScoped<IStudentConsultationService, StudentConsultationService>();

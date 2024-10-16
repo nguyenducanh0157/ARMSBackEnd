@@ -27,13 +27,40 @@ namespace Service.AdmissionTimeSer
                 var checkEndDate = checkdata.Max(x => x.EndRegister);
                 if (AdmissionTime.StartRegister <= checkEndDate)
                     throw new Exception("Thời gian bắt đầu không được trước hoặc bằng thời gian kết thúc của đợt tuyển sinh trước!");
-                if (AdmissionTime.StartAdmission <= AdmissionTime.EndRegister || AdmissionTime.EndAdmission <= AdmissionTime.EndRegister)
-                {
-                    throw new Exception("Thời gian nhập học phải sau thời gian đăng ký!");
-                }
                 await _admissionTimeRepository.AddAdmissionTime(AdmissionTime);
 
             }
+        }
+        public async Task UpdateAdmissionTime(AdmissionTime AdmissionTime)
+        {
+            var checkValid = await _admissionTimeRepository.GetAdmissionTime(AdmissionTime.AIId);
+            if (checkValid==null) throw new Exception("Không tìm thấy dữ liệu đợt tuyển sinh!");
+
+            var data = await _admissionTimeRepository.GetAdmissionTimes(checkValid.CampusId);
+            var checkdata = data.Where(x => x.Year == AdmissionTime.Year && x.AIId != AdmissionTime.AIId)
+                        .OrderBy(x => x.EndRegister) 
+                        .ToList();
+
+            var previousAdmission = checkdata.LastOrDefault(x => x.EndRegister < AdmissionTime.StartRegister);
+            if (previousAdmission != null)
+            {
+                if (AdmissionTime.StartRegister <= previousAdmission.EndRegister)
+                {
+                    throw new Exception("Thời gian bắt đầu không được trước hoặc bằng thời gian kết thúc của đợt tuyển sinh liền kề trước!");
+                }
+            }
+            var nextAdmission = checkdata.FirstOrDefault(x => x.StartRegister > AdmissionTime.EndRegister);
+
+            if (nextAdmission != null && AdmissionTime.EndRegister >= nextAdmission.StartRegister)
+            {
+                throw new Exception("Thời gian kết thúc không được sau hoặc bằng thời gian bắt đầu của đợt tuyển sinh liền kề sau!");
+            }
+            checkValid.AdmissionInformationName = AdmissionTime.AdmissionInformationName;
+            checkValid.EndAdmission = AdmissionTime.EndAdmission;
+            checkValid.StartAdmission = AdmissionTime.StartAdmission;
+            checkValid.StartRegister = AdmissionTime.StartRegister;
+            checkValid.EndRegister = AdmissionTime.EndRegister;
+            await _admissionTimeRepository.UpdateAdmissionTime(checkValid);
         }
 
         public Task<AdmissionTime> GetAdmissionTime(int AIId) 

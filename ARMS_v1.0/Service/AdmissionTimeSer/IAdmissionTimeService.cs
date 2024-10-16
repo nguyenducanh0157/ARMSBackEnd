@@ -12,5 +12,6 @@ namespace Service.AdmissionTimeSer
         Task<List<AdmissionTime>> GetAdmissionTimes(string CampusId, int year);
         Task<AdmissionTime> GetAdmissionTime(int AIId);
         Task AddAdmissionTime(AdmissionTime AdmissionTime);
+        Task UpdateAdmissionTime(AdmissionTime AdmissionTime);
     }
 }
