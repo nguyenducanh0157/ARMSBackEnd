@@ -2,6 +2,7 @@
 using AutoMapper;
 using Data.DTO;
 using Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.AdmissionInformationSer;
@@ -12,6 +13,7 @@ namespace ARMS_API.Controllers.Admin
 {
     [Route("api/admin/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class AdmissionInformationController : ControllerBase
     {
         private IAdmissionInformationService _admissionInformationService;
@@ -25,6 +27,7 @@ namespace ARMS_API.Controllers.Admin
             _campusService = campusService;
             _validAdmissionInformation = validAdmissionInformation;
         }
+        
         [HttpPut("update-admission-information")]
         public async Task<IActionResult> UpdateAdmissionInformation(AdmissionInformation_Update_DTO AdmissionInformationDTO)
         {

@@ -52,6 +52,7 @@ namespace Data.ArmsContext
             modelBuilder.ApplyConfiguration(new AdmissionTimeConfiguration());
             modelBuilder.ApplyConfiguration(new StudentProfileConfiguration());
             modelBuilder.ApplyConfiguration(new AdmissionInformationConfiguration());
+            modelBuilder.ApplyConfiguration(new RequestChangeMajorConfiguration());
 
             modelBuilder.Entity<IdentityUserLogin<Guid>>(entity =>
             {
@@ -113,6 +114,8 @@ namespace Data.ArmsContext
             new TypeAdmissionSeeder(modelBuilder).Seed();
             new AdmissionTimeSeeder(modelBuilder).Seed();
             new AdmissionInformationSeeder(modelBuilder).Seed();
+            new StudentProfileSeeder(modelBuilder).Seed();
+            new RequestChangeMajorSeeder(modelBuilder).Seed();
         }
         #region DbSet
         public DbSet<Account> Accounts { get; set; }
@@ -127,6 +130,7 @@ namespace Data.ArmsContext
         public DbSet<AdmissionTime> AdmissionTimes { get; set; }
         public DbSet<StudentProfile> StudentProfiles { get; set; }
         public DbSet<AdmissionInformation> AdmissionInformations { get; set; }
+        public DbSet<RequestChangeMajor> RequestChangeMajors { get; set; }
 
         #endregion
     }

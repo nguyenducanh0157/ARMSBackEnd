@@ -20,5 +20,6 @@ namespace Data.Models
 
         public int? SPId { get; set; }
         public virtual StudentProfile? StudentProfile { get; set; }
+        public virtual ICollection<RequestChangeMajor>? RequestChangeMajors { get; set; }
     }
 }

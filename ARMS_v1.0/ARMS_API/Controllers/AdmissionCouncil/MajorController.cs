@@ -44,5 +44,40 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 return BadRequest();
             }
         }
+        [HttpGet("get-majors")]
+        public async Task<IActionResult> GetMajors(string campus)
+        {
+            try
+            {
+
+                List<Major> response = await _majorService.GetMajorsAdmin(campus);
+
+                List<Major_Admission_Council_DTO> responeResult = _mapper.Map<List<Major_Admission_Council_DTO>>(response);
+                return Ok(responeResult);
+
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
+        }
+        [HttpGet("get-major-details")]
+        public async Task<IActionResult> GetMajorDetail(string MajorId)
+        {
+            try
+            {
+
+                Major response = await _majorService.GetMajorDetail(MajorId);
+                Major_Admission_Council_DTO responeResult = _mapper.Map<Major_Admission_Council_DTO>(response);
+                return Ok(responeResult);
+
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
+        }
     }
 }

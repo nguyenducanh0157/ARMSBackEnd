@@ -16,6 +16,8 @@ namespace ARMS_API.Config
                 config.CreateMap<Major, MajorDTO>();
                 config.CreateMap<Major_Manage_DTO, Major>();
                 config.CreateMap<Major_Admission_DTO, Major>();
+                config.CreateMap<Major, Major_Admin_DTO>();
+                config.CreateMap<Major, Major_Admission_Council_DTO>();
                 // subject of major
                 config.CreateMap<SubjectDTO, Subject>();
                 config.CreateMap<Subject, SubjectDTO>();
@@ -45,6 +47,10 @@ namespace ARMS_API.Config
                 // admission information 
                 config.CreateMap<AdmissionInformation, AdmissionInformationDTO>();
                 config.CreateMap<AdmissionInformation_Update_DTO, AdmissionInformation>();
+                // request change major
+                config.CreateMap<RequestChangeMajor, RequestChangeMajorDTO>()
+                .ForMember(dest => dest.MajorName, opt => opt.MapFrom(src => src.Major.MajorName))
+                .ForMember(dest => dest.MajorID, opt => opt.MapFrom(src => src.Major.MajorID));
             })
             {
 

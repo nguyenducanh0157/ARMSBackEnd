@@ -17,10 +17,12 @@ namespace Data.Models
         public string? TimeStudy { get; set; }
         public bool isVocationalSchool { get; set; }
         public string CampusId { get; set; }
+        public decimal? Tuition { get; set; }
         public virtual Campus? Campus { get; set; }
         public virtual ICollection<Subject>? Subjects { get; set; }
         public virtual ICollection<StudentConsultation>? StudentConsultations { get; set; }
         public virtual ICollection<TypeAdmission>? TypeAdmissions { get; set; }
+        public virtual ICollection<RequestChangeMajor>? RequestChangeMajors { get; set; }
 
     }
 }

@@ -24,7 +24,6 @@ namespace Service.MajorSer
 
             return await _majorRepository.GetMajorDetail(MajorID);
         }
-
         public async Task<List<Major>> GetMajorsIsVocationalSchool(string campusId)
         {
             var result = await _majorRepository.GetMajors(campusId);
@@ -46,7 +45,7 @@ namespace Service.MajorSer
 
         public async Task UpdateMajor(Major major)=> await _majorRepository.UpdateMajor(major);
 
-        public async Task<List<Major>> GetMajorsAdmin(string campusId)=> await _majorRepository.GetMajors(campusId);
+        public async Task<List<Major>> GetMajorsAdmin(string campusId)=> await _majorRepository.GetMajors_Manage(campusId);
 
         public async Task UpdateMajorAdmission(Major Major)
         {

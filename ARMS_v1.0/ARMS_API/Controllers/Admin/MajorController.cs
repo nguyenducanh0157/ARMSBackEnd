@@ -10,7 +10,7 @@ using Service.MajorSer;
 
 namespace ARMS_API.Controllers.Admin
 {
-    [Route("api/[controller]")]
+    [Route("api/admin/[controller]")]
     [ApiController]
     [Authorize(Roles ="Admin")]
     public class MajorController : ControllerBase
@@ -23,6 +23,24 @@ namespace ARMS_API.Controllers.Admin
             _majorService = majorService;
             _mapper = mapper;
             _validMajor = validMajor;
+        }
+        [HttpGet("get-majors")]
+        public async Task<IActionResult> GetMajors(string campus)
+        {
+            try
+            {
+
+                List<Major> response = await _majorService.GetMajorsAdmin(campus);
+
+                List<Major_Admin_DTO> responeResult = _mapper.Map<List<Major_Admin_DTO>>(response);
+                return Ok(responeResult);
+
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
         }
         [HttpPost("add-major")]
         public async Task<IActionResult> AddMajor([FromBody] Major_Manage_DTO MajorDTO)
@@ -65,6 +83,22 @@ namespace ARMS_API.Controllers.Admin
                     Status = true,
                     Message = "Cập nhật thành công!"
                 });
+
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        [HttpGet("get-major-details")]
+        public async Task<IActionResult> GetMajorDetail(string MajorId)
+        {
+            try
+            {
+
+                Major response = await _majorService.GetMajorDetail(MajorId);
+                Major_Admin_DTO responeResult = _mapper.Map<Major_Admin_DTO>(response);
+                return Ok(responeResult);
 
             }
             catch (Exception)

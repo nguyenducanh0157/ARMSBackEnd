@@ -30,6 +30,22 @@ namespace Repository.MajorRepo
             }
 
         }
+        public async Task<List<Major>> GetMajors_Manage(string campusId)
+        {
+            try
+            {
+                List<Major> majors = await _context.Majors
+                    .Where(x => x.CampusId.Equals(campusId))
+                    .ToListAsync();
+                return majors;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+
+        }
         public async Task<Major> GetMajorDetail(string MajorID)
         {
             try

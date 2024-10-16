@@ -13,10 +13,25 @@ namespace Data.DTO
         public string MajorCode { get; set; }
         public string MajorName { get; set; }
         public string? Description { get; set; }
+        public decimal? Tuition { get; set; }
         public int? Target { get; set; }
         public string? TimeStudy { get; set; }
         public virtual ICollection<SubjectDTO>? Subjects { get; set; }
         public virtual ICollection<TypeAdmissionDTO>? TypeAdmissions { get; set; }
+    }
+    public class Major_Admin_DTO
+    {
+        public string MajorID { get; set; }
+        public string MajorCode { get; set; }
+        public string MajorName { get; set; }
+        public string? Description { get; set; }
+        public decimal? Tuition { get; set; }
+        public int? Target { get; set; }
+        public string? TimeStudy { get; set; }
+        public bool isVocationalSchool { get; set; }
+        public bool Status { get; set; }// Admission status
+        public virtual ICollection<SubjectDTO>? Subjects { get; set; }
+
     }
     public class Major_Manage_DTO
     {
@@ -24,6 +39,7 @@ namespace Data.DTO
         public string MajorCode { get; set; }
         public string MajorName { get; set; }
         public string? Description { get; set; }
+        public decimal? Tuition { get; set; }
         public string? TimeStudy { get; set; }
         public bool isVocationalSchool { get; set; }
         public string CampusId { get; set; }
@@ -35,5 +51,17 @@ namespace Data.DTO
         public int? Target { get; set; } = 0;
         public bool Status { get; set; }
         public virtual ICollection<TypeAdmissionDTO>? TypeAdmissions { get; set; }
+    }
+    public class Major_Admission_Council_DTO
+    {
+        public string MajorID { get; set; }
+        public string MajorCode { get; set; }
+        public string MajorName { get; set; }
+        public string? Description { get; set; }
+        public int? Target { get; set; }
+        public bool isVocationalSchool { get; set; }
+        public bool Status { get; set; }// Admission status
+        public virtual ICollection<TypeAdmissionDTO>? TypeAdmissions { get; set; }
+
     }
 }
