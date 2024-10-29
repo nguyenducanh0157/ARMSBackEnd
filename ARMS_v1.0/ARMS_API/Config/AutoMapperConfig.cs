@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Data.DTO;
 using Data.Models;
+using System.ComponentModel;
+using System.Reflection;
 
 namespace ARMS_API.Config
 {
@@ -51,6 +53,7 @@ namespace ARMS_API.Config
                 config.CreateMap<RequestChangeMajor, RequestChangeMajorDTO>()
                 .ForMember(dest => dest.MajorName, opt => opt.MapFrom(src => src.Major.MajorName))
                 .ForMember(dest => dest.MajorID, opt => opt.MapFrom(src => src.Major.MajorID));
+                // Priority
                 config.CreateMap<PriorityDetail, PriorityDTO>()
                      .ForMember(dest => dest.TypeOfPriority, opt => opt.MapFrom(src =>
                         src.TypeOfPriority == TypeOfPriority.UT1 ? "Ưu tiên 1" :
@@ -58,12 +61,33 @@ namespace ARMS_API.Config
                      .ForMember(dest => dest.BonusPoint, opt => opt.MapFrom(src =>
                         src.TypeOfPriority == TypeOfPriority.UT1 ? 2 :
                         src.TypeOfPriority == TypeOfPriority.UT2 ? 1 : 0));
-            })
-            {
-
-
-            };
+                // AdmissionGroup
+                config.CreateMap<AdmissionGroup, AdmissionGroupDTO>()
+                            .ForMember(dest => dest.SubjectGroupName, opt => opt.MapFrom(src => src.SubjectGroup.GetDescription())) 
+                            .ForMember(dest => dest.SubjectGroup, opt => opt.MapFrom(src => src.SubjectGroup.ToString()))
+                            .ForMember(dest => dest.Subject1, opt => opt.MapFrom(src => EnumExtensions.SplitSubjects(src.SubjectGroup.GetDescription()).ElementAtOrDefault(0))) // Get the first subject
+                            .ForMember(dest => dest.Subject2, opt => opt.MapFrom(src => EnumExtensions.SplitSubjects(src.SubjectGroup.GetDescription()).ElementAtOrDefault(1))) // Get the second subject
+                            .ForMember(dest => dest.Subject3, opt => opt.MapFrom(src => EnumExtensions.SplitSubjects(src.SubjectGroup.GetDescription()).ElementAtOrDefault(2))); // Get the third subject
+            });
+            
             return mapperConfig.CreateMapper();
+        }
+
+    }
+    public static class EnumExtensions
+    {
+        public static string GetDescription(this Enum value)
+        {
+            var field = value.GetType().GetField(value.ToString());
+            var attribute = field.GetCustomAttribute<DescriptionAttribute>();
+
+            return attribute != null ? attribute.Description : value.ToString();
+        }
+        public static List<string> SplitSubjects(string subjects)
+        {
+            return subjects.Split(new[] { '–' }, StringSplitOptions.RemoveEmptyEntries)
+                           .Select(s => s.Trim())
+                           .ToList();
         }
     }
 }

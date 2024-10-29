@@ -107,16 +107,16 @@ namespace Data.Migrations
                             Id = new Guid("b8c777a9-55b9-4b3d-860a-d7b56e4c24b7"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "cae34a7c-b802-4d53-bd41-9e09f742abc2",
+                            ConcurrencyStamp = "d61b0457-faf8-4749-bcea-46e03f730029",
                             Email = "AdminHaNoi@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Admin Hanoi",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMINHANOI@GMAIL.COM",
                             NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGjzwEyG3m7ybdwC7semuDCIc83jg/wAcGVtMRnd+itNbP81Qao8RR7LZAgErfm9hg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECocfILlpOoU/Y+fAbvrkLnAftnq7NUhxh0fsBGu8ZclrDyS9baHMh1SW31ffq3+7A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f223e458-bf6b-45d0-998e-64f83935d51e",
+                            SecurityStamp = "1f6db048-6bb7-4936-9d6c-b98aaa416354",
                             TwoFactorEnabled = false,
                             UserName = "Administrator",
                             isAccountActive = false
@@ -126,16 +126,16 @@ namespace Data.Migrations
                             Id = new Guid("5738248d-b40e-4332-9b9e-deb0abc8f8dd"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "6b279c5e-65d4-4dae-87b4-5b388210e956",
+                            ConcurrencyStamp = "90ba75d4-1d0d-4b11-877e-db4d5b0f965b",
                             Email = "AdmissionOfficer@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Admin Officer Hanoi",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMISSIONOFFICER@GMAIL.COM",
                             NormalizedUserName = "ADMISSIONOFFICER",
-                            PasswordHash = "AQAAAAEAACcQAAAAEO3+94WarZuCvwWeoamJ3nNCxuwrYpcrhk6XSUgEP57z4LvoVWtTtghtfX70uJ6j7Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENSj3+aRqhW6MyHingPjrp2X0e/WE6p80l/hXss49G6dTzd8pBMQeTV7Oeiz2Lv2zg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "60d00837-9729-45cb-b6b2-60673670a98c",
+                            SecurityStamp = "2c8b54b3-40cb-4ab9-9b15-90617c4dd41e",
                             TwoFactorEnabled = false,
                             UserName = "AdmissionOfficer",
                             isAccountActive = false
@@ -145,16 +145,16 @@ namespace Data.Migrations
                             Id = new Guid("17baf918-d5d2-4628-aad1-8a4926520676"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "24dc9a02-f774-4e32-a8f5-22c5dcb57502",
+                            ConcurrencyStamp = "40b1a282-77ce-4a48-8e87-fffe41aabd5d",
                             Email = "SchoolService@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "School Service Hanoi",
                             LockoutEnabled = false,
                             NormalizedEmail = "SCHOOLSERVICE@GMAIL.COM",
                             NormalizedUserName = "SCHOOLSERVICE",
-                            PasswordHash = "AQAAAAEAACcQAAAAECtllLo0sqqLjykc6/yK8/+ZSng7CrkEJvM0LBV/tbM9BUk9EZn0GaCclD5XQFcioQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOUs9KKUxA2qrI26s3Z2xQzfs72ZFRfgflw39gw0t9pU6BSDOCOmkckSOutaEMCThQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "766f6c76-7c42-40f7-b3d6-bb54dcaad648",
+                            SecurityStamp = "3d30daf3-74c0-41be-96d0-d1c1553c778b",
                             TwoFactorEnabled = false,
                             UserName = "SchoolService",
                             isAccountActive = false
@@ -164,16 +164,16 @@ namespace Data.Migrations
                             Id = new Guid("aa321fa2-d640-449f-9cf3-d5a14001aa3e"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "563b2d33-d467-4004-bdfc-438d0c478cde",
+                            ConcurrencyStamp = "2c8e3139-73c7-43cb-a356-10364bcfe412",
                             Email = "AdmissionCouncil@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Admission Council Hanoi",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMISSIONCOUNCIL@GMAIL.COM",
                             NormalizedUserName = "ADMISSIONCOUNCIL",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAmyVONwc47lNGH9GeDVPGqlSx0VIcJUsB88xiYxeebhajDSXGXVkIUt3049qDkrkA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJHNo3jH5BCmE9w+GDjaVx7AI5bzX8z5xiUnNADQqT2TxWuVhy5mXyARHJLJ6gRt2w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1e325f84-4b0d-4d3e-ad42-14b24aef3b54",
+                            SecurityStamp = "6f02f9ab-cfb8-4abf-a389-ca4e2ec0f838",
                             TwoFactorEnabled = false,
                             UserName = "AdmissionCouncil",
                             isAccountActive = false
@@ -183,19 +183,575 @@ namespace Data.Migrations
                             Id = new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "daaf6e71-2da7-4f2f-bceb-2831db701cd7",
+                            ConcurrencyStamp = "97840a64-547f-46dd-9407-2b21d362817a",
                             Email = "nguyenducanh01.57@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Nguyễn Đức Anh",
                             LockoutEnabled = false,
                             NormalizedEmail = "NGUYENDUCANH01.57@GMAIL.COM",
                             NormalizedUserName = "STUDENT",
-                            PasswordHash = "AQAAAAEAACcQAAAAEF+Rz6Ki/fUFeQSadaUFpIuKHH6VpsY49PsByoiMuxfm4tg4CY5ulD9IA2mIl0ZBbQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDbNGwySPZo9I47/s07JWXJxyTcR5t8wjS4Sa55qCTrurQPj3He7nTnosyvX+8DRKg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0112270f-9a46-4b73-85c0-045e4b3fae0d",
+                            SecurityStamp = "359910a3-d5d4-4e33-87d5-ace777cc8fbf",
                             TwoFactorEnabled = false,
                             UserName = "DucAnh",
                             isAccountActive = false
+                        });
+                });
+
+            modelBuilder.Entity("Data.Models.AdmissionGroup", b =>
+                {
+                    b.Property<int>("AdmissionGroupId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdmissionGroupId"), 1L, 1);
+
+                    b.Property<string>("CampusId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("StatusScore")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("StatusScoreAcademic")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("SubjectGroup")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("TotalScore")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("TotalScoreAcademic")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
+
+                    b.HasKey("AdmissionGroupId");
+
+                    b.HasIndex("CampusId");
+
+                    b.ToTable("AdmissionGroup", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            AdmissionGroupId = 1,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 0,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 2,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 1,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 3,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 2,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 4,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 3,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 5,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 4,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 6,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 5,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 7,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 6,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 8,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 7,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 9,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 8,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 10,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 9,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 11,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 10,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 12,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 11,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 13,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 18,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 14,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 19,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 15,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 20,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 16,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 21,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 17,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 22,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 18,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 24,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 19,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 25,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 20,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 26,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 21,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 27,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 22,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 28,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 23,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 29,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 24,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 30,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 25,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 31,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 26,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 32,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 27,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 33,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 28,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 34,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 29,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 35,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 30,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 36,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 31,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 37,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 32,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 38,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 33,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 40,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 34,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 41,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 35,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 42,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 36,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 43,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 37,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 44,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 38,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 45,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 39,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 50,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 40,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 51,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 41,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 52,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 42,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 53,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 43,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 54,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 44,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 55,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 45,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 56,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 46,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 57,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
+                        },
+                        new
+                        {
+                            AdmissionGroupId = 47,
+                            CampusId = "Hanoi",
+                            StatusScore = true,
+                            StatusScoreAcademic = true,
+                            SubjectGroup = 58,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m,
+                            Year = 2024
                         });
                 });
 
@@ -384,7 +940,7 @@ namespace Data.Migrations
                             BlogId = 1,
                             BlogCategoryId = 3,
                             Content = "Trăng tròn đã vươn cao tại Hoà Lạc, Rằm tháng Tám đã gần đi qua, các Cóc “ngoan xinh iu” của FPTU đã đi chơi Trung thu về chưa? \r\n🥮 Trung thu là dịp để chúng ta ngồi lại bên nhau, hàn huyên với gia đình, bạn bè và những người thân yêu. Hãy cùng tận hưởng Tết Trung Thu bên bánh dẻo, bánh nướng và thả mình vào ánh trăng lung linh để cảm nhận những khoảnh khắc tuyệt diệu, đáng quý này nhé!\r\n✨ Nhân dịp Tết Trung thu, xin gửi những lời chúc tốt đẹp nhất đến thầy cô, anh chị cán bộ trường Đại học FPT, cùng các bạn sinh viên thân yêu! Chúc mọi người một mùa trăng an yên hơn sau những ảnh hưởng lớn của bão vừa qua.\r\n 📌 VÀ ĐỪNG QUÊN lên dây cót, bật chế độ sẵn sàng đón chờ những sự kiện “cực kỳ hoành tráng” đang tới gần. Kết nối, khám phá và trải nghiệm hết mình trong kỳ fall này bạn nhé!",
-                            DateCreate = new DateTime(2024, 10, 30, 0, 42, 38, 737, DateTimeKind.Local).AddTicks(2348),
+                            DateCreate = new DateTime(2024, 10, 30, 3, 22, 14, 651, DateTimeKind.Local).AddTicks(8053),
                             Description = "Trăng tròn đã vươn cao tại Hoà Lạc, Rằm tháng Tám đã gần đi qua, các Cóc “ngoan xinh iu” của FPTU đã đi chơi Trung thu về chưa?",
                             Title = "Trăng tròn đã vươn cao tại Hoà Lạc"
                         },
@@ -393,7 +949,7 @@ namespace Data.Migrations
                             BlogId = 2,
                             BlogCategoryId = 3,
                             Content = "[𝐊𝐈𝐂𝐊 𝐎𝐅𝐅] - 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓\r\n🏞 Tại vùng đất Hola Campus, nơi mà tinh thần học tập, sáng tạo nghệ thuật và sức mạnh thể chất được đề cao luôn tồn tại một lực lượng quân chủng mang tên 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 - mang trong mình trọng trách quan trọng nhất đó là bảo vệ và phát triển lãnh thổ với ba đại đội: Cơ bắp, Biết tuốt và Bay bổng. \r\n✨ Vào năm 2024, những người đứng đầu của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 đã quyết định tổ chức một sự kiện, một ngày hội đặc biệt mang tên 𝐽𝑖𝑚𝑏𝑜 𝑈𝑛𝑖𝑡𝑦 𝐹𝑒𝑠𝑡. Sự kiện là dịp để các chiến sĩ của cả 3 Đại đội gặp mặt, giao lưu và học hỏi lẫn nhau không chỉ về tinh thần đồng đội mà còn được khám phá thêm những kỹ năng từ các đội khác. \r\n🌷 Đặc biệt, 𝐽𝑖𝑚𝑏𝑜 𝑈𝑛𝑖𝑡𝑦 𝐹𝑒𝑠𝑡 không chỉ giới hạn cho các chiến sĩ của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 mà còn mở cửa chào đón tất cả những người trẻ của vùng đất Hola Campus có quan tâm và muốn trải nghiệm môi trường, văn hóa đặc trưng của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 tham gia sự kiện. Nếu như bạn đã sẵn sàng với các chiến binh bước vào thế giới của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 cùng một tinh thần nhiệt huyết và tràn đầy năng lượng để vượt qua những thử thách đầy cam go thì hãy cùng chúng mình đón chờ hành trình sắp tới nhé!\r\n---------------------------------------\r\n🔥 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓 🔥\r\n◻️ Thời gian: 13h - 17h30 thứ hai, ngày 30/09/2024\r\n◻️ Địa điểm: Đường 30m, Đại học FPT Hà Nội \r\n---------------------------------------\r\nTHÔNG TIN LIÊN HỆ\r\n◻️ Trưởng ban Tổ chức: Kiều Bảo Lộc (0367488155)\r\n◻️ Trưởng ban HR: Nguyễn Ngọc Quỳnh (0865349170)",
-                            DateCreate = new DateTime(2024, 10, 30, 0, 42, 38, 737, DateTimeKind.Local).AddTicks(2364),
+                            DateCreate = new DateTime(2024, 10, 30, 3, 22, 14, 651, DateTimeKind.Local).AddTicks(8070),
                             Description = " 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 - mang trong mình trọng trách quan trọng nhất đó là bảo vệ và phát triển lãnh thổ với ba đại đội: Cơ bắp, Biết tuốt và Bay bổng.",
                             Title = "[𝐊𝐈𝐂𝐊 𝐎𝐅𝐅] - 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓"
                         },
@@ -402,7 +958,7 @@ namespace Data.Migrations
                             BlogId = 3,
                             BlogCategoryId = 2,
                             Content = "🌟[ORIENTATION WEEK]🌟 GIỚI THIỆU CÁC PHÒNG BAN CHỨC NĂNG TẠI ĐẠI HỌC FPT\r\n🔥Ngay lúc này đây, Phòng Hợp tác Quốc tế và Phát triển Cá nhân ICPDP đang có mặt tại Hội trường NIC cùng các tân sinh viên K20 tham gia Buổi học định hướng với chủ đề “Giới thiệu các phòng ban tại Đại học FPT”.\r\n🔥Tại buổi định hướng, các Cóc út đã được lắng nghe anh Lê Huy Hoàng - Cán bộ quản lý IC, đại diện phòng ICPDP chia sẻ về vai trò và chức năng của Phòng ICPDP, về các cơ hội học tập, trải nghiệm trong và ngoài nước dành cho tất cả các bạn sinh viên FPT.\r\n🫶Phòng ICPDP rất sẵn lòng đồng hành cùng các Cóc trong hành trình 4 năm thanh xuân tại Đại học FPT. Hy vọng chúng mình sẽ có thật nhiều kỷ niệm tại Đại học FPT Hà Nội. \r\n-----------------------------------------------------------\r\nMọi thắc mắc vui lòng liên hệ: Phòng Hợp tác Quốc tế và Phát triển cá nhân ICPDP FPTU",
-                            DateCreate = new DateTime(2024, 10, 30, 0, 42, 38, 737, DateTimeKind.Local).AddTicks(2366),
+                            DateCreate = new DateTime(2024, 10, 30, 3, 22, 14, 651, DateTimeKind.Local).AddTicks(8072),
                             Description = " Giới thiệu các phòng ban tại Đại học FPT",
                             Title = "🌟[ORIENTATION WEEK]🌟 GIỚI THIỆU CÁC PHÒNG BAN CHỨC NĂNG TẠI ĐẠI HỌC FPT"
                         },
@@ -411,7 +967,7 @@ namespace Data.Migrations
                             BlogId = 4,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 10, 30, 0, 42, 38, 737, DateTimeKind.Local).AddTicks(2368),
+                            DateCreate = new DateTime(2024, 10, 30, 3, 22, 14, 651, DateTimeKind.Local).AddTicks(8073),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -420,7 +976,7 @@ namespace Data.Migrations
                             BlogId = 5,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 10, 30, 0, 42, 38, 737, DateTimeKind.Local).AddTicks(2373),
+                            DateCreate = new DateTime(2024, 10, 30, 3, 22, 14, 651, DateTimeKind.Local).AddTicks(8075),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -429,7 +985,7 @@ namespace Data.Migrations
                             BlogId = 6,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 10, 30, 0, 42, 38, 737, DateTimeKind.Local).AddTicks(2375),
+                            DateCreate = new DateTime(2024, 10, 30, 3, 22, 14, 651, DateTimeKind.Local).AddTicks(8076),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -438,7 +994,7 @@ namespace Data.Migrations
                             BlogId = 7,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 10, 30, 0, 42, 38, 737, DateTimeKind.Local).AddTicks(2376),
+                            DateCreate = new DateTime(2024, 10, 30, 3, 22, 14, 651, DateTimeKind.Local).AddTicks(8078),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -447,7 +1003,7 @@ namespace Data.Migrations
                             BlogId = 8,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 10, 30, 0, 42, 38, 737, DateTimeKind.Local).AddTicks(2377),
+                            DateCreate = new DateTime(2024, 10, 30, 3, 22, 14, 651, DateTimeKind.Local).AddTicks(8079),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -456,7 +1012,7 @@ namespace Data.Migrations
                             BlogId = 9,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 10, 30, 0, 42, 38, 737, DateTimeKind.Local).AddTicks(2379),
+                            DateCreate = new DateTime(2024, 10, 30, 3, 22, 14, 651, DateTimeKind.Local).AddTicks(8081),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         });
@@ -1227,7 +1783,7 @@ namespace Data.Migrations
                             RequestID = 1,
                             AccountId = new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"),
                             CampusId = "Hanoi",
-                            DateRequest = new DateTime(2024, 10, 30, 0, 42, 38, 737, DateTimeKind.Local).AddTicks(2548),
+                            DateRequest = new DateTime(2024, 10, 30, 3, 22, 14, 651, DateTimeKind.Local).AddTicks(8324),
                             Description = "Em muốn chuyển ngành!",
                             FileReasonRequestChangeMajor = "file",
                             MajorNew = "HME",
@@ -1238,7 +1794,7 @@ namespace Data.Migrations
                             RequestID = 2,
                             AccountId = new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"),
                             CampusId = "Hanoi",
-                            DateRequest = new DateTime(2024, 10, 30, 0, 42, 38, 737, DateTimeKind.Local).AddTicks(2552),
+                            DateRequest = new DateTime(2024, 10, 30, 3, 22, 14, 651, DateTimeKind.Local).AddTicks(8329),
                             Description = "Em muốn chuyển ngành!",
                             FileReasonRequestChangeMajor = "file",
                             MajorNew = "HME",
@@ -1382,7 +1938,7 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            StudentConsultationId = new Guid("b735881f-8a18-4cf5-8831-b2b9b72dfce8"),
+                            StudentConsultationId = new Guid("a22836d5-3625-4c9c-bb1b-c35b7f3e29e2"),
                             CampusId = "Hanoi",
                             DateReceive = new DateTime(2024, 9, 18, 14, 30, 0, 0, DateTimeKind.Unspecified),
                             Email = "nguyenducanh01.57@gmail.com",
@@ -1394,7 +1950,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            StudentConsultationId = new Guid("e4608a42-d507-4020-882f-58ef5cebe3b1"),
+                            StudentConsultationId = new Guid("65576c48-9b57-4dad-b7e2-5f15eed68d6f"),
                             CampusId = "Hanoi",
                             DateReceive = new DateTime(2024, 9, 18, 14, 30, 0, 0, DateTimeKind.Unspecified),
                             Email = "nguyenducanh01.57@gmail.com",
@@ -1497,6 +2053,12 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("PriorityDetailsPriorityID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PriorityID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Province")
                         .HasColumnType("nvarchar(max)");
 
@@ -1532,23 +2094,26 @@ namespace Data.Migrations
 
                     b.HasIndex("CampusId");
 
+                    b.HasIndex("PriorityDetailsPriorityID");
+
                     b.ToTable("StudentProfile", (string)null);
 
                     b.HasData(
                         new
                         {
-                            SpId = new Guid("4055539e-e722-4338-8a9b-352ec234200d"),
+                            SpId = new Guid("a721c619-7b55-4796-884a-a1ff24a41ec2"),
                             AccountId = new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"),
                             CIAddress = "HCM",
-                            CIDate = new DateTime(2024, 10, 30, 0, 42, 38, 737, DateTimeKind.Local).AddTicks(2519),
+                            CIDate = new DateTime(2024, 10, 30, 3, 22, 14, 651, DateTimeKind.Local).AddTicks(8291),
                             CampusId = "Hanoi",
                             CitizenIentificationNumber = "038301012121",
-                            Dob = new DateTime(2024, 10, 30, 0, 42, 38, 737, DateTimeKind.Local).AddTicks(2523),
+                            Dob = new DateTime(2024, 10, 30, 3, 22, 14, 651, DateTimeKind.Local).AddTicks(8295),
                             EmailStudent = "nguyenducanh01.57@gmail.com",
                             Fullname = "Nguyễn Đức Anh",
                             Gender = true,
                             Major1 = "HAO",
-                            PhoneStudent = "0971341555"
+                            PhoneStudent = "0971341555",
+                            PriorityID = 0
                         });
                 });
 
@@ -2869,35 +3434,35 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("b8fd818f-63f1-49ee-bec5-f7b66cafbfca"),
-                            ConcurrencyStamp = "8c1272d7-8e21-489e-96f3-8bc8c21ac5a0",
+                            ConcurrencyStamp = "97520b98-fcf4-4b43-a37e-c3ae56ec0903",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("d2d63c5b-d09b-4828-8322-f18ba103fe86"),
-                            ConcurrencyStamp = "edf252fa-02d5-47c5-b546-23fdd50dee44",
+                            ConcurrencyStamp = "45e3cdc0-f289-4178-b2f9-c4724829e7ea",
                             Name = "Student",
                             NormalizedName = "STUDENT"
                         },
                         new
                         {
                             Id = new Guid("62378687-e16c-4d94-b767-de9f0bfe9498"),
-                            ConcurrencyStamp = "c067c005-f557-46d5-95d7-0732d5b8a4c0",
+                            ConcurrencyStamp = "ca63c412-6d66-4be3-9997-9cdca704ea25",
                             Name = "AdmissionOfficer",
                             NormalizedName = "ADMISSIONOFFICER"
                         },
                         new
                         {
                             Id = new Guid("602f7a5f-e0a7-4c00-9da0-a413bfcfab3a"),
-                            ConcurrencyStamp = "b10873b0-a9cb-4a76-bd2f-040f4da4af18",
+                            ConcurrencyStamp = "ec924e3f-13d7-4e6b-8ddc-f09925e4027e",
                             Name = "SchoolService",
                             NormalizedName = "SCHOOLSERVICE"
                         },
                         new
                         {
                             Id = new Guid("e5ec8836-e240-4bfc-9bbe-33f2cc7a404d"),
-                            ConcurrencyStamp = "c1c30030-7277-4614-af7f-c73986963fd5",
+                            ConcurrencyStamp = "f8f2b4b4-7796-4108-9e36-249267de5692",
                             Name = "AdmissionCouncil",
                             NormalizedName = "ADMISSIONCOUNCIL"
                         });
@@ -3042,6 +3607,17 @@ namespace Data.Migrations
                     b.Navigation("Campus");
                 });
 
+            modelBuilder.Entity("Data.Models.AdmissionGroup", b =>
+                {
+                    b.HasOne("Data.Models.Campus", "Campus")
+                        .WithMany("AdmissionGroups")
+                        .HasForeignKey("CampusId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Campus");
+                });
+
             modelBuilder.Entity("Data.Models.AdmissionInformation", b =>
                 {
                     b.HasOne("Data.Models.Campus", "Campus")
@@ -3166,9 +3742,15 @@ namespace Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Data.Models.PriorityDetail", "PriorityDetails")
+                        .WithMany()
+                        .HasForeignKey("PriorityDetailsPriorityID");
+
                     b.Navigation("Account");
 
                     b.Navigation("Campus");
+
+                    b.Navigation("PriorityDetails");
                 });
 
             modelBuilder.Entity("Data.Models.Subject", b =>
@@ -3259,6 +3841,8 @@ namespace Data.Migrations
             modelBuilder.Entity("Data.Models.Campus", b =>
                 {
                     b.Navigation("Accounts");
+
+                    b.Navigation("AdmissionGroups");
 
                     b.Navigation("AdmissionInformation");
 
