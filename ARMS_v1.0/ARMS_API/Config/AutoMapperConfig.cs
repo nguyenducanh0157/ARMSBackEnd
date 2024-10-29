@@ -51,6 +51,13 @@ namespace ARMS_API.Config
                 config.CreateMap<RequestChangeMajor, RequestChangeMajorDTO>()
                 .ForMember(dest => dest.MajorName, opt => opt.MapFrom(src => src.Major.MajorName))
                 .ForMember(dest => dest.MajorID, opt => opt.MapFrom(src => src.Major.MajorID));
+                config.CreateMap<PriorityDetail, PriorityDTO>()
+                     .ForMember(dest => dest.TypeOfPriority, opt => opt.MapFrom(src =>
+                        src.TypeOfPriority == TypeOfPriority.UT1 ? "Ưu tiên 1" :
+                        src.TypeOfPriority == TypeOfPriority.UT2 ? "Ưu tiên 2" : "Không xác định"))
+                     .ForMember(dest => dest.BonusPoint, opt => opt.MapFrom(src =>
+                        src.TypeOfPriority == TypeOfPriority.UT1 ? 2 :
+                        src.TypeOfPriority == TypeOfPriority.UT2 ? 1 : 0));
             })
             {
 
