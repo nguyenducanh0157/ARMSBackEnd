@@ -26,7 +26,8 @@ namespace Data.Models
         public string? FullnameParents { get; set; }
         public string? PhoneParents { get; set; }
         public string CampusId { get; set; }
-        public string? Major { get; set; }
+        public string? Major1 { get; set; }
+        public string? Major2 { get; set; }
         public int? YearOfGraduation { get; set; }
         public string? SchoolName { get; set; }
         public bool? RecipientResults { get; set; } // true học sinh nhận 
@@ -35,6 +36,7 @@ namespace Data.Models
         public string? ImgCitizenIdentification1 { get; set; }
         public string? ImgCitizenIdentification2 { get; set; }
         public string? ImgDiploma { get; set; } // ảnh bằng
+        public string? Imgpriority { get; set; } // ảnh bằng chứng xác nhận ưu tiên
         public string? ImgAcademicTranscript1 { get; set; } // kỳ 1_10 | lop10  | lop12 | Kỳ 1_11 | Lop10  |
         public string? ImgAcademicTranscript2 { get; set; } // kỳ 2_10 | lop11  |       | Kỳ 2_11 | Lop11  |
         public string? ImgAcademicTranscript3 { get; set; } // kỳ 1_11 | lop12  |       | Kỳ 1_12 | HK1 12 |
@@ -43,6 +45,7 @@ namespace Data.Models
         
         public virtual TypeOfDiploma? TypeOfDiploma { get; set; }// loại bằng
         public virtual TypeOfTranscript? TypeOfTranscript { get; set; }// loại học bạ
+
         public Guid? AccountId { get; set; }
         public virtual Account? Account { get; set; }
         public virtual Campus? Campus { get; set; }

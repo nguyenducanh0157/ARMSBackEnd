@@ -53,6 +53,7 @@ namespace Data.ArmsContext
             modelBuilder.ApplyConfiguration(new StudentProfileConfiguration());
             modelBuilder.ApplyConfiguration(new AdmissionInformationConfiguration());
             modelBuilder.ApplyConfiguration(new RequestChangeMajorConfiguration());
+            modelBuilder.ApplyConfiguration(new PriorityDetailConfiguration());
 
             modelBuilder.Entity<IdentityUserLogin<Guid>>(entity =>
             {
@@ -116,6 +117,7 @@ namespace Data.ArmsContext
             new AdmissionInformationSeeder(modelBuilder).Seed();
             new StudentProfileSeeder(modelBuilder).Seed();
             new RequestChangeMajorSeeder(modelBuilder).Seed();
+            new PriorityDetailSeeder(modelBuilder).Seed();
         }
         #region DbSet
         public DbSet<Account> Accounts { get; set; }
@@ -131,6 +133,7 @@ namespace Data.ArmsContext
         public DbSet<StudentProfile> StudentProfiles { get; set; }
         public DbSet<AdmissionInformation> AdmissionInformations { get; set; }
         public DbSet<RequestChangeMajor> RequestChangeMajors { get; set; }
+        public DbSet<PriorityDetail> PriorityDetails { get; set; }
 
         #endregion
     }

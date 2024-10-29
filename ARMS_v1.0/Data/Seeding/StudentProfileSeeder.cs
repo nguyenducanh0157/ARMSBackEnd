@@ -30,7 +30,7 @@ namespace Data.Seeding
                     CIDate = DateTime.Now,
                     CIAddress ="HCM",
                     EmailStudent = "nguyenducanh01.57@gmail.com",
-                    Major = "HAO",
+                    Major1 = "HAO",
                     PhoneStudent ="0971341555",
                     Dob = DateTime.Now,
                     Gender = true,
