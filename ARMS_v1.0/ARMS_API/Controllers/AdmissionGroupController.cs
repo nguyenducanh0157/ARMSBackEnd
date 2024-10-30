@@ -32,6 +32,20 @@ namespace ARMS_API.Controllers
                 return BadRequest();
             }
         }
+        [HttpGet("get-admission/{id}")]
+        public async Task<IActionResult> GetAdmissionGroupById(int id)
+        {
+            try
+            {
+                AdmissionGroup response = await _admissionGroupService.GetAdmissionGroupByIdAsync(id);
+                AdmissionGroupDTO responeResult = _mapper.Map<AdmissionGroupDTO>(response);
+                return Ok(responeResult);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
         [HttpGet("get-admission-score-academic")]
         public async Task<IActionResult> GetAdmissionScoreAcademic(string CampusId)
         {

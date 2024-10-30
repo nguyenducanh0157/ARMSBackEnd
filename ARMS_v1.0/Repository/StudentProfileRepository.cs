@@ -107,5 +107,37 @@ namespace Repository.StudentProfileRepo
                 throw;
             }
         }
+        public async Task<List<StudentProfile>> GetRegisterAdmission(string CampusId)
+        {
+            try
+            {
+                var RegisterAdmission = await _context.StudentProfiles
+                    .Include(x=>x.Campus)
+                    .Include(x => x.AcademicTranscripts)
+                    .Include(x => x.PriorityDetail)
+                    .Where(x => x.CampusId == CampusId)
+                    .OrderByDescending(x => x.PriorityDetailPriorityID)
+                    .OrderBy(x => x.TimeRegister)
+                    .ToListAsync();
+
+                return RegisterAdmission;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public async Task<StudentProfile?> GetStudentProfileBySpIdAsync(Guid id)
+        {
+            var studentProfile = await _context.StudentProfiles
+                .Include(x => x.Campus)
+                .Include(x => x.AcademicTranscripts)
+                .Include(x => x.PriorityDetail)
+                .FirstOrDefaultAsync(x => x.SpId == id);
+
+            return studentProfile;
+        }
+
     }
 }

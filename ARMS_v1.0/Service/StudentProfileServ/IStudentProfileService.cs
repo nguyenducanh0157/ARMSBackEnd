@@ -14,5 +14,7 @@ namespace Service.StudentProfileServ
         Task<bool> isExistEmailStudent(string email);
         Task<bool> isExistPhoneNumberStudent(string phonenumber);
         Task<StudentProfile> GetExistCCCDStudent(string CID);
+        Task<List<StudentProfile>> GetRegisterAdmission(string CampusId);
+        Task<StudentProfile?> GetStudentProfileBySpIdAsync(Guid id);
     }
 }

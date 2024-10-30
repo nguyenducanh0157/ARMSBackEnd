@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(ArmsDbContext))]
-    [Migration("20241030090104_MG-CreateDB")]
-    partial class MGCreateDB
+    [Migration("20241030104453_MG-StudentProfile-update-1")]
+    partial class MGStudentProfileupdate1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,7 +52,7 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            ATId = new Guid("e884f15d-2b87-443d-bb45-bf0bd19986a2"),
+                            ATId = new Guid("c20c30d5-1249-4865-bed6-a0133333d9ef"),
                             SpId = new Guid("41a2ad7d-1af6-464e-bbf4-0d18ae664851"),
                             SubjectName = "Toán",
                             SubjectPoint = 9m,
@@ -60,7 +60,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ATId = new Guid("aa00897b-112f-419d-80b8-7fb3cf13520d"),
+                            ATId = new Guid("75079555-a728-42a3-9d8e-5d8592dce42b"),
                             SpId = new Guid("41a2ad7d-1af6-464e-bbf4-0d18ae664851"),
                             SubjectName = "Văn",
                             SubjectPoint = 9m,
@@ -68,8 +68,32 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ATId = new Guid("6ad442aa-24bd-4d74-93c3-828dc0af2d3a"),
+                            ATId = new Guid("17dcd0fc-7c03-4b48-985f-ebc8c207bacd"),
                             SpId = new Guid("41a2ad7d-1af6-464e-bbf4-0d18ae664851"),
+                            SubjectName = "Anh",
+                            SubjectPoint = 9m,
+                            TypeOfAcademicTranscript = 2
+                        },
+                        new
+                        {
+                            ATId = new Guid("5616f974-ef24-43dd-ae5d-01d67fc60760"),
+                            SpId = new Guid("795b3e70-1312-4889-8352-a696757d1730"),
+                            SubjectName = "Toán",
+                            SubjectPoint = 9m,
+                            TypeOfAcademicTranscript = 0
+                        },
+                        new
+                        {
+                            ATId = new Guid("a3a418d3-b1f7-407c-b7c5-c8e5a44b643e"),
+                            SpId = new Guid("795b3e70-1312-4889-8352-a696757d1730"),
+                            SubjectName = "Văn",
+                            SubjectPoint = 9m,
+                            TypeOfAcademicTranscript = 1
+                        },
+                        new
+                        {
+                            ATId = new Guid("a67b3343-7af3-45f7-88c2-280b74440616"),
+                            SpId = new Guid("795b3e70-1312-4889-8352-a696757d1730"),
                             SubjectName = "Anh",
                             SubjectPoint = 9m,
                             TypeOfAcademicTranscript = 2
@@ -161,16 +185,16 @@ namespace Data.Migrations
                             Id = new Guid("b8c777a9-55b9-4b3d-860a-d7b56e4c24b7"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "fc453a66-2d3c-46a0-9671-5a71392dd214",
+                            ConcurrencyStamp = "35fe0019-57db-4927-99d6-f4d859c73366",
                             Email = "AdminHaNoi@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Admin Hanoi",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMINHANOI@GMAIL.COM",
                             NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAELx/ekR7x1aT1f7SeWXDdc6aAvN7HDIJMu2g/rCm8irZ3NQN6T7asaHwo8rkIGaCQA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEF55f2I0b0yxPm0oKYt3L6cC45OmlBdiiXNc/wjPvnBJ7iosSrggYxnEFvMtbi8vuQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9f69c158-a908-4e0e-987c-b396aa7427fe",
+                            SecurityStamp = "c0484e23-e771-423a-924f-6c6d2503297b",
                             TwoFactorEnabled = false,
                             UserName = "Administrator",
                             isAccountActive = false
@@ -180,16 +204,16 @@ namespace Data.Migrations
                             Id = new Guid("5738248d-b40e-4332-9b9e-deb0abc8f8dd"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "4e4bb77f-0261-42f7-81c4-86c53cb15b14",
+                            ConcurrencyStamp = "8562a953-5fd6-4858-9ce8-283e6d68589a",
                             Email = "AdmissionOfficer@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Admin Officer Hanoi",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMISSIONOFFICER@GMAIL.COM",
                             NormalizedUserName = "ADMISSIONOFFICER",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIpxtpy4knTDiAz+tBh+Fq4AbEFxGyLJpqFi1J9pMhyBMTlsg+9boUQdSj4be51WmA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPvDJzlIfh7U4eaughd+N2wEBWkFVIN1vYtZxfCHgKMhRBmNAAkqpQyEWbZZB4fvxQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c1e20e65-b3c9-4bf1-af46-557426c1ca14",
+                            SecurityStamp = "cc6c4127-1f75-442e-969a-42445c4552c8",
                             TwoFactorEnabled = false,
                             UserName = "AdmissionOfficer",
                             isAccountActive = false
@@ -199,16 +223,16 @@ namespace Data.Migrations
                             Id = new Guid("17baf918-d5d2-4628-aad1-8a4926520676"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "cc410e1b-d349-4a5b-8cfd-20e34a53175f",
+                            ConcurrencyStamp = "f1872e60-3dd3-46c2-a092-6a1d7643dbf7",
                             Email = "SchoolService@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "School Service Hanoi",
                             LockoutEnabled = false,
                             NormalizedEmail = "SCHOOLSERVICE@GMAIL.COM",
                             NormalizedUserName = "SCHOOLSERVICE",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIWU8w0kIejomf5KcNLKSHb8a6UP/1zT2W0BvaKh666aVYNHMpLLuIWXHm8kZ8TxHA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEF4OkqOKjCKZ26/yZ5sJ6P/CU5UP9wCeytGG8hGSx01lBH7ixdDJx6POZBTgSFLnBw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "99551603-7040-4c47-8333-c1faebe07720",
+                            SecurityStamp = "22a3f075-1c00-4315-948e-463b0f36a3b9",
                             TwoFactorEnabled = false,
                             UserName = "SchoolService",
                             isAccountActive = false
@@ -218,16 +242,16 @@ namespace Data.Migrations
                             Id = new Guid("aa321fa2-d640-449f-9cf3-d5a14001aa3e"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "e3b0fa02-c96e-46dc-a86a-565528626fe6",
+                            ConcurrencyStamp = "ea09c4b4-330b-4551-bed5-58d3b505558e",
                             Email = "AdmissionCouncil@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Admission Council Hanoi",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMISSIONCOUNCIL@GMAIL.COM",
                             NormalizedUserName = "ADMISSIONCOUNCIL",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFQqylcFjJvJGonwBtrEm8DEGuGnMurbHkJC7zB+6Qzdf6oeiNB6xLhmMj3yfPC9Zw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKYdEged4bJmBuApvjqUNMIzGo55zSfgz43KAS3YleZcCGJdz73/imRoMulvtrJa5A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6ab76718-ca61-4bf5-98b9-a0000c02a595",
+                            SecurityStamp = "807a6226-464c-40fc-82d2-7f1528b71e54",
                             TwoFactorEnabled = false,
                             UserName = "AdmissionCouncil",
                             isAccountActive = false
@@ -237,16 +261,16 @@ namespace Data.Migrations
                             Id = new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "9fad5b46-92c0-4773-9782-524a160a7d32",
+                            ConcurrencyStamp = "ba426350-1ec4-4c73-838b-5447c495c6d7",
                             Email = "nguyenducanh01.57@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Nguyễn Đức Anh",
                             LockoutEnabled = false,
                             NormalizedEmail = "NGUYENDUCANH01.57@GMAIL.COM",
                             NormalizedUserName = "STUDENT",
-                            PasswordHash = "AQAAAAEAACcQAAAAEE9L2dAnWjGsZCMuUsjx4WU5+TpYPPqZz7E0r6Baq5Jc/QtRidnA3jdfU9pRupYtlg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAhIdD9TSddliZkuuuVgFSefiA9DPxZYZlxj70yvQjka8mToHmoP6t3xKvHUebYeHA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "36e25477-c1a9-4be4-8e4b-ff525fc18473",
+                            SecurityStamp = "b8e1ddd3-ae64-4046-b283-422e72516029",
                             TwoFactorEnabled = false,
                             UserName = "DucAnh",
                             isAccountActive = false
@@ -994,7 +1018,7 @@ namespace Data.Migrations
                             BlogId = 1,
                             BlogCategoryId = 3,
                             Content = "Trăng tròn đã vươn cao tại Hoà Lạc, Rằm tháng Tám đã gần đi qua, các Cóc “ngoan xinh iu” của FPTU đã đi chơi Trung thu về chưa? \r\n🥮 Trung thu là dịp để chúng ta ngồi lại bên nhau, hàn huyên với gia đình, bạn bè và những người thân yêu. Hãy cùng tận hưởng Tết Trung Thu bên bánh dẻo, bánh nướng và thả mình vào ánh trăng lung linh để cảm nhận những khoảnh khắc tuyệt diệu, đáng quý này nhé!\r\n✨ Nhân dịp Tết Trung thu, xin gửi những lời chúc tốt đẹp nhất đến thầy cô, anh chị cán bộ trường Đại học FPT, cùng các bạn sinh viên thân yêu! Chúc mọi người một mùa trăng an yên hơn sau những ảnh hưởng lớn của bão vừa qua.\r\n 📌 VÀ ĐỪNG QUÊN lên dây cót, bật chế độ sẵn sàng đón chờ những sự kiện “cực kỳ hoành tráng” đang tới gần. Kết nối, khám phá và trải nghiệm hết mình trong kỳ fall này bạn nhé!",
-                            DateCreate = new DateTime(2024, 10, 30, 16, 1, 3, 514, DateTimeKind.Local).AddTicks(4263),
+                            DateCreate = new DateTime(2024, 10, 30, 17, 44, 52, 118, DateTimeKind.Local).AddTicks(709),
                             Description = "Trăng tròn đã vươn cao tại Hoà Lạc, Rằm tháng Tám đã gần đi qua, các Cóc “ngoan xinh iu” của FPTU đã đi chơi Trung thu về chưa?",
                             Title = "Trăng tròn đã vươn cao tại Hoà Lạc"
                         },
@@ -1003,7 +1027,7 @@ namespace Data.Migrations
                             BlogId = 2,
                             BlogCategoryId = 3,
                             Content = "[𝐊𝐈𝐂𝐊 𝐎𝐅𝐅] - 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓\r\n🏞 Tại vùng đất Hola Campus, nơi mà tinh thần học tập, sáng tạo nghệ thuật và sức mạnh thể chất được đề cao luôn tồn tại một lực lượng quân chủng mang tên 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 - mang trong mình trọng trách quan trọng nhất đó là bảo vệ và phát triển lãnh thổ với ba đại đội: Cơ bắp, Biết tuốt và Bay bổng. \r\n✨ Vào năm 2024, những người đứng đầu của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 đã quyết định tổ chức một sự kiện, một ngày hội đặc biệt mang tên 𝐽𝑖𝑚𝑏𝑜 𝑈𝑛𝑖𝑡𝑦 𝐹𝑒𝑠𝑡. Sự kiện là dịp để các chiến sĩ của cả 3 Đại đội gặp mặt, giao lưu và học hỏi lẫn nhau không chỉ về tinh thần đồng đội mà còn được khám phá thêm những kỹ năng từ các đội khác. \r\n🌷 Đặc biệt, 𝐽𝑖𝑚𝑏𝑜 𝑈𝑛𝑖𝑡𝑦 𝐹𝑒𝑠𝑡 không chỉ giới hạn cho các chiến sĩ của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 mà còn mở cửa chào đón tất cả những người trẻ của vùng đất Hola Campus có quan tâm và muốn trải nghiệm môi trường, văn hóa đặc trưng của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 tham gia sự kiện. Nếu như bạn đã sẵn sàng với các chiến binh bước vào thế giới của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 cùng một tinh thần nhiệt huyết và tràn đầy năng lượng để vượt qua những thử thách đầy cam go thì hãy cùng chúng mình đón chờ hành trình sắp tới nhé!\r\n---------------------------------------\r\n🔥 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓 🔥\r\n◻️ Thời gian: 13h - 17h30 thứ hai, ngày 30/09/2024\r\n◻️ Địa điểm: Đường 30m, Đại học FPT Hà Nội \r\n---------------------------------------\r\nTHÔNG TIN LIÊN HỆ\r\n◻️ Trưởng ban Tổ chức: Kiều Bảo Lộc (0367488155)\r\n◻️ Trưởng ban HR: Nguyễn Ngọc Quỳnh (0865349170)",
-                            DateCreate = new DateTime(2024, 10, 30, 16, 1, 3, 514, DateTimeKind.Local).AddTicks(4272),
+                            DateCreate = new DateTime(2024, 10, 30, 17, 44, 52, 118, DateTimeKind.Local).AddTicks(719),
                             Description = " 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 - mang trong mình trọng trách quan trọng nhất đó là bảo vệ và phát triển lãnh thổ với ba đại đội: Cơ bắp, Biết tuốt và Bay bổng.",
                             Title = "[𝐊𝐈𝐂𝐊 𝐎𝐅𝐅] - 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓"
                         },
@@ -1012,7 +1036,7 @@ namespace Data.Migrations
                             BlogId = 3,
                             BlogCategoryId = 2,
                             Content = "🌟[ORIENTATION WEEK]🌟 GIỚI THIỆU CÁC PHÒNG BAN CHỨC NĂNG TẠI ĐẠI HỌC FPT\r\n🔥Ngay lúc này đây, Phòng Hợp tác Quốc tế và Phát triển Cá nhân ICPDP đang có mặt tại Hội trường NIC cùng các tân sinh viên K20 tham gia Buổi học định hướng với chủ đề “Giới thiệu các phòng ban tại Đại học FPT”.\r\n🔥Tại buổi định hướng, các Cóc út đã được lắng nghe anh Lê Huy Hoàng - Cán bộ quản lý IC, đại diện phòng ICPDP chia sẻ về vai trò và chức năng của Phòng ICPDP, về các cơ hội học tập, trải nghiệm trong và ngoài nước dành cho tất cả các bạn sinh viên FPT.\r\n🫶Phòng ICPDP rất sẵn lòng đồng hành cùng các Cóc trong hành trình 4 năm thanh xuân tại Đại học FPT. Hy vọng chúng mình sẽ có thật nhiều kỷ niệm tại Đại học FPT Hà Nội. \r\n-----------------------------------------------------------\r\nMọi thắc mắc vui lòng liên hệ: Phòng Hợp tác Quốc tế và Phát triển cá nhân ICPDP FPTU",
-                            DateCreate = new DateTime(2024, 10, 30, 16, 1, 3, 514, DateTimeKind.Local).AddTicks(4273),
+                            DateCreate = new DateTime(2024, 10, 30, 17, 44, 52, 118, DateTimeKind.Local).AddTicks(720),
                             Description = " Giới thiệu các phòng ban tại Đại học FPT",
                             Title = "🌟[ORIENTATION WEEK]🌟 GIỚI THIỆU CÁC PHÒNG BAN CHỨC NĂNG TẠI ĐẠI HỌC FPT"
                         },
@@ -1021,7 +1045,7 @@ namespace Data.Migrations
                             BlogId = 4,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 10, 30, 16, 1, 3, 514, DateTimeKind.Local).AddTicks(4273),
+                            DateCreate = new DateTime(2024, 10, 30, 17, 44, 52, 118, DateTimeKind.Local).AddTicks(721),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -1030,7 +1054,7 @@ namespace Data.Migrations
                             BlogId = 5,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 10, 30, 16, 1, 3, 514, DateTimeKind.Local).AddTicks(4274),
+                            DateCreate = new DateTime(2024, 10, 30, 17, 44, 52, 118, DateTimeKind.Local).AddTicks(721),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -1039,7 +1063,7 @@ namespace Data.Migrations
                             BlogId = 6,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 10, 30, 16, 1, 3, 514, DateTimeKind.Local).AddTicks(4275),
+                            DateCreate = new DateTime(2024, 10, 30, 17, 44, 52, 118, DateTimeKind.Local).AddTicks(722),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -1048,7 +1072,7 @@ namespace Data.Migrations
                             BlogId = 7,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 10, 30, 16, 1, 3, 514, DateTimeKind.Local).AddTicks(4276),
+                            DateCreate = new DateTime(2024, 10, 30, 17, 44, 52, 118, DateTimeKind.Local).AddTicks(723),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -1057,7 +1081,7 @@ namespace Data.Migrations
                             BlogId = 8,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 10, 30, 16, 1, 3, 514, DateTimeKind.Local).AddTicks(4276),
+                            DateCreate = new DateTime(2024, 10, 30, 17, 44, 52, 118, DateTimeKind.Local).AddTicks(723),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -1066,7 +1090,7 @@ namespace Data.Migrations
                             BlogId = 9,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 10, 30, 16, 1, 3, 514, DateTimeKind.Local).AddTicks(4277),
+                            DateCreate = new DateTime(2024, 10, 30, 17, 44, 52, 118, DateTimeKind.Local).AddTicks(724),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         });
@@ -1837,7 +1861,7 @@ namespace Data.Migrations
                             RequestID = 1,
                             AccountId = new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"),
                             CampusId = "Hanoi",
-                            DateRequest = new DateTime(2024, 10, 30, 16, 1, 3, 514, DateTimeKind.Local).AddTicks(4408),
+                            DateRequest = new DateTime(2024, 10, 30, 17, 44, 52, 118, DateTimeKind.Local).AddTicks(863),
                             Description = "Em muốn chuyển ngành!",
                             FileReasonRequestChangeMajor = "file",
                             MajorNew = "HME",
@@ -1848,7 +1872,7 @@ namespace Data.Migrations
                             RequestID = 2,
                             AccountId = new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"),
                             CampusId = "Hanoi",
-                            DateRequest = new DateTime(2024, 10, 30, 16, 1, 3, 514, DateTimeKind.Local).AddTicks(4411),
+                            DateRequest = new DateTime(2024, 10, 30, 17, 44, 52, 118, DateTimeKind.Local).AddTicks(866),
                             Description = "Em muốn chuyển ngành!",
                             FileReasonRequestChangeMajor = "file",
                             MajorNew = "HME",
@@ -1992,7 +2016,7 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            StudentConsultationId = new Guid("d35f2d0b-7f03-42ff-a3f9-93f65ee5d258"),
+                            StudentConsultationId = new Guid("2efa31dc-b3bc-4fb9-8304-5b7d5b738cf6"),
                             CampusId = "Hanoi",
                             DateReceive = new DateTime(2024, 9, 18, 14, 30, 0, 0, DateTimeKind.Unspecified),
                             Email = "nguyenducanh01.57@gmail.com",
@@ -2004,7 +2028,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            StudentConsultationId = new Guid("536443af-5629-4982-b750-aaa848a9757a"),
+                            StudentConsultationId = new Guid("eb36eb92-495e-4d27-a336-b139bae9dfad"),
                             CampusId = "Hanoi",
                             DateReceive = new DateTime(2024, 9, 18, 14, 30, 0, 0, DateTimeKind.Unspecified),
                             Email = "nguyenducanh01.57@gmail.com",
@@ -2097,6 +2121,9 @@ namespace Data.Migrations
                     b.Property<string>("Nation")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool?>("PermanentAddress")
                         .HasColumnType("bit");
 
@@ -2108,9 +2135,6 @@ namespace Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("PriorityDetailPriorityID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PriorityID")
                         .HasColumnType("int");
 
                     b.Property<string>("Province")
@@ -2127,6 +2151,9 @@ namespace Data.Migrations
 
                     b.Property<string>("StudentCode")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("TimeRegister")
+                        .HasColumnType("datetime2");
 
                     b.Property<int?>("TypeOfDiploma")
                         .HasColumnType("int");
@@ -2161,15 +2188,36 @@ namespace Data.Migrations
                             SpId = new Guid("41a2ad7d-1af6-464e-bbf4-0d18ae664851"),
                             AccountId = new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"),
                             CIAddress = "HCM",
-                            CIDate = new DateTime(2024, 10, 30, 16, 1, 3, 514, DateTimeKind.Local).AddTicks(4375),
+                            CIDate = new DateTime(2024, 10, 30, 17, 44, 52, 118, DateTimeKind.Local).AddTicks(816),
                             CampusId = "Hanoi",
                             CitizenIentificationNumber = "038301012121",
-                            Dob = new DateTime(2024, 10, 30, 16, 1, 3, 514, DateTimeKind.Local).AddTicks(4377),
+                            Dob = new DateTime(2024, 10, 30, 17, 44, 52, 118, DateTimeKind.Local).AddTicks(818),
                             EmailStudent = "nguyenducanh01.57@gmail.com",
                             Fullname = "Nguyễn Đức Anh",
                             Gender = true,
                             Major1 = "HAO",
                             PhoneStudent = "0971341555",
+                            PriorityDetailPriorityID = 1,
+                            TimeRegister = new DateTime(2024, 10, 30, 17, 44, 52, 118, DateTimeKind.Local).AddTicks(819),
+                            TypeOfDiploma = 5,
+                            TypeofStatus = 0
+                        },
+                        new
+                        {
+                            SpId = new Guid("795b3e70-1312-4889-8352-a696757d1730"),
+                            CIAddress = "HCM",
+                            CIDate = new DateTime(2024, 10, 30, 17, 44, 52, 118, DateTimeKind.Local).AddTicks(822),
+                            CampusId = "Hanoi",
+                            CitizenIentificationNumber = "038301010101",
+                            Dob = new DateTime(2024, 10, 30, 17, 44, 52, 118, DateTimeKind.Local).AddTicks(823),
+                            EmailStudent = "hoaithu1707.25@gmail.com",
+                            Fullname = "Truong Thi Thu",
+                            Gender = true,
+                            Major1 = "HAO",
+                            PhoneStudent = "0971341554",
+                            PriorityDetailPriorityID = 1,
+                            TimeRegister = new DateTime(2024, 10, 30, 17, 44, 52, 118, DateTimeKind.Local).AddTicks(824),
+                            TypeOfDiploma = 5,
                             TypeofStatus = 0
                         });
                 });
@@ -3491,35 +3539,35 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("b8fd818f-63f1-49ee-bec5-f7b66cafbfca"),
-                            ConcurrencyStamp = "07aa443c-ae6c-4d7f-a173-bde356bf42d7",
+                            ConcurrencyStamp = "d9f75ca7-3168-42db-872a-54ba4d0b8d48",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("d2d63c5b-d09b-4828-8322-f18ba103fe86"),
-                            ConcurrencyStamp = "169082b0-d436-4bb7-927a-ae09b2ed32a8",
+                            ConcurrencyStamp = "bf3dbfb0-d3b7-4c95-b920-d84bffe37aa8",
                             Name = "Student",
                             NormalizedName = "STUDENT"
                         },
                         new
                         {
                             Id = new Guid("62378687-e16c-4d94-b767-de9f0bfe9498"),
-                            ConcurrencyStamp = "13189709-9295-48af-a602-ec88abfcf3b9",
+                            ConcurrencyStamp = "4ea8ecee-e127-4dd0-8297-9e08c58bad29",
                             Name = "AdmissionOfficer",
                             NormalizedName = "ADMISSIONOFFICER"
                         },
                         new
                         {
                             Id = new Guid("602f7a5f-e0a7-4c00-9da0-a413bfcfab3a"),
-                            ConcurrencyStamp = "626d5c9c-0438-4e59-853f-781a9abb52ce",
+                            ConcurrencyStamp = "64e7d734-b990-4d0b-8dbf-1e9ddc829859",
                             Name = "SchoolService",
                             NormalizedName = "SCHOOLSERVICE"
                         },
                         new
                         {
                             Id = new Guid("e5ec8836-e240-4bfc-9bbe-33f2cc7a404d"),
-                            ConcurrencyStamp = "1f1f0968-4228-4d8b-b44b-259a8117bb3e",
+                            ConcurrencyStamp = "b77f6ca5-a5f7-4636-adb7-f1389fa13687",
                             Name = "AdmissionCouncil",
                             NormalizedName = "ADMISSIONCOUNCIL"
                         });
@@ -3812,7 +3860,8 @@ namespace Data.Migrations
 
                     b.HasOne("Data.Models.PriorityDetail", "PriorityDetail")
                         .WithMany("StudentProfiles")
-                        .HasForeignKey("PriorityDetailPriorityID");
+                        .HasForeignKey("PriorityDetailPriorityID")
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("Account");
 

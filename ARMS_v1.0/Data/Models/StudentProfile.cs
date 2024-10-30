@@ -42,10 +42,11 @@ namespace Data.Models
         public string? ImgAcademicTranscript3 { get; set; } // kỳ 1_11 | lop12  |       | Kỳ 1_12 | HK1 12 |
         public string? ImgAcademicTranscript4 { get; set; } // kỳ 2_11 |        |       |         |        |
         public string? ImgAcademicTranscript5 { get; set; } // kỳ 1_12 |        |       |         |        |
-        
+        public DateTime TimeRegister { get; set; }
+        public string? Note { get; set; }
         public virtual TypeOfDiploma? TypeOfDiploma { get; set; }// loại bằng
         public virtual TypeOfTranscript? TypeOfTranscript { get; set; }// loại học bạ
-        public int? PriorityID { get; set; }
+        public int? PriorityDetailPriorityID { get; set; }
         public virtual PriorityDetail? PriorityDetail { get; set; }// loại điểm ưu tiên
         public virtual TypeofStatus? TypeofStatus { get; set; }
 

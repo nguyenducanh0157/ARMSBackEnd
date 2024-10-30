@@ -37,6 +37,12 @@ namespace Service.StudentProfileServ
         public async Task<StudentProfile> GetExistCCCDStudent(string CID)
             => await _studentProfileRepository.GetExistCCCDStudent(CID);
 
+        public async Task<List<StudentProfile>> GetRegisterAdmission(string CampusId)
+            => await _studentProfileRepository.GetRegisterAdmission(CampusId);
+
+        public async Task<StudentProfile?> GetStudentProfileBySpIdAsync(Guid id)
+            => await _studentProfileRepository.GetStudentProfileBySpIdAsync(id);
+
         public async Task<bool> isExistCCCDStudent(string CID) => await _studentProfileRepository.isExistCCCDStudent(CID);
 
         public async Task<bool> isExistEmailStudent(string email) => await _studentProfileRepository.isExistEmailStudent(email);

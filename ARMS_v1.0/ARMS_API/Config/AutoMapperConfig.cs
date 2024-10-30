@@ -76,7 +76,11 @@ namespace ARMS_API.Config
                 config.CreateMap<AcademicTranscriptDTO, AcademicTranscript>();
 
                 config.CreateMap<RegisterAdmissionProfileDTO, StudentProfile>();
-                config.CreateMap<StudentProfile, RegisterAdmissionProfileDTO>()
+                config.CreateMap<StudentProfile, RegisterAdmissionProfileDTO>();
+
+                config.CreateMap<AdmissionProfile_AO_DTO, StudentProfile>();
+                config.CreateMap<StudentProfile, AdmissionProfile_AO_DTO>()
+
                .ForMember(dest => dest.CampusName, opt => opt.MapFrom(src => src.Campus.CampusName));
                 config.CreateMap<PriorityDetail, PriorityDetailDTO>();
                 config.CreateMap<PriorityDetailDTO, PriorityDetail>();

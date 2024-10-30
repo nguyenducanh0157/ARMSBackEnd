@@ -58,5 +58,19 @@ namespace Repository
                 throw;
             }
         }
+        public async Task<AdmissionGroup> GetAdmissionGroupByIdAsync(int id)
+        {
+            try
+            {
+                AdmissionGroup AdmissionGroups = await _context.AdmissionGroups
+                    .SingleOrDefaultAsync(x => x.AdmissionGroupId == id);
+                return AdmissionGroups;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
     }
 }
