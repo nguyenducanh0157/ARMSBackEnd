@@ -17,7 +17,7 @@ namespace Repository.StudentProfileRepo
         {
             try
             {
-                await _context.StudentProfiles.AddAsync(StudentProfile);
+                await _context.StudentProfiles.AddRangeAsync(StudentProfile);
                 _context.SaveChanges();
             }
             catch (Exception)
@@ -64,6 +64,24 @@ namespace Repository.StudentProfileRepo
                 var sf = await _context.StudentProfiles.FirstOrDefaultAsync(x => x.PhoneStudent.Equals(phonenumber));
                 if (sf == null) { return true; }
                 return false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public async Task<int> CountAdmissionMajor(string majorId, string CampusId)
+        {
+            try
+            {
+                var majorAdmission = await _context.StudentProfiles
+                    .Where(x=>(x.Major1 == majorId 
+                    || x.Major2== majorId) && x.CampusId == CampusId 
+                    &&( x.TypeofStatus == TypeofStatus.PassMajor1 || x.TypeofStatus == TypeofStatus.PassMajor2))
+                    .ToListAsync();
+
+                return majorAdmission.Count();
             }
             catch (Exception)
             {

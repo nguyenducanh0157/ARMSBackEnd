@@ -38,7 +38,7 @@ namespace Data.Models
         public string? ImgDiploma { get; set; } // ảnh bằng
         public string? Imgpriority { get; set; } // ảnh bằng chứng xác nhận ưu tiên
         public string? ImgAcademicTranscript1 { get; set; } // kỳ 1_10 | lop10  | lop12 | Kỳ 1_11 | Lop10  |
-        public string? ImgAcademicTranscript2 { get; set; } // kỳ 2_10 | lop11  |       | Kỳ 2_11 | Lop11  |
+        public string? ImgAcademicTranscript2 { get; set; } // kỳ 2_10 | lop11  |        | Kỳ 2_11 | Lop11  |
         public string? ImgAcademicTranscript3 { get; set; } // kỳ 1_11 | lop12  |       | Kỳ 1_12 | HK1 12 |
         public string? ImgAcademicTranscript4 { get; set; } // kỳ 2_11 |        |       |         |        |
         public string? ImgAcademicTranscript5 { get; set; } // kỳ 1_12 |        |       |         |        |
@@ -47,10 +47,11 @@ namespace Data.Models
         public virtual TypeOfTranscript? TypeOfTranscript { get; set; }// loại học bạ
         public int PriorityID { get; set; }
         public virtual PriorityDetail? PriorityDetails { get; set; }// loại điểm ưu tiên
+        public virtual TypeofStatus? TypeofStatus { get; set; }
 
         public Guid? AccountId { get; set; }
         public virtual Account? Account { get; set; }
         public virtual Campus? Campus { get; set; }
-
+        public virtual ICollection<AcademicTranscript>? AcademicTranscripts { get; set; }
     }
 }

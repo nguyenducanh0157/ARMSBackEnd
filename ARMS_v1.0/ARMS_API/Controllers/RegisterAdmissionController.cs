@@ -35,13 +35,11 @@ namespace ARMS_API.Controllers
                     return BadRequest(new ResponseViewModel()
                     {
                         Status = false,
-                        Message = "Vui lòng hoàn thành khoản thanh toán"
+                        Message = "Vui lòng hoàn thành khoản thanh toán!"
                     });
                 }
                 //mapper
                 StudentProfile studentProfile = _mapper.Map<StudentProfile>(registerAdmissionProfileDTO);
-
-
                 //add new
                 await _studentProfileService.AddStudentProfile(studentProfile);
                 return Ok(new ResponseViewModel()

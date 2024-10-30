@@ -22,7 +22,7 @@ namespace Data.Seeding
             modelBuilder.Entity<StudentProfile>().HasData(
                 new StudentProfile()
                 {
-                    SpId = Guid.NewGuid(),
+                    SpId = Guid.Parse("41A2AD7D-1AF6-464E-BBF4-0D18AE664851"),
                     AccountId = Guid.Parse("2F36AD81-47C3-4194-9AF8-BA19300695AA"),
                     Fullname ="Nguyễn Đức Anh",
                     CampusId ="Hanoi",
@@ -34,10 +34,38 @@ namespace Data.Seeding
                     PhoneStudent ="0971341555",
                     Dob = DateTime.Now,
                     Gender = true,
-                    
+                    TypeofStatus = TypeofStatus.Inprocess
                 }
                 );
+            modelBuilder.Entity<AcademicTranscript>().HasData(
+                new AcademicTranscript()
+                {
+                    ATId = Guid.NewGuid(),
+                    SpId = Guid.Parse("41A2AD7D-1AF6-464E-BBF4-0D18AE664851"),
+                    SubjectName ="Toán",
+                    SubjectPoint = 9,
+                    TypeOfAcademicTranscript = TypeOfAcademicTranscript.Mon1_C1,
 
+                },
+                new AcademicTranscript()
+                {
+                    ATId = Guid.NewGuid(),
+                    SpId = Guid.Parse("41A2AD7D-1AF6-464E-BBF4-0D18AE664851"),
+                    SubjectName = "Văn",
+                    SubjectPoint = 9,
+                    TypeOfAcademicTranscript = TypeOfAcademicTranscript.Mon2_C1,
+
+                },
+                new AcademicTranscript()
+                {
+                    ATId = Guid.NewGuid(),
+                    SpId = Guid.Parse("41A2AD7D-1AF6-464E-BBF4-0D18AE664851"),
+                    SubjectName = "Anh",
+                    SubjectPoint = 9,
+                    TypeOfAcademicTranscript = TypeOfAcademicTranscript.Mon3_C1,
+
+                }
+                );
         }
     }
 }

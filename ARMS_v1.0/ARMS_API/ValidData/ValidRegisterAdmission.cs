@@ -26,15 +26,15 @@ namespace ARMS_API.ValidData
             //email student
             if (string.IsNullOrEmpty(registerAdmissionProfileDTO.EmailStudent)) throw new Exception("Không được để trống email của học sinh!");
             if (!_userInput.IsValidEmail(registerAdmissionProfileDTO.EmailStudent)) throw new Exception("Email học sinh không hợp lệ!");
-            if (await _studentProfileService.isExistEmailStudent(registerAdmissionProfileDTO.EmailStudent)) throw new Exception("Email đã được đăng ký!");
+            //if (await _studentProfileService.isExistEmailStudent(registerAdmissionProfileDTO.EmailStudent)) throw new Exception("Email đã được đăng ký!");
             // phone number
             if (string.IsNullOrEmpty(registerAdmissionProfileDTO.PhoneStudent)) throw new Exception("Không được để trống số điện thoại của học sinh!");
             if (!_userInput.IsValidPhoneNumber(registerAdmissionProfileDTO.PhoneStudent)) throw new Exception("Số điện thoại học sinh không hợp lệ!");
-            if (await _studentProfileService.isExistEmailStudent(registerAdmissionProfileDTO.PhoneStudent)) throw new Exception("Số điện thoại đã được đăng ký!");
+            //if (await _studentProfileService.isExistEmailStudent(registerAdmissionProfileDTO.PhoneStudent)) throw new Exception("Số điện thoại đã được đăng ký!");
             // CID
             if (registerAdmissionProfileDTO.CitizenIentificationNumber == null) throw new Exception("Không được để trống số căn cước công dân!");
             if (!_userInput.IsValidCCCD(registerAdmissionProfileDTO.CitizenIentificationNumber)) throw new Exception("Định dạng số căn cước công dân không đúng!");
-            if (await _studentProfileService.isExistEmailStudent(registerAdmissionProfileDTO.CitizenIentificationNumber)) throw new Exception("Số căn cước công dân đã được đăng ký!");
+            //if (await _studentProfileService.isExistEmailStudent(registerAdmissionProfileDTO.CitizenIentificationNumber)) throw new Exception("Số căn cước công dân đã được đăng ký!");
             //CI address
             if (string.IsNullOrEmpty(registerAdmissionProfileDTO.CIAddress)) throw new Exception("Nơi cấp căn cước không được để trống!");
             // CI date
@@ -53,7 +53,7 @@ namespace ARMS_API.ValidData
             // campus
             if (string.IsNullOrEmpty(registerAdmissionProfileDTO.CampusId)) throw new Exception("Vui lòng chọn campus!");
             // major
-            if (string.IsNullOrEmpty(registerAdmissionProfileDTO.Major)) throw new Exception("Vui lòng chọn ngành học!");
+            if (string.IsNullOrEmpty(registerAdmissionProfileDTO.Major1) || string.IsNullOrEmpty(registerAdmissionProfileDTO.Major2)) throw new Exception("Vui lòng chọn ngành học!");
             // YearOfGraduation
             if (registerAdmissionProfileDTO.YearOfGraduation == null) throw new Exception("Vui lòng nhập năm tốt nghiệp!");
             // SchoolName

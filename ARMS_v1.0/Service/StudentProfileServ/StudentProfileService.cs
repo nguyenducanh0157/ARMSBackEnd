@@ -20,9 +20,18 @@ namespace Service.StudentProfileServ
         }
         public async Task AddStudentProfile(StudentProfile StudentProfile)
         {
+            try
+            {
+
             Guid id = Guid.NewGuid();
             StudentProfile.SpId = id;
             await _studentProfileRepository.AddStudentProfile(StudentProfile);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public async Task<bool> isExistCCCDStudent(string CID) => await _studentProfileRepository.isExistCCCDStudent(CID);

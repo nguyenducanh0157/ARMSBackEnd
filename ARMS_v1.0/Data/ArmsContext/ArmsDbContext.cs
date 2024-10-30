@@ -55,6 +55,7 @@ namespace Data.ArmsContext
             modelBuilder.ApplyConfiguration(new RequestChangeMajorConfiguration());
             modelBuilder.ApplyConfiguration(new PriorityDetailConfiguration());
             modelBuilder.ApplyConfiguration(new AdmissionGroupConfiguration());
+            modelBuilder.ApplyConfiguration(new AcademicTranscriptConfiguration());
 
             modelBuilder.Entity<IdentityUserLogin<Guid>>(entity =>
             {
@@ -137,6 +138,7 @@ namespace Data.ArmsContext
         public DbSet<RequestChangeMajor> RequestChangeMajors { get; set; }
         public DbSet<PriorityDetail> PriorityDetails { get; set; }
         public DbSet<AdmissionGroup> AdmissionGroups { get; set; }
+        public DbSet<AcademicTranscript> AcademicTranscripts { get; set; }
         #endregion
     }
 
