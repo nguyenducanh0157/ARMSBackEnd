@@ -54,5 +54,6 @@ namespace Data.Models
         public virtual Account? Account { get; set; }
         public virtual Campus? Campus { get; set; }
         public virtual ICollection<AcademicTranscript>? AcademicTranscripts { get; set; }
+        public virtual ICollection<PayFeeAdmission>? PayFeeAdmissions { get; set; }
     }
 }

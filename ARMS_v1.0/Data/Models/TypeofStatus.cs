@@ -13,11 +13,10 @@ namespace Data.Models
         PassMajor2,//2
         FailMajor1,//3
         FailMajor2,//4
-        SuccessProfileRegister,
-        SuccessProfileAdmission,
-        WaitingPaymentRegister,//5
-        WaitingPaymentAdmission,//6
-        InProcessAdmission,//7
-        Done//8
+        SuccessProfileRegister,//5
+        SuccessProfileAdmission,//6
+        WaitingPaymentAdmission,//7
+        InProcessAdmission,//8
+        Done//9
     }
 }

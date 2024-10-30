@@ -1,4 +1,5 @@
 ﻿using Data.DTO;
+using Data.Models;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace Service.VnPaySer
 {
     public interface IVnPayService
     {
-        string CreatePaymentUrl(HttpContext context, VnPaymentRequestModel model);
-        VnPaymentResponseModel PaymentExecute(IQueryCollection collections);
+        string CreatePaymentUrl(HttpContext context, Guid codePayment, decimal fee, DateTime dateCreate);
+        PayFeeAdmission PaymentExecute(IQueryCollection collections);
     }
 }

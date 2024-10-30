@@ -32,8 +32,10 @@ namespace ARMS_API.Controllers
             {
                 //check data
                 _validInput.InputAddRegisterAdmission(registerAdmissionProfileDTO);
+                // payment
+
                 // check status pay fee
-                if (registerAdmissionProfileDTO.PayFee == null || registerAdmissionProfileDTO.PayFee == false)
+                if (registerAdmissionProfileDTO.PayFeeAdmission.TransactionStatus !="00")
                 {
                     return BadRequest(new ResponseViewModel()
                     {

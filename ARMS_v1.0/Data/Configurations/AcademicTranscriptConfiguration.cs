@@ -19,10 +19,13 @@ namespace Data.Configurations
             builder.Property(x => x.SubjectName).IsRequired();
             builder.Property(x => x.SubjectPoint).IsRequired();
             builder.Property(x => x.TypeOfAcademicTranscript).IsRequired();
-
             #region config relation
-            builder.HasOne(x => x.StudentProfile).WithMany(x => x.AcademicTranscripts).HasForeignKey(x => x.SpId).OnDelete(DeleteBehavior.NoAction);
+            builder.HasOne(x => x.StudentProfile)
+                   .WithMany(c => c.AcademicTranscripts)
+                   .HasForeignKey(x => x.SpId);
+
             #endregion
+
         }
     }
 }

@@ -56,6 +56,7 @@ namespace Data.ArmsContext
             modelBuilder.ApplyConfiguration(new PriorityDetailConfiguration());
             modelBuilder.ApplyConfiguration(new AdmissionGroupConfiguration());
             modelBuilder.ApplyConfiguration(new AcademicTranscriptConfiguration());
+            modelBuilder.ApplyConfiguration(new PayFeeAdmissionConfiguration());
 
             modelBuilder.Entity<IdentityUserLogin<Guid>>(entity =>
             {
@@ -139,6 +140,7 @@ namespace Data.ArmsContext
         public DbSet<PriorityDetail> PriorityDetails { get; set; }
         public DbSet<AdmissionGroup> AdmissionGroups { get; set; }
         public DbSet<AcademicTranscript> AcademicTranscripts { get; set; }
+        public DbSet<PayFeeAdmission> PayFeeAdmissions { get; set; }
         #endregion
     }
 

@@ -41,7 +41,6 @@ namespace Data.DTO
         public string? ImgAcademicTranscript3 { get; set; } // kỳ 1_11 | lop12  |       | Kỳ 1_12 | HK1 12 |
         public string? ImgAcademicTranscript4 { get; set; } // kỳ 2_11 |        |       |         |        |
         public string? ImgAcademicTranscript5 { get; set; } // kỳ 1_12 |        |       |         |        |
-        public bool? PayFee { get; set; } // trạng thái thanh toán
         public virtual TypeOfDiploma TypeOfDiploma { get; set; }// loại bằng
         public virtual TypeOfTranscript? TypeOfTranscript { get; set; }// loại học bạ
         public virtual TypeofStatus? TypeofStatus { get; set; }
@@ -51,11 +50,13 @@ namespace Data.DTO
         // view
         public string? CampusName { get; set; }
         public virtual PriorityDetailDTO? PriorityDetail { get; set; }// loại điểm ưu tiên
+        public virtual PayFeeAdmissionDTO? PayFeeAdmission { get; set; }
     }
     public class AcademicTranscriptDTO
     {
         public string SubjectName { get; set; }
         public decimal SubjectPoint { get; set; }
+        public bool isMajor1 { get; set; }
         public TypeOfAcademicTranscript TypeOfAcademicTranscript { get; set; }
     }
     public class RequestSearchRegisterAdmissionProfileDTO
@@ -68,6 +69,22 @@ namespace Data.DTO
         public string PriorityName { get; set; }
         public string PriorityDescription { get; set; }
         public TypeOfPriority TypeOfPriority { get; set; }
+    }
+    public class PayFeeAdmissionDTO
+    {
+        public string TxnRef { get; set; }
+        public decimal Amount { get; set; }
+        public string BankCode { get; set; }
+        public string BankTranNo { get; set; }
+        public string CardType { get; set; }
+        public string OrderInfo { get; set; }
+        public DateTime PayDate { get; set; }
+        public string ResponseCode { get; set; }
+        public string TmnCode { get; set; }
+        public string TransactionNo { get; set; }
+        public string TransactionStatus { get; set; }
+        public string SecureHash { get; set; }
+        public bool isFeeRegister { get; set; }
     }
     public class AdmissionProfile_AO_DTO
     {

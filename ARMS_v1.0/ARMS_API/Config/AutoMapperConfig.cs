@@ -85,6 +85,9 @@ namespace ARMS_API.Config
                 config.CreateMap<PriorityDetail, PriorityDetailDTO>();
                 config.CreateMap<PriorityDetailDTO, PriorityDetail>();
 
+                config.CreateMap<PayFeeAdmission, PayFeeAdmissionDTO>();
+                config.CreateMap<PayFeeAdmissionDTO, PayFeeAdmission>();
+
             });
             
             return mapperConfig.CreateMapper();

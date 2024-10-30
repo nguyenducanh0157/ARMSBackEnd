@@ -7,6 +7,8 @@ using System.Text;
 using Data.DTO;
 using Service;
 using Service.VnPaySer;
+using Service.AdmissionInformationSer;
+using Data.Models;
 
 namespace ARMS_API.Controllers
 {
@@ -15,20 +17,26 @@ namespace ARMS_API.Controllers
     public class VNPayController : ControllerBase
     {
         private readonly IVnPayService _vnPayService;
+        private readonly IAdmissionInformationService _admissionInformationService;
 
-        public VNPayController(IVnPayService vnPayService)
+        public VNPayController(IVnPayService vnPayService,IAdmissionInformationService admissionInformationService)
         {
             _vnPayService = vnPayService;
+            _admissionInformationService = admissionInformationService;
         }
-        [HttpPost("pay")]
-        public IActionResult CreatePayment([FromBody] VnPaymentRequestModel request)
+        [HttpPost("pay-register-admission")]
+        public async Task<IActionResult> CreatePayment([FromBody] VnPaymentRequestModel request)
         {
+            Guid codePay = Guid.NewGuid();
+            AdmissionInformation AI = await _admissionInformationService.GetAdmissionInformation(request.Campus);
+            decimal fee = AI.FeeRegister;
+            DateTime timecreate = DateTime.UtcNow;
             if (request == null)
             {
-                return BadRequest("Invalid payment request");
+                return BadRequest("Invalid payment request!");
             }
 
-            var paymentUrl = _vnPayService.CreatePaymentUrl(HttpContext, request);
+            var paymentUrl = _vnPayService.CreatePaymentUrl(HttpContext, codePay, fee, timecreate);
 
             return Ok(new { PaymentUrl = paymentUrl });
         }
@@ -41,11 +49,11 @@ namespace ARMS_API.Controllers
             if (checkrespone.Success == true)
             {
 
-                return Ok(new { message = "Giao dịch thành công", checkrespone.OrderId, checkrespone.TransactionId });
+                return Ok(new { message = "Giao dịch thành công", checkrespone});
             }
             else
             {
-                return BadRequest(new { message = "Giao dịch thất bại", checkrespone.VnPayResponseCode });
+                return BadRequest(new { message = "Giao dịch thất bại", checkrespone.TransactionStatus });
             }
         }
 
