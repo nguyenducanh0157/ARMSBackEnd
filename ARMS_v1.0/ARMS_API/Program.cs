@@ -1,4 +1,5 @@
 ﻿using ARMS_API.Config;
+using ARMS_API.Helper;
 using ARMS_API.ValidData;
 using Data.ArmsContext;
 using Data.DTO;
@@ -121,6 +122,7 @@ builder.Services.AddHttpsRedirection(options =>
 });
 
 //Config Repository 
+builder.Services.AddSingleton<TokenHealper>();
 builder.Services.AddScoped<UserInput>();
 builder.Services.AddScoped<ValidStudentConsultation>();
 builder.Services.AddScoped<ValidRegisterAdmission>();

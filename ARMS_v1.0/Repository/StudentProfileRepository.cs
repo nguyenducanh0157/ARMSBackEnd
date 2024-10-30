@@ -138,6 +138,15 @@ namespace Repository.StudentProfileRepo
 
             return studentProfile;
         }
+        public async Task<StudentProfile?> GetStudentProfileBySpCIIdAsync(string id)
+        {
+            var studentProfile = await _context.StudentProfiles
+                .Include(x => x.Campus)
+                .Include(x => x.AcademicTranscripts)
+                .Include(x => x.PriorityDetail)
+                .FirstOrDefaultAsync(x => x.CitizenIentificationNumber == id);
 
+            return studentProfile;
+        }
     }
 }

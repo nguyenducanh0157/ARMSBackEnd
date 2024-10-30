@@ -40,6 +40,9 @@ namespace Service.StudentProfileServ
         public async Task<List<StudentProfile>> GetRegisterAdmission(string CampusId)
             => await _studentProfileRepository.GetRegisterAdmission(CampusId);
 
+        public async Task<StudentProfile?> GetStudentProfileBySpCIIdAsync(string id)
+            => await _studentProfileRepository.GetStudentProfileBySpCIIdAsync(id);
+
         public async Task<StudentProfile?> GetStudentProfileBySpIdAsync(Guid id)
             => await _studentProfileRepository.GetStudentProfileBySpIdAsync(id);
 
