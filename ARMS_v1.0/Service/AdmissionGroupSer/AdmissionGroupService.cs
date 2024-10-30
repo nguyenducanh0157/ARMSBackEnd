@@ -16,6 +16,10 @@ namespace Service.AdmissionGroupSer
         {
             _admissionGroupRepository = new AdmissionGroupRepository(context);
         }
+
+        public Task<List<AdmissionGroup>> GetAdmissionGroupAsync(string campusId, int year)
+            => _admissionGroupRepository.GetAdmissionGroupAsync(campusId,year);
+
         public Task<List<AdmissionGroup>> GetAdmissionGroupScoreAcademicAsync(string campusId) 
             => _admissionGroupRepository.GetAdmissionGroupScoreAcademicAsync(campusId);
 

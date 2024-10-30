@@ -12,5 +12,6 @@ namespace Data.Models
         public string PriorityName { get; set; }
         public string PriorityDescription { get; set; }
         public TypeOfPriority TypeOfPriority { get; set; }
+        public virtual ICollection<StudentProfile> StudentProfiles { get; set; }
     }
 }

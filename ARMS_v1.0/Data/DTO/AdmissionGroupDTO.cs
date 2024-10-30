@@ -16,4 +16,15 @@ namespace Data.DTO
         public string Subject2 { get; set; }
         public string Subject3 { get; set; }
     }
+    public class AdmissionGroup_AC_DTO
+    {
+        public int AdmissionGroupId { get; set; }
+        public int Year { get; set; }
+        public decimal TotalScore { get; set; }
+        public decimal TotalScoreAcademic { get; set; }
+        public bool StatusScore { get; set; }
+        public bool StatusScoreAcademic { get; set; }
+        public SubjectGroup SubjectGroup { get; set; }
+        public string SubjectGroupName { get; set; }
+    }
 }

@@ -14,6 +14,7 @@ namespace ARMS_API.Config
             {
 
                 config.CreateMap<Campus, CampusDTO>();
+               
                 //major
                 config.CreateMap<Major, MajorDTO>();
                 config.CreateMap<Major_Manage_DTO, Major>();
@@ -38,12 +39,7 @@ namespace ARMS_API.Config
                 config.CreateMap<StudentConsultation, StudentConsultation_AO_DTO>()
                 .ForMember(dest => dest.MajorName, opt => opt.MapFrom(src => src.Major.MajorName));
                 config.CreateMap<StudentConsultation_AO_DTO, StudentConsultation>();
-                //register admission
-                config.CreateMap<StudentProfile, RegisterAdmissionProfileDTO>();
-                config.CreateMap<RegisterAdmissionProfileDTO, StudentProfile>();
-
-                config.CreateMap<AcademicTranscript, AcademicTranscriptDTO>();
-                config.CreateMap<AcademicTranscriptDTO, AcademicTranscript>();
+                
                 //admission time
                 config.CreateMap<AdmissionTime, AdmissionTime_Admission_DTO>();
                 config.CreateMap<AdmissionTime_Admission_DTO, AdmissionTime>();
@@ -71,6 +67,20 @@ namespace ARMS_API.Config
                             .ForMember(dest => dest.Subject1, opt => opt.MapFrom(src => EnumExtensions.SplitSubjects(src.SubjectGroup.GetDescription()).ElementAtOrDefault(0))) // Get the first subject
                             .ForMember(dest => dest.Subject2, opt => opt.MapFrom(src => EnumExtensions.SplitSubjects(src.SubjectGroup.GetDescription()).ElementAtOrDefault(1))) // Get the second subject
                             .ForMember(dest => dest.Subject3, opt => opt.MapFrom(src => EnumExtensions.SplitSubjects(src.SubjectGroup.GetDescription()).ElementAtOrDefault(2))); // Get the third subject
+
+                config.CreateMap<AdmissionGroup, AdmissionGroup_AC_DTO>()
+                .ForMember(dest => dest.SubjectGroupName, opt => opt.MapFrom(src => src.SubjectGroup.GetDescription()));
+                config.CreateMap<AdmissionGroup_AC_DTO, AdmissionGroup>();
+                //register admission
+                config.CreateMap<AcademicTranscript, AcademicTranscriptDTO>();
+                config.CreateMap<AcademicTranscriptDTO, AcademicTranscript>();
+
+                config.CreateMap<RegisterAdmissionProfileDTO, StudentProfile>();
+                config.CreateMap<StudentProfile, RegisterAdmissionProfileDTO>()
+               .ForMember(dest => dest.CampusName, opt => opt.MapFrom(src => src.Campus.CampusName));
+                config.CreateMap<PriorityDetail, PriorityDetailDTO>();
+                config.CreateMap<PriorityDetailDTO, PriorityDetail>();
+
             });
             
             return mapperConfig.CreateMapper();

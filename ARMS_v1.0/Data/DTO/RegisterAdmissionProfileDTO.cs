@@ -45,14 +45,28 @@ namespace Data.DTO
         public virtual TypeOfDiploma TypeOfDiploma { get; set; }// loại bằng
         public virtual TypeOfTranscript? TypeOfTranscript { get; set; }// loại học bạ
         public virtual TypeofStatus? TypeofStatus { get; set; }
-        public int PriorityID { get; set; }
+        public int PriorityDetailPriorityID { get; set; }
         public virtual ICollection<AcademicTranscriptDTO>? AcademicTranscripts { get; set; }
+
+        // view
+        public string? CampusName { get; set; }
+        public virtual PriorityDetailDTO? PriorityDetail { get; set; }// loại điểm ưu tiên
     }
     public class AcademicTranscriptDTO
     {
-        public Guid ATId { get; set; }
         public string SubjectName { get; set; }
         public decimal SubjectPoint { get; set; }
         public TypeOfAcademicTranscript TypeOfAcademicTranscript { get; set; }
+    }
+    public class RequestSearchRegisterAdmissionProfileDTO
+    {
+        public string? CitizenIentificationNumber { get; set; }
+    }
+    public class PriorityDetailDTO
+    {
+        public int PriorityID { get; set; }
+        public string PriorityName { get; set; }
+        public string PriorityDescription { get; set; }
+        public TypeOfPriority TypeOfPriority { get; set; }
     }
 }

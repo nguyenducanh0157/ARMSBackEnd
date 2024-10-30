@@ -13,5 +13,6 @@ namespace Service.StudentProfileServ
         Task<bool> isExistCCCDStudent(string CID);
         Task<bool> isExistEmailStudent(string email);
         Task<bool> isExistPhoneNumberStudent(string phonenumber);
+        Task<StudentProfile> GetExistCCCDStudent(string CID);
     }
 }

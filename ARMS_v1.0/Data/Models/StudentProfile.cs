@@ -45,8 +45,8 @@ namespace Data.Models
         
         public virtual TypeOfDiploma? TypeOfDiploma { get; set; }// loại bằng
         public virtual TypeOfTranscript? TypeOfTranscript { get; set; }// loại học bạ
-        public int PriorityID { get; set; }
-        public virtual PriorityDetail? PriorityDetails { get; set; }// loại điểm ưu tiên
+        public int? PriorityID { get; set; }
+        public virtual PriorityDetail? PriorityDetail { get; set; }// loại điểm ưu tiên
         public virtual TypeofStatus? TypeofStatus { get; set; }
 
         public Guid? AccountId { get; set; }

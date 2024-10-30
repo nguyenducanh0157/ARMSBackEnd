@@ -34,6 +34,9 @@ namespace Service.StudentProfileServ
             }
         }
 
+        public async Task<StudentProfile> GetExistCCCDStudent(string CID)
+            => await _studentProfileRepository.GetExistCCCDStudent(CID);
+
         public async Task<bool> isExistCCCDStudent(string CID) => await _studentProfileRepository.isExistCCCDStudent(CID);
 
         public async Task<bool> isExistEmailStudent(string email) => await _studentProfileRepository.isExistEmailStudent(email);

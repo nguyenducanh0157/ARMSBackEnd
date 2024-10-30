@@ -43,5 +43,20 @@ namespace Repository
                 throw;
             }
         }
+        public async Task<List<AdmissionGroup>> GetAdmissionGroupAsync(string campusId, int year)
+        {
+            try
+            {
+                List<AdmissionGroup> AdmissionGroups = await _context.AdmissionGroups
+                    .Where(x => x.CampusId == campusId && x.Year==year)
+                    .ToListAsync();
+                return AdmissionGroups;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
     }
 }

@@ -41,6 +41,24 @@ namespace Repository.StudentProfileRepo
                 throw;
             }
         }
+        public async Task<StudentProfile> GetExistCCCDStudent(string CID)
+        {
+            try
+            {
+                var sf = await _context.StudentProfiles
+                    .Include(x=>x.AcademicTranscripts)
+                    .Include(x=>x.Campus)
+                    .Include(x => x.PriorityDetail)
+                    .FirstOrDefaultAsync(x => x.CitizenIentificationNumber.Equals(CID));
+                
+                return sf;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
         public async Task<bool> isExistEmailStudent(string email)
         {
