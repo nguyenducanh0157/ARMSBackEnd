@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Nb8vLXzwQxpiy4ZpzNzT789DtmVV8Bgfl7Yu31ME7ZF1jonuXu/dkBVXkzBe0SFPbGwGi0njGaWAaU/A1eFRvQ==",
+  "dgSpecHash": "+tRRwmF+2fn404+MWAyYQnkDluUl6NLGJaViKZdiS9NVbRwkCS5wecnC2EbOTGU0nfkaV4gu7EOUUcrA/h6r0Q==",
   "success": true,
-  "projectFilePath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\Data.csproj",
+  "projectFilePath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\-ASUS-\\.nuget\\packages\\bouncycastle.cryptography\\2.4.0\\bouncycastle.cryptography.2.4.0.nupkg.sha512",
     "C:\\Users\\-ASUS-\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

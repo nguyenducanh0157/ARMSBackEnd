@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\Data.csproj": {}
+    "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj": {}
   },
   "projects": {
-    "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\Data.csproj": {
+    "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\Data.csproj",
+        "projectUniqueName": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\Data.csproj",
+        "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj",
         "packagesPath": "C:\\Users\\-ASUS-\\.nuget\\packages\\",
-        "outputPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\obj\\",
+        "outputPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\-ASUS-\\AppData\\Roaming\\NuGet\\NuGet.Config",

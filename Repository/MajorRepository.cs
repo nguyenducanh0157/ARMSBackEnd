@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Repository.MajorRepo
@@ -19,9 +20,12 @@ namespace Repository.MajorRepo
             try
             {
                 List<Major> majors = await _context.Majors
+                    .Include(x => x.AdmissionDetailForMajors)
+                    .Include(x => x.TypeAdmissions)
                     .Where(x => x.CampusId.Equals(campusId) && x.Status==true)
                     .ToListAsync();
                 return majors;
+
             }
             catch (Exception ex)
             {

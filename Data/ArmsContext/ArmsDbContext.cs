@@ -54,9 +54,9 @@ namespace Data.ArmsContext
             modelBuilder.ApplyConfiguration(new AdmissionInformationConfiguration());
             modelBuilder.ApplyConfiguration(new RequestChangeMajorConfiguration());
             modelBuilder.ApplyConfiguration(new PriorityDetailConfiguration());
-            modelBuilder.ApplyConfiguration(new AdmissionGroupConfiguration());
             modelBuilder.ApplyConfiguration(new AcademicTranscriptConfiguration());
             modelBuilder.ApplyConfiguration(new PayFeeAdmissionConfiguration());
+            modelBuilder.ApplyConfiguration(new AdmissionDetailForMajorConfiguration());
 
             modelBuilder.Entity<IdentityUserLogin<Guid>>(entity =>
             {
@@ -121,7 +121,7 @@ namespace Data.ArmsContext
             new StudentProfileSeeder(modelBuilder).Seed();
             new RequestChangeMajorSeeder(modelBuilder).Seed();
             new PriorityDetailSeeder(modelBuilder).Seed();
-            new AdmissionGroupSeeder(modelBuilder).Seed();
+            new AdmissionDetailForMajorSeeder(modelBuilder).Seed();
         }
         #region DbSet
         public DbSet<Account> Accounts { get; set; }
@@ -138,9 +138,9 @@ namespace Data.ArmsContext
         public DbSet<AdmissionInformation> AdmissionInformations { get; set; }
         public DbSet<RequestChangeMajor> RequestChangeMajors { get; set; }
         public DbSet<PriorityDetail> PriorityDetails { get; set; }
-        public DbSet<AdmissionGroup> AdmissionGroups { get; set; }
         public DbSet<AcademicTranscript> AcademicTranscripts { get; set; }
         public DbSet<PayFeeAdmission> PayFeeAdmissions { get; set; }
+        public DbSet<AdmissionDetailForMajor> AdmissionDetailForMajors { get; set; }
         #endregion
     }
 

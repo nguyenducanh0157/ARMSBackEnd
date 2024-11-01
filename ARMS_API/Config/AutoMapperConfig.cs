@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Data.DTO;
 using Data.Models;
+using Newtonsoft.Json;
 using System.ComponentModel;
 using System.Reflection;
 
@@ -61,16 +62,16 @@ namespace ARMS_API.Config
                         src.TypeOfPriority == TypeOfPriority.UT1 ? 2 :
                         src.TypeOfPriority == TypeOfPriority.UT2 ? 1 : 0));
                 // AdmissionGroup
-                config.CreateMap<AdmissionGroup, AdmissionGroupDTO>()
-                            .ForMember(dest => dest.SubjectGroupName, opt => opt.MapFrom(src => src.SubjectGroup.GetDescription())) 
-                            .ForMember(dest => dest.SubjectGroup, opt => opt.MapFrom(src => src.SubjectGroup.ToString()))
-                            .ForMember(dest => dest.Subject1, opt => opt.MapFrom(src => EnumExtensions.SplitSubjects(src.SubjectGroup.GetDescription()).ElementAtOrDefault(0))) // Get the first subject
-                            .ForMember(dest => dest.Subject2, opt => opt.MapFrom(src => EnumExtensions.SplitSubjects(src.SubjectGroup.GetDescription()).ElementAtOrDefault(1))) // Get the second subject
-                            .ForMember(dest => dest.Subject3, opt => opt.MapFrom(src => EnumExtensions.SplitSubjects(src.SubjectGroup.GetDescription()).ElementAtOrDefault(2))); // Get the third subject
+                //config.CreateMap<AdmissionGroup, AdmissionGroupDTO>()
+                //            .ForMember(dest => dest.SubjectGroupName, opt => opt.MapFrom(src => src.SubjectGroup.GetDescription())) 
+                //            .ForMember(dest => dest.SubjectGroup, opt => opt.MapFrom(src => src.SubjectGroup.ToString()))
+                //            .ForMember(dest => dest.Subject1, opt => opt.MapFrom(src => EnumExtensions.SplitSubjects(src.SubjectGroup.GetDescription()).ElementAtOrDefault(0))) // Get the first subject
+                //            .ForMember(dest => dest.Subject2, opt => opt.MapFrom(src => EnumExtensions.SplitSubjects(src.SubjectGroup.GetDescription()).ElementAtOrDefault(1))) // Get the second subject
+                //            .ForMember(dest => dest.Subject3, opt => opt.MapFrom(src => EnumExtensions.SplitSubjects(src.SubjectGroup.GetDescription()).ElementAtOrDefault(2))); // Get the third subject
 
-                config.CreateMap<AdmissionGroup, AdmissionGroup_AC_DTO>()
-                .ForMember(dest => dest.SubjectGroupName, opt => opt.MapFrom(src => src.SubjectGroup.GetDescription()));
-                config.CreateMap<AdmissionGroup_AC_DTO, AdmissionGroup>();
+                //config.CreateMap<AdmissionGroup, AdmissionGroup_AC_DTO>()
+                //.ForMember(dest => dest.SubjectGroupName, opt => opt.MapFrom(src => src.SubjectGroup.GetDescription()));
+                //config.CreateMap<AdmissionGroup_AC_DTO, AdmissionGroup>();
                 //register admission
                 config.CreateMap<AcademicTranscript, AcademicTranscriptDTO>();
                 config.CreateMap<AcademicTranscriptDTO, AcademicTranscript>();
@@ -87,12 +88,32 @@ namespace ARMS_API.Config
 
                 config.CreateMap<PayFeeAdmission, PayFeeAdmissionDTO>();
                 config.CreateMap<PayFeeAdmissionDTO, PayFeeAdmission>();
+                // Mapping from AdmissionDetailForMajor to AdmissionDetailForMajorDto
+                config.CreateMap<SubjectGroup, SubjectGroupDTO>()
+                  .ForMember(dest => dest.SubjectGroup, opt => opt.MapFrom(src => src.ToString()))
+                  .ForMember(dest => dest.SubjectGroupName, opt => opt.MapFrom(src => EnumExtensions.GetEnumDescription(src)));
+
+                config.CreateMap<AdmissionDetailForMajor, AdmissionDetailForMajorDto>()
+                .ForMember(dest => dest.TotalScore, opt => opt.MapFrom(src => src.StatusScore ? src.TotalScore : (decimal?)null))
+                .ForMember(dest => dest.TotalScoreAcademic, opt => opt.MapFrom(src => src.StatusScoreAcademic ? src.TotalScoreAcademic : (decimal?)null))
+                   .ForMember(dest => dest.subjectGroupDTOs,
+                              opt => opt.MapFrom(src =>
+                                  src.SubjectGroups.Select(g => new SubjectGroupDTO
+                                  {
+                                      SubjectGroup = g.ToString(),
+                                      SubjectGroupName = EnumExtensions.GetEnumDescription(g)
+                                  }).ToList()));
+
+                // Mapping from AdmissionDetailForMajorDto to AdmissionDetailForMajor
+                //config.CreateMap<AdmissionDetailForMajorDto, AdmissionDetailForMajor>()
+                //    .ForMember(dest => dest.SubjectGroupsJson,
+                //               opt => opt.MapFrom(src =>
+                //                   JsonSerializer.Serialize(src.subjectGroupDTOs)));
 
             });
             
             return mapperConfig.CreateMapper();
         }
-
     }
     public static class EnumExtensions
     {
@@ -108,6 +129,38 @@ namespace ARMS_API.Config
             return subjects.Split(new[] { '–' }, StringSplitOptions.RemoveEmptyEntries)
                            .Select(s => s.Trim())
                            .ToList();
+        }
+        //public static string ConvertIntToSubjectGroupName(int value)
+        //{
+        //    if (Enum.IsDefined(typeof(SubjectGroup), value))
+        //    {
+        //        var subjectGroup = (SubjectGroup)value;
+        //        return subjectGroup.ToString(); // Or use .GetDescription() if you prefer the description
+        //    }
+        //    return null; // or return a default string if needed
+        //}
+        //public static string ConvertIntToSubjectGroupDescription(int value)
+        //{
+        //    if (Enum.IsDefined(typeof(SubjectGroup), value))
+        //    {
+        //        var subjectGroup = (SubjectGroup)value;
+        //        return GetEnumDescription(subjectGroup); // Call a method to get the description
+        //    }
+        //    return null; // Or return a default string if needed
+        //}
+        //public static string GetEnumDescription(SubjectGroup subjectGroup)
+        //{
+        //    var fieldInfo = subjectGroup.GetType().GetField(subjectGroup.ToString());
+        //    var attributes = (DescriptionAttribute[])fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false);
+        //    return attributes.Length > 0 ? attributes[0].Description : subjectGroup.ToString();
+        //}
+        public static string GetEnumDescription(Enum value)
+        {
+            var fieldInfo = value.GetType().GetField(value.ToString());
+
+            var attributes = fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false) as DescriptionAttribute[];
+
+            return attributes != null && attributes.Length > 0 ? attributes[0].Description : value.ToString();
         }
     }
 }

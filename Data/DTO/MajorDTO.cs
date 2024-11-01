@@ -1,8 +1,10 @@
 ﻿using Data.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Data.DTO
@@ -14,8 +16,9 @@ namespace Data.DTO
         public string MajorName { get; set; }
         public string? Description { get; set; }
         public decimal? Tuition { get; set; }
-        public int? Target { get; set; }
+        public int? Target { get; set; } 
         public string? TimeStudy { get; set; }
+        public virtual ICollection<AdmissionDetailForMajorDto>? AdmissionDetailForMajors { get; set; }
         public virtual ICollection<SubjectDTO>? Subjects { get; set; }
         public virtual ICollection<TypeAdmissionDTO>? TypeAdmissions { get; set; }
     }

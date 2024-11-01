@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\ARMS_API\\ARMS_API.csproj": {}
+    "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_API\\ARMS_API.csproj": {}
   },
   "projects": {
-    "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\ARMS_API\\ARMS_API.csproj": {
+    "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_API\\ARMS_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\ARMS_API\\ARMS_API.csproj",
+        "projectUniqueName": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_API\\ARMS_API.csproj",
         "projectName": "ARMS_API",
-        "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\ARMS_API\\ARMS_API.csproj",
+        "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_API\\ARMS_API.csproj",
         "packagesPath": "C:\\Users\\-ASUS-\\.nuget\\packages\\",
-        "outputPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\ARMS_API\\obj\\",
+        "outputPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\-ASUS-\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,14 +28,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\Data.csproj": {
-                "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\Data.csproj"
+              "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj": {
+                "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj"
               },
-              "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Repository\\Repository.csproj": {
-                "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Repository\\Repository.csproj"
+              "D:\\Job\\Đức Anh\\ARMSBackEnd\\Repository\\Repository.csproj": {
+                "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Repository\\Repository.csproj"
               },
-              "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Service\\Service.csproj": {
-                "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Service\\Service.csproj"
+              "D:\\Job\\Đức Anh\\ARMSBackEnd\\Service\\Service.csproj": {
+                "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Service\\Service.csproj"
               }
             }
           }
@@ -122,14 +122,14 @@
         }
       }
     },
-    "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\Data.csproj": {
+    "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\Data.csproj",
+        "projectUniqueName": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\Data.csproj",
+        "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj",
         "packagesPath": "C:\\Users\\-ASUS-\\.nuget\\packages\\",
-        "outputPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\obj\\",
+        "outputPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\-ASUS-\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -207,14 +207,14 @@
         }
       }
     },
-    "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Repository\\Repository.csproj": {
+    "D:\\Job\\Đức Anh\\ARMSBackEnd\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Repository\\Repository.csproj",
+        "projectUniqueName": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Repository\\Repository.csproj",
+        "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Repository\\Repository.csproj",
         "packagesPath": "C:\\Users\\-ASUS-\\.nuget\\packages\\",
-        "outputPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Repository\\obj\\",
+        "outputPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\-ASUS-\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -231,8 +231,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\Data.csproj": {
-                "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\Data.csproj"
+              "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj": {
+                "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj"
               }
             }
           }
@@ -272,14 +272,14 @@
         }
       }
     },
-    "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Service\\Service.csproj": {
+    "D:\\Job\\Đức Anh\\ARMSBackEnd\\Service\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Service\\Service.csproj",
+        "projectUniqueName": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Service\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Service\\Service.csproj",
+        "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Service\\Service.csproj",
         "packagesPath": "C:\\Users\\-ASUS-\\.nuget\\packages\\",
-        "outputPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Service\\obj\\",
+        "outputPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\-ASUS-\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -296,11 +296,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\Data.csproj": {
-                "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Data\\Data.csproj"
+              "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj": {
+                "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj"
               },
-              "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Repository\\Repository.csproj": {
-                "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_v1.0\\Repository\\Repository.csproj"
+              "D:\\Job\\Đức Anh\\ARMSBackEnd\\Repository\\Repository.csproj": {
+                "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Repository\\Repository.csproj"
               }
             }
           }
