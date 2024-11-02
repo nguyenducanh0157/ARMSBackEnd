@@ -34,17 +34,26 @@ namespace Data.DTO
         public string? AddressRecipientResults { get; set; } // lưu địa chỉ nhận khác
         public string? ImgCitizenIdentification1 { get; set; }
         public string? ImgCitizenIdentification2 { get; set; }
-        public string? ImgDiploma { get; set; } // ảnh bằng
+        public string? ImgDiplomaMajor1 { get; set; } // ảnh bằng ngành 1
+        public string? ImgDiplomaMajor2 { get; set; } // ảnh bằng ngành 2
         public string? Imgpriority { get; set; } // ảnh bằng chứng xác nhận ưu tiên
-        public string? ImgAcademicTranscript1 { get; set; } // kỳ 1_10 | lop10  | lop12 | Kỳ 1_11 | Lop10  |
-        public string? ImgAcademicTranscript2 { get; set; } // kỳ 2_10 | lop11  |       | Kỳ 2_11 | Lop11  |
-        public string? ImgAcademicTranscript3 { get; set; } // kỳ 1_11 | lop12  |       | Kỳ 1_12 | HK1 12 |
-        public string? ImgAcademicTranscript4 { get; set; } // kỳ 2_11 |        |       |         |        |
-        public string? ImgAcademicTranscript5 { get; set; } // kỳ 1_12 |        |       |         |        |
-        public virtual TypeOfDiploma TypeOfDiploma { get; set; }// loại bằng
-        public virtual TypeOfTranscript? TypeOfTranscript { get; set; }// loại học bạ
-        public virtual TypeofStatus? TypeofStatus { get; set; }
-        public int PriorityDetailPriorityID { get; set; }
+        public string? ImgAcademicTranscript1 { get; set; }//kỳ 1 - lớp 10
+        public string? ImgAcademicTranscript2 { get; set; }//kỳ 2 - lớp 10
+        public string? ImgAcademicTranscript3 { get; set; }//cuối năm - lớp 10
+        public string? ImgAcademicTranscript4 { get; set; }//kỳ 1 - lớp 11
+        public string? ImgAcademicTranscript5 { get; set; }//kỳ 2 - lớp 11
+        public string? ImgAcademicTranscript6 { get; set; }//Cuối năm - lớp 11
+        public string? ImgAcademicTranscript7 { get; set; }//kỳ 1 - lớp 12
+        public string? ImgAcademicTranscript8 { get; set; }//kỳ 2 - lớp 12
+        public string? ImgAcademicTranscript9 { get; set; }//cuối năm - lớp 12
+        public virtual TypeOfDiploma? TypeOfDiplomaMajor1 { get; set; }// loại bằng ngành 1
+        public virtual TypeOfTranscript? TypeOfTranscriptMajor1 { get; set; }// loại học bạ ngành 1
+        public virtual TypeOfDiploma? TypeOfDiplomaMajor2 { get; set; }// loại bằng ngành 2
+        public virtual TypeOfTranscript? TypeOfTranscriptMajor2 { get; set; }// loại học bạ ngành 2
+        public int? PriorityDetailPriorityID { get; set; }
+        public virtual TypeofStatusForMajor? TypeofStatusMajor1 { get; set; } // trạng thái xét tuyển ngành 1
+        public virtual TypeofStatusForMajor? TypeofStatusMajor2 { get; set; } // trạng thái xét tuyển ngành 2
+        public virtual TypeofStatus? TypeofStatusProfile { get; set; } // trạng thái hồ sơ
         public virtual ICollection<AcademicTranscriptDTO>? AcademicTranscripts { get; set; }
 
         // view

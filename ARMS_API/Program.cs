@@ -19,6 +19,7 @@ using Service.BlogSer;
 using Service.CampusSer;
 using Service.EmailSer;
 using Service.MajorSer;
+using Service.PayFeeAdmissionSer;
 using Service.PriorityService;
 using Service.RequestChangeMajorSer;
 using Service.StudentConsultationSer;
@@ -139,6 +140,7 @@ builder.Services.AddScoped<IAdmissionTimeService, AdmissionTimeService>();
 builder.Services.AddScoped<IAdmissionInformationService, AdmissionInformationService>();
 builder.Services.AddScoped<IRequestChangeMajorService, RequestChangeMajorService>();
 builder.Services.AddScoped<IPriorityService, PriorityService>();
+builder.Services.AddScoped<IPayFeeAdmissionService, PayFeeAdmissionService>();
 //Services
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IVnPayService, VnPayService>();

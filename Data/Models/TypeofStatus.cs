@@ -8,15 +8,16 @@ namespace Data.Models
 {
     public enum TypeofStatus
     {
-        Inprocess,//0
-        PassMajor1,//1
-        PassMajor2,//2
-        FailMajor1,//3
-        FailMajor2,//4
-        SuccessProfileRegister,//5
-        SuccessProfileAdmission,//6
-        WaitingPaymentAdmission,//7
-        InProcessAdmission,//8
-        Done//9
+        SuccessProfileRegister,//0
+        SuccessProfileAdmission,//1
+        WaitingPaymentAdmission,//2
+        InProcessAdmission,//3
+        Done//4
+    }
+    public enum TypeofStatusForMajor
+    {
+        Fail,
+        Pass,
+        Inprocess
     }
 }

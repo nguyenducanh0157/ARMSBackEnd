@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Service.PayFeeAdmissionSer
 {
-    internal class PayFeeAdmissionService : IPayFeeAdmissionService
+    public class PayFeeAdmissionService : IPayFeeAdmissionService
     {
         private readonly PayFeeAdmissionRepository _payFeeAdmissionRepository;
         public PayFeeAdmissionService(ArmsDbContext context)

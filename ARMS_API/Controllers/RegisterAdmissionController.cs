@@ -65,9 +65,16 @@ namespace ARMS_API.Controllers
                     });
                 }
                 //mapper
-                var payFeeAdmissions = _mapper.Map<ICollection<PayFeeAdmission>>(registerAdmissionProfileDTO.PayFeeAdmission);
+                // Map registerAdmissionProfileDTO sang StudentProfile
                 StudentProfile studentProfile = _mapper.Map<StudentProfile>(registerAdmissionProfileDTO);
-                studentProfile.PayFeeAdmissions = payFeeAdmissions;
+
+                if (studentProfile.PayFeeAdmissions == null)
+                {
+                    studentProfile.PayFeeAdmissions = new List<PayFeeAdmission>();
+                }
+
+                studentProfile.PayFeeAdmissions.Add(_mapper.Map<PayFeeAdmission>(registerAdmissionProfileDTO.PayFeeAdmission));
+
                 //add new
                 await _studentProfileService.AddStudentProfile(studentProfile);
                 return Ok(new ResponseViewModel()

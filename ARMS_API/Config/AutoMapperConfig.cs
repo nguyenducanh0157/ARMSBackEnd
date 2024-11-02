@@ -79,8 +79,7 @@ namespace ARMS_API.Config
                 config.CreateMap<RegisterAdmissionProfileDTO, StudentProfile>();
                 config.CreateMap<StudentProfile, RegisterAdmissionProfileDTO>();
                 config.CreateMap<PayFeeAdmissionDTO, PayFeeAdmission>();
-                config.CreateMap<ICollection<PayFeeAdmissionDTO>, ICollection<PayFeeAdmission>>()
-                    .ConvertUsing((src, dest, context) => src.Select(dto => context.Mapper.Map<PayFeeAdmission>(dto)).ToList()); ;
+                config.CreateMap<PayFeeAdmission, PayFeeAdmissionDTO>();
 
                 config.CreateMap<AdmissionProfile_AO_DTO, StudentProfile>();
                 config.CreateMap<StudentProfile, AdmissionProfile_AO_DTO>()
