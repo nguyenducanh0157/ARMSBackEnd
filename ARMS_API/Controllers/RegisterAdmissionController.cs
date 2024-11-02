@@ -6,6 +6,7 @@ using Data.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using Repository.StudentProfileRepo;
 using Service.EmailSer;
@@ -72,8 +73,9 @@ namespace ARMS_API.Controllers
                 {
                     studentProfile.PayFeeAdmissions = new List<PayFeeAdmission>();
                 }
-
-                studentProfile.PayFeeAdmissions.Add(_mapper.Map<PayFeeAdmission>(registerAdmissionProfileDTO.PayFeeAdmission));
+                PayFeeAdmission PayFeeAdmission = _mapper.Map<PayFeeAdmission>(registerAdmissionProfileDTO.PayFeeAdmission);
+                PayFeeAdmission.isFeeRegister = true;
+                studentProfile.PayFeeAdmissions.Add(PayFeeAdmission);
 
                 //add new
                 await _studentProfileService.AddStudentProfile(studentProfile);
@@ -92,7 +94,7 @@ namespace ARMS_API.Controllers
                 });
             }
         }
-        [Authorize(Roles = "guest")]
+        //[Authorize(Roles = "guest")]
         [HttpPost("search-register-admission")]
         public async Task<IActionResult> SearchRegisterAdmission([FromBody] RequestSearchRegisterAdmissionProfileDTO requestSearchRegisterAdmissionProfileDTO)
         {
@@ -106,6 +108,9 @@ namespace ARMS_API.Controllers
                 StudentProfile stf = await _studentProfileService.GetExistCCCDStudent(requestSearchRegisterAdmissionProfileDTO.CitizenIentificationNumber);
                 //mapper
                 RegisterAdmissionProfileDTO studentProfile = _mapper.Map<RegisterAdmissionProfileDTO>(stf);
+                var payFeeAdmission = stf.PayFeeAdmissions.FirstOrDefault(x => x.isFeeRegister == true);
+                studentProfile.PayFeeAdmission = _mapper.Map<PayFeeAdmissionDTO>(payFeeAdmission);
+
                 return Ok(studentProfile);
             }
             catch (Exception ex)
