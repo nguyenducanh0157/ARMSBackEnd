@@ -55,6 +55,7 @@ namespace Repository.MajorRepo
             try
             {
                 var major = await _context.Majors
+                    .Include(x => x.AdmissionDetailForMajors)
                     .Include(x => x.TypeAdmissions)
                      .Include(x => x.Subjects.OrderBy(s => s.SemesterNumber))
                      .SingleOrDefaultAsync(x => x.MajorID.Equals(MajorID));
