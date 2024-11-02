@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Repository.StudentProfileRepo;
 using Service.EmailSer;
+using Service.PayFeeAdmissionSer;
 using Service.StudentProfileServ;
 using System.Security.Cryptography;
 
@@ -19,6 +20,7 @@ namespace ARMS_API.Controllers
     public class RegisterAdmissionController : ControllerBase
     {
         private IStudentProfileService _studentProfileService;
+        private IPayFeeAdmissionService _payFeeAdmissionService;
         private readonly IMapper _mapper;
         private ValidRegisterAdmission _validInput;
         private UserInput _userInput;
@@ -32,7 +34,8 @@ namespace ARMS_API.Controllers
             UserInput userInput,
             IEmailService emailService,
             IMemoryCache cache,
-            TokenHealper tokenHealper)
+            TokenHealper tokenHealper,
+            IPayFeeAdmissionService payFeeAdmissionService)
         {
             _studentProfileService = studentProfileService;
             _mapper = mapper;
@@ -41,6 +44,7 @@ namespace ARMS_API.Controllers
             _emailService = emailService;
             _cache = cache;
             _tokenHealper = tokenHealper;
+            _payFeeAdmissionService = payFeeAdmissionService;
         }
         [HttpPost("add-register-admission")]
         public async Task<IActionResult> AddRegisterAdmission([FromBody] RegisterAdmissionProfileDTO registerAdmissionProfileDTO)
@@ -61,7 +65,9 @@ namespace ARMS_API.Controllers
                     });
                 }
                 //mapper
+                var payFeeAdmissions = _mapper.Map<ICollection<PayFeeAdmission>>(registerAdmissionProfileDTO.PayFeeAdmission);
                 StudentProfile studentProfile = _mapper.Map<StudentProfile>(registerAdmissionProfileDTO);
+                studentProfile.PayFeeAdmissions = payFeeAdmissions;
                 //add new
                 await _studentProfileService.AddStudentProfile(studentProfile);
                 return Ok(new ResponseViewModel()

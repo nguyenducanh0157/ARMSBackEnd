@@ -78,6 +78,9 @@ namespace ARMS_API.Config
 
                 config.CreateMap<RegisterAdmissionProfileDTO, StudentProfile>();
                 config.CreateMap<StudentProfile, RegisterAdmissionProfileDTO>();
+                config.CreateMap<PayFeeAdmissionDTO, PayFeeAdmission>();
+                config.CreateMap<ICollection<PayFeeAdmissionDTO>, ICollection<PayFeeAdmission>>()
+                    .ConvertUsing((src, dest, context) => src.Select(dto => context.Mapper.Map<PayFeeAdmission>(dto)).ToList()); ;
 
                 config.CreateMap<AdmissionProfile_AO_DTO, StudentProfile>();
                 config.CreateMap<StudentProfile, AdmissionProfile_AO_DTO>()
@@ -86,8 +89,6 @@ namespace ARMS_API.Config
                 config.CreateMap<PriorityDetail, PriorityDetailDTO>();
                 config.CreateMap<PriorityDetailDTO, PriorityDetail>();
 
-                config.CreateMap<PayFeeAdmission, PayFeeAdmissionDTO>();
-                config.CreateMap<PayFeeAdmissionDTO, PayFeeAdmission>();
                 // Mapping from AdmissionDetailForMajor to AdmissionDetailForMajorDto
                 config.CreateMap<SubjectGroup, SubjectGroupDTO>()
                   .ForMember(dest => dest.SubjectGroup, opt => opt.MapFrom(src => src.ToString()))
@@ -103,12 +104,6 @@ namespace ARMS_API.Config
                                       SubjectGroup = g.ToString(),
                                       SubjectGroupName = EnumExtensions.GetEnumDescription(g)
                                   }).ToList()));
-
-                // Mapping from AdmissionDetailForMajorDto to AdmissionDetailForMajor
-                //config.CreateMap<AdmissionDetailForMajorDto, AdmissionDetailForMajor>()
-                //    .ForMember(dest => dest.SubjectGroupsJson,
-                //               opt => opt.MapFrom(src =>
-                //                   JsonSerializer.Serialize(src.subjectGroupDTOs)));
 
             });
             
