@@ -54,12 +54,20 @@ namespace Data.DTO
         public virtual TypeofStatusForMajor? TypeofStatusMajor1 { get; set; } // trạng thái xét tuyển ngành 1
         public virtual TypeofStatusForMajor? TypeofStatusMajor2 { get; set; } // trạng thái xét tuyển ngành 2
         public virtual TypeofStatus? TypeofStatusProfile { get; set; } // trạng thái hồ sơ
-        public virtual ICollection<AcademicTranscriptDTO>? AcademicTranscripts { get; set; }
+        public virtual ICollection<AcademicTranscript_View_DTO>? AcademicTranscriptsMajor1 { get; set; }
+        public virtual ICollection<AcademicTranscript_View_DTO>? AcademicTranscriptsMajor2 { get; set; }
 
         // view
         public string? CampusName { get; set; }
         public virtual PriorityDetailDTO? PriorityDetail { get; set; }// loại điểm ưu tiên
         public virtual PayFeeAdmissionDTO? PayFeeAdmission { get; set; }
+
+    }
+    public class AcademicTranscript_View_DTO
+    {
+        public string SubjectName { get; set; }
+        public decimal SubjectPoint { get; set; }
+        public TypeOfAcademicTranscript TypeOfAcademicTranscript { get; set; }
     }
     public class AcademicTranscriptDTO
     {

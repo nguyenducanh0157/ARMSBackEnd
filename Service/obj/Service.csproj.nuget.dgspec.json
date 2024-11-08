@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Job\\Đức Anh\\ARMSBackEnd\\Service\\Service.csproj": {}
+    "D:\\Job\\Đức Anh\\DABE\\Service\\Service.csproj": {}
   },
   "projects": {
-    "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj": {
+    "D:\\Job\\Đức Anh\\DABE\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj",
+        "projectUniqueName": "D:\\Job\\Đức Anh\\DABE\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj",
+        "projectPath": "D:\\Job\\Đức Anh\\DABE\\Data\\Data.csproj",
         "packagesPath": "C:\\Users\\-ASUS-\\.nuget\\packages\\",
-        "outputPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\obj\\",
+        "outputPath": "D:\\Job\\Đức Anh\\DABE\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\-ASUS-\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -89,14 +89,14 @@
         }
       }
     },
-    "D:\\Job\\Đức Anh\\ARMSBackEnd\\Repository\\Repository.csproj": {
+    "D:\\Job\\Đức Anh\\DABE\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Repository\\Repository.csproj",
+        "projectUniqueName": "D:\\Job\\Đức Anh\\DABE\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Repository\\Repository.csproj",
+        "projectPath": "D:\\Job\\Đức Anh\\DABE\\Repository\\Repository.csproj",
         "packagesPath": "C:\\Users\\-ASUS-\\.nuget\\packages\\",
-        "outputPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Repository\\obj\\",
+        "outputPath": "D:\\Job\\Đức Anh\\DABE\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\-ASUS-\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -113,8 +113,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj": {
-                "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj"
+              "D:\\Job\\Đức Anh\\DABE\\Data\\Data.csproj": {
+                "projectPath": "D:\\Job\\Đức Anh\\DABE\\Data\\Data.csproj"
               }
             }
           }
@@ -154,14 +154,14 @@
         }
       }
     },
-    "D:\\Job\\Đức Anh\\ARMSBackEnd\\Service\\Service.csproj": {
+    "D:\\Job\\Đức Anh\\DABE\\Service\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Service\\Service.csproj",
+        "projectUniqueName": "D:\\Job\\Đức Anh\\DABE\\Service\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Service\\Service.csproj",
+        "projectPath": "D:\\Job\\Đức Anh\\DABE\\Service\\Service.csproj",
         "packagesPath": "C:\\Users\\-ASUS-\\.nuget\\packages\\",
-        "outputPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Service\\obj\\",
+        "outputPath": "D:\\Job\\Đức Anh\\DABE\\Service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\-ASUS-\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -178,11 +178,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj": {
-                "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Data\\Data.csproj"
+              "D:\\Job\\Đức Anh\\DABE\\Data\\Data.csproj": {
+                "projectPath": "D:\\Job\\Đức Anh\\DABE\\Data\\Data.csproj"
               },
-              "D:\\Job\\Đức Anh\\ARMSBackEnd\\Repository\\Repository.csproj": {
-                "projectPath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\Repository\\Repository.csproj"
+              "D:\\Job\\Đức Anh\\DABE\\Repository\\Repository.csproj": {
+                "projectPath": "D:\\Job\\Đức Anh\\DABE\\Repository\\Repository.csproj"
               }
             }
           }

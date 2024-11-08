@@ -15,7 +15,7 @@ namespace ARMS_API.Config
             {
 
                 config.CreateMap<Campus, CampusDTO>();
-               
+
                 //major
                 config.CreateMap<Major, MajorDTO>();
                 config.CreateMap<Major_Manage_DTO, Major>();
@@ -40,7 +40,7 @@ namespace ARMS_API.Config
                 config.CreateMap<StudentConsultation, StudentConsultation_AO_DTO>()
                 .ForMember(dest => dest.MajorName, opt => opt.MapFrom(src => src.Major.MajorName));
                 config.CreateMap<StudentConsultation_AO_DTO, StudentConsultation>();
-                
+
                 //admission time
                 config.CreateMap<AdmissionTime, AdmissionTime_Admission_DTO>();
                 config.CreateMap<AdmissionTime_Admission_DTO, AdmissionTime>();
@@ -61,25 +61,56 @@ namespace ARMS_API.Config
                      .ForMember(dest => dest.BonusPoint, opt => opt.MapFrom(src =>
                         src.TypeOfPriority == TypeOfPriority.UT1 ? 2 :
                         src.TypeOfPriority == TypeOfPriority.UT2 ? 1 : 0));
-                // AdmissionGroup
-                //config.CreateMap<AdmissionGroup, AdmissionGroupDTO>()
-                //            .ForMember(dest => dest.SubjectGroupName, opt => opt.MapFrom(src => src.SubjectGroup.GetDescription())) 
-                //            .ForMember(dest => dest.SubjectGroup, opt => opt.MapFrom(src => src.SubjectGroup.ToString()))
-                //            .ForMember(dest => dest.Subject1, opt => opt.MapFrom(src => EnumExtensions.SplitSubjects(src.SubjectGroup.GetDescription()).ElementAtOrDefault(0))) // Get the first subject
-                //            .ForMember(dest => dest.Subject2, opt => opt.MapFrom(src => EnumExtensions.SplitSubjects(src.SubjectGroup.GetDescription()).ElementAtOrDefault(1))) // Get the second subject
-                //            .ForMember(dest => dest.Subject3, opt => opt.MapFrom(src => EnumExtensions.SplitSubjects(src.SubjectGroup.GetDescription()).ElementAtOrDefault(2))); // Get the third subject
-
-                //config.CreateMap<AdmissionGroup, AdmissionGroup_AC_DTO>()
-                //.ForMember(dest => dest.SubjectGroupName, opt => opt.MapFrom(src => src.SubjectGroup.GetDescription()));
-                //config.CreateMap<AdmissionGroup_AC_DTO, AdmissionGroup>();
                 //register admission
                 config.CreateMap<AcademicTranscript, AcademicTranscriptDTO>();
                 config.CreateMap<AcademicTranscriptDTO, AcademicTranscript>();
 
-                config.CreateMap<RegisterAdmissionProfileDTO, StudentProfile>();
-                config.CreateMap<StudentProfile, RegisterAdmissionProfileDTO>();
+                config.CreateMap<AcademicTranscript, AcademicTranscript_View_DTO>();
+                config.CreateMap<AcademicTranscript_View_DTO, AcademicTranscript>();
+
                 config.CreateMap<PayFeeAdmissionDTO, PayFeeAdmission>();
                 config.CreateMap<PayFeeAdmission, PayFeeAdmissionDTO>();
+
+                config.CreateMap<RegisterAdmissionProfileDTO, StudentProfile>()
+                .ForMember(dest => dest.AcademicTranscripts, opt => opt.MapFrom(src =>
+                    src.AcademicTranscriptsMajor1.Select(x => new AcademicTranscriptDTO
+                    {
+                        SubjectName = x.SubjectName,
+                        SubjectPoint = x.SubjectPoint,
+                        TypeOfAcademicTranscript = x.TypeOfAcademicTranscript,
+                        isMajor1 = true // Gán IsMajor1 = true
+                    })
+                    .Concat(
+                        src.AcademicTranscriptsMajor2.Select(x => new AcademicTranscriptDTO
+                        {
+                            SubjectName = x.SubjectName,
+                            SubjectPoint = x.SubjectPoint,
+                            TypeOfAcademicTranscript = x.TypeOfAcademicTranscript,
+                            isMajor1 = false // Gán IsMajor1 = false
+                        })
+                    )
+                ));
+                config.CreateMap<StudentProfile, RegisterAdmissionProfileDTO>()
+                .ForMember(dest => dest.AcademicTranscriptsMajor1, opt => opt.MapFrom(src =>
+                    src.AcademicTranscripts
+                        .Where(x => x.isMajor1 == true) // Lọc các phần tử có IsMajor1 = true
+                        .Select(x => new AcademicTranscript
+                        {
+                            SubjectName = x.SubjectName,
+                            SubjectPoint = x.SubjectPoint,
+                            TypeOfAcademicTranscript = x.TypeOfAcademicTranscript
+                        })
+                ))
+                .ForMember(dest => dest.AcademicTranscriptsMajor2, opt => opt.MapFrom(src =>
+                    src.AcademicTranscripts
+                        .Where(x => x.isMajor1 == false) // Lọc các phần tử có IsMajor1 = false
+                        .Select(x => new AcademicTranscript
+                        {
+                            SubjectName = x.SubjectName,
+                            SubjectPoint = x.SubjectPoint,
+                            TypeOfAcademicTranscript = x.TypeOfAcademicTranscript
+                        })
+                ));
 
                 config.CreateMap<AdmissionProfile_AO_DTO, StudentProfile>();
                 config.CreateMap<StudentProfile, AdmissionProfile_AO_DTO>()
@@ -105,7 +136,7 @@ namespace ARMS_API.Config
                                   }).ToList()));
 
             });
-            
+
             return mapperConfig.CreateMapper();
         }
     }
@@ -124,30 +155,6 @@ namespace ARMS_API.Config
                            .Select(s => s.Trim())
                            .ToList();
         }
-        //public static string ConvertIntToSubjectGroupName(int value)
-        //{
-        //    if (Enum.IsDefined(typeof(SubjectGroup), value))
-        //    {
-        //        var subjectGroup = (SubjectGroup)value;
-        //        return subjectGroup.ToString(); // Or use .GetDescription() if you prefer the description
-        //    }
-        //    return null; // or return a default string if needed
-        //}
-        //public static string ConvertIntToSubjectGroupDescription(int value)
-        //{
-        //    if (Enum.IsDefined(typeof(SubjectGroup), value))
-        //    {
-        //        var subjectGroup = (SubjectGroup)value;
-        //        return GetEnumDescription(subjectGroup); // Call a method to get the description
-        //    }
-        //    return null; // Or return a default string if needed
-        //}
-        //public static string GetEnumDescription(SubjectGroup subjectGroup)
-        //{
-        //    var fieldInfo = subjectGroup.GetType().GetField(subjectGroup.ToString());
-        //    var attributes = (DescriptionAttribute[])fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), false);
-        //    return attributes.Length > 0 ? attributes[0].Description : subjectGroup.ToString();
-        //}
         public static string GetEnumDescription(Enum value)
         {
             var fieldInfo = value.GetType().GetField(value.ToString());

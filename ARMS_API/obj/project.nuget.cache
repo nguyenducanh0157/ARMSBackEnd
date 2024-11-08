@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tdzgib+o+wU4veudmtCawr5Sm43BgmXgzYonCushfQwCHFvs4ZSQu0ICzR6/XcWUo8RIA53gEb0cU0Wn/vc3lg==",
+  "dgSpecHash": "aNtLXp8+K2QIPYNISncnFbFo/5R3OMM4cj1wDp+s6t0hg/yInaz7vjH+2yRbiF0gMcfDFNE2knUrpakyuihrrg==",
   "success": true,
-  "projectFilePath": "D:\\Job\\Đức Anh\\ARMSBackEnd\\ARMS_API\\ARMS_API.csproj",
+  "projectFilePath": "D:\\Job\\Đức Anh\\DABE\\ARMS_API\\ARMS_API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\-ASUS-\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\-ASUS-\\.nuget\\packages\\bouncycastle.cryptography\\2.4.0\\bouncycastle.cryptography.2.4.0.nupkg.sha512",
