@@ -1,6 +1,7 @@
 ﻿using Data.ArmsContext;
 using Data.Models;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Asn1.Ocsp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +51,19 @@ namespace Repository
                 throw;
             }
         }
+        public async Task<RequestChangeMajor> GetRequestChangeMajorByID(int Id)
+        {
+            try
+            {
+                var studentConsultations =await _context.RequestChangeMajors.SingleOrDefaultAsync(x => x.RequestID == Id);
+                return studentConsultations;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public async Task AddNewRequest(RequestChangeMajor requestChangeMajor)
         {
             try
@@ -60,6 +74,18 @@ namespace Repository
             catch (Exception)
             {
                 throw new Exception("Tạo mới không thành công");
+            }
+        }
+        public async Task UpdateRequest(RequestChangeMajor request)
+        {
+            try
+            {
+                _context.Entry<RequestChangeMajor>(request).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Chỉnh sửa không thành công");
             }
         }
     }

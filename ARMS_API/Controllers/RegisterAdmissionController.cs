@@ -94,7 +94,7 @@ namespace ARMS_API.Controllers
                 });
             }
         }
-        //[Authorize(Roles = "guest")]
+        [Authorize(Roles = "guest")]
         [HttpPost("search-register-admission")]
         public async Task<IActionResult> SearchRegisterAdmission([FromBody] RequestSearchRegisterAdmissionProfileDTO requestSearchRegisterAdmissionProfileDTO)
         {
@@ -144,7 +144,7 @@ namespace ARMS_API.Controllers
             emailRequest.Body = $"OTP của bạn là: {otp}";
             _cache.Set(emailRequest.ToEmail, otp, _otpLifetime);
             await _emailService.SendEmailAsync(emailRequest);
-            return Ok("Gửi email thành công!");
+            return Ok(new { Message = "Mã OTP đã được gửi đến email của bạn!", Email = sp.EmailStudent });
         }
         [HttpPost("verify-OTP")]
         public async Task<ActionResult<string>> VerifyOtpAsync(string email, string otp)

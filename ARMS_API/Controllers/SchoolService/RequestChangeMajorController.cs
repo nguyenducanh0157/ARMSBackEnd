@@ -14,7 +14,7 @@ namespace ARMS_API.Controllers.SchoolService
 {
     [Route("api/SchoolService/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "SchoolService")]
+    [Authorize(Roles = "SchoolService")]
     public class RequestChangeMajorController : ControllerBase
     {
         private IRequestChangeMajorService _requestChangeMajorService;
@@ -90,6 +90,32 @@ namespace ARMS_API.Controllers.SchoolService
                 return BadRequest();
             }
         }
+        [HttpPut("accept-request-change-major")]
+        public async Task<IActionResult> AddRegisterAdmission(int RequestID, [FromBody] Reply_RequestChangeMajor_Student_DTO requestChangeMajor_Student_DTO)
+        {
+            try
+            {
 
+                RequestChangeMajor request =await _requestChangeMajorService.GetRequestChangeMajorByID(RequestID);
+                request.Status = requestChangeMajor_Student_DTO.Status;
+                request.FileReasonRequestChangeMajor = requestChangeMajor_Student_DTO.FileReasonRequestChangeMajor;
+                request.Reply = requestChangeMajor_Student_DTO.Reply;
+                //add new
+                await _requestChangeMajorService.UpdateRequest(request);
+                return Ok(new ResponseViewModel()
+                {
+                    Status = true,
+                    Message = "Chỉnh sửa thành công!"
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResponseViewModel()
+                {
+                    Status = false,
+                    Message = ex.Message
+                });
+            }
+        }
     }
 }

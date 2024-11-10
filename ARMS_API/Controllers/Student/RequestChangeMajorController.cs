@@ -55,9 +55,6 @@ namespace ARMS_API.Controllers.Student
                 var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
                 //get acccount by userId
                 var account = await _accountService.GetAccountByUserId(Guid.Parse(userId));
-                //check data
-                //_validInput.InputAddRegisterAdmission(registerAdmissionProfileDTO);
-                // payment
 
                 //mapper
                 RequestChangeMajor RequestChangeMajor = _mapper.Map<RequestChangeMajor>(requestChangeMajor_Student_DTO);
