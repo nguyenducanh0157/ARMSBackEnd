@@ -5,6 +5,7 @@ using Data.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Service.AccountSer;
 using Service.BlogSer;
 using Service.RequestChangeMajorSer;
 using static Google.Apis.Requests.BatchRequest;
@@ -17,11 +18,13 @@ namespace ARMS_API.Controllers.Student
     public class RequestChangeMajorController : ControllerBase
     {
         private IRequestChangeMajorService _requestChangeMajorService;
+        private IAccountService _accountService;
         private readonly IMapper _mapper;
-        public RequestChangeMajorController(IRequestChangeMajorService requestChangeMajorService, IMapper mapper)
+        public RequestChangeMajorController(IRequestChangeMajorService requestChangeMajorService, IMapper mapper, IAccountService accountService)
         {
             _requestChangeMajorService = requestChangeMajorService;
             _mapper = mapper;
+            _accountService = accountService;
         }
         [HttpGet("get-request-change-major")]
         public async Task<IActionResult> GetRequestChangeMajor()
@@ -42,6 +45,42 @@ namespace ARMS_API.Controllers.Student
             {
 
                 return BadRequest();
+            }
+        }
+        [HttpPost("add-request-change-major")]
+        public async Task<IActionResult> AddRegisterAdmission([FromBody] RequestChangeMajor_Student_DTO requestChangeMajor_Student_DTO)
+        {
+            try
+            {
+                var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+                //get acccount by userId
+                var account = await _accountService.GetAccountByUserId(Guid.Parse(userId));
+                //check data
+                //_validInput.InputAddRegisterAdmission(registerAdmissionProfileDTO);
+                // payment
+
+                //mapper
+                RequestChangeMajor RequestChangeMajor = _mapper.Map<RequestChangeMajor>(requestChangeMajor_Student_DTO);
+                RequestChangeMajor.Status = TypeofRequestChangeMajor.Inprocess;
+                RequestChangeMajor.AccountId = Guid.Parse(userId);
+                RequestChangeMajor.MajorOld = account.MajorId;
+                RequestChangeMajor.CampusId = account.CampusId;
+
+                //add new
+                await _requestChangeMajorService.AddNewRequest(RequestChangeMajor);
+                return Ok(new ResponseViewModel()
+                {
+                    Status = true,
+                    Message = "Đăng ký thành công!"
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResponseViewModel()
+                {
+                    Status = false,
+                    Message = ex.Message
+                });
             }
         }
     }

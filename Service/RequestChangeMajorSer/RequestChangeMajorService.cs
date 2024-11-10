@@ -17,6 +17,10 @@ namespace Service.RequestChangeMajorSer
         {
             _requestChangeMajorRepository = new RequestChangeMajorRepository(context);
         }
+
+        public Task AddNewRequest(RequestChangeMajor requestChangeMajor)
+            => _requestChangeMajorRepository.AddNewRequest(requestChangeMajor);
+
         public Task<List<RequestChangeMajor>> GetRequestChangeMajors(string campusId)
             => _requestChangeMajorRepository.GetRequestChangeMajors(campusId);
 

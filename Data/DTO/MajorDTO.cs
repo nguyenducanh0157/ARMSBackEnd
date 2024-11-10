@@ -18,6 +18,7 @@ namespace Data.DTO
         public decimal? Tuition { get; set; }
         public int? Target { get; set; } 
         public string? TimeStudy { get; set; }
+        public bool isVocationalSchool { get; set; }
         public virtual ICollection<AdmissionDetailForMajorDto>? AdmissionDetailForMajors { get; set; }
         public virtual ICollection<SubjectDTO>? Subjects { get; set; }
         public virtual ICollection<TypeAdmissionDTO>? TypeAdmissions { get; set; }
@@ -66,5 +67,10 @@ namespace Data.DTO
         public bool Status { get; set; }// Admission status
         public virtual ICollection<TypeAdmissionDTO>? TypeAdmissions { get; set; }
 
+    }
+    public class Major_RequestChange_DTO
+    {
+        public string MajorID { get; set; }
+        public string MajorName { get; set; }
     }
 }

@@ -50,9 +50,7 @@ namespace ARMS_API.Config
                 config.CreateMap<AdmissionInformation, AdmissionInformationDTO>();
                 config.CreateMap<AdmissionInformation_Update_DTO, AdmissionInformation>();
                 // request change major
-                config.CreateMap<RequestChangeMajor, RequestChangeMajorDTO>()
-                .ForMember(dest => dest.MajorName, opt => opt.MapFrom(src => src.Major.MajorName))
-                .ForMember(dest => dest.MajorID, opt => opt.MapFrom(src => src.Major.MajorID));
+                config.CreateMap<RequestChangeMajor, RequestChangeMajorDTO>();
                 // Priority
                 config.CreateMap<PriorityDetail, PriorityDTO>()
                      .ForMember(dest => dest.TypeOfPriority, opt => opt.MapFrom(src =>
@@ -114,8 +112,8 @@ namespace ARMS_API.Config
 
                 config.CreateMap<AdmissionProfile_AO_DTO, StudentProfile>();
                 config.CreateMap<StudentProfile, AdmissionProfile_AO_DTO>()
-
                .ForMember(dest => dest.CampusName, opt => opt.MapFrom(src => src.Campus.CampusName));
+
                 config.CreateMap<PriorityDetail, PriorityDetailDTO>();
                 config.CreateMap<PriorityDetailDTO, PriorityDetail>();
 
@@ -134,7 +132,16 @@ namespace ARMS_API.Config
                                       SubjectGroup = g.ToString(),
                                       SubjectGroupName = EnumExtensions.GetEnumDescription(g)
                                   }).ToList()));
-
+                // mapping get request change major for school service
+                config.CreateMap<RequestChangeMajor_SS_DTO, RequestChangeMajor>();
+                config.CreateMap<RequestChangeMajor, RequestChangeMajor_SS_DTO>();
+                config.CreateMap<Major_RequestChange_DTO, Major>();
+                config.CreateMap<Major, Major_RequestChange_DTO>();
+                config.CreateMap<Account_RequestChangeMajor_DTO, Account>();
+                config.CreateMap<Account, Account_RequestChangeMajor_DTO>();
+                //request change major for student
+                config.CreateMap<RequestChangeMajor_Student_DTO, RequestChangeMajor>();
+                config.CreateMap<RequestChangeMajor, RequestChangeMajor_Student_DTO>();
             });
 
             return mapperConfig.CreateMapper();

@@ -95,7 +95,9 @@ namespace Data.Seeding
                      PasswordHash = new PasswordHasher<Account>().HashPassword(null, "DucAnh@123"),
                      SecurityStamp = Guid.NewGuid().ToString(),
                      CampusId = "Hanoi",
-                     Fullname = "Nguyễn Đức Anh"
+                     Fullname = "Nguyễn Đức Anh",
+                     StudentCode = "HWE160153",
+                     MajorId="HWE"
                  });
 
             // Seed User in role

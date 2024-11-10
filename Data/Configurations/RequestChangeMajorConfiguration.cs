@@ -28,9 +28,12 @@ namespace Data.Configurations
             builder.HasOne(x => x.Campus)
                    .WithMany(c => c.RequestChangeMajors)
                    .HasForeignKey(x => x.CampusId).OnDelete(DeleteBehavior.NoAction);
-            builder.HasOne(x => x.Major)
-                   .WithMany(c => c.RequestChangeMajors)
+            builder.HasOne(x => x.MajorN)
+                   .WithMany(c => c.RequestChangeMajorsN)
                    .HasForeignKey(x => x.MajorNew).OnDelete(DeleteBehavior.NoAction);
+            builder.HasOne(x => x.MajorO)
+                   .WithMany(c => c.RequestChangeMajorsO)
+                   .HasForeignKey(x => x.MajorOld).OnDelete(DeleteBehavior.NoAction);
             #endregion
         }
     }

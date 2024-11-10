@@ -20,4 +20,10 @@ namespace Data.Models
         Pass,
         Inprocess
     }
+    public enum TypeofRequestChangeMajor
+    {
+        Accept,
+        Reject,
+        Inprocess
+    }
 }

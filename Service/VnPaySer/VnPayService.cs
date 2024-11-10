@@ -27,7 +27,7 @@ namespace Service.VnPaySer
             vnpay.AddRequestData("vnp_Version", _config["VNPay:Version"]);
             vnpay.AddRequestData("vnp_Command", _config["VNPay:Command"]);
             vnpay.AddRequestData("vnp_TmnCode", _config["VNPay:TmnCode"]);
-            vnpay.AddRequestData("vnp_Amount", (fee * 100).ToString());
+            vnpay.AddRequestData("vnp_Amount", ((int)(fee * 100)).ToString());
 
             vnpay.AddRequestData("vnp_CreateDate", dateCreate.ToString("yyyyMMddHHmmss"));
             vnpay.AddRequestData("vnp_CurrCode", _config["VNPay:CurrCode"]);

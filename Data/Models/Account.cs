@@ -17,8 +17,11 @@ namespace Data.Models
         public bool isAccountActive { get; set; }
         public string CampusId { get; set; }
         public virtual Campus Campus { get; set; }
+        public string? StudentCode { get; set; }
+        public string? MajorId { get; set; }
 
         public int? SPId { get; set; }
+        public virtual Major? Major { get; set; }
         public virtual StudentProfile? StudentProfile { get; set; }
         public virtual ICollection<RequestChangeMajor>? RequestChangeMajors { get; set; }
     }

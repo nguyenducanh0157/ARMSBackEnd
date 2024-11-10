@@ -13,6 +13,7 @@ using Microsoft.OpenApi.Models;
 using Repository;
 using Repository.MajorRepo;
 using Service;
+using Service.AccountSer;
 using Service.AdmissionInformationSer;
 using Service.AdmissionTimeSer;
 using Service.BlogSer;
@@ -141,6 +142,7 @@ builder.Services.AddScoped<IAdmissionInformationService, AdmissionInformationSer
 builder.Services.AddScoped<IRequestChangeMajorService, RequestChangeMajorService>();
 builder.Services.AddScoped<IPriorityService, PriorityService>();
 builder.Services.AddScoped<IPayFeeAdmissionService, PayFeeAdmissionService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
 //Services
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IVnPayService, VnPayService>();

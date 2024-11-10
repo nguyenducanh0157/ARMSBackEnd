@@ -82,7 +82,7 @@ namespace ARMS_API.Controllers
                 // Map to BlogDTO
                 List<BlogDTO> responseResult = _mapper.Map<List<BlogDTO>>(blogs);
                 result.Item = responseResult;
-
+                result.TotalItems = response.Count;
                 return Ok(result);
             }
             catch (Exception ex)

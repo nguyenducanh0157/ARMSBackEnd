@@ -19,9 +19,11 @@ namespace Repository
             {
                 var studentConsultations = _context.RequestChangeMajors
                     .Include(x => x.Account)
-                    .ThenInclude(x=>x.StudentProfile)
+                    .Include(x => x.MajorN)
+                    .Include(x => x.MajorO)
                     .Where(x => x.CampusId.Equals(campusId))
                     .ToList();
+
                 return studentConsultations;
             }
             catch (Exception)
@@ -36,8 +38,8 @@ namespace Repository
             {
                 var studentConsultations = _context.RequestChangeMajors
                     .Include(x => x.Account)
-                    .ThenInclude(x => x.StudentProfile)
-                    .Include(x => x.Major)
+                    .Include(x => x.MajorN)
+                    .Include(x => x.MajorO)
                     .Where(x => x.AccountId== Id)
                     .ToList();
                 return studentConsultations;
@@ -46,6 +48,18 @@ namespace Repository
             {
 
                 throw;
+            }
+        }
+        public async Task AddNewRequest(RequestChangeMajor requestChangeMajor)
+        {
+            try
+            {
+                await _context.RequestChangeMajors.AddAsync(requestChangeMajor);
+                _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Tạo mới không thành công");
             }
         }
     }

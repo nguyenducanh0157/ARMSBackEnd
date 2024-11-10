@@ -101,27 +101,30 @@ namespace ARMS_API.Controllers
                         throw new Exception("Tài khoản của bạn không tồn tại trong campus hiện tại");
                     }
 
-                var roles = await _userManager.GetRolesAsync(user);
+                var userRoles = await _userManager.GetRolesAsync(user);
 
-                List<Claim> claims = new List<Claim>
+                var authClaims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Name, user.Fullname),
+                        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                    };
+
+                foreach (var userRole in userRoles)
                 {
-                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Email),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-
-            };
-
-                foreach (string role in roles)
-                {
-                    claims.Add(new Claim(ClaimTypes.Role, role));
+                    authClaims.Add(new Claim(ClaimTypes.Role, userRole));
                 }
 
                 if (!String.IsNullOrEmpty(user.AvatarURL))
                 {
-                    claims.Add(new Claim("AvatarUrl", user.AvatarURL));
+                    authClaims.Add(new Claim("AvatarUrl", user.AvatarURL));
                 }
+                var Bear = GetToken(authClaims);
 
-                return Ok(response);
+                ResponseLogin respone = new ResponseLogin();
+                respone.Bear = new JwtSecurityTokenHandler().WriteToken(Bear);
+                respone.Expiration = Bear.ValidTo;
+                return Ok(respone);
             }
             catch (Exception ex)
             {

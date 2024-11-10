@@ -25,10 +25,11 @@ namespace Data.Seeding
                     RequestID = 1,
                     DateRequest = DateTime.Now,
                     FileReasonRequestChangeMajor ="file",
+                    MajorOld = "HAO",
                     MajorNew = "HME",
                     AccountId = Guid.Parse("2F36AD81-47C3-4194-9AF8-BA19300695AA"),
                     Description ="Em muốn chuyển ngành!",
-                    Status =false,
+                    Status = TypeofRequestChangeMajor.Inprocess,
                     CampusId ="Hanoi"
                 },
                 new RequestChangeMajor()
@@ -36,10 +37,11 @@ namespace Data.Seeding
                     RequestID = 2,
                     DateRequest = DateTime.Now,
                     FileReasonRequestChangeMajor = "file",
+                    MajorOld = "HAO",
                     MajorNew = "HME",
                     AccountId = Guid.Parse("2F36AD81-47C3-4194-9AF8-BA19300695AA"),
                     Description = "Em muốn chuyển ngành!",
-                    Status = false,
+                    Status = TypeofRequestChangeMajor.Inprocess,
                     CampusId = "Hanoi"
                 }
                 );

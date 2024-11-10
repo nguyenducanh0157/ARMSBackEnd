@@ -11,5 +11,6 @@ namespace Service.RequestChangeMajorSer
     {
         Task<List<RequestChangeMajor>> GetRequestChangeMajors(string campusId);
         Task<List<RequestChangeMajor>> GetRequestChangeMajorsByID(Guid Id);
+        Task AddNewRequest(RequestChangeMajor requestChangeMajor);
     }
 }

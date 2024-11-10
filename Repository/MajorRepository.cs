@@ -40,6 +40,7 @@ namespace Repository.MajorRepo
             {
                 List<Major> majors = await _context.Majors
                     .Where(x => x.CampusId.Equals(campusId))
+                    .OrderBy(x => x.isVocationalSchool)
                     .ToListAsync();
                 return majors;
             }
