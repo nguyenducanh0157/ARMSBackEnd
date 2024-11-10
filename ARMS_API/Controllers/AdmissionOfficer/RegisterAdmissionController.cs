@@ -9,6 +9,7 @@ using Repository.StudentProfileRepo;
 using Service.StudentProfileServ;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using static Google.Apis.Requests.BatchRequest;
 
 namespace ARMS_API.Controllers.AdmissionOfficer
 {
@@ -30,14 +31,53 @@ namespace ARMS_API.Controllers.AdmissionOfficer
         }
 
         [HttpGet("list-register-admission")]
-        public async Task<IActionResult> ListRegisterAdmission(string campus)
+        public async Task<IActionResult> ListRegisterAdmission(string CampusId, string? Search, int CurrentPage)
         {
             try
             {
-                List<StudentProfile> stf = await _studentProfileService.GetRegisterAdmission(campus);
+                ResponeModel<AdmissionProfile_DTO> result = new ResponeModel<AdmissionProfile_DTO>();
+                result.CurrentPage = CurrentPage;
+                result.CampusId = CampusId;
+                result.Search = Search;
+
+                List<StudentProfile> response = await _studentProfileService.GetRegisterAdmission(CampusId);
+                // Search
+                if (!string.IsNullOrEmpty(Search))
+                {
+                    string searchTerm = _userInput.NormalizeText(Search);
+                    response = response
+                                .Where(sp =>
+                                    sp != null &&
+                                    (_userInput.NormalizeText(sp.Fullname).Contains(searchTerm) ||
+                                     _userInput.NormalizeText(sp.FullnameParents).Contains(searchTerm) ||
+                                     _userInput.NormalizeText(sp.CitizenIentificationNumber).Contains(searchTerm) ||
+                                     _userInput.NormalizeText(sp.District).Contains(searchTerm) ||
+                                     _userInput.NormalizeText(sp.EmailStudent).Contains(searchTerm) ||
+                                     _userInput.NormalizeText(sp.Nation).Contains(searchTerm) ||
+                                     _userInput.NormalizeText(sp.Note).Contains(searchTerm) ||
+                                     _userInput.NormalizeText(sp.PhoneParents).Contains(searchTerm) ||
+                                     _userInput.NormalizeText(sp.PhoneStudent).Contains(searchTerm) ||
+                                     _userInput.NormalizeText(sp.SpecificAddress).Contains(searchTerm) ||
+                                     _userInput.NormalizeText(sp.AddressRecipientResults).Contains(searchTerm) ||
+                                     _userInput.NormalizeText(sp.SchoolName).Contains(searchTerm) ||
+                                     _userInput.NormalizeText(sp.District).Contains(searchTerm) ||
+                                     _userInput.NormalizeText(sp.Ward).Contains(searchTerm) ||
+                                      _userInput.NormalizeText(sp.CIAddress).Contains(searchTerm)
+                                    )
+                                )
+                                .ToList();
+                };
                 //mapper
-                List<RegisterAdmissionProfileDTO> studentProfile = _mapper.Map<List<RegisterAdmissionProfileDTO>>(stf);
-                return Ok(studentProfile);
+
+                result.PageCount = (int)Math.Ceiling(response.Count() / (double)result.PageSize);
+                var studentProfiles = response
+                    .Skip(((int)result.CurrentPage - 1) * (int)result.PageSize)
+                    .Take((int)result.PageSize)
+                    .ToList();
+                List<AdmissionProfile_DTO> studentProfile = _mapper.Map<List<AdmissionProfile_DTO>>(studentProfiles);
+                result.Item = studentProfile;
+                result.TotalItems = response.Count;
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -68,27 +108,5 @@ namespace ARMS_API.Controllers.AdmissionOfficer
                 });
             }
         }
-        //[HttpPut("update-student-consultation")]
-        //public async Task<IActionResult> UpdateStudentConsultation(StudentConsultation_AO_DTO StudentConsultationDTO)
-        //{
-        //    try
-        //    {
-        //        _validInput.UpdateStudentConsultation(StudentConsultationDTO);
-        //        StudentConsultation responeResult = _mapper.Map<StudentConsultation>(StudentConsultationDTO);
-        //        await _studentConsultationService.UpdateStudentConsultation(responeResult);
-
-        //        return Ok(new ResponseViewModel()
-        //        {
-        //            Status = true,
-        //            Message = "Cập nhật thành công!"
-        //        });
-
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        return BadRequest();
-        //    }
-        //}
     }
 }

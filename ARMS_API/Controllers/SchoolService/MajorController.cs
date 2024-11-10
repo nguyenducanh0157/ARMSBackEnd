@@ -13,7 +13,7 @@ namespace ARMS_API.Controllers.SchoolService
 {
     [Route("api/school-service/[controller]")]
     [ApiController]
-    [Authorize(Roles = "SchoolService")]
+    //[Authorize(Roles = "SchoolService")]
     public class MajorController : ControllerBase
     {
         private IMajorService _majorService;

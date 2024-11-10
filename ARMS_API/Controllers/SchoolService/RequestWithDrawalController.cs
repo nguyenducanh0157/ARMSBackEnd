@@ -10,7 +10,7 @@ using Service.RequestChangeMajorSer;
 
 namespace ARMS_API.Controllers.SchoolService
 {
-    [Route("api/[controller]")]
+    [Route("api/SchoolService/[controller]")]
     [ApiController]
     //[Authorize(Roles = "SchoolService")]
     public class RequestWithDrawalController : ControllerBase
@@ -31,7 +31,7 @@ namespace ARMS_API.Controllers.SchoolService
         {
             try
             {
-                ResponeModel<RequestChangeMajor_SS_DTO> result = new ResponeModel<RequestChangeMajor_SS_DTO>
+                ResponeModel<RequestWithDrawal_SS_DTO> result = new ResponeModel<RequestWithDrawal_SS_DTO>
                 {
                     CurrentPage = CurrentPage,
                     CampusId = CampusId,
@@ -48,17 +48,11 @@ namespace ARMS_API.Controllers.SchoolService
                                 .Where(request =>
                                     request != null &&
                                     !string.IsNullOrEmpty(request.Description) &&
-                                    !string.IsNullOrEmpty(request.MajorNew) &&
-                                    !string.IsNullOrEmpty(request.MajorN?.MajorName) &&
                                     !string.IsNullOrEmpty(request.Account?.Fullname) &&
                                     !string.IsNullOrEmpty(request.Account?.StudentCode) &&
-                                    !string.IsNullOrEmpty(request.MajorO?.MajorName) &&
                                     (_userInput.NormalizeText(request.Description).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(request.MajorNew).Contains(searchTerm) ||
                                      _userInput.NormalizeText(request.Account.Fullname).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(request.Account.StudentCode).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(request.MajorO.MajorName).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(request.MajorN.MajorName).Contains(searchTerm)
+                                     _userInput.NormalizeText(request.Account.StudentCode).Contains(searchTerm)
                                     )
                                 )
                                 .ToList();
@@ -80,7 +74,7 @@ namespace ARMS_API.Controllers.SchoolService
                     .ToList();
 
                 // Map results to DTOs
-                result.Item = _mapper.Map<List<RequestChangeMajor_SS_DTO>>(majors);
+                result.Item = _mapper.Map<List<RequestWithDrawal_SS_DTO>>(majors);
                 result.TotalItems = response.Count;
 
                 return Ok(result);

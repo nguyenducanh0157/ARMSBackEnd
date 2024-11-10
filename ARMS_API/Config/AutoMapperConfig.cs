@@ -148,6 +148,9 @@ namespace ARMS_API.Config
 
                 config.CreateMap<RequestWithDrawal_Student_DTO, Request>();
                 config.CreateMap<Request, RequestWithDrawal_Student_DTO>();
+
+                config.CreateMap<RequestWithDrawal_SS_DTO, Request>();
+                config.CreateMap<Request, RequestWithDrawal_SS_DTO>();
             });
 
             return mapperConfig.CreateMapper();

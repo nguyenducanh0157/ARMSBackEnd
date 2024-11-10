@@ -57,4 +57,14 @@ namespace Data.DTO
         public virtual Major_RequestChange_DTO? MajorO { get; set; }
         public virtual Account_RequestChangeMajor_DTO? Account { get; set; }
     }
+    public class RequestWithDrawal_SS_DTO
+    {
+        public int RequestID { get; set; }
+        public DateTime DateRequest { get; set; }
+        public string Description { get; set; }
+        public string FileReasonRequestChangeMajor { get; set; }
+        public string? Reply { get; set; }
+        public TypeofRequestChangeMajor Status { get; set; }
+        public virtual Account_RequestChangeMajor_DTO? Account { get; set; }
+    }
 }
