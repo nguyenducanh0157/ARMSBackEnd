@@ -39,7 +39,7 @@ namespace Repository
             }
             catch (Exception)
             {
-                throw new Exception("Tạo mới không thành công");
+                throw new Exception("Tạo mới hóa đơn không thành công");
             }
         }
     }
