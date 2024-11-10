@@ -52,7 +52,7 @@ namespace Data.ArmsContext
             modelBuilder.ApplyConfiguration(new AdmissionTimeConfiguration());
             modelBuilder.ApplyConfiguration(new StudentProfileConfiguration());
             modelBuilder.ApplyConfiguration(new AdmissionInformationConfiguration());
-            modelBuilder.ApplyConfiguration(new RequestChangeMajorConfiguration());
+            modelBuilder.ApplyConfiguration(new RequestConfiguration());
             modelBuilder.ApplyConfiguration(new PriorityDetailConfiguration());
             modelBuilder.ApplyConfiguration(new AcademicTranscriptConfiguration());
             modelBuilder.ApplyConfiguration(new PayFeeAdmissionConfiguration());
@@ -136,7 +136,7 @@ namespace Data.ArmsContext
         public DbSet<AdmissionTime> AdmissionTimes { get; set; }
         public DbSet<StudentProfile> StudentProfiles { get; set; }
         public DbSet<AdmissionInformation> AdmissionInformations { get; set; }
-        public DbSet<RequestChangeMajor> RequestChangeMajors { get; set; }
+        public DbSet<Request> Requests { get; set; }
         public DbSet<PriorityDetail> PriorityDetails { get; set; }
         public DbSet<AcademicTranscript> AcademicTranscripts { get; set; }
         public DbSet<PayFeeAdmission> PayFeeAdmissions { get; set; }

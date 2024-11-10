@@ -19,8 +19,8 @@ namespace Data.Seeding
         public void Seed()
         {
             // seed TypeAdmission
-            modelBuilder.Entity<RequestChangeMajor>().HasData(
-                new RequestChangeMajor()
+            modelBuilder.Entity<Request>().HasData(
+                new Request()
                 {
                     RequestID = 1,
                     DateRequest = DateTime.Now,
@@ -30,9 +30,10 @@ namespace Data.Seeding
                     AccountId = Guid.Parse("2F36AD81-47C3-4194-9AF8-BA19300695AA"),
                     Description ="Em muốn chuyển ngành!",
                     Status = TypeofRequestChangeMajor.Inprocess,
-                    CampusId ="Hanoi"
+                    CampusId ="Hanoi",
+                    isRequestChangeMajor = true,
                 },
-                new RequestChangeMajor()
+                new Request()
                 {
                     RequestID = 2,
                     DateRequest = DateTime.Now,
@@ -42,7 +43,8 @@ namespace Data.Seeding
                     AccountId = Guid.Parse("2F36AD81-47C3-4194-9AF8-BA19300695AA"),
                     Description = "Em muốn chuyển ngành!",
                     Status = TypeofRequestChangeMajor.Inprocess,
-                    CampusId = "Hanoi"
+                    CampusId = "Hanoi",
+                    isRequestChangeMajor = true,
                 }
                 );
 

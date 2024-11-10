@@ -139,7 +139,7 @@ builder.Services.AddScoped<IStudentConsultationService, StudentConsultationServi
 builder.Services.AddScoped<IStudentProfileService, StudentProfileService>();
 builder.Services.AddScoped<IAdmissionTimeService, AdmissionTimeService>();
 builder.Services.AddScoped<IAdmissionInformationService, AdmissionInformationService>();
-builder.Services.AddScoped<IRequestChangeMajorService, RequestChangeMajorService>();
+builder.Services.AddScoped<IRequestService, RequestService>();
 builder.Services.AddScoped<IPriorityService, PriorityService>();
 builder.Services.AddScoped<IPayFeeAdmissionService, PayFeeAdmissionService>();
 builder.Services.AddScoped<IAccountService, AccountService>();

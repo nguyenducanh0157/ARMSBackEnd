@@ -17,10 +17,10 @@ namespace ARMS_API.Controllers.SchoolService
     [Authorize(Roles = "SchoolService")]
     public class RequestChangeMajorController : ControllerBase
     {
-        private IRequestChangeMajorService _requestChangeMajorService;
+        private IRequestService _requestChangeMajorService;
         private readonly IMapper _mapper;
         private UserInput _userInput;
-        public RequestChangeMajorController(IRequestChangeMajorService requestChangeMajorService, IMapper mapper, UserInput userInput)
+        public RequestChangeMajorController(IRequestService requestChangeMajorService, IMapper mapper, UserInput userInput)
         {
             _requestChangeMajorService = requestChangeMajorService;
             _mapper = mapper;
@@ -38,7 +38,7 @@ namespace ARMS_API.Controllers.SchoolService
                     Search = Search
                 };
 
-                List<RequestChangeMajor> response = await _requestChangeMajorService.GetRequestChangeMajors(CampusId);
+                List<Request> response = await _requestChangeMajorService.GetRequestChangeMajors(CampusId);
 
                 // Apply Search filter
                 if (!string.IsNullOrEmpty(Search))
@@ -96,7 +96,7 @@ namespace ARMS_API.Controllers.SchoolService
             try
             {
 
-                RequestChangeMajor request =await _requestChangeMajorService.GetRequestChangeMajorByID(RequestID);
+                Request request =await _requestChangeMajorService.GetRequestByID(RequestID);
                 request.Status = requestChangeMajor_Student_DTO.Status;
                 request.FileReasonRequestChangeMajor = requestChangeMajor_Student_DTO.FileReasonRequestChangeMajor;
                 request.Reply = requestChangeMajor_Student_DTO.Reply;

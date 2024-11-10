@@ -23,8 +23,8 @@ namespace Data.Models
         public virtual ICollection<Subject>? Subjects { get; set; }
         public virtual ICollection<Account>? Accounts { get; set; }
         public virtual ICollection<StudentConsultation>? StudentConsultations { get; set; }
-        public virtual ICollection<RequestChangeMajor>? RequestChangeMajorsN { get; set; }
-        public virtual ICollection<RequestChangeMajor>? RequestChangeMajorsO { get; set; }
+        public virtual ICollection<Request>? RequestChangeMajorsN { get; set; }
+        public virtual ICollection<Request>? RequestChangeMajorsO { get; set; }
         public virtual ICollection<TypeAdmission>? TypeAdmissions { get; set; }
     }
 }

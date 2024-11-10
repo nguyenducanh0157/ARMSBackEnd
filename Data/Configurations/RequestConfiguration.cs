@@ -9,13 +9,12 @@ using System.Threading.Tasks;
 
 namespace Data.Configurations
 {
-    public class RequestChangeMajorConfiguration : IEntityTypeConfiguration<RequestChangeMajor>
+    public class RequestConfiguration : IEntityTypeConfiguration<Request>
     {
-        public void Configure(EntityTypeBuilder<RequestChangeMajor> builder)
+        public void Configure(EntityTypeBuilder<Request> builder)
         {
-            builder.ToTable(nameof(RequestChangeMajor));
+            builder.ToTable(nameof(Request));
             builder.HasKey(x => x.RequestID);
-            builder.Property(x => x.MajorNew).IsRequired();
             builder.Property(x => x.AccountId).IsRequired();
             builder.Property(x => x.DateRequest).IsRequired();
             builder.Property(x => x.FileReasonRequestChangeMajor).IsRequired();

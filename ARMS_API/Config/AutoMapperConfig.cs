@@ -50,7 +50,7 @@ namespace ARMS_API.Config
                 config.CreateMap<AdmissionInformation, AdmissionInformationDTO>();
                 config.CreateMap<AdmissionInformation_Update_DTO, AdmissionInformation>();
                 // request change major
-                config.CreateMap<RequestChangeMajor, RequestChangeMajorDTO>();
+                config.CreateMap<Request, RequestChangeMajorDTO>();
                 // Priority
                 config.CreateMap<PriorityDetail, PriorityDTO>()
                      .ForMember(dest => dest.TypeOfPriority, opt => opt.MapFrom(src =>
@@ -133,15 +133,21 @@ namespace ARMS_API.Config
                                       SubjectGroupName = EnumExtensions.GetEnumDescription(g)
                                   }).ToList()));
                 // mapping get request change major for school service
-                config.CreateMap<RequestChangeMajor_SS_DTO, RequestChangeMajor>();
-                config.CreateMap<RequestChangeMajor, RequestChangeMajor_SS_DTO>();
+                config.CreateMap<RequestChangeMajor_SS_DTO, Request>();
+                config.CreateMap<Request, RequestChangeMajor_SS_DTO>();
                 config.CreateMap<Major_RequestChange_DTO, Major>();
                 config.CreateMap<Major, Major_RequestChange_DTO>();
                 config.CreateMap<Account_RequestChangeMajor_DTO, Account>();
                 config.CreateMap<Account, Account_RequestChangeMajor_DTO>();
                 //request change major for student
-                config.CreateMap<RequestChangeMajor_Student_DTO, RequestChangeMajor>();
-                config.CreateMap<RequestChangeMajor, RequestChangeMajor_Student_DTO>();
+                config.CreateMap<RequestChangeMajor_Student_DTO, Request>();
+                config.CreateMap<Request, RequestChangeMajor_Student_DTO>();
+                //request withdrawal
+                config.CreateMap<RequestWithDrawalDTO, Request>();
+                config.CreateMap<Request, RequestWithDrawalDTO>();
+
+                config.CreateMap<RequestWithDrawal_Student_DTO, Request>();
+                config.CreateMap<Request, RequestWithDrawal_Student_DTO>();
             });
 
             return mapperConfig.CreateMapper();

@@ -19,10 +19,22 @@ namespace Data.DTO
         public virtual Major_RequestChange_DTO? MajorN { get; set; }
         public virtual Major_RequestChange_DTO? MajorO { get; set; }
     }
+    public class RequestWithDrawalDTO
+    {
+        public int RequestID { get; set; }
+        public DateTime DateRequest { get; set; }
+        public string Description { get; set; }
+        public string FileReasonRequestChangeMajor { get; set; }
+        public TypeofRequestChangeMajor Status { get; set; }
+    }
+    public class RequestWithDrawal_Student_DTO
+    {
+        public string Description { get; set; }
+        public string FileReasonRequestChangeMajor { get; set; }
+    }
     public class RequestChangeMajor_Student_DTO
     {
         public string MajorNew { get; set; }
-        public DateTime DateRequest { get; set; }
         public string Description { get; set; }
         public string FileReasonRequestChangeMajor { get; set; }
     }

@@ -1,33 +1,28 @@
-﻿using ARMS_API.ValidData;
-using AutoMapper;
+﻿using AutoMapper;
 using Data.DTO;
 using Data.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.AccountSer;
-using Service.BlogSer;
 using Service.RequestChangeMajorSer;
-using static Google.Apis.Requests.BatchRequest;
 
 namespace ARMS_API.Controllers.Student
 {
-    [Route("api/Student/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Student")]
-    public class RequestChangeMajorController : ControllerBase
+    public class RequestWithDrawalController : ControllerBase
     {
-        private IRequestService _requestChangeMajorService;
+        private IRequestService _request;
         private IAccountService _accountService;
         private readonly IMapper _mapper;
-        public RequestChangeMajorController(IRequestService requestChangeMajorService, IMapper mapper, IAccountService accountService)
+        public RequestWithDrawalController(IRequestService requestChangeMajorService, IMapper mapper, IAccountService accountService)
         {
-            _requestChangeMajorService = requestChangeMajorService;
+            _request = requestChangeMajorService;
             _mapper = mapper;
             _accountService = accountService;
         }
-        [HttpGet("get-request-change-major")]
-        public async Task<IActionResult> GetRequestChangeMajor()
+        [HttpGet("get-request-with-drawal")]
+        public async Task<IActionResult> GetRequestWithDrawal()
         {
             try
             {
@@ -36,8 +31,8 @@ namespace ARMS_API.Controllers.Student
                 {
                     return Unauthorized("Không tìm thấy ID người dùng!");
                 }
-                List<Request> request = await _requestChangeMajorService.GetRequestChangeMajorsByID(Guid.Parse(userId));
-                List<RequestChangeMajorDTO> responeResult = _mapper.Map<List<RequestChangeMajorDTO>>(request);
+                List<Request> request = await _request.GetRequestWithDrawalsByID(Guid.Parse(userId));
+                List<RequestWithDrawalDTO> responeResult = _mapper.Map<List<RequestWithDrawalDTO>>(request);
                 return Ok(responeResult);
 
             }
@@ -48,7 +43,7 @@ namespace ARMS_API.Controllers.Student
             }
         }
         [HttpPost("add-request-change-major")]
-        public async Task<IActionResult> AddRegisterAdmission([FromBody] RequestChangeMajor_Student_DTO requestChangeMajor_Student_DTO)
+        public async Task<IActionResult> AddRegisterAdmission([FromBody] RequestWithDrawal_Student_DTO RequestWithDrawal_Student_DTO)
         {
             try
             {
@@ -57,16 +52,15 @@ namespace ARMS_API.Controllers.Student
                 var account = await _accountService.GetAccountByUserId(Guid.Parse(userId));
 
                 //mapper
-                Request RequestChangeMajor = _mapper.Map<Request>(requestChangeMajor_Student_DTO);
-                RequestChangeMajor.Status = TypeofRequestChangeMajor.Inprocess;
-                RequestChangeMajor.AccountId = Guid.Parse(userId);
-                RequestChangeMajor.MajorOld = account.MajorId;
-                RequestChangeMajor.CampusId = account.CampusId;
-                RequestChangeMajor.isRequestChangeMajor = true;
-                RequestChangeMajor.DateRequest = DateTime.UtcNow;
+                Request Request = _mapper.Map<Request>(RequestWithDrawal_Student_DTO);
+                Request.Status = TypeofRequestChangeMajor.Inprocess;
+                Request.AccountId = Guid.Parse(userId);
+                Request.CampusId = account.CampusId;
+                Request.isRequestChangeMajor = false;
+                Request.DateRequest = DateTime.UtcNow;
 
                 //add new
-                await _requestChangeMajorService.AddNewRequest(RequestChangeMajor);
+                await _request.AddNewRequest(Request);
                 return Ok(new ResponseViewModel()
                 {
                     Status = true,
