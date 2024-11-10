@@ -18,7 +18,10 @@ namespace Repository
         {
             try
             {
-                Account Account = await _context.Accounts.SingleOrDefaultAsync(x => x.Id== userId);
+                Account Account = await _context.Accounts
+                    .Include(x=>x.Major)
+                    .Include(x => x.StudentProfile)
+                    .SingleOrDefaultAsync(x => x.Id== userId);
                 return Account;
             }
             catch (Exception)

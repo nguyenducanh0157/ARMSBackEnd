@@ -51,11 +51,60 @@ namespace Data.DTO
         public virtual TypeOfDiploma? TypeOfDiplomaMajor2 { get; set; }// loại bằng ngành 2
         public virtual TypeOfTranscript? TypeOfTranscriptMajor2 { get; set; }// loại học bạ ngành 2
         public int? PriorityDetailPriorityID { get; set; }
+        public virtual ICollection<AcademicTranscript_View_DTO>? AcademicTranscriptsMajor1 { get; set; }
+        public virtual ICollection<AcademicTranscript_View_DTO>? AcademicTranscriptsMajor2 { get; set; }
+        public virtual PayFeeAdmissionDTO? PayFeeAdmission { get; set; }
+
+    }
+    public class AdmissionProfile_DTO
+    {
+        public string Fullname { get; set; }
+        public DateTime? Dob { get; set; }
+        public bool? Gender { get; set; }
+        public string? Nation { get; set; } // dân tộc
+        public string? CitizenIentificationNumber { get; set; } // căn cước công dân
+        public DateTime? CIDate { get; set; } // ngày cấp
+        public string? CIAddress { get; set; } // nơi cấp
+        public string? Province { get; set; } // tỉnh
+        public string? District { get; set; } // huyện
+        public string? Ward { get; set; } // xã 
+        public string? SpecificAddress { get; set; } // địa chỉ nhà
+        public string EmailStudent { get; set; } // duy nhất
+        public string PhoneStudent { get; set; } // duy nhất
+        public string? FullnameParents { get; set; }
+        public string? PhoneParents { get; set; }
+        public string CampusId { get; set; }
+        public string? Major1 { get; set; }
+        public string? Major2 { get; set; }
+        public int? YearOfGraduation { get; set; }
+        public string? SchoolName { get; set; }
+        public bool? RecipientResults { get; set; } // true học sinh nhận kết quả
+        public bool? PermanentAddress { get; set; } // true - địa chỉ thường trú
+        public string? AddressRecipientResults { get; set; } // lưu địa chỉ nhận khác
+        public string? ImgCitizenIdentification1 { get; set; }
+        public string? ImgCitizenIdentification2 { get; set; }
+        public string? ImgDiplomaMajor1 { get; set; } // ảnh bằng ngành 1
+        public string? ImgDiplomaMajor2 { get; set; } // ảnh bằng ngành 2
+        public string? Imgpriority { get; set; } // ảnh bằng chứng xác nhận ưu tiên
+        public string? ImgAcademicTranscript1 { get; set; }//kỳ 1 - lớp 10
+        public string? ImgAcademicTranscript2 { get; set; }//kỳ 2 - lớp 10
+        public string? ImgAcademicTranscript3 { get; set; }//cuối năm - lớp 10
+        public string? ImgAcademicTranscript4 { get; set; }//kỳ 1 - lớp 11
+        public string? ImgAcademicTranscript5 { get; set; }//kỳ 2 - lớp 11
+        public string? ImgAcademicTranscript6 { get; set; }//Cuối năm - lớp 11
+        public string? ImgAcademicTranscript7 { get; set; }//kỳ 1 - lớp 12
+        public string? ImgAcademicTranscript8 { get; set; }//kỳ 2 - lớp 12
+        public string? ImgAcademicTranscript9 { get; set; }//cuối năm - lớp 12
+        public virtual TypeOfDiploma? TypeOfDiplomaMajor1 { get; set; }// loại bằng ngành 1
+        public virtual TypeOfTranscript? TypeOfTranscriptMajor1 { get; set; }// loại học bạ ngành 1
+        public virtual TypeOfDiploma? TypeOfDiplomaMajor2 { get; set; }// loại bằng ngành 2
+        public virtual TypeOfTranscript? TypeOfTranscriptMajor2 { get; set; }// loại học bạ ngành 2
+        public int? PriorityDetailPriorityID { get; set; }
+        public virtual ICollection<AcademicTranscript_View_DTO>? AcademicTranscriptsMajor1 { get; set; }
+        public virtual ICollection<AcademicTranscript_View_DTO>? AcademicTranscriptsMajor2 { get; set; }
         public virtual TypeofStatusForMajor? TypeofStatusMajor1 { get; set; } // trạng thái xét tuyển ngành 1
         public virtual TypeofStatusForMajor? TypeofStatusMajor2 { get; set; } // trạng thái xét tuyển ngành 2
         public virtual TypeofStatus? TypeofStatusProfile { get; set; } // trạng thái hồ sơ
-        public virtual ICollection<AcademicTranscript_View_DTO>? AcademicTranscriptsMajor1 { get; set; }
-        public virtual ICollection<AcademicTranscript_View_DTO>? AcademicTranscriptsMajor2 { get; set; }
 
         // view
         public string? CampusName { get; set; }

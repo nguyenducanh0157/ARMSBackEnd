@@ -68,15 +68,19 @@ namespace ARMS_API.Controllers
                 //mapper
                 // Map registerAdmissionProfileDTO sang StudentProfile
                 StudentProfile studentProfile = _mapper.Map<StudentProfile>(registerAdmissionProfileDTO);
-
+                studentProfile.TypeofStatusMajor1 = TypeofStatusForMajor.Inprocess;
+                studentProfile.TypeofStatusMajor2 = TypeofStatusForMajor.Inprocess;
                 if (studentProfile.PayFeeAdmissions == null)
                 {
                     studentProfile.PayFeeAdmissions = new List<PayFeeAdmission>();
                 }
                 PayFeeAdmission PayFeeAdmission = _mapper.Map<PayFeeAdmission>(registerAdmissionProfileDTO.PayFeeAdmission);
+                if (registerAdmissionProfileDTO.PayFeeAdmission.TransactionStatus == "00")
+                {
+                studentProfile.TypeofStatusProfile = TypeofStatus.SuccessProfileRegister;
                 PayFeeAdmission.isFeeRegister = true;
                 studentProfile.PayFeeAdmissions.Add(PayFeeAdmission);
-
+                }
                 //add new
                 await _studentProfileService.AddStudentProfile(studentProfile);
                 return Ok(new ResponseViewModel()
@@ -107,7 +111,7 @@ namespace ARMS_API.Controllers
                     throw new Exception("Không tìm thấy hồ sơ xét tuyển!");
                 StudentProfile stf = await _studentProfileService.GetExistCCCDStudent(requestSearchRegisterAdmissionProfileDTO.CitizenIentificationNumber);
                 //mapper
-                RegisterAdmissionProfileDTO studentProfile = _mapper.Map<RegisterAdmissionProfileDTO>(stf);
+                AdmissionProfile_DTO studentProfile = _mapper.Map<AdmissionProfile_DTO>(stf);
                 var payFeeAdmission = stf.PayFeeAdmissions.FirstOrDefault(x => x.isFeeRegister == true);
                 studentProfile.PayFeeAdmission = _mapper.Map<PayFeeAdmissionDTO>(payFeeAdmission);
 

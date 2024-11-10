@@ -9,9 +9,11 @@ namespace Data.Models
     public enum TypeofStatus
     {
         SuccessProfileRegister,//0
-        SuccessProfileAdmission,//1
-        WaitingPaymentAdmission,//2
-        InProcessAdmission,//3
+        ConfirmSuccessProfileRegister,//1
+        SuccessProfileAdmission,//2
+        ConfirmSuccessProfileAdmission,//3
+        WaitingPaymentAdmission,//4
+        InProcessAdmission,//5
         Done//4
     }
     public enum TypeofStatusForMajor

@@ -38,10 +38,9 @@ namespace Data.DTO
         public string Description { get; set; }
         public string FileReasonRequestChangeMajor { get; set; }
     }
-    public class Reply_RequestChangeMajor_Student_DTO
+    public class Reply_Request_DTO
     {
         public string? Reply { get; set; }
-        public string FileReasonRequestChangeMajor { get; set; }
         public TypeofRequestChangeMajor Status { get; set; }
     }
     public class RequestChangeMajor_SS_DTO

@@ -5,28 +5,28 @@ using Data.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using Service.BlogSer;
+using Service.AccountSer;
 using Service.RequestChangeMajorSer;
-using static Google.Apis.Requests.BatchRequest;
 
 namespace ARMS_API.Controllers.SchoolService
 {
-    [Route("api/SchoolService/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "SchoolService")]
-    public class RequestChangeMajorController : ControllerBase
+    //[Authorize(Roles = "SchoolService")]
+    public class RequestWithDrawalController : ControllerBase
     {
-        private IRequestService _requestChangeMajorService;
+        private IRequestService _request;
+        private IAccountService _accountService;
         private readonly IMapper _mapper;
         private UserInput _userInput;
-        public RequestChangeMajorController(IRequestService requestChangeMajorService, IMapper mapper, UserInput userInput)
+        public RequestWithDrawalController(IRequestService requestChangeMajorService, IMapper mapper, IAccountService accountService, UserInput userInput)
         {
-            _requestChangeMajorService = requestChangeMajorService;
+            _request = requestChangeMajorService;
             _mapper = mapper;
+            _accountService = accountService;
             _userInput = userInput;
         }
-        [HttpGet("get-request-change-major")]
+        [HttpGet("get-request-withdrawal")]
         public async Task<IActionResult> GetRequestChangeMajor(string CampusId, string? Search, int CurrentPage, TypeofRequestChangeMajor? Status)
         {
             try
@@ -38,7 +38,7 @@ namespace ARMS_API.Controllers.SchoolService
                     Search = Search
                 };
 
-                List<Request> response = await _requestChangeMajorService.GetRequestChangeMajors(CampusId);
+                List<Request> response = await _request.GetRequestWithDrawal(CampusId);
 
                 // Apply Search filter
                 if (!string.IsNullOrEmpty(Search))
@@ -90,17 +90,17 @@ namespace ARMS_API.Controllers.SchoolService
                 return BadRequest();
             }
         }
-        [HttpPut("accept-request-change-major")]
+        [HttpPut("accept-request-withdrawal")]
         public async Task<IActionResult> AddRequest(int RequestID, [FromBody] Reply_Request_DTO Reply_Request_DTO)
         {
             try
             {
 
-                Request request =await _requestChangeMajorService.GetRequestByID(RequestID);
+                Request request = await _request.GetRequestByID(RequestID);
                 request.Status = Reply_Request_DTO.Status;
                 request.Reply = Reply_Request_DTO.Reply;
                 //add new
-                await _requestChangeMajorService.UpdateRequest(request);
+                await _request.UpdateRequest(request);
                 return Ok(new ResponseViewModel()
                 {
                     Status = true,
