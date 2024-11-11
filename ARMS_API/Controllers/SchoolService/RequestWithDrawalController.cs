@@ -46,17 +46,17 @@ namespace ARMS_API.Controllers.SchoolService
                     string searchTerm = _userInput.NormalizeText(Search);
                     response = response
                                 .Where(request =>
-                                    request != null &&
-                                    !string.IsNullOrEmpty(request.Description) &&
-                                    !string.IsNullOrEmpty(request.Account?.Fullname) &&
-                                    !string.IsNullOrEmpty(request.Account?.StudentCode) &&
-                                    (_userInput.NormalizeText(request.Description).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(request.Account.Fullname).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(request.Account.StudentCode).Contains(searchTerm)
-                                    )
-                                )
+                                {
+                                    string description = _userInput.NormalizeText(request?.Description ?? "");
+                                    string fullname = _userInput.NormalizeText(request?.Account?.Fullname ?? "");
+                                    string studentCode = _userInput.NormalizeText(request?.Account?.StudentCode ?? "");
+                                    return description.Contains(searchTerm) ||
+                                           fullname.Contains(searchTerm) ||
+                                           studentCode.Contains(searchTerm);
+                                })
                                 .ToList();
                 }
+
 
                 // Apply Status filter
                 if (Status.HasValue)

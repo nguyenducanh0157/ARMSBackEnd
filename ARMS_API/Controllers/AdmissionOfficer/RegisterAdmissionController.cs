@@ -46,27 +46,25 @@ namespace ARMS_API.Controllers.AdmissionOfficer
                 {
                     string searchTerm = _userInput.NormalizeText(Search);
                     response = response
-                                .Where(sp =>
-                                    sp != null &&
-                                    (_userInput.NormalizeText(sp.Fullname).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(sp.FullnameParents).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(sp.CitizenIentificationNumber).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(sp.District).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(sp.EmailStudent).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(sp.Nation).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(sp.Note).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(sp.PhoneParents).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(sp.PhoneStudent).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(sp.SpecificAddress).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(sp.AddressRecipientResults).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(sp.SchoolName).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(sp.District).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(sp.Ward).Contains(searchTerm) ||
-                                      _userInput.NormalizeText(sp.CIAddress).Contains(searchTerm)
-                                    )
-                                )
+                                .Where(sp => sp != null && (
+                                    _userInput.NormalizeText(sp.Fullname ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.FullnameParents ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.CitizenIentificationNumber ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.District ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.EmailStudent ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.Nation ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.Note ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.PhoneParents ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.PhoneStudent ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.SpecificAddress ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.AddressRecipientResults ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.SchoolName ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.Ward ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.CIAddress ?? "").Contains(searchTerm)
+                                ))
                                 .ToList();
-                };
+                }
+
                 //mapper
 
                 result.PageCount = (int)Math.Ceiling(response.Count() / (double)result.PageSize);

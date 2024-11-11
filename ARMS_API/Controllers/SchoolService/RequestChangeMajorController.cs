@@ -40,29 +40,28 @@ namespace ARMS_API.Controllers.SchoolService
 
                 List<Request> response = await _requestChangeMajorService.GetRequestChangeMajors(CampusId);
 
-                // Apply Search filter
                 if (!string.IsNullOrEmpty(Search))
                 {
                     string searchTerm = _userInput.NormalizeText(Search);
                     response = response
                                 .Where(request =>
-                                    request != null &&
-                                    !string.IsNullOrEmpty(request.Description) &&
-                                    !string.IsNullOrEmpty(request.MajorNew) &&
-                                    !string.IsNullOrEmpty(request.MajorN?.MajorName) &&
-                                    !string.IsNullOrEmpty(request.Account?.Fullname) &&
-                                    !string.IsNullOrEmpty(request.Account?.StudentCode) &&
-                                    !string.IsNullOrEmpty(request.MajorO?.MajorName) &&
-                                    (_userInput.NormalizeText(request.Description).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(request.MajorNew).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(request.Account.Fullname).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(request.Account.StudentCode).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(request.MajorO.MajorName).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(request.MajorN.MajorName).Contains(searchTerm)
-                                    )
-                                )
+                                {
+                                    string description = _userInput.NormalizeText(request?.Description ?? "");
+                                    string majorNew = _userInput.NormalizeText(request?.MajorNew ?? "");
+                                    string fullname = _userInput.NormalizeText(request?.Account?.Fullname ?? "");
+                                    string studentCode = _userInput.NormalizeText(request?.Account?.StudentCode ?? "");
+                                    string majorNameOld = _userInput.NormalizeText(request?.MajorO?.MajorName ?? "");
+                                    string majorNameNew = _userInput.NormalizeText(request?.MajorN?.MajorName ?? "");
+                                    return description.Contains(searchTerm) ||
+                                           majorNew.Contains(searchTerm) ||
+                                           fullname.Contains(searchTerm) ||
+                                           studentCode.Contains(searchTerm) ||
+                                           majorNameOld.Contains(searchTerm) ||
+                                           majorNameNew.Contains(searchTerm);
+                                })
                                 .ToList();
                 }
+
 
                 // Apply Status filter
                 if (Status.HasValue)

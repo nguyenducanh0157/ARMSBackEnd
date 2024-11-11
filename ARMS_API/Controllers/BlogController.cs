@@ -56,15 +56,14 @@ namespace ARMS_API.Controllers
                     string searchTerm = _userInput.NormalizeText(Search);
                     response = response
                                 .Where(blog =>
-                                    blog != null &&
-                                    !string.IsNullOrEmpty(blog.Title) &&
-                                    !string.IsNullOrEmpty(blog.Description) &&
-                                    (_userInput.NormalizeText(blog.Title).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(blog.Description).Contains(searchTerm)
-                                    )
-                                )
+                                {
+                                    string title = _userInput.NormalizeText(blog?.Title ?? "");
+                                    string description = _userInput.NormalizeText(blog?.Description ?? "");
+                                    return title.Contains(searchTerm) || description.Contains(searchTerm);
+                                })
                                 .ToList();
-                };
+                }
+
                 if (CategoryID != 0 && CategoryID!=null)
                 {
                     response = response

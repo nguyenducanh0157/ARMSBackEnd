@@ -43,13 +43,15 @@ namespace ARMS_API.Controllers.AdmissionOfficer
                     string searchTerm = _userInput.NormalizeText(search);
                     response = response
                                 .Where(sc =>
-                                sc.FullName.Contains(search)
-                                || sc.Email.Contains(search)
-                                || sc.Notes.Contains(search)
-                                || sc.LinkFB.Contains(search)
-                                || sc.Major.MajorName.Contains(search))
+                                    _userInput.NormalizeText(sc.FullName ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sc.Email ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sc.Notes ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sc.LinkFB ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sc.Major?.MajorName ?? "").Contains(searchTerm)
+                                )
                                 .ToList();
-                };
+                }
+
                 if (isVocationalSchool != null)
                 {
                     response = response.Where(x => x.Major.isVocationalSchool == isVocationalSchool).ToList();

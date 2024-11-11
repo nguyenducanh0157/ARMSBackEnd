@@ -13,7 +13,7 @@ namespace ARMS_API.Controllers.SchoolService
 {
     [Route("api/school-service/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "SchoolService")]
+    [Authorize(Roles = "SchoolService")]
     public class MajorController : ControllerBase
     {
         private IMajorService _majorService;
@@ -56,16 +56,15 @@ namespace ARMS_API.Controllers.SchoolService
                     response = response
                                 .Where(major =>
                                     major != null &&
-                                    !string.IsNullOrEmpty(major.MajorName) &&
-                                    !string.IsNullOrEmpty(major.MajorCode) &&
-                                    !string.IsNullOrEmpty(major.MajorID) &&
-                                    (_userInput.NormalizeText(major.MajorName).Contains(searchTerm) ||
-                                     _userInput.NormalizeText(major.MajorCode).Contains(searchTerm)||
-                                      _userInput.NormalizeText(major.MajorID).Contains(searchTerm)
+                                    (
+                                        _userInput.NormalizeText(major.MajorName ?? "").Contains(searchTerm) ||
+                                        _userInput.NormalizeText(major.MajorCode ?? "").Contains(searchTerm) ||
+                                        _userInput.NormalizeText(major.MajorID ?? "").Contains(searchTerm)
                                     )
                                 )
                                 .ToList();
-                };
+                }
+
                 result.PageCount = (int)Math.Ceiling(response.Count() / (double)result.PageSize);
                 var majors = response
                     .Skip(((int)result.CurrentPage - 1) * (int)result.PageSize)
