@@ -28,8 +28,9 @@ namespace ARMS_API.Controllers
         public async Task<IActionResult> CreatePayment([FromBody] VnPaymentRequestModel request)
         {
             Guid codePay = Guid.NewGuid();
-            AdmissionInformation AI = await _admissionInformationService.GetAdmissionInformation(request.Campus);
-            decimal fee = AI.FeeRegister;
+            //AdmissionInformation AI = await _admissionInformationService.GetAdmissionInformation(request.Campus);
+            //decimal fee = AI.FeeRegister;
+            decimal fee = 100000;
             DateTime timecreate = DateTime.UtcNow;
             if (request == null)
             {

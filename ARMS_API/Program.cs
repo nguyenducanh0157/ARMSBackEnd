@@ -80,15 +80,16 @@ builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.Re
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy("AllowHttpOrigins", policy =>
-//    {
-//        policy.WithOrigins("https://localhost:5001", "http://ARMSTT.somee.com") // Thêm các domain HTTP được phép
-//              .AllowAnyHeader()
-//              .AllowAnyMethod();
-//    });
-//});
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowHttpOrigins", policy =>
+    {
+        // Add localhost:3000 to the allowed origins
+        policy.WithOrigins("https://localhost:5001", "http://localhost:3000", "http://localhost:3000") // Allow React's frontend
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 
 
 builder.Services.AddSwaggerGen(config =>
@@ -168,7 +169,7 @@ if (app.Environment.IsDevelopment())
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseHttpsRedirection();
-//app.UseCors("AllowHttpOrigins");
+app.UseCors("AllowHttpOrigins");
 // Authentication & Authorization
 app.UseAuthentication();
 app.UseAuthorization();

@@ -150,5 +150,19 @@ namespace Repository.StudentProfileRepo
 
             return studentProfile;
         }
+        public async Task<StudentProfile> UpdateStudentRegister(StudentProfile StudentProfile)
+        {
+            try
+            {
+                _context.Entry<StudentProfile>(StudentProfile).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return StudentProfile;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

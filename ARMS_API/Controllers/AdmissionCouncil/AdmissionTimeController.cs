@@ -29,7 +29,7 @@ namespace ARMS_API.Controllers.AdmissionCouncil
         {
             try
             {
-                List<AdmissionTime> response = await _admissionTimeService.GetAdmissionTimes(CampusId,year);
+                List<AdmissionTime> response = await _admissionTimeService.GetAdmissionTimes(CampusId);
                 List<AdmissionTime_Admission_DTO> responeResult = _mapper.Map<List<AdmissionTime_Admission_DTO>>(response);
                 return Ok(responeResult);
             }

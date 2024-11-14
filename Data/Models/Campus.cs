@@ -24,7 +24,7 @@ namespace Data.Models
         public virtual ICollection<StudentConsultation>? StudentConsultations { get; set; }
         public virtual ICollection<AdmissionTime>? AdmissionTimes { get; set; }
         public virtual ICollection<StudentProfile>? StudentProfiles { get; set; }
-        public virtual AdmissionInformation? AdmissionInformation { get; set; }
+        public virtual ICollection<AdmissionInformation>? AdmissionInformations { get; set; }
         public virtual ICollection<Request>? RequestChangeMajors { get; set; }
 
     }

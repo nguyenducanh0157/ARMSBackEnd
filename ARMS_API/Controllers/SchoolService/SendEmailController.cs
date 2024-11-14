@@ -51,7 +51,7 @@ namespace ARMS_API.Controllers.SchoolService
                     }
                 });
 
-                return Ok("Thông báo đang được xử lý gửi!");
+                return Ok("Thông báo đã được gửi!");
             }
             catch (Exception ex)
             {

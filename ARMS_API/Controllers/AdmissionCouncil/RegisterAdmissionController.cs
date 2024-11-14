@@ -11,9 +11,9 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using static Google.Apis.Requests.BatchRequest;
 
-namespace ARMS_API.Controllers.AdmissionOfficer
+namespace ARMS_API.Controllers.AdmissionCouncil
 {
-    [Route("api/admin-officer/[controller]")]
+    [Route("api/admin-council/[controller]")]
     [ApiController]
     //[Authorize(Roles = "AdminOfficer")]
     public class RegisterAdmissionController : ControllerBase
@@ -106,26 +106,26 @@ namespace ARMS_API.Controllers.AdmissionOfficer
                 });
             }
         }
-        [HttpPut("update-student-register")]
-        public async Task<IActionResult> UpdateStudentRegister(AdmissionProfile_AO_DTO AdmissionProfile_DTO)
-        {
-            try
-            {
-                StudentProfile responeResult = _mapper.Map<StudentProfile>(AdmissionProfile_DTO);
-                await _studentProfileService.UpdateStudentRegister(responeResult);
+        //[HttpPut("update-student-register")]
+        //public async Task<IActionResult> UpdateStudentRegister(AdmissionProfile_AO_DTO AdmissionProfile_DTO)
+        //{
+        //    try
+        //    {
+        //        StudentProfile responeResult = _mapper.Map<StudentProfile>(AdmissionProfile_DTO);
+        //        await _studentProfileService.UpdateStudentRegister(responeResult);
 
-                return Ok(new ResponseViewModel()
-                {
-                    Status = true,
-                    Message = "Cập nhật thành công!"
-                });
+        //        return Ok(new ResponseViewModel()
+        //        {
+        //            Status = true,
+        //            Message = "Cập nhật thành công!"
+        //        });
 
-            }
-            catch (Exception)
-            {
+        //    }
+        //    catch (Exception)
+        //    {
 
-                return BadRequest();
-            }
-        }
+        //        return BadRequest();
+        //    }
+        //}
     }
 }

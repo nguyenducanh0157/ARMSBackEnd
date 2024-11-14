@@ -9,7 +9,7 @@ namespace Service.AdmissionInformationSer
 {
     public interface IAdmissionInformationService
     {
-        Task<AdmissionInformation> GetAdmissionInformation(string campus);
+        Task<List<AdmissionInformation>> GetAdmissionInformation(string campus);
         Task UpdateAdmissionInformation(AdmissionInformation AdmissionInformation);
     }
 }

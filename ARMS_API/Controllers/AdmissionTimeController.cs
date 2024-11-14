@@ -19,11 +19,11 @@ namespace ARMS_API.Controllers
             _mapper = mapper;
         }
         [HttpGet("get-admission-time")]
-        public async Task<IActionResult> GetAdmissionTimes(string CampusId, int year)
+        public async Task<IActionResult> GetAdmissionTimes(string CampusId)
         {
             try
             {
-                List<AdmissionTime> response = await _admissionTimeService.GetAdmissionTimes(CampusId, year);
+                List<AdmissionTime> response = await _admissionTimeService.GetAdmissionTimes(CampusId);
                 List<AdmissionTimeDTO> responeResult = _mapper.Map<List<AdmissionTimeDTO>>(response);
                 return Ok(responeResult);
             }

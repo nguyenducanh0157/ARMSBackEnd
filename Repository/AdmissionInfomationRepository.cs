@@ -13,12 +13,25 @@ namespace Repository
     {
         private readonly ArmsDbContext _context;
         public AdmissionInfomationRepository(ArmsDbContext context) { _context = context; }
-        public async Task<AdmissionInformation> GetAdmissionInformation(string campus)
+        public async Task<List<AdmissionInformation>> GetAdmissionInformation(string campus)
+        {
+            try
+            {
+                List<AdmissionInformation> AdmissionInformation = await _context.AdmissionInformations
+                    .Where(x => x.CampusId == campus).ToListAsync();
+                return AdmissionInformation;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public async Task<AdmissionInformation> GetAdmissionInformationStatusTrue()
         {
             try
             {
                 AdmissionInformation AdmissionInformation = await _context.AdmissionInformations
-                    .FirstOrDefaultAsync(x => x.CampusId == campus);
+                    .FirstOrDefaultAsync(x => x.Status==TypeOfAdmissionInformation.Process);
                 return AdmissionInformation;
             }
             catch (Exception)

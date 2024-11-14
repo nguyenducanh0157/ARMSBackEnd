@@ -16,7 +16,7 @@ namespace Service.AdmissionInformationSer
         {
             _admissionInfomationRepository = new AdmissionInfomationRepository(context);
         }
-        public async Task<AdmissionInformation> GetAdmissionInformation(string campus)
+        public async Task<List<AdmissionInformation>> GetAdmissionInformation(string campus)
         {
             try
             {
@@ -36,10 +36,10 @@ namespace Service.AdmissionInformationSer
             try
             {
                 var ValidadmissionInformation = await _admissionInfomationRepository.GetAdmissionInformation(AdmissionInformation.CampusId);
-                ValidadmissionInformation.FeeAdmission = AdmissionInformation.FeeAdmission;
-                ValidadmissionInformation.FeeRegister = AdmissionInformation.FeeRegister;
-                ValidadmissionInformation.AdmissionProfileDescription = AdmissionInformation.AdmissionProfileDescription;
-                await _admissionInfomationRepository.UpdateAdmissionInformation(ValidadmissionInformation);
+                //ValidadmissionInformation.FeeAdmission = AdmissionInformation.FeeAdmission;
+                //ValidadmissionInformation.FeeRegister = AdmissionInformation.FeeRegister;
+                //ValidadmissionInformation.AdmissionProfileDescription = AdmissionInformation.AdmissionProfileDescription;
+                //await _admissionInfomationRepository.UpdateAdmissionInformation(ValidadmissionInformation);
             }
             catch (Exception)
             {

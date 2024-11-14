@@ -24,6 +24,7 @@ namespace Data.Configurations
 
             #region config relation
             builder.HasOne(x => x.Campus).WithMany(x => x.AdmissionTimes).HasForeignKey(x => x.CampusId).OnDelete(DeleteBehavior.NoAction);
+            builder.HasOne(x => x.AdmissionInformation).WithMany(x => x.AdmissionTimes).HasForeignKey(x => x.AdmissionInformationID).OnDelete(DeleteBehavior.NoAction);
             #endregion
         }
     }

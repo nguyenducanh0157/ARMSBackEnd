@@ -14,10 +14,11 @@ namespace Data.Models
         public int? Year { get; set; }
         public DateTime? StartAdmission { get; set; }
         public DateTime? EndAdmission { get; set; }
-        public bool? Status { get; set; }
+        public TypeOfAdmissionInformation? Status { get; set; }
         public string? AdmissionProfileDescription { get; set; }
         public string CampusId { get; set; }
         public virtual Campus? Campus { get; set; }
+        public virtual ICollection<AdmissionTime>? AdmissionTimes { get; set; }
 
     }
 }

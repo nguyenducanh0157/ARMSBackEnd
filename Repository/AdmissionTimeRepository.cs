@@ -18,6 +18,7 @@ namespace Repository
         {
             try
             {
+                
                 List<AdmissionTime> AdmissionTimes = await _context.AdmissionTimes.Where(x => x.CampusId.Equals(CampusId)).ToListAsync();
                 return AdmissionTimes;
             }

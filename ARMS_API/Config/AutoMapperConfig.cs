@@ -42,13 +42,15 @@ namespace ARMS_API.Config
                 config.CreateMap<StudentConsultation_AO_DTO, StudentConsultation>();
 
                 //admission time
+                config.CreateMap<AdmissionTime, AdmissionTimeDTO>();
                 config.CreateMap<AdmissionTime, AdmissionTime_Admission_DTO>();
                 config.CreateMap<AdmissionTime_Admission_DTO, AdmissionTime>();
-                config.CreateMap<AdmissionTime, AdmissionTimeDTO>();
                 config.CreateMap<AdmissionTime_Add_DTO, AdmissionTime>();
                 // admission information 
                 config.CreateMap<AdmissionInformation, AdmissionInformationDTO>();
                 config.CreateMap<AdmissionInformation_Update_DTO, AdmissionInformation>();
+
+                config.CreateMap<AdmissionInformation, AdmissionInformation_AC_DTO>();
                 // request change major
                 config.CreateMap<Request, RequestChangeMajorDTO>();
                 // Priority

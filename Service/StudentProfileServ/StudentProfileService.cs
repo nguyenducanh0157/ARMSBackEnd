@@ -51,5 +51,7 @@ namespace Service.StudentProfileServ
         public async Task<bool> isExistEmailStudent(string email) => await _studentProfileRepository.isExistEmailStudent(email);
 
         public async Task<bool> isExistPhoneNumberStudent(string phonenumber) => await _studentProfileRepository.isExistPhoneNumberStudent(phonenumber);
+
+        public async Task<StudentProfile> UpdateStudentRegister(StudentProfile StudentProfile) => await _studentProfileRepository.UpdateStudentRegister(StudentProfile);
     }
 }

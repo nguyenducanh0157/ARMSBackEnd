@@ -116,8 +116,8 @@ namespace Data.ArmsContext
             new BlogSeeder(modelBuilder).Seed();
             new StudentConsultationSeeder(modelBuilder).Seed();
             new TypeAdmissionSeeder(modelBuilder).Seed();
-            new AdmissionTimeSeeder(modelBuilder).Seed();
             new AdmissionInformationSeeder(modelBuilder).Seed();
+            new AdmissionTimeSeeder(modelBuilder).Seed();
             new StudentProfileSeeder(modelBuilder).Seed();
             new RequestChangeMajorSeeder(modelBuilder).Seed();
             new PriorityDetailSeeder(modelBuilder).Seed();
