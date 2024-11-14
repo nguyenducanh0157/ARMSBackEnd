@@ -10,5 +10,6 @@ namespace Service.AccountSer
     public interface IAccountService
     {
         Task<Account> GetAccountByUserId(Guid userId);
+        Task<List<Account>> GetAccountStudent(string campusId);
     }
 }

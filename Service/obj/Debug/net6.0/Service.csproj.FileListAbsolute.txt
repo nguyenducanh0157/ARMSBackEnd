@@ -203,9 +203,11 @@ D:\Job\Đức Anh\DABE\Service\bin\Debug\net6.0\Microsoft.Extensions.Configurati
 D:\Job\Đức Anh\DABE\Service\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Json.dll
 D:\Job\Đức Anh\DABE\Service\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
 D:\Job\Đức Anh\DABE\Service\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Job\Đức Anh\DABE\Service\bin\Debug\net6.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
 D:\Job\Đức Anh\DABE\Service\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Abstractions.dll
 D:\Job\Đức Anh\DABE\Service\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Physical.dll
 D:\Job\Đức Anh\DABE\Service\bin\Debug\net6.0\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\Job\Đức Anh\DABE\Service\bin\Debug\net6.0\Microsoft.Extensions.Hosting.Abstractions.dll
 D:\Job\Đức Anh\DABE\Service\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
 D:\Job\Đức Anh\DABE\Service\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
 D:\Job\Đức Anh\DABE\Service\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll

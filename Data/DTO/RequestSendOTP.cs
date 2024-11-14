@@ -10,4 +10,9 @@ namespace Data.DTO
     {
         public string? CitizenIentificationNumber { get; set; }
     }
+    public class RequestSendNotification
+    {
+        public string CampusId { get; set; }
+        public string Content { get; set; }
+    }
 }

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Repository;
@@ -79,7 +80,15 @@ builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.Re
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddCors();
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("AllowHttpOrigins", policy =>
+//    {
+//        policy.WithOrigins("https://localhost:5001", "http://ARMSTT.somee.com") // Thêm các domain HTTP được phép
+//              .AllowAnyHeader()
+//              .AllowAnyMethod();
+//    });
+//});
 
 
 builder.Services.AddSwaggerGen(config =>
@@ -117,10 +126,10 @@ builder.Services.AddSwaggerGen(config =>
 builder.Services.Configure<VNPaySettings>(configuration.GetSection("VNPay"));
 builder.Services.Configure<EmailSetting>(configuration.GetSection("EmailSettings"));
 
-builder.Services.AddHttpsRedirection(options =>
-{
-    options.HttpsPort = 5001; 
-});
+//builder.Services.AddHttpsRedirection(options =>
+//{
+//    options.HttpsPort = 5001;
+//});
 
 //Config Repository 
 builder.Services.AddSingleton<TokenHealper>();
@@ -143,6 +152,7 @@ builder.Services.AddScoped<IRequestService, RequestService>();
 builder.Services.AddScoped<IPriorityService, PriorityService>();
 builder.Services.AddScoped<IPayFeeAdmissionService, PayFeeAdmissionService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped< EmailQueue>();
 //Services
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IVnPayService, VnPayService>();
@@ -155,14 +165,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseHttpsRedirection();
-app.UseCors(builder =>
-{
-    builder
-    .AllowAnyOrigin()
-    .AllowAnyMethod()
-    .AllowAnyHeader();
-});
+//app.UseCors("AllowHttpOrigins");
 // Authentication & Authorization
 app.UseAuthentication();
 app.UseAuthorization();
