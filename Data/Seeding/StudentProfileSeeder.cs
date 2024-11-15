@@ -18,46 +18,30 @@ namespace Data.Seeding
         }
         public void Seed()
         {
-            //// seed TypeAdmission
-            //modelBuilder.Entity<StudentProfile>().HasData(
-            //    new StudentProfile()
-            //    {
-            //        SpId = Guid.Parse("41A2AD7D-1AF6-464E-BBF4-0D18AE664851"),
-            //        AccountId = Guid.Parse("2F36AD81-47C3-4194-9AF8-BA19300695AA"),
-            //        Fullname ="Nguyễn Đức Anh",
-            //        CampusId ="Hanoi",
-            //        CitizenIentificationNumber ="038301012121",
-            //        CIDate = DateTime.Now,
-            //        CIAddress ="HCM",
-            //        EmailStudent = "nguyenducanh01.57@gmail.com",
-            //        Major1 = "HAO",
-            //        PhoneStudent ="0971341555",
-            //        Dob = DateTime.Now,
-            //        Gender = true,
-            //        TypeofStatus = TypeofStatus.Inprocess,
-            //        TimeRegister = DateTime.Now,
-            //        TypeOfDiploma = TypeOfDiploma.Xet_diem_thi_THPT,
-            //        PriorityDetailPriorityID = 1,
-            //    },
-            //    new StudentProfile()
-            //    {
-            //        SpId = Guid.Parse("795B3E70-1312-4889-8352-A696757D1730"),
-            //        Fullname = "Truong Thi Thu",
-            //        CampusId = "Hanoi",
-            //        CitizenIentificationNumber = "038301010101",
-            //        CIDate = DateTime.Now,
-            //        CIAddress = "HCM",
-            //        EmailStudent = "hoaithu1707.25@gmail.com",
-            //        Major1 = "HAO",
-            //        PhoneStudent = "0971341554",
-            //        Dob = DateTime.Now,
-            //        Gender = true,
-            //        TypeofStatus = TypeofStatus.Inprocess,
-            //        TimeRegister = DateTime.Now,
-            //        TypeOfDiploma = TypeOfDiploma.Xet_diem_thi_THPT,
-            //        PriorityDetailPriorityID = 1,
-            //    }
-            //    );
+            // seed TypeAdmission
+            modelBuilder.Entity<StudentProfile>().HasData(
+                new StudentProfile()
+                {
+                    SpId = Guid.Parse("41A2AD7D-1AF6-464E-BBF4-0D18AE664851"),
+                    AccountId = Guid.Parse("2F36AD81-47C3-4194-9AF8-BA19300695AA"),
+                    Fullname = "Nguyễn Đức Anh",
+                    CampusId = "Hanoi",
+                    CitizenIentificationNumber = "038301012121",
+                    CIDate = DateTime.Now,
+                    CIAddress = "HCM",
+                    EmailStudent = "nguyenducanh01.57@gmail.com",
+                    Major1 = "HAO",
+                    PhoneStudent = "0971341555",
+                    Dob = DateTime.Now,
+                    Gender = true,
+                    TypeofStatusMajor1 = TypeofStatusForMajor.Inprocess,
+                    TypeofStatusMajor2 = TypeofStatusForMajor.Inprocess,
+                    TypeofStatusProfile = TypeofStatus.ConfirmSuccessProfileRegister,
+                    TimeRegister = DateTime.Now,
+                    TypeOfDiplomaMajor1 = TypeOfDiploma.Xet_diem_thi_THPT,
+                    TypeOfDiplomaMajor2 = TypeOfDiploma.Xet_diem_thi_THPT,
+                    PriorityDetailPriorityID = 1,
+                });
             //modelBuilder.Entity<AcademicTranscript>().HasData(
             //    new AcademicTranscript()
             //    {
@@ -67,53 +51,53 @@ namespace Data.Seeding
             //        SubjectPoint = 9,
             //        TypeOfAcademicTranscript = TypeOfAcademicTranscript.Mon1_C1,
 
-            //    },
-            //    new AcademicTranscript()
-            //    {
-            //        ATId = Guid.NewGuid(),
-            //        SpId = Guid.Parse("41A2AD7D-1AF6-464E-BBF4-0D18AE664851"),
-            //        SubjectName = "Văn",
-            //        SubjectPoint = 9,
-            //        TypeOfAcademicTranscript = TypeOfAcademicTranscript.Mon2_C1,
+                //    },
+                //    new AcademicTranscript()
+                //    {
+                //        ATId = Guid.NewGuid(),
+                //        SpId = Guid.Parse("41A2AD7D-1AF6-464E-BBF4-0D18AE664851"),
+                //        SubjectName = "Văn",
+                //        SubjectPoint = 9,
+                //        TypeOfAcademicTranscript = TypeOfAcademicTranscript.Mon2_C1,
 
-            //    },
-            //    new AcademicTranscript()
-            //    {
-            //        ATId = Guid.NewGuid(),
-            //        SpId = Guid.Parse("41A2AD7D-1AF6-464E-BBF4-0D18AE664851"),
-            //        SubjectName = "Anh",
-            //        SubjectPoint = 9,
-            //        TypeOfAcademicTranscript = TypeOfAcademicTranscript.Mon3_C1,
+                //    },
+                //    new AcademicTranscript()
+                //    {
+                //        ATId = Guid.NewGuid(),
+                //        SpId = Guid.Parse("41A2AD7D-1AF6-464E-BBF4-0D18AE664851"),
+                //        SubjectName = "Anh",
+                //        SubjectPoint = 9,
+                //        TypeOfAcademicTranscript = TypeOfAcademicTranscript.Mon3_C1,
 
-            //    },
-            //    new AcademicTranscript()
-            //    {
-            //        ATId = Guid.NewGuid(),
-            //        SpId = Guid.Parse("795B3E70-1312-4889-8352-A696757D1730"),
-            //        SubjectName = "Toán",
-            //        SubjectPoint = 9,
-            //        TypeOfAcademicTranscript = TypeOfAcademicTranscript.Mon1_C1,
+                //    },
+                //    new AcademicTranscript()
+                //    {
+                //        ATId = Guid.NewGuid(),
+                //        SpId = Guid.Parse("795B3E70-1312-4889-8352-A696757D1730"),
+                //        SubjectName = "Toán",
+                //        SubjectPoint = 9,
+                //        TypeOfAcademicTranscript = TypeOfAcademicTranscript.Mon1_C1,
 
-            //    },
-            //    new AcademicTranscript()
-            //    {
-            //        ATId = Guid.NewGuid(),
-            //        SpId = Guid.Parse("795B3E70-1312-4889-8352-A696757D1730"),
-            //        SubjectName = "Văn",
-            //        SubjectPoint = 9,
-            //        TypeOfAcademicTranscript = TypeOfAcademicTranscript.Mon2_C1,
+                //    },
+                //    new AcademicTranscript()
+                //    {
+                //        ATId = Guid.NewGuid(),
+                //        SpId = Guid.Parse("795B3E70-1312-4889-8352-A696757D1730"),
+                //        SubjectName = "Văn",
+                //        SubjectPoint = 9,
+                //        TypeOfAcademicTranscript = TypeOfAcademicTranscript.Mon2_C1,
 
-            //    },
-            //    new AcademicTranscript()
-            //    {
-            //        ATId = Guid.NewGuid(),
-            //        SpId = Guid.Parse("795B3E70-1312-4889-8352-A696757D1730"),
-            //        SubjectName = "Anh",
-            //        SubjectPoint = 9,
-            //        TypeOfAcademicTranscript = TypeOfAcademicTranscript.Mon3_C1,
+                //    },
+                //    new AcademicTranscript()
+                //    {
+                //        ATId = Guid.NewGuid(),
+                //        SpId = Guid.Parse("795B3E70-1312-4889-8352-A696757D1730"),
+                //        SubjectName = "Anh",
+                //        SubjectPoint = 9,
+                //        TypeOfAcademicTranscript = TypeOfAcademicTranscript.Mon3_C1,
 
-            //    }
-            //    );
+                //    }
+                //    );
         }
     }
 }

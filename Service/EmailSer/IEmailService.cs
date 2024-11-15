@@ -9,6 +9,7 @@ namespace Service.EmailSer
 {
     public interface IEmailService
     {
-        Task<ResponseViewModel> SendEmailAsync(EmailRequest emailRequest);
+        Task<ResponseViewModel> SendEmailByHTMLAsync(EmailRequest emailRequest);
+        Task<ResponseViewModel> SendEmailAsync(EmailRequestByText emailRequest);
     }
 }

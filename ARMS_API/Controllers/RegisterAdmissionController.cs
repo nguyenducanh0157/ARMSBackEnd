@@ -142,7 +142,7 @@ namespace ARMS_API.Controllers
                 return BadRequest("Không nhận được email của học sinh!");
             }
             var otp = new Random().Next(100000, 999999).ToString();
-            EmailRequest emailRequest = new EmailRequest();
+            EmailRequestByText emailRequest = new EmailRequestByText();
             emailRequest.ToEmail = sp.EmailStudent;
             emailRequest.Subject = "Send OTP";
             emailRequest.Body = $"OTP của bạn là: {otp}";

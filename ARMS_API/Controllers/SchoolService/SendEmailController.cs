@@ -47,7 +47,7 @@ namespace ARMS_API.Controllers.SchoolService
                             Body = requestSendNotification.Content
                         };
 
-                        await _emailService.SendEmailAsync(emailRequest);
+                        await _emailService.SendEmailByHTMLAsync(emailRequest);
                     }
                 });
 
