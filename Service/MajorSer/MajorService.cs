@@ -45,14 +45,14 @@ namespace Service.MajorSer
 
         public async Task UpdateMajor(Major major)=> await _majorRepository.UpdateMajor(major);
 
-        public async Task<List<Major>> GetMajorsAdmin(string campusId)=> await _majorRepository.GetMajors_Manage(campusId);
+        public async Task<List<MajorAdmission>> GetMajorsAdmin(string campusId)=> await _majorRepository.GetMajorAdmissions(campusId);
 
         //public async Task UpdateMajorAdmission(Major Major)
         //{
         //    var majorValid = await _majorRepository.GetMajorDetail(Major.MajorID);
         //    if (majorValid == null) throw new Exception("Không tồn tại ngành học");
-        //    //majorValid.Status = Major.Status;
-        //    //majorValid.Target = Major.Target;
+        //    majorValid.Status = Major.Status;
+        //    majorValid.Target = Major.Target;
         //    majorValid.TypeAdmissions = Major.TypeAdmissions;
         //    await _majorRepository.UpdateMajor(majorValid);
         //}

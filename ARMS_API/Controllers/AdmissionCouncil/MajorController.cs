@@ -46,60 +46,60 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 return BadRequest();
             }
         }
-        [HttpGet("get-majors")]
-        public async Task<IActionResult> GetMajors(string CampusId, string? Search, int CurrentPage, bool? isVocationalSchool)
-        {
-            try
-            {
-                //respone data
-                ResponeModel<Major_Admission_Council_DTO> result = new ResponeModel<Major_Admission_Council_DTO>();
-                result.CurrentPage = CurrentPage;
-                result.CampusId = CampusId;
-                result.Search = Search;
+        //[HttpGet("get-majors")]
+        //public async Task<IActionResult> GetMajors(string CampusId, string? Search, int CurrentPage, bool? isVocationalSchool)
+        //{
+        //    try
+        //    {
+        //        //respone data
+        //        ResponeModel<Major_Admission_Council_DTO> result = new ResponeModel<Major_Admission_Council_DTO>();
+        //        result.CurrentPage = CurrentPage;
+        //        result.CampusId = CampusId;
+        //        result.Search = Search;
 
-                List<Major> response = await _majorService.GetMajorsAdmin(CampusId);
-                if (!string.IsNullOrEmpty(Search))
-                {
-                    string searchTerm = _userInput.NormalizeText(Search);
-                    response = response
-                                .Where(major =>
-                                {
-                                    string MajorName = _userInput.NormalizeText(major?.MajorName ?? "");
-                                    string MajorCode = _userInput.NormalizeText(major?.MajorCode ?? "");
-                                    string Description = _userInput.NormalizeText(major?.Description ?? "");
-                                    string TimeStudy = _userInput.NormalizeText(major?.TimeStudy ?? "");
-                                    return MajorName.Contains(searchTerm) 
-                                    || MajorCode.Contains(searchTerm) 
-                                    || Description.Contains(searchTerm)
-                                    || TimeStudy.Contains(searchTerm);
-                                })
-                                .ToList();
-                }
+        //        List<Major> response = await _majorService.GetMajorsAdmin(CampusId);
+        //        if (!string.IsNullOrEmpty(Search))
+        //        {
+        //            string searchTerm = _userInput.NormalizeText(Search);
+        //            response = response
+        //                        .Where(major =>
+        //                        {
+        //                            string MajorName = _userInput.NormalizeText(major?.MajorName ?? "");
+        //                            string MajorCode = _userInput.NormalizeText(major?.MajorCode ?? "");
+        //                            string Description = _userInput.NormalizeText(major?.Description ?? "");
+        //                            string TimeStudy = _userInput.NormalizeText(major?.TimeStudy ?? "");
+        //                            return MajorName.Contains(searchTerm) 
+        //                            || MajorCode.Contains(searchTerm) 
+        //                            || Description.Contains(searchTerm)
+        //                            || TimeStudy.Contains(searchTerm);
+        //                        })
+        //                        .ToList();
+        //        }
 
-                if (isVocationalSchool != null)
-                {
-                    response = response
-                                .Where(major => major.isVocationalSchool == isVocationalSchool)
-                                .ToList();
-                };
-                result.PageCount = (int)Math.Ceiling(response.Count() / (double)result.PageSize);
-                var majors = response
-                    .Skip(((int)result.CurrentPage - 1) * (int)result.PageSize)
-                    .Take((int)result.PageSize)
-                    .ToList();
+        //        if (isVocationalSchool != null)
+        //        {
+        //            response = response
+        //                        .Where(major => major.isVocationalSchool == isVocationalSchool)
+        //                        .ToList();
+        //        };
+        //        result.PageCount = (int)Math.Ceiling(response.Count() / (double)result.PageSize);
+        //        var majors = response
+        //            .Skip(((int)result.CurrentPage - 1) * (int)result.PageSize)
+        //            .Take((int)result.PageSize)
+        //            .ToList();
 
-                List<Major_Admission_Council_DTO> responeResult = _mapper.Map<List<Major_Admission_Council_DTO>>(majors);
-                result.Item = responeResult;
-                result.TotalItems = response.Count;
-                return Ok(result);
+        //        List<Major_Admission_Council_DTO> responeResult = _mapper.Map<List<Major_Admission_Council_DTO>>(majors);
+        //        result.Item = responeResult;
+        //        result.TotalItems = response.Count;
+        //        return Ok(result);
 
-            }
-            catch (Exception)
-            {
+        //    }
+        //    catch (Exception)
+        //    {
 
-                return BadRequest();
-            }
-        }
+        //        return BadRequest();
+        //    }
+        //}
         [HttpGet("get-major-details")]
         public async Task<IActionResult> GetMajorDetail(string MajorId)
         {

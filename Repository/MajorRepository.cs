@@ -45,6 +45,7 @@ namespace Repository.MajorRepo
                     .Include(x => x.AdmissionInformation)
                     .Include(x => x.Major.TypeAdmissions)
                     .Include(x => x.Major.AdmissionDetailForMajors)
+                    .OrderBy(x => x.Major.isVocationalSchool)
                     .Where(x => x.AdmissionInformationID == AI.AdmissionInformationID).ToListAsync();
                 return majors;
 
@@ -56,6 +57,7 @@ namespace Repository.MajorRepo
             }
 
         }
+        // cái này sẽ bỏ
         public async Task<List<Major>> GetMajors_Manage(string campusId)
         {
             try

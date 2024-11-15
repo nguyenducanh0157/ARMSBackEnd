@@ -10,7 +10,7 @@ using static System.Net.WebRequestMethods;
 
 namespace ARMS_API.Controllers.SchoolService
 {
-    [Route("api/[controller]")]
+    [Route("api/SchoolService/[controller]")]
     [ApiController]
     public class SendEmailController : ControllerBase
     {
@@ -43,7 +43,7 @@ namespace ARMS_API.Controllers.SchoolService
                         var emailRequest = new EmailRequest
                         {
                             ToEmail = item.Email,
-                            Subject = "Notification of ARMS",
+                            Subject = requestSendNotification.Subject,
                             Body = requestSendNotification.Content
                         };
 

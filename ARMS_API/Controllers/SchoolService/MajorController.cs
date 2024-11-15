@@ -13,7 +13,7 @@ namespace ARMS_API.Controllers.SchoolService
 {
     [Route("api/school-service/[controller]")]
     [ApiController]
-    [Authorize(Roles = "SchoolService")]
+    //[Authorize(Roles = "SchoolService")]
     public class MajorController : ControllerBase
     {
         private IMajorService _majorService;
@@ -35,18 +35,18 @@ namespace ARMS_API.Controllers.SchoolService
                 result.CampusId = CampusId;
                 result.Search = Search;
 
-                List<Major> response = new List<Major>();
+                List<MajorAdmission> response = new List<MajorAdmission>();
                 if (college==null)
                 {
                     response = await _majorService.GetMajorsAdmin(CampusId);
                 }
                 else if (college == true)
                 {
-                    //response = await _majorService.GetMajorsIsCollege(CampusId);
+                    response = await _majorService.GetMajorsIsCollege(CampusId);
                 }
                 else
                 {
-                    //response = await _majorService.GetMajorsIsVocationalSchool(CampusId);
+                    response = await _majorService.GetMajorsIsVocationalSchool(CampusId);
                 }
 
                 // Search
@@ -57,8 +57,8 @@ namespace ARMS_API.Controllers.SchoolService
                                 .Where(major =>
                                     major != null &&
                                     (
-                                        _userInput.NormalizeText(major.MajorName ?? "").Contains(searchTerm) ||
-                                        _userInput.NormalizeText(major.MajorCode ?? "").Contains(searchTerm) ||
+                                        _userInput.NormalizeText(major.Major.MajorName ?? "").Contains(searchTerm) ||
+                                        _userInput.NormalizeText(major.Major.MajorCode ?? "").Contains(searchTerm) ||
                                         _userInput.NormalizeText(major.MajorID ?? "").Contains(searchTerm)
                                     )
                                 )
