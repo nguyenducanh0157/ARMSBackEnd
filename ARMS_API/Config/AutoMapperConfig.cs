@@ -17,7 +17,19 @@ namespace ARMS_API.Config
                 config.CreateMap<Campus, CampusDTO>();
 
                 //major
-                config.CreateMap<Major, MajorDTO>();
+                //guest
+                //config.CreateMap<Major, MajorDTO>();
+                config.CreateMap<MajorAdmission, MajorDTO>()
+                .ForMember(dest => dest.MajorName, opt => opt.MapFrom(src => src.Major.MajorName))
+                .ForMember(dest => dest.MajorCode, opt => opt.MapFrom(src => src.Major.MajorCode))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Major.Description))
+                .ForMember(dest => dest.Tuition, opt => opt.MapFrom(src => src.Major.Tuition))
+                .ForMember(dest => dest.TimeStudy, opt => opt.MapFrom(src => src.Major.TimeStudy))
+                .ForMember(dest => dest.isVocationalSchool, opt => opt.MapFrom(src => src.Major.isVocationalSchool))
+                .ForMember(dest => dest.Subjects, opt => opt.MapFrom(src => src.Major.Subjects))
+                .ForMember(dest => dest.TypeAdmissions, opt => opt.MapFrom(src => src.Major.TypeAdmissions))
+                .ForMember(dest => dest.AdmissionDetailForMajors, opt => opt.MapFrom(src => src.Major.AdmissionDetailForMajors));
+
                 config.CreateMap<Major_Manage_DTO, Major>();
                 config.CreateMap<Major_Admission_DTO, Major>();
                 config.CreateMap<Major, Major_Admin_DTO>();

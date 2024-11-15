@@ -14,9 +14,6 @@ namespace Data.Models
         public DateTime EndRegister { get; set; }
         public DateTime StartAdmission { get; set; }
         public DateTime EndAdmission { get; set; }
-        public string CampusId { get; set; }
-        public virtual Campus? Campus { get; set; }
-
         public int AdmissionInformationID { get; set; }
         public virtual AdmissionInformation? AdmissionInformation { get; set; }
     }

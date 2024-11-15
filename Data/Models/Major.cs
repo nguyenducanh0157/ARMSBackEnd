@@ -12,8 +12,7 @@ namespace Data.Models
         public string MajorCode { get; set; }// số mã ngành
         public string MajorName { get; set; }
         public string? Description { get; set; }
-        public int? Target { get; set; }
-        public bool Status { get; set; }
+        
         public string? TimeStudy { get; set; }
         public bool isVocationalSchool { get; set; }
         public string CampusId { get; set; }
@@ -26,5 +25,6 @@ namespace Data.Models
         public virtual ICollection<Request>? RequestChangeMajorsN { get; set; }
         public virtual ICollection<Request>? RequestChangeMajorsO { get; set; }
         public virtual ICollection<TypeAdmission>? TypeAdmissions { get; set; }
+        public virtual ICollection<MajorAdmission>? MajorAdmissions { get; set; }
     }
 }

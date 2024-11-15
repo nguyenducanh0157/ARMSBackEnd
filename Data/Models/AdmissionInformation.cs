@@ -19,6 +19,7 @@ namespace Data.Models
         public string CampusId { get; set; }
         public virtual Campus? Campus { get; set; }
         public virtual ICollection<AdmissionTime>? AdmissionTimes { get; set; }
+        public virtual ICollection<MajorAdmission>? MajorAdmissions { get; set; }
 
     }
 }

@@ -20,10 +20,8 @@ namespace Data.Configurations
             builder.Property(x => x.EndRegister).IsRequired();
             builder.Property(x => x.StartAdmission).IsRequired();
             builder.Property(x => x.EndAdmission).IsRequired();
-            builder.Property(x => x.CampusId).IsRequired();
 
             #region config relation
-            builder.HasOne(x => x.Campus).WithMany(x => x.AdmissionTimes).HasForeignKey(x => x.CampusId).OnDelete(DeleteBehavior.NoAction);
             builder.HasOne(x => x.AdmissionInformation).WithMany(x => x.AdmissionTimes).HasForeignKey(x => x.AdmissionInformationID).OnDelete(DeleteBehavior.NoAction);
             #endregion
         }

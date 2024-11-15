@@ -42,11 +42,11 @@ namespace ARMS_API.Controllers.SchoolService
                 }
                 else if (college == true)
                 {
-                    response = await _majorService.GetMajorsIsCollege(CampusId);
+                    //response = await _majorService.GetMajorsIsCollege(CampusId);
                 }
                 else
                 {
-                    response = await _majorService.GetMajorsIsVocationalSchool(CampusId);
+                    //response = await _majorService.GetMajorsIsVocationalSchool(CampusId);
                 }
 
                 // Search

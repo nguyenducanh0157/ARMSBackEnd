@@ -10,9 +10,11 @@ namespace Service.MajorSer
 {
     public interface IMajorService
     {
-        Task<List<Major>> GetMajorsIsCollege(string campusId);
-        Task<List<Major>> GetMajorsIsVocationalSchool(string campusId);
+
+        Task<List<MajorAdmission>> GetMajorsIsCollege(string campusId);
+        Task<List<MajorAdmission>> GetMajorsIsVocationalSchool(string campusId);
         Task<Major> GetMajorDetail(string MajorID);
+        Task<MajorAdmission> GetMajorDetail(string MajorID, int AdmissionInformationID);
         Task AddNewMajor(Major major);
         Task UpdateMajor(Major major);
         Task<List<Major>> GetMajorsAdmin(string campusId);

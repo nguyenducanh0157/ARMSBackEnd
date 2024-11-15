@@ -22,8 +22,30 @@ namespace Repository.MajorRepo
                 List<Major> majors = await _context.Majors
                     .Include(x => x.AdmissionDetailForMajors)
                     .Include(x => x.TypeAdmissions)
-                    .Where(x => x.CampusId.Equals(campusId) && x.Status==true)
+                    .Where(x => x.CampusId.Equals(campusId) )
                     .ToListAsync();
+                //&& x.Status==true
+                return majors;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+
+        }
+        public async Task<List<MajorAdmission>> GetMajorAdmissions(string campusId)
+        {
+            try
+            {
+                var AI = await _context.AdmissionInformations.FirstOrDefaultAsync(x=>x.Status== TypeOfAdmissionInformation.Process && x.CampusId==campusId);
+                List<MajorAdmission> majors = await _context.MajorAdmissions
+                    .Include(x=>x.Major)
+                    .Include(x => x.AdmissionInformation)
+                    .Include(x => x.Major.TypeAdmissions)
+                    .Include(x => x.Major.AdmissionDetailForMajors)
+                    .Where(x => x.AdmissionInformationID == AI.AdmissionInformationID).ToListAsync();
                 return majors;
 
             }
@@ -51,15 +73,18 @@ namespace Repository.MajorRepo
             }
 
         }
-        public async Task<Major> GetMajorDetail(string MajorID)
+        public async Task<MajorAdmission> GetMajorDetail(string MajorID, int AdmissionInformationID)
         {
+
             try
             {
-                var major = await _context.Majors
-                    .Include(x => x.AdmissionDetailForMajors)
-                    .Include(x => x.TypeAdmissions)
-                     .Include(x => x.Subjects.OrderBy(s => s.SemesterNumber))
-                     .SingleOrDefaultAsync(x => x.MajorID.Equals(MajorID));
+                MajorAdmission major = await _context.MajorAdmissions
+                   .Include(x => x.Major)
+                   .Include(x=> x.Major.Subjects.OrderBy(s => s.SemesterNumber))
+                   .Include(x => x.Major.TypeAdmissions)
+                    .Include(x => x.Major.AdmissionDetailForMajors)
+                   .Include(x => x.AdmissionInformation)
+                   .SingleOrDefaultAsync(x => x.AdmissionInformationID == AdmissionInformationID && x.MajorID == MajorID);
                 if (major == null)
                 {
                     throw new KeyNotFoundException($"Major with ID {MajorID} not found.");

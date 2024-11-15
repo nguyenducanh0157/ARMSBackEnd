@@ -19,19 +19,19 @@ namespace ARMS_API.Controllers
             _admissionInformationService = admissionInformationService;
             _mapper = mapper;
         }
-        //[HttpGet("get-admission-information")]
-        //public async Task<IActionResult> GetAdmissionInformation(string CampusId)
-        //{
-        //    try
-        //    {
-        //        AdmissionInformation response = await _admissionInformationService.GetAdmissionInformation(CampusId);
-        //        AdmissionInformationDTO responeResult = _mapper.Map<AdmissionInformationDTO>(response);
-        //        return Ok(responeResult);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
+        [HttpGet("get-admission-information")]
+        public async Task<IActionResult> GetAdmissionInformation(string CampusId)
+        {
+            try
+            {
+                AdmissionInformation response = await _admissionInformationService.GetAdmissionInformationByStatus(CampusId);
+                AdmissionInformationDTO responeResult = _mapper.Map<AdmissionInformationDTO>(response);
+                return Ok(responeResult);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace ARMS_API.Controllers
             try
             {
 
-                List<Major> response = await _majorService.GetMajorsIsVocationalSchool(campus);
+                List<MajorAdmission> response = await _majorService.GetMajorsIsVocationalSchool(campus);
 
                 List<MajorDTO> responeResult = _mapper.Map<List<MajorDTO>>(response);
                 return Ok(responeResult);
@@ -43,7 +43,7 @@ namespace ARMS_API.Controllers
             try
             {
 
-                List<Major> response = await _majorService.GetMajorsIsCollege(campus);
+                List<MajorAdmission> response = await _majorService.GetMajorsIsCollege(campus);
 
                 List<MajorDTO> responeResult = _mapper.Map<List<MajorDTO>>(response);
                 return Ok(responeResult);
@@ -56,12 +56,12 @@ namespace ARMS_API.Controllers
             }
         }
         [HttpGet("get-major-details")]
-        public async Task<IActionResult> GetMajorDetail(string MajorId)
+        public async Task<IActionResult> GetMajorDetail(string MajorId, int AdmissionInformationID)
         {
             try
             {
 
-                Major response = await _majorService.GetMajorDetail(MajorId);
+                MajorAdmission response = await _majorService.GetMajorDetail(MajorId,AdmissionInformationID);
                 MajorDTO responeResult = _mapper.Map<MajorDTO>(response);
                 return Ok(responeResult);
 

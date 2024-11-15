@@ -31,7 +31,7 @@ namespace ARMS_API.Controllers.AdmissionCouncil
         {
             try
             {
-                List < AdmissionInformation> response = await _admissionInformationService.GetAdmissionInformation(CampusId);
+                List <AdmissionInformation> response = await _admissionInformationService.GetAdmissionInformation(CampusId);
                 List<AdmissionInformation_AC_DTO> responeResult = _mapper.Map<List<AdmissionInformation_AC_DTO>>(response);
                 return Ok(responeResult);
             }

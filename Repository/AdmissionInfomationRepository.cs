@@ -26,12 +26,12 @@ namespace Repository
                 throw;
             }
         }
-        public async Task<AdmissionInformation> GetAdmissionInformationStatusTrue()
+        public async Task<AdmissionInformation> GetAdmissionInformationStatusTrue(string campus)
         {
             try
             {
                 AdmissionInformation AdmissionInformation = await _context.AdmissionInformations
-                    .FirstOrDefaultAsync(x => x.Status==TypeOfAdmissionInformation.Process);
+                    .FirstOrDefaultAsync(x => x.Status==TypeOfAdmissionInformation.Process && x.CampusId == campus);
                 return AdmissionInformation;
             }
             catch (Exception)

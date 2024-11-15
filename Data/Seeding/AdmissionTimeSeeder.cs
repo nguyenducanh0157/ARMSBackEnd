@@ -24,7 +24,6 @@ namespace Data.Seeding
                {
                    AIId = 1,
                    AdmissionInformationName = "Đợt 1",
-                   CampusId ="Hanoi",
                    StartRegister = new DateTime(2023, 8, 01, 00, 00, 0),
                    EndRegister = new DateTime(2024, 3, 01, 23, 59, 59),
                    StartAdmission = new DateTime(2024, 4, 01, 00, 00, 0),
@@ -35,7 +34,6 @@ namespace Data.Seeding
                {
                    AIId = 2,
                    AdmissionInformationName = "Đợt 2",
-                   CampusId = "Hanoi",
                    StartRegister = new DateTime(2023, 3, 02, 00, 00, 0),
                    EndRegister = new DateTime(2024, 6, 01, 23, 59, 59),
                    StartAdmission = new DateTime(2024, 7, 01, 00, 00, 0),
@@ -46,7 +44,6 @@ namespace Data.Seeding
                {
                    AIId = 3,
                    AdmissionInformationName = "Đợt 3",
-                   CampusId = "Hanoi",
                    StartRegister = new DateTime(2023, 6, 02, 00, 00, 0),
                    EndRegister = new DateTime(2024, 8, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2024, 8, 15, 00, 00, 0),

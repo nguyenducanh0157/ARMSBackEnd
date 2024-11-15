@@ -19,27 +19,27 @@ namespace Service.MajorSer
             _majorRepository = new MajorRepository(context);
         }
 
-        public async Task<Major> GetMajorDetail(string MajorID)
-        {
+        //public async Task<Major> GetMajorDetail(string MajorID)
+        //{
 
-            return await _majorRepository.GetMajorDetail(MajorID);
-        }
-        public async Task<List<Major>> GetMajorsIsVocationalSchool(string campusId)
+        //    return await _majorRepository.GetMajorDetail(MajorID);
+        //}
+        public async Task<List<MajorAdmission>> GetMajorsIsVocationalSchool(string campusId)
         {
-            var result = await _majorRepository.GetMajors(campusId);
-            var activeMajors = result.Where(major => major.isVocationalSchool == true && major.Status==true).ToList();
+            var result = await _majorRepository.GetMajorAdmissions(campusId);
+            var activeMajors = result.Where(major => major.Major.isVocationalSchool == true).ToList();
             return activeMajors;
         }
-        public async Task<List<Major>> GetMajorsIsCollege(string campusId)
+        public async Task<List<MajorAdmission>> GetMajorsIsCollege(string campusId)
         {
-            var result = await _majorRepository.GetMajors(campusId);
-            var activeMajors = result.Where(major => major.isVocationalSchool == false && major.Status == true).ToList();
+            var result = await _majorRepository.GetMajorAdmissions(campusId);
+            var activeMajors = result.Where(major => major.Major.isVocationalSchool == false).ToList();
             return activeMajors;
         }
 
         public async Task AddNewMajor(Major major)
         {
-            major.Status = false;
+            //major.Status = false;
             await _majorRepository.AddNewMajor(major);
         }
 
@@ -47,14 +47,27 @@ namespace Service.MajorSer
 
         public async Task<List<Major>> GetMajorsAdmin(string campusId)=> await _majorRepository.GetMajors_Manage(campusId);
 
-        public async Task UpdateMajorAdmission(Major Major)
+        //public async Task UpdateMajorAdmission(Major Major)
+        //{
+        //    var majorValid = await _majorRepository.GetMajorDetail(Major.MajorID);
+        //    if (majorValid == null) throw new Exception("Không tồn tại ngành học");
+        //    //majorValid.Status = Major.Status;
+        //    //majorValid.Target = Major.Target;
+        //    majorValid.TypeAdmissions = Major.TypeAdmissions;
+        //    await _majorRepository.UpdateMajor(majorValid);
+        //}
+
+        public Task<MajorAdmission> GetMajorDetail(string MajorID, int AdmissionInformationID)
+            => _majorRepository.GetMajorDetail(MajorID, AdmissionInformationID);
+
+        public Task<Major> GetMajorDetail(string MajorID)
         {
-            var majorValid = await _majorRepository.GetMajorDetail(Major.MajorID);
-            if (majorValid == null) throw new Exception("Không tồn tại ngành học");
-            majorValid.Status = Major.Status;
-            majorValid.Target = Major.Target;
-            majorValid.TypeAdmissions = Major.TypeAdmissions;
-            await _majorRepository.UpdateMajor(majorValid);
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateMajorAdmission(Major Major)
+        {
+            throw new NotImplementedException();
         }
     }
 }
