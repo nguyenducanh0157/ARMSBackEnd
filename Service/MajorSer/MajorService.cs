@@ -18,12 +18,17 @@ namespace Service.MajorSer
         {
             _majorRepository = new MajorRepository(context);
         }
+        public async Task<List<Major>> GetMajors(string campusId)
+        {
+            var result = await _majorRepository.GetMajors(campusId);
+            return result;
 
-        //public async Task<Major> GetMajorDetail(string MajorID)
-        //{
+        }
 
-        //    return await _majorRepository.GetMajorDetail(MajorID);
-        //}
+        public async Task<Major> GetMajor(string MajorID)
+        {
+            return await _majorRepository.GetMajor(MajorID);
+        }
         public async Task<List<MajorAdmission>> GetMajorsIsVocationalSchool(string campusId)
         {
             var result = await _majorRepository.GetMajorAdmissions(campusId);
@@ -39,7 +44,6 @@ namespace Service.MajorSer
 
         public async Task AddNewMajor(Major major)
         {
-            //major.Status = false;
             await _majorRepository.AddNewMajor(major);
         }
 
@@ -65,11 +69,6 @@ namespace Service.MajorSer
 
         public Task<MajorAdmission> GetMajorDetail(string MajorID, int AdmissionInformationID)
             => _majorRepository.GetMajorDetail(MajorID, AdmissionInformationID);
-
-        public Task<Major> GetMajorDetail(string MajorID)
-        {
-            throw new NotImplementedException();
-        }
 
     }
 }

@@ -34,7 +34,6 @@ namespace Data.DTO
         public string MajorName { get; set; }
         public string? Description { get; set; }
         public decimal? Tuition { get; set; }
-        public int? Target { get; set; }
         public string? TimeStudy { get; set; }
         public bool isVocationalSchool { get; set; }
         public bool Status { get; set; }// Admission status

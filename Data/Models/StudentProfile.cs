@@ -58,6 +58,10 @@ namespace Data.Models
         public virtual TypeofStatusForMajor? TypeofStatusMajor1 { get; set; } // trạng thái xét tuyển ngành 1
         public virtual TypeofStatusForMajor? TypeofStatusMajor2 { get; set; } // trạng thái xét tuyển ngành 2
         public virtual TypeofStatus? TypeofStatusProfile { get; set; } // trạng thái hồ sơ
+        // hồ sơ nhập học
+        public string? AdmissionForm { get; set; }
+        public string? BirthCertificate { get; set; }
+        // account
         public Guid? AccountId { get; set; }
         public virtual Account? Account { get; set; }
         public virtual Campus? Campus { get; set; }

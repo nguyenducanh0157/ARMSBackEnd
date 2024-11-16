@@ -116,6 +116,25 @@ namespace ARMS_API.Config
                         })
                     )
                 ));
+                config.CreateMap<RegisterAdmissionProfileDTO_Update, StudentProfile>()
+               .ForMember(dest => dest.AcademicTranscripts, opt => opt.MapFrom(src =>
+                   src.AcademicTranscriptsMajor1.Select(x => new AcademicTranscriptDTO
+                   {
+                       SubjectName = x.SubjectName,
+                       SubjectPoint = x.SubjectPoint,
+                       TypeOfAcademicTranscript = x.TypeOfAcademicTranscript,
+                       isMajor1 = true // Gán IsMajor1 = true
+                   })
+                   .Concat(
+                       src.AcademicTranscriptsMajor2.Select(x => new AcademicTranscriptDTO
+                       {
+                           SubjectName = x.SubjectName,
+                           SubjectPoint = x.SubjectPoint,
+                           TypeOfAcademicTranscript = x.TypeOfAcademicTranscript,
+                           isMajor1 = false // Gán IsMajor1 = false
+                       })
+                   )
+               ));
                 config.CreateMap<StudentProfile, AdmissionProfile_DTO>()
                 .ForMember(dest => dest.AcademicTranscriptsMajor1, opt => opt.MapFrom(src =>
                     src.AcademicTranscripts

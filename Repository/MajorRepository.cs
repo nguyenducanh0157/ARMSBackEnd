@@ -20,12 +20,27 @@ namespace Repository.MajorRepo
             try
             {
                 List<Major> majors = await _context.Majors
-                    //.Include(x => x.AdmissionDetailForMajors)
-                    //.Include(x => x.TypeAdmissions)
                     .Where(x => x.CampusId.Equals(campusId) )
+                    .OrderBy(x => x.isVocationalSchool)
                     .ToListAsync();
-                //&& x.Status==true
                 return majors;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+
+        }
+        public async Task<Major> GetMajor(string MajorID)
+        {
+            try
+            {
+                Major major = await _context.Majors
+                    .Include(x => x.Subjects)
+                    .SingleOrDefaultAsync(x => x.MajorID.Equals(MajorID));
+                return major;
 
             }
             catch (Exception ex)

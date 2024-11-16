@@ -12,7 +12,7 @@ namespace ARMS_API.Controllers.Admin
 {
     [Route("api/admin/[controller]")]
     [ApiController]
-    [Authorize(Roles ="Admin")]
+   // [Authorize(Roles ="Admin")]
     public class MajorController : ControllerBase
     {
         private IMajorService _majorService;
@@ -24,24 +24,24 @@ namespace ARMS_API.Controllers.Admin
             _mapper = mapper;
             _validMajor = validMajor;
         }
-        //[HttpGet("get-majors")]
-        //public async Task<IActionResult> GetMajors(string campus)
-        //{
-        //    try
-        //    {
+        [HttpGet("get-majors")]
+        public async Task<IActionResult> GetMajors(string campus)
+        {
+            try
+            {
 
-        //        List<Major> response = await _majorService.GetMajorsAdmin(campus);
+                List<Major> response = await _majorService.GetMajors(campus);
 
-        //        List<Major_Admin_DTO> responeResult = _mapper.Map<List<Major_Admin_DTO>>(response);
-        //        return Ok(responeResult);
+                List<Major_Admin_DTO> responeResult = _mapper.Map<List<Major_Admin_DTO>>(response);
+                return Ok(responeResult);
 
-        //    }
-        //    catch (Exception)
-        //    {
+            }
+            catch (Exception)
+            {
 
-        //        return BadRequest();
-        //    }
-        //}
+                return BadRequest();
+            }
+        }
         [HttpPost("add-major")]
         public async Task<IActionResult> AddMajor([FromBody] Major_Manage_DTO MajorDTO)
         {
@@ -96,7 +96,7 @@ namespace ARMS_API.Controllers.Admin
             try
             {
 
-                Major response = await _majorService.GetMajorDetail(MajorId);
+                Major response = await _majorService.GetMajor(MajorId);
                 Major_Admin_DTO responeResult = _mapper.Map<Major_Admin_DTO>(response);
                 return Ok(responeResult);
 

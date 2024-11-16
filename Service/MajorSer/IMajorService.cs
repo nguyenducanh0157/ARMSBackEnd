@@ -13,11 +13,12 @@ namespace Service.MajorSer
 
         Task<List<MajorAdmission>> GetMajorsIsCollege(string campusId);
         Task<List<MajorAdmission>> GetMajorsIsVocationalSchool(string campusId);
-        Task<Major> GetMajorDetail(string MajorID);
         Task<MajorAdmission> GetMajorDetail(string MajorID, int AdmissionInformationID);
         Task AddNewMajor(Major major);
         Task UpdateMajor(Major major);
         Task<List<MajorAdmission>> GetMajorsManage(string campusId);
         Task UpdateMajorAdmission(MajorAdmission Major);
+        Task<List<Major>> GetMajors(string campusId);
+        Task<Major> GetMajor(string MajorID);
     }
 }

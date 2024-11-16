@@ -47,8 +47,56 @@ namespace ARMS_API.Controllers
             _tokenHealper = tokenHealper;
             _payFeeAdmissionService = payFeeAdmissionService;
         }
+
+
+        [HttpPut("done-profile-admission")]
+        public async Task<IActionResult> AddRegisterAdmission([FromBody] AdmissionProfileDTO admissionProfileDTO)
+        {
+            try
+            {
+                // check status pay fee
+                if (admissionProfileDTO.PayFeeAdmission.TransactionStatus !="00")
+                {
+                    return BadRequest(new ResponseViewModel()
+                    {
+                        Status = false,
+                        Message = "Vui lòng hoàn thành khoản thanh toán!"
+                    });
+                }
+                //mapper
+
+                StudentProfile studentProfile = await _studentProfileService.GetStudentProfileBySpCIIdAsync(admissionProfileDTO.CitizenIentificationNumber);
+                if (studentProfile.PayFeeAdmissions == null)
+                {
+                    studentProfile.PayFeeAdmissions = new List<PayFeeAdmission>();
+                }
+                PayFeeAdmission PayFeeAdmission = _mapper.Map<PayFeeAdmission>(admissionProfileDTO.PayFeeAdmission);
+                if (admissionProfileDTO.PayFeeAdmission.TransactionStatus == "00")
+                {
+                studentProfile.TypeofStatusProfile = TypeofStatus.SuccessProfileAdmission;
+                PayFeeAdmission.isFeeRegister = false;
+                studentProfile.PayFeeAdmissions.Add(PayFeeAdmission);
+                }
+                //update profile
+                await _studentProfileService.UpdateStudentRegister(studentProfile);
+                return Ok(new ResponseViewModel()
+                {
+                    Status = true,
+                    Message = "Thủ tục nhập học thành công!"
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResponseViewModel()
+                {
+                    Status = false,
+                    Message = ex.Message
+                });
+            }
+        }
+        
         [HttpPost("add-register-admission")]
-        public async Task<IActionResult> AddRegisterAdmission([FromBody] RegisterAdmissionProfileDTO registerAdmissionProfileDTO)
+        public async Task<IActionResult> AddAdmissionProfile([FromBody] RegisterAdmissionProfileDTO registerAdmissionProfileDTO)
         {
             try
             {
@@ -57,7 +105,7 @@ namespace ARMS_API.Controllers
                 // payment
 
                 // check status pay fee
-                if (registerAdmissionProfileDTO.PayFeeAdmission.TransactionStatus !="00")
+                if (registerAdmissionProfileDTO.PayFeeAdmission.TransactionStatus != "00")
                 {
                     return BadRequest(new ResponseViewModel()
                     {
@@ -77,9 +125,9 @@ namespace ARMS_API.Controllers
                 PayFeeAdmission PayFeeAdmission = _mapper.Map<PayFeeAdmission>(registerAdmissionProfileDTO.PayFeeAdmission);
                 if (registerAdmissionProfileDTO.PayFeeAdmission.TransactionStatus == "00")
                 {
-                studentProfile.TypeofStatusProfile = TypeofStatus.SuccessProfileRegister;
-                PayFeeAdmission.isFeeRegister = true;
-                studentProfile.PayFeeAdmissions.Add(PayFeeAdmission);
+                    studentProfile.TypeofStatusProfile = TypeofStatus.SuccessProfileRegister;
+                    PayFeeAdmission.isFeeRegister = true;
+                    studentProfile.PayFeeAdmissions.Add(PayFeeAdmission);
                 }
                 //add new
                 await _studentProfileService.AddStudentProfile(studentProfile);
@@ -87,6 +135,38 @@ namespace ARMS_API.Controllers
                 {
                     Status = true,
                     Message = "Đăng ký thành công!"
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResponseViewModel()
+                {
+                    Status = false,
+                    Message = ex.Message
+                });
+            }
+        }
+        [HttpPut("update-register-admission")]
+        public async Task<IActionResult> UpdateAdmissionProfile([FromBody] RegisterAdmissionProfileDTO_Update registerAdmissionProfileDTO)
+        {
+            try
+            {
+
+                //mapper
+                // Map registerAdmissionProfileDTO sang StudentProfile
+                StudentProfile studentProfile = await _studentProfileService.GetStudentProfileBySpCIIdAsync(registerAdmissionProfileDTO.CitizenIentificationNumber);
+                if (studentProfile == null)
+                {
+                    return NotFound(new ResponseViewModel { Status = false, Message = "Student profile not found." });
+                }
+                _mapper.Map(registerAdmissionProfileDTO, studentProfile);
+
+                //add new
+                await _studentProfileService.UpdateStudentRegister(studentProfile);
+                return Ok(new ResponseViewModel()
+                {
+                    Status = true,
+                    Message = "chỉnh sửa thành công!"
                 });
             }
             catch (Exception ex)
