@@ -1,5 +1,6 @@
 ﻿using Data.DTO;
 using Data.Models;
+using FirebaseAdmin.Auth;
 using Google.Apis.Auth;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Org.BouncyCastle.Asn1.Ocsp;
+using Service;
 using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -143,7 +145,7 @@ namespace ARMS_API.Controllers
         {
             try
             {
-                var payload = await VerifyGoogleToken(GGLoginViewModel.idToken);
+                var payload = await VerifyGoogleTokenWithFirebase(GGLoginViewModel.idToken);
                 if (payload == null)
                 {
                     return Unauthorized(new ResponseViewModel
@@ -153,8 +155,9 @@ namespace ARMS_API.Controllers
                     });
                 }
 
-                string email = payload.Email;
-
+                var uid = payload.Uid;
+                var userRecord = await FirebaseAuth.DefaultInstance.GetUserAsync(uid);
+                var email = userRecord.Email;
                 // Bước 2: Kiểm tra email trong cơ sở dữ liệu
                 var user = await _userManager.Users
                     .Where(u => u.Email == email && u.isAccountActive)
@@ -203,23 +206,29 @@ namespace ARMS_API.Controllers
                 });
             }
         }
-        private async Task<GoogleJsonWebSignature.Payload> VerifyGoogleToken(string idToken)
+        private async Task<FirebaseAdmin.Auth.FirebaseToken> VerifyGoogleTokenWithFirebase(string idToken)
         {
             try
             {
-                var settings = new GoogleJsonWebSignature.ValidationSettings
-                {
-                    Audience = new List<string> { "457747748035-cgmu0hgbgms3u69gvtutt7nuh6rfa9aq.apps.googleusercontent.com" }
-                };
+                // Khởi tạo Firebase Admin SDK nếu chưa
+                FirebaseService.InitializeFirebase();
 
-                var payload = await GoogleJsonWebSignature.ValidateAsync(idToken, settings);
-                return payload;
+                // Xác minh token với Firebase
+                var decodedToken = await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(idToken);
+                return decodedToken;
             }
-            catch
+            catch (FirebaseAuthException firebaseAuthEx)
             {
+                Console.WriteLine($"Firebase authentication error: {firebaseAuthEx.Message}");
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error verifying token: {ex.Message}");
                 return null;
             }
         }
+
         private JwtSecurityToken GetToken(List<Claim> authClaims)
         {
             var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
