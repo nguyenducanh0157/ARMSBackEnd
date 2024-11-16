@@ -1,5 +1,6 @@
 ﻿using Data.DTO;
 using Data.Models;
+using Google.Apis.Auth;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -86,7 +87,6 @@ namespace ARMS_API.Controllers
             ResponseViewModel response = new ResponseViewModel();
             try
             {
-                // Check if model state is valid or not
                 if (request == null || request.Email == null || request.CampusId == null)
                 {
                     throw new Exception("Không nhận được thông tin người dùng");
@@ -135,6 +135,89 @@ namespace ARMS_API.Controllers
             {
                 Console.WriteLine(ex.ToString());
                 return Ok(new ResponseViewModel() { Status = false, Message = ex.Message});
+            }
+        }
+        [HttpPost("gg/login-with-google")]
+        [AllowAnonymous]
+        public async Task<IActionResult> LoginWithGoogle([FromBody] GGLoginViewModel GGLoginViewModel)
+        {
+            try
+            {
+                var payload = await VerifyGoogleToken(GGLoginViewModel.idToken);
+                if (payload == null)
+                {
+                    return Unauthorized(new ResponseViewModel
+                    {
+                        Status = false,
+                        Message = "Token không hợp lệ"
+                    });
+                }
+
+                string email = payload.Email;
+
+                // Bước 2: Kiểm tra email trong cơ sở dữ liệu
+                var user = await _userManager.Users
+                    .Where(u => u.Email == email && u.isAccountActive)
+                    .FirstOrDefaultAsync();
+
+                if (user == null)
+                {
+                    return Unauthorized(new ResponseViewModel
+                    {
+                        Status = false,
+                        Message = "Email không tồn tại trong hệ thống hoặc tài khoản đã bị vô hiệu hóa."
+                    });
+                }
+
+                // Bước 3: Tạo JWT Token
+                var userRoles = await _userManager.GetRolesAsync(user);
+                var authClaims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, user.Fullname),
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Email, user.Email),
+                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                };
+
+                foreach (var role in userRoles)
+                {
+                    authClaims.Add(new Claim(ClaimTypes.Role, role));
+                }
+
+                var token = GetToken(authClaims);
+
+                return Ok(new ResponseLogin
+                {
+                    Bear = new JwtSecurityTokenHandler().WriteToken(token),
+                    Expiration = token.ValidTo,
+                    Role = userRoles.FirstOrDefault()
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return StatusCode(500, new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã xảy ra lỗi trong quá trình xử lý"
+                });
+            }
+        }
+        private async Task<GoogleJsonWebSignature.Payload> VerifyGoogleToken(string idToken)
+        {
+            try
+            {
+                var settings = new GoogleJsonWebSignature.ValidationSettings
+                {
+                    Audience = new List<string> { "457747748035-cgmu0hgbgms3u69gvtutt7nuh6rfa9aq.apps.googleusercontent.com" }
+                };
+
+                var payload = await GoogleJsonWebSignature.ValidateAsync(idToken, settings);
+                return payload;
+            }
+            catch
+            {
+                return null;
             }
         }
         private JwtSecurityToken GetToken(List<Claim> authClaims)

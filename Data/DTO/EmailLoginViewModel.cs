@@ -11,4 +11,8 @@ namespace Data.DTO
         public string Email { get; set; }
         public string CampusId { get; set; } = "Hanoi";
     }
+    public class GGLoginViewModel
+    {
+        public string idToken { get; set; }
+    }
 }
