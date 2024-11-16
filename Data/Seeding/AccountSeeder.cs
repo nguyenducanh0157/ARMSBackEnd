@@ -43,7 +43,8 @@ namespace Data.Seeding
                     PasswordHash = new PasswordHasher<Account>().HashPassword(null, "AdminHn@123"),
                     SecurityStamp = Guid.NewGuid().ToString(),
                     CampusId = "Hanoi",
-                    Fullname = "Admin Hanoi"
+                    Fullname = "Admin Hanoi",
+                    isAccountActive = true,
                 },
                  new Account()
                  {
@@ -56,7 +57,8 @@ namespace Data.Seeding
                      PasswordHash = new PasswordHasher<Account>().HashPassword(null, "AdmissionOfficer@123"),
                      SecurityStamp = Guid.NewGuid().ToString(),
                      CampusId = "Hanoi",
-                     Fullname = "Admin Officer Hanoi"
+                     Fullname = "Admin Officer Hanoi",
+                     isAccountActive = true,
                  },
                  new Account()
                  {
@@ -69,7 +71,8 @@ namespace Data.Seeding
                      PasswordHash = new PasswordHasher<Account>().HashPassword(null, "SchoolService@123"),
                      SecurityStamp = Guid.NewGuid().ToString(),
                      CampusId = "Hanoi",
-                     Fullname = "School Service Hanoi"
+                     Fullname = "School Service Hanoi",
+                     isAccountActive = true,
                  },
                  new Account()
                  {
@@ -82,7 +85,8 @@ namespace Data.Seeding
                      PasswordHash = new PasswordHasher<Account>().HashPassword(null, "AdmissionCouncil@123"),
                      SecurityStamp = Guid.NewGuid().ToString(),
                      CampusId = "Hanoi",
-                     Fullname = "Admission Council Hanoi"
+                     Fullname = "Admission Council Hanoi",
+                     isAccountActive = true,
                  },
                  new Account()
                  {
@@ -97,7 +101,8 @@ namespace Data.Seeding
                      CampusId = "Hanoi",
                      Fullname = "Nguyễn Đức Anh",
                      StudentCode = "HWE160153",
-                     MajorId="HWE"
+                     MajorId="HWE",
+                     isAccountActive = true,
                  });
 
             // Seed User in role
