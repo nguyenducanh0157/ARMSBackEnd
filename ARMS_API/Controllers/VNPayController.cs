@@ -77,7 +77,7 @@ namespace ARMS_API.Controllers
             // Thêm trạng thái thanh toán vào chuỗi truy vấn
             queryString.Append(checkResponse.Success == true ? "status=success" : "status=fail");
 
-            return Redirect($"https://7732-2001-ee0-41c1-f67-9d57-4757-9d17-c2bd.ngrok-free.app/nop-ho-so?{queryString}");
+            return Redirect($"http://localhost:3000/nop-ho-so/nop-ho-so?{queryString}");
         }
     }
 }

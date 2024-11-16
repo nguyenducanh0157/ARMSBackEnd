@@ -24,6 +24,16 @@ namespace Service.AccountSer
         }
         public Task<Account> GetAccountByUserId(Guid userId)
        => _accountRepository.GetAccountByUserId(userId);
+
+        public async Task<List<Account>> GetAccounts(string campusId)
+        {
+            var allUsers = await _userManager.Users
+                    .Where(user => user.CampusId == campusId)
+                    .ToListAsync();
+
+            return allUsers;
+        }
+
         public async Task<List<Account>> GetAccountStudent(string campusId)
         {
             try
