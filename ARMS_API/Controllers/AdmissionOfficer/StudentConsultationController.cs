@@ -12,7 +12,7 @@ namespace ARMS_API.Controllers.AdmissionOfficer
     [Route("api/admin-officer/[controller]")]
 
     [ApiController]
-    [Authorize(Roles = "AdminOfficer")]
+    //[Authorize(Roles = "AdminOfficer")]
     public class StudentConsultationController : ControllerBase
     {
         private IStudentConsultationService _studentConsultationService;
@@ -27,20 +27,20 @@ namespace ARMS_API.Controllers.AdmissionOfficer
             _userInput = userInput;
         }
         [HttpGet("get-list-student-consultation")]
-        public async Task<IActionResult> GetStudentConsultation(string campus, string? search, int currentPage, bool? isVocationalSchool)
+        public async Task<IActionResult> GetStudentConsultation(string CampusId, string? Search, int CurrentPage, bool? isVocationalSchool)
         {
             try
             {
                 ResponeModel<StudentConsultation_AO_DTO> result = new ResponeModel<StudentConsultation_AO_DTO>();
-                result.CurrentPage = currentPage;
-                result.CampusId = campus;
-                result.Search = search;
+                result.CurrentPage = CurrentPage;
+                result.CampusId = CampusId;
+                result.Search = Search;
 
-                List<StudentConsultation> response = await _studentConsultationService.GetListStudentConsultation(campus);
+                List<StudentConsultation> response = await _studentConsultationService.GetListStudentConsultation(CampusId);
                 // Search
-                if (!string.IsNullOrEmpty(search))
+                if (!string.IsNullOrEmpty(Search))
                 {
-                    string searchTerm = _userInput.NormalizeText(search);
+                    string searchTerm = _userInput.NormalizeText(Search);
                     response = response
                                 .Where(sc =>
                                     _userInput.NormalizeText(sc.FullName ?? "").Contains(searchTerm) ||

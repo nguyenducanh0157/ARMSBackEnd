@@ -24,5 +24,6 @@ namespace Data.Models
         public virtual Major? Major { get; set; }
         public virtual StudentProfile? StudentProfile { get; set; }
         public virtual ICollection<Request>? RequestChangeMajors { get; set; }
+        public virtual ICollection<RequestNotification>? RequestNotifications { get; set; } // school gửi các thông báo thì xem từng gửi những thông báo gì ở đây 
     }
 }

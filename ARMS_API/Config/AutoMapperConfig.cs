@@ -27,8 +27,22 @@ namespace ARMS_API.Config
                 .ForMember(dest => dest.TimeStudy, opt => opt.MapFrom(src => src.Major.TimeStudy))
                 .ForMember(dest => dest.isVocationalSchool, opt => opt.MapFrom(src => src.Major.isVocationalSchool))
                 .ForMember(dest => dest.Subjects, opt => opt.MapFrom(src => src.Major.Subjects))
-                .ForMember(dest => dest.TypeAdmissions, opt => opt.MapFrom(src => src.Major.TypeAdmissions))
-                .ForMember(dest => dest.AdmissionDetailForMajors, opt => opt.MapFrom(src => src.Major.AdmissionDetailForMajors));
+                .ForMember(dest => dest.TotalScore, opt =>
+                    opt.MapFrom(src =>
+                        src.TypeAdmissions != null && src.TypeAdmissions.Any(t => t.TypeDiploma == TypeOfDiploma.Xet_diem_thi_THPT)
+                            ?src.TotalScore:null))
+                 .ForMember(dest => dest.TotalScoreAcademic, opt =>
+                    opt.MapFrom(src =>
+                        src.TotalScoreAcademic != null && src.TypeAdmissions.Any(t => t.TypeDiploma == TypeOfDiploma.Xet_hoc_ba_THPT)
+                            ? src.TotalScoreAcademic : null))
+                .ForMember(dest => dest.subjectGroupDTOs,
+                              opt => opt.MapFrom(src =>
+                                  src.SubjectGroups.Select(g => new SubjectGroupDTO
+                                  {
+                                      SubjectGroup = g.ToString(),
+                                      SubjectGroupName = EnumExtensions.GetEnumDescription(g)
+                                  }).ToList()));
+                config.CreateMap<Major_Admission_DTO, MajorAdmission>();
 
                 config.CreateMap<Major_Manage_DTO, Major>();
                 config.CreateMap<Major_Admission_DTO, Major>();
@@ -136,16 +150,8 @@ namespace ARMS_API.Config
                   .ForMember(dest => dest.SubjectGroup, opt => opt.MapFrom(src => src.ToString()))
                   .ForMember(dest => dest.SubjectGroupName, opt => opt.MapFrom(src => EnumExtensions.GetEnumDescription(src)));
 
-                config.CreateMap<AdmissionDetailForMajor, AdmissionDetailForMajorDto>()
-                .ForMember(dest => dest.TotalScore, opt => opt.MapFrom(src => src.StatusScore ? src.TotalScore : (decimal?)null))
-                .ForMember(dest => dest.TotalScoreAcademic, opt => opt.MapFrom(src => src.StatusScoreAcademic ? src.TotalScoreAcademic : (decimal?)null))
-                   .ForMember(dest => dest.subjectGroupDTOs,
-                              opt => opt.MapFrom(src =>
-                                  src.SubjectGroups.Select(g => new SubjectGroupDTO
-                                  {
-                                      SubjectGroup = g.ToString(),
-                                      SubjectGroupName = EnumExtensions.GetEnumDescription(g)
-                                  }).ToList()));
+
+
                 // mapping get request change major for school service
                 config.CreateMap<RequestChangeMajor_SS_DTO, Request>();
                 config.CreateMap<Request, RequestChangeMajor_SS_DTO>();

@@ -35,20 +35,12 @@ namespace ARMS_API.Controllers.SchoolService
                 result.CampusId = CampusId;
                 result.Search = Search;
 
-                List<MajorAdmission> response = new List<MajorAdmission>();
-                if (college==null)
+                List<MajorAdmission> response = await _majorService.GetMajorsManage(CampusId);
+                response = response.Where(x=>x.Status==true).ToList();
+                if (college!=null)
                 {
-                    response = await _majorService.GetMajorsAdmin(CampusId);
+                    response = response.Where(x=>x.Major.isVocationalSchool==true).ToList();
                 }
-                else if (college == true)
-                {
-                    response = await _majorService.GetMajorsIsCollege(CampusId);
-                }
-                else
-                {
-                    response = await _majorService.GetMajorsIsVocationalSchool(CampusId);
-                }
-
                 // Search
                 if (!string.IsNullOrEmpty(Search))
                 {

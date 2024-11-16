@@ -31,7 +31,7 @@ namespace ARMS_API.Controllers.AdmissionCouncil
         {
             try
             {
-                Major major = _mapper.Map<Major>(MajorDTO);
+                MajorAdmission major = _mapper.Map<MajorAdmission>(MajorDTO);
                 await _majorService.UpdateMajorAdmission(major);
                 return Ok(new ResponseViewModel()
                 {
@@ -46,68 +46,64 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 return BadRequest();
             }
         }
-        //[HttpGet("get-majors")]
-        //public async Task<IActionResult> GetMajors(string CampusId, string? Search, int CurrentPage, bool? isVocationalSchool)
-        //{
-        //    try
-        //    {
-        //        //respone data
-        //        ResponeModel<Major_Admission_Council_DTO> result = new ResponeModel<Major_Admission_Council_DTO>();
-        //        result.CurrentPage = CurrentPage;
-        //        result.CampusId = CampusId;
-        //        result.Search = Search;
+        [HttpGet("get-majors")]
+        public async Task<IActionResult> GetMajors(string? CampusId, bool? college, string? Search, int CurrentPage)
+        {
+            try
+            {
+                ResponeModel<MajorDTO> result = new ResponeModel<MajorDTO>();
+                result.CurrentPage = CurrentPage;
+                result.CampusId = CampusId;
+                result.Search = Search;
 
-        //        List<Major> response = await _majorService.GetMajorsAdmin(CampusId);
-        //        if (!string.IsNullOrEmpty(Search))
-        //        {
-        //            string searchTerm = _userInput.NormalizeText(Search);
-        //            response = response
-        //                        .Where(major =>
-        //                        {
-        //                            string MajorName = _userInput.NormalizeText(major?.MajorName ?? "");
-        //                            string MajorCode = _userInput.NormalizeText(major?.MajorCode ?? "");
-        //                            string Description = _userInput.NormalizeText(major?.Description ?? "");
-        //                            string TimeStudy = _userInput.NormalizeText(major?.TimeStudy ?? "");
-        //                            return MajorName.Contains(searchTerm) 
-        //                            || MajorCode.Contains(searchTerm) 
-        //                            || Description.Contains(searchTerm)
-        //                            || TimeStudy.Contains(searchTerm);
-        //                        })
-        //                        .ToList();
-        //        }
+                List<MajorAdmission> response = await _majorService.GetMajorsManage(CampusId);
+                if (college != null)
+                {
+                    response = response.Where(x => x.Major.isVocationalSchool == true).ToList();
+                }
+                // Search
+                if (!string.IsNullOrEmpty(Search))
+                {
+                    string searchTerm = _userInput.NormalizeText(Search);
+                    response = response
+                                .Where(major =>
+                                    major != null &&
+                                    (
+                                        _userInput.NormalizeText(major.Major.MajorName ?? "").Contains(searchTerm) ||
+                                        _userInput.NormalizeText(major.Major.MajorCode ?? "").Contains(searchTerm) ||
+                                        _userInput.NormalizeText(major.MajorID ?? "").Contains(searchTerm)
+                                    )
+                                )
+                                .ToList();
+                }
 
-        //        if (isVocationalSchool != null)
-        //        {
-        //            response = response
-        //                        .Where(major => major.isVocationalSchool == isVocationalSchool)
-        //                        .ToList();
-        //        };
-        //        result.PageCount = (int)Math.Ceiling(response.Count() / (double)result.PageSize);
-        //        var majors = response
-        //            .Skip(((int)result.CurrentPage - 1) * (int)result.PageSize)
-        //            .Take((int)result.PageSize)
-        //            .ToList();
+                result.PageCount = (int)Math.Ceiling(response.Count() / (double)result.PageSize);
+                var majors = response
+                    .Skip(((int)result.CurrentPage - 1) * (int)result.PageSize)
+                    .Take((int)result.PageSize)
+                    .ToList();
 
-        //        List<Major_Admission_Council_DTO> responeResult = _mapper.Map<List<Major_Admission_Council_DTO>>(majors);
-        //        result.Item = responeResult;
-        //        result.TotalItems = response.Count;
-        //        return Ok(result);
+                List<MajorDTO> responeResult = _mapper.Map<List<MajorDTO>>(majors);
+                result.Item = responeResult;
+                result.TotalItems = response.Count;
 
-        //    }
-        //    catch (Exception)
-        //    {
+                return Ok(result);
 
-        //        return BadRequest();
-        //    }
-        //}
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
+        }
         [HttpGet("get-major-details")]
-        public async Task<IActionResult> GetMajorDetail(string MajorId)
+        public async Task<IActionResult> GetMajorDetail(string MajorId, int AdmissionInformationID)
         {
             try
             {
 
-                Major response = await _majorService.GetMajorDetail(MajorId);
-                Major_Admission_Council_DTO responeResult = _mapper.Map<Major_Admission_Council_DTO>(response);
+                MajorAdmission response = await _majorService.GetMajorDetail(MajorId, AdmissionInformationID);
+                MajorDTO responeResult = _mapper.Map<MajorDTO>(response);
                 return Ok(responeResult);
 
             }

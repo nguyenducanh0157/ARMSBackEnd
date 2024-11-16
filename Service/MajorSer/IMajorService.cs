@@ -17,7 +17,7 @@ namespace Service.MajorSer
         Task<MajorAdmission> GetMajorDetail(string MajorID, int AdmissionInformationID);
         Task AddNewMajor(Major major);
         Task UpdateMajor(Major major);
-        Task<List<MajorAdmission>> GetMajorsAdmin(string campusId);
-        Task UpdateMajorAdmission(Major Major);
+        Task<List<MajorAdmission>> GetMajorsManage(string campusId);
+        Task UpdateMajorAdmission(MajorAdmission Major);
     }
 }

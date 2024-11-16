@@ -18,13 +18,11 @@ namespace Data.Models
         public string CampusId { get; set; }
         public decimal? Tuition { get; set; }
         public virtual Campus? Campus { get; set; }
-        public virtual ICollection<AdmissionDetailForMajor>? AdmissionDetailForMajors { get; set; }
         public virtual ICollection<Subject>? Subjects { get; set; }
         public virtual ICollection<Account>? Accounts { get; set; }
         public virtual ICollection<StudentConsultation>? StudentConsultations { get; set; }
         public virtual ICollection<Request>? RequestChangeMajorsN { get; set; }
         public virtual ICollection<Request>? RequestChangeMajorsO { get; set; }
-        public virtual ICollection<TypeAdmission>? TypeAdmissions { get; set; }
         public virtual ICollection<MajorAdmission>? MajorAdmissions { get; set; }
     }
 }

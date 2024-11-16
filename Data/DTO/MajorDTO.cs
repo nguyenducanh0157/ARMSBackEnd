@@ -14,13 +14,16 @@ namespace Data.DTO
         public string MajorID { get; set; }
         public int AdmissionInformationID { get; set; }
         public string MajorCode { get; set; }
+        public bool Status { get; set; }
         public string MajorName { get; set; }
         public string? Description { get; set; }
         public decimal? Tuition { get; set; }
         public int? Target { get; set; } 
         public string? TimeStudy { get; set; }
         public bool isVocationalSchool { get; set; }
-        public virtual ICollection<AdmissionDetailForMajorDto>? AdmissionDetailForMajors { get; set; }
+        public decimal? TotalScore { get; set; }
+        public decimal? TotalScoreAcademic { get; set; }
+        public List<SubjectGroupDTO> subjectGroupDTOs { get; set; }
         public virtual ICollection<SubjectDTO>? Subjects { get; set; }
         public virtual ICollection<TypeAdmissionDTO>? TypeAdmissions { get; set; }
     }
@@ -53,8 +56,10 @@ namespace Data.DTO
     public class Major_Admission_DTO
     {
         public string MajorID { get; set; }
+        public int AdmissionInformationID { get; set; }
         public int? Target { get; set; } = 0;
         public bool Status { get; set; }
+        public string? SubjectGroupsJson { get; set; }
         public virtual ICollection<TypeAdmissionDTO>? TypeAdmissions { get; set; }
     }
     public class Major_Admission_Council_DTO

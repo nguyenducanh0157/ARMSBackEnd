@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(ArmsDbContext))]
-    [Migration("20241115104639_MG-MajorAdmission-update-2")]
+    [Migration("20241115200054_MG-MajorAdmission-update-2")]
     partial class MGMajorAdmissionupdate2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -146,16 +146,16 @@ namespace Data.Migrations
                             Id = new Guid("b8c777a9-55b9-4b3d-860a-d7b56e4c24b7"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "23ea4c8a-b2c9-4d30-9dec-db4de457a978",
+                            ConcurrencyStamp = "1467d3df-7777-4715-93b3-5719297e6e42",
                             Email = "AdminHaNoi@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Admin Hanoi",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMINHANOI@GMAIL.COM",
                             NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBtEPFkD6w3VjlfDRiAZO7+tsF7U8eIwvKVarJqAmZ1InJ/Kbl9dX2aPJnnC0nHUaw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELmyIzvnrZmg+tYjsd0aBrnqiH/BK5CAYaJMujHXfSGJi1aBxkCNFLgHmFxhIbNO4A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7f12a18a-b2fe-4c86-9a44-851b988c4bf7",
+                            SecurityStamp = "e0cf2855-1ddb-4bef-8914-8502124c84da",
                             TwoFactorEnabled = false,
                             UserName = "Administrator",
                             isAccountActive = false
@@ -165,16 +165,16 @@ namespace Data.Migrations
                             Id = new Guid("5738248d-b40e-4332-9b9e-deb0abc8f8dd"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "dcdc9437-5dab-4fad-b220-d3d7300b9aae",
+                            ConcurrencyStamp = "a6bab66a-d5bf-41d1-8bb5-8d37484301c5",
                             Email = "AdmissionOfficer@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Admin Officer Hanoi",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMISSIONOFFICER@GMAIL.COM",
                             NormalizedUserName = "ADMISSIONOFFICER",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHUx6uwBJfljORfOL+fOozquYY+ummL75iTZaeieV3bFBphTHf8eS0zx7MGqARtVWw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKOCOC/ESVySuwqkaN+gL+8aY0ej1ZWz2lbMunaYApfs2YxjgoKBmIDVMD5KhFU+YQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "666fd604-b7f9-4dc4-a6e2-222e36028964",
+                            SecurityStamp = "7e088ed4-7349-4e0f-9549-c2a0677828a6",
                             TwoFactorEnabled = false,
                             UserName = "AdmissionOfficer",
                             isAccountActive = false
@@ -184,16 +184,16 @@ namespace Data.Migrations
                             Id = new Guid("17baf918-d5d2-4628-aad1-8a4926520676"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "0a404911-c456-4633-80f4-8ebe5c5a7903",
+                            ConcurrencyStamp = "7b3f01d7-0f61-442d-b744-87cd54cce4b6",
                             Email = "SchoolService@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "School Service Hanoi",
                             LockoutEnabled = false,
                             NormalizedEmail = "SCHOOLSERVICE@GMAIL.COM",
                             NormalizedUserName = "SCHOOLSERVICE",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPkJn8EIReLLalJxNpTWDbUHo6eg26vEs0kx5+lLFNZ6ZqMn8dtgMZCrf8uF9rez5A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEN069G8qfKyGDJ2GHspvnFQLTPKBWiZjNRhHCU0aKSDm6pZJxf6FWQ4pObe8qaMveA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1d1e50ee-7eed-44eb-8584-939d15e9b130",
+                            SecurityStamp = "a8528898-a40f-478f-82d2-d2844bd7d689",
                             TwoFactorEnabled = false,
                             UserName = "SchoolService",
                             isAccountActive = false
@@ -203,16 +203,16 @@ namespace Data.Migrations
                             Id = new Guid("aa321fa2-d640-449f-9cf3-d5a14001aa3e"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "4fb3c0f6-664d-4e6f-ba19-4d1a2258e210",
+                            ConcurrencyStamp = "e7d0a22e-7515-496e-9523-a617f20eb95d",
                             Email = "AdmissionCouncil@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Admission Council Hanoi",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMISSIONCOUNCIL@GMAIL.COM",
                             NormalizedUserName = "ADMISSIONCOUNCIL",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPbjGYLtcBs4LYOTtClwadZI4lL5rOIrV/raPklbpSDcdybANNYJU3xqot6y3Sa7eQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMGgKnPsi2XgsDH4SeZnPX3oIsUSl9gFdQ00tPl1YwFBBkQkgSZLXTiJtS2kRUkXMw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8ef466f4-1a32-426c-b403-8da342ba6a4e",
+                            SecurityStamp = "d928c991-64e7-4f68-826a-716f16b194fa",
                             TwoFactorEnabled = false,
                             UserName = "AdmissionCouncil",
                             isAccountActive = false
@@ -222,7 +222,7 @@ namespace Data.Migrations
                             Id = new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "e152f34c-9be5-4ee3-b1fb-c4050718e520",
+                            ConcurrencyStamp = "7c596661-b13e-46b7-b1bd-3ce620e9f83f",
                             Email = "nguyenducanh01.57@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Nguyễn Đức Anh",
@@ -230,9 +230,9 @@ namespace Data.Migrations
                             MajorId = "HWE",
                             NormalizedEmail = "NGUYENDUCANH01.57@GMAIL.COM",
                             NormalizedUserName = "STUDENT",
-                            PasswordHash = "AQAAAAEAACcQAAAAENECfQGddfu0SHI17r034lFT+Jeu7QKZIyC+E+TAfVhTWxUJkWjVJhIYpwaWQvdTXw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFr696TI0JjypMJudWUiaVsV+9hKlZa2JOY2iT/baFiEHFIWYWqrmJrp+huG9TTyqA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7f021241-2403-4478-87ab-994594bc43cb",
+                            SecurityStamp = "632870f7-366c-4eab-a292-ed5eb7942849",
                             StudentCode = "HWE160153",
                             TwoFactorEnabled = false,
                             UserName = "DucAnh",
@@ -343,7 +343,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("0fe3b6b6-5b69-416f-a810-3d8b1b134666"),
+                            ADMId = new Guid("f749b11f-bdab-4b51-8b0f-26e06f4b55ad"),
                             MajorID = "HKA",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -354,7 +354,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("3d27ca0b-d8cc-41c4-865b-7187c24768ef"),
+                            ADMId = new Guid("b291eaeb-63a8-4704-9dfc-d125cd9aca96"),
                             MajorID = "HSM",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -365,7 +365,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("45c595d2-f872-44c7-9f31-887e856efc2c"),
+                            ADMId = new Guid("dc26c757-5407-4b5f-91b7-938d1c0c5db3"),
                             MajorID = "HHM",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -376,7 +376,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("861d05b0-c364-4836-bf5b-52af09d78c6a"),
+                            ADMId = new Guid("340eef4b-0121-4d02-b688-88d550f1a81a"),
                             MajorID = "HRM",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -387,7 +387,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("7f391302-0f63-4ba7-ad91-07a5251e19ea"),
+                            ADMId = new Guid("ee6bfec1-a8b8-4721-9263-2909e0a4ae79"),
                             MajorID = "HBT",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -398,7 +398,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("74eed70d-ada3-4743-8ffc-3d21a50dbeb0"),
+                            ADMId = new Guid("dc8dfa39-616f-4ee0-83e1-934d936f8324"),
                             MajorID = "HBS",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -409,7 +409,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("dd5812a2-960b-4eee-b79d-18142623c5f8"),
+                            ADMId = new Guid("689ed586-906d-4cbf-a68d-4b4606bccedc"),
                             MajorID = "HAO",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -420,7 +420,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("fa744de4-72e5-4d84-8965-07a48c2a6133"),
+                            ADMId = new Guid("63493933-1606-4ade-b0de-bec814266b20"),
                             MajorID = "HSO",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -431,7 +431,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("0a29d95b-3f56-416d-b48c-7bcef00bd804"),
+                            ADMId = new Guid("47b76a63-7bf5-47a4-8197-074f1611fec6"),
                             MajorID = "HFO",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -442,7 +442,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("2620d18f-2fb8-474d-8906-d39d30e5409f"),
+                            ADMId = new Guid("8582f5c7-6135-47fb-a14e-cc2788ad598e"),
                             MajorID = "SME",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -453,7 +453,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("9556c53c-40a3-4678-9453-9b12a4aeb189"),
+                            ADMId = new Guid("ed3d95be-b6ad-4be4-b1c2-52bf9f916100"),
                             MajorID = "SGE",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -464,7 +464,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("e8aef338-7f93-456a-99f3-a4c9286a5a39"),
+                            ADMId = new Guid("f0e50196-565a-44b5-a37e-8f8c97b1e239"),
                             MajorID = "SWE",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -475,7 +475,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("6b30f9d5-7ecb-4cd0-8613-ebe220fd9209"),
+                            ADMId = new Guid("6c14c33c-104d-4d7d-b148-89fb3b224b70"),
                             MajorID = "STE",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -486,7 +486,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("6ac95a8c-a184-4f00-8774-f2ffc74f6912"),
+                            ADMId = new Guid("b507b6f7-a336-4433-ba67-892458001c3a"),
                             MajorID = "SEA",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -497,7 +497,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("32436cf5-764a-4e0b-895a-b6a6451ce75a"),
+                            ADMId = new Guid("678a3eeb-5bda-459a-b6ac-4944b37731f3"),
                             MajorID = "SJA",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -508,7 +508,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("44df4966-30e5-49fd-ad47-4ccb8c0ce2bf"),
+                            ADMId = new Guid("82e5113e-1ebc-4508-9650-70da696a43d9"),
                             MajorID = "SKA",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -519,7 +519,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("79dcde99-f9bd-41a4-96f4-9cc7eb432cd1"),
+                            ADMId = new Guid("63e1baff-59f4-4e29-b369-4b2b86e9891c"),
                             MajorID = "SSM",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -530,7 +530,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("06bcdb27-f443-4939-b104-6ea086810d01"),
+                            ADMId = new Guid("b388476c-37f2-4939-9fec-2682a1bf2abf"),
                             MajorID = "SHM",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -541,7 +541,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("7db2acbc-22b2-425e-9e5f-167f939b5c4d"),
+                            ADMId = new Guid("66310733-99cc-41e9-b3e1-0e010aa14d40"),
                             MajorID = "SRM",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -552,7 +552,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("211aaeeb-2337-4e4f-8ee7-117e1167ff88"),
+                            ADMId = new Guid("bfc2312a-7cee-4a1c-93b1-f15241b219ca"),
                             MajorID = "SBT",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -563,7 +563,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("05272e7b-d7e7-4c7e-83d0-49cc78cbfc0c"),
+                            ADMId = new Guid("9e2a6b8b-3d02-4c87-93c9-5a06904c8185"),
                             MajorID = "SBS",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -574,7 +574,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("0e361d3f-84fc-4266-b270-f144a77b95a8"),
+                            ADMId = new Guid("623c324b-ecb5-4c33-8160-b8417fba7568"),
                             MajorID = "SAO",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -585,7 +585,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("29c9f486-550d-4b04-b0f7-1116bbcdb410"),
+                            ADMId = new Guid("d5ef1c5d-c9e5-4070-ba27-def46feaf19a"),
                             MajorID = "SSO",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -596,7 +596,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            ADMId = new Guid("09b301e6-d366-4b33-9c6b-15183e099457"),
+                            ADMId = new Guid("7867694b-ebc0-4e29-8254-d865ba863256"),
                             MajorID = "SFO",
                             StatusScore = true,
                             StatusScoreAcademic = true,
@@ -828,7 +828,7 @@ namespace Data.Migrations
                             BlogId = 1,
                             BlogCategoryId = 3,
                             Content = "Trăng tròn đã vươn cao tại Hoà Lạc, Rằm tháng Tám đã gần đi qua, các Cóc “ngoan xinh iu” của FPTU đã đi chơi Trung thu về chưa? \r\n🥮 Trung thu là dịp để chúng ta ngồi lại bên nhau, hàn huyên với gia đình, bạn bè và những người thân yêu. Hãy cùng tận hưởng Tết Trung Thu bên bánh dẻo, bánh nướng và thả mình vào ánh trăng lung linh để cảm nhận những khoảnh khắc tuyệt diệu, đáng quý này nhé!\r\n✨ Nhân dịp Tết Trung thu, xin gửi những lời chúc tốt đẹp nhất đến thầy cô, anh chị cán bộ trường Đại học FPT, cùng các bạn sinh viên thân yêu! Chúc mọi người một mùa trăng an yên hơn sau những ảnh hưởng lớn của bão vừa qua.\r\n 📌 VÀ ĐỪNG QUÊN lên dây cót, bật chế độ sẵn sàng đón chờ những sự kiện “cực kỳ hoành tráng” đang tới gần. Kết nối, khám phá và trải nghiệm hết mình trong kỳ fall này bạn nhé!",
-                            DateCreate = new DateTime(2024, 11, 15, 17, 46, 38, 500, DateTimeKind.Local).AddTicks(4811),
+                            DateCreate = new DateTime(2024, 11, 16, 3, 0, 53, 231, DateTimeKind.Local).AddTicks(5411),
                             Description = "Trăng tròn đã vươn cao tại Hoà Lạc, Rằm tháng Tám đã gần đi qua, các Cóc “ngoan xinh iu” của FPTU đã đi chơi Trung thu về chưa?",
                             Title = "Trăng tròn đã vươn cao tại Hoà Lạc"
                         },
@@ -837,7 +837,7 @@ namespace Data.Migrations
                             BlogId = 2,
                             BlogCategoryId = 3,
                             Content = "[𝐊𝐈𝐂𝐊 𝐎𝐅𝐅] - 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓\r\n🏞 Tại vùng đất Hola Campus, nơi mà tinh thần học tập, sáng tạo nghệ thuật và sức mạnh thể chất được đề cao luôn tồn tại một lực lượng quân chủng mang tên 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 - mang trong mình trọng trách quan trọng nhất đó là bảo vệ và phát triển lãnh thổ với ba đại đội: Cơ bắp, Biết tuốt và Bay bổng. \r\n✨ Vào năm 2024, những người đứng đầu của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 đã quyết định tổ chức một sự kiện, một ngày hội đặc biệt mang tên 𝐽𝑖𝑚𝑏𝑜 𝑈𝑛𝑖𝑡𝑦 𝐹𝑒𝑠𝑡. Sự kiện là dịp để các chiến sĩ của cả 3 Đại đội gặp mặt, giao lưu và học hỏi lẫn nhau không chỉ về tinh thần đồng đội mà còn được khám phá thêm những kỹ năng từ các đội khác. \r\n🌷 Đặc biệt, 𝐽𝑖𝑚𝑏𝑜 𝑈𝑛𝑖𝑡𝑦 𝐹𝑒𝑠𝑡 không chỉ giới hạn cho các chiến sĩ của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 mà còn mở cửa chào đón tất cả những người trẻ của vùng đất Hola Campus có quan tâm và muốn trải nghiệm môi trường, văn hóa đặc trưng của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 tham gia sự kiện. Nếu như bạn đã sẵn sàng với các chiến binh bước vào thế giới của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 cùng một tinh thần nhiệt huyết và tràn đầy năng lượng để vượt qua những thử thách đầy cam go thì hãy cùng chúng mình đón chờ hành trình sắp tới nhé!\r\n---------------------------------------\r\n🔥 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓 🔥\r\n◻️ Thời gian: 13h - 17h30 thứ hai, ngày 30/09/2024\r\n◻️ Địa điểm: Đường 30m, Đại học FPT Hà Nội \r\n---------------------------------------\r\nTHÔNG TIN LIÊN HỆ\r\n◻️ Trưởng ban Tổ chức: Kiều Bảo Lộc (0367488155)\r\n◻️ Trưởng ban HR: Nguyễn Ngọc Quỳnh (0865349170)",
-                            DateCreate = new DateTime(2024, 11, 15, 17, 46, 38, 500, DateTimeKind.Local).AddTicks(4822),
+                            DateCreate = new DateTime(2024, 11, 16, 3, 0, 53, 231, DateTimeKind.Local).AddTicks(5421),
                             Description = " 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 - mang trong mình trọng trách quan trọng nhất đó là bảo vệ và phát triển lãnh thổ với ba đại đội: Cơ bắp, Biết tuốt và Bay bổng.",
                             Title = "[𝐊𝐈𝐂𝐊 𝐎𝐅𝐅] - 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓"
                         },
@@ -846,7 +846,7 @@ namespace Data.Migrations
                             BlogId = 3,
                             BlogCategoryId = 2,
                             Content = "🌟[ORIENTATION WEEK]🌟 GIỚI THIỆU CÁC PHÒNG BAN CHỨC NĂNG TẠI ĐẠI HỌC FPT\r\n🔥Ngay lúc này đây, Phòng Hợp tác Quốc tế và Phát triển Cá nhân ICPDP đang có mặt tại Hội trường NIC cùng các tân sinh viên K20 tham gia Buổi học định hướng với chủ đề “Giới thiệu các phòng ban tại Đại học FPT”.\r\n🔥Tại buổi định hướng, các Cóc út đã được lắng nghe anh Lê Huy Hoàng - Cán bộ quản lý IC, đại diện phòng ICPDP chia sẻ về vai trò và chức năng của Phòng ICPDP, về các cơ hội học tập, trải nghiệm trong và ngoài nước dành cho tất cả các bạn sinh viên FPT.\r\n🫶Phòng ICPDP rất sẵn lòng đồng hành cùng các Cóc trong hành trình 4 năm thanh xuân tại Đại học FPT. Hy vọng chúng mình sẽ có thật nhiều kỷ niệm tại Đại học FPT Hà Nội. \r\n-----------------------------------------------------------\r\nMọi thắc mắc vui lòng liên hệ: Phòng Hợp tác Quốc tế và Phát triển cá nhân ICPDP FPTU",
-                            DateCreate = new DateTime(2024, 11, 15, 17, 46, 38, 500, DateTimeKind.Local).AddTicks(4824),
+                            DateCreate = new DateTime(2024, 11, 16, 3, 0, 53, 231, DateTimeKind.Local).AddTicks(5422),
                             Description = " Giới thiệu các phòng ban tại Đại học FPT",
                             Title = "🌟[ORIENTATION WEEK]🌟 GIỚI THIỆU CÁC PHÒNG BAN CHỨC NĂNG TẠI ĐẠI HỌC FPT"
                         },
@@ -855,7 +855,7 @@ namespace Data.Migrations
                             BlogId = 4,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 11, 15, 17, 46, 38, 500, DateTimeKind.Local).AddTicks(4825),
+                            DateCreate = new DateTime(2024, 11, 16, 3, 0, 53, 231, DateTimeKind.Local).AddTicks(5423),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -864,7 +864,7 @@ namespace Data.Migrations
                             BlogId = 5,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 11, 15, 17, 46, 38, 500, DateTimeKind.Local).AddTicks(4826),
+                            DateCreate = new DateTime(2024, 11, 16, 3, 0, 53, 231, DateTimeKind.Local).AddTicks(5423),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -873,7 +873,7 @@ namespace Data.Migrations
                             BlogId = 6,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 11, 15, 17, 46, 38, 500, DateTimeKind.Local).AddTicks(4828),
+                            DateCreate = new DateTime(2024, 11, 16, 3, 0, 53, 231, DateTimeKind.Local).AddTicks(5424),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -882,7 +882,7 @@ namespace Data.Migrations
                             BlogId = 7,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 11, 15, 17, 46, 38, 500, DateTimeKind.Local).AddTicks(4828),
+                            DateCreate = new DateTime(2024, 11, 16, 3, 0, 53, 231, DateTimeKind.Local).AddTicks(5425),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -891,7 +891,7 @@ namespace Data.Migrations
                             BlogId = 8,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 11, 15, 17, 46, 38, 500, DateTimeKind.Local).AddTicks(4830),
+                            DateCreate = new DateTime(2024, 11, 16, 3, 0, 53, 231, DateTimeKind.Local).AddTicks(5425),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -900,7 +900,7 @@ namespace Data.Migrations
                             BlogId = 9,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 11, 15, 17, 46, 38, 500, DateTimeKind.Local).AddTicks(4831),
+                            DateCreate = new DateTime(2024, 11, 16, 3, 0, 53, 231, DateTimeKind.Local).AddTicks(5426),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         });
@@ -1492,9 +1492,18 @@ namespace Data.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
+                    b.Property<string>("SubjectGroupsJson")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("Target")
                         .IsRequired()
                         .HasColumnType("int");
+
+                    b.Property<decimal>("TotalScore")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("TotalScoreAcademic")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("AdmissionInformationID", "MajorID");
 
@@ -1508,105 +1517,150 @@ namespace Data.Migrations
                             AdmissionInformationID = 1,
                             MajorID = "HME",
                             Status = true,
-                            Target = 200
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
                         },
                         new
                         {
                             AdmissionInformationID = 1,
                             MajorID = "HGE",
                             Status = true,
-                            Target = 200
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
                         },
                         new
                         {
                             AdmissionInformationID = 1,
                             MajorID = "HWE",
                             Status = true,
-                            Target = 200
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
                         },
                         new
                         {
                             AdmissionInformationID = 1,
                             MajorID = "HTE",
                             Status = true,
-                            Target = 200
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
                         },
                         new
                         {
                             AdmissionInformationID = 1,
                             MajorID = "HEA",
                             Status = true,
-                            Target = 200
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
                         },
                         new
                         {
                             AdmissionInformationID = 1,
                             MajorID = "HJA",
                             Status = true,
-                            Target = 200
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
                         },
                         new
                         {
                             AdmissionInformationID = 1,
                             MajorID = "HKA",
                             Status = true,
-                            Target = 200
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
                         },
                         new
                         {
                             AdmissionInformationID = 1,
                             MajorID = "HSM",
                             Status = true,
-                            Target = 200
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
                         },
                         new
                         {
                             AdmissionInformationID = 1,
                             MajorID = "HHM",
                             Status = true,
-                            Target = 200
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
                         },
                         new
                         {
                             AdmissionInformationID = 1,
                             MajorID = "HRM",
                             Status = true,
-                            Target = 200
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
                         },
                         new
                         {
                             AdmissionInformationID = 1,
                             MajorID = "HBT",
                             Status = true,
-                            Target = 200
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
                         },
                         new
                         {
                             AdmissionInformationID = 1,
                             MajorID = "HBS",
                             Status = true,
-                            Target = 200
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
                         },
                         new
                         {
                             AdmissionInformationID = 1,
                             MajorID = "HAO",
                             Status = true,
-                            Target = 200
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
                         },
                         new
                         {
                             AdmissionInformationID = 1,
                             MajorID = "HSO",
                             Status = true,
-                            Target = 200
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
                         },
                         new
                         {
                             AdmissionInformationID = 1,
                             MajorID = "HFO",
                             Status = false,
-                            Target = 200
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
                         });
                 });
 
@@ -1807,7 +1861,7 @@ namespace Data.Migrations
                             RequestID = 1,
                             AccountId = new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"),
                             CampusId = "Hanoi",
-                            DateRequest = new DateTime(2024, 11, 15, 17, 46, 38, 500, DateTimeKind.Local).AddTicks(4967),
+                            DateRequest = new DateTime(2024, 11, 16, 3, 0, 53, 231, DateTimeKind.Local).AddTicks(5516),
                             Description = "Em muốn chuyển ngành!",
                             FileReasonRequestChangeMajor = "file",
                             MajorNew = "HME",
@@ -1820,7 +1874,7 @@ namespace Data.Migrations
                             RequestID = 2,
                             AccountId = new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"),
                             CampusId = "Hanoi",
-                            DateRequest = new DateTime(2024, 11, 15, 17, 46, 38, 500, DateTimeKind.Local).AddTicks(4970),
+                            DateRequest = new DateTime(2024, 11, 16, 3, 0, 53, 231, DateTimeKind.Local).AddTicks(5519),
                             Description = "Em muốn chuyển ngành!",
                             FileReasonRequestChangeMajor = "file",
                             MajorNew = "HME",
@@ -1966,7 +2020,7 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            StudentConsultationId = new Guid("93280a53-8ce5-4ff6-98ad-0f3ca9a2d277"),
+                            StudentConsultationId = new Guid("0b8a3cff-23bd-4ecf-a994-2a16057263a0"),
                             CampusId = "Hanoi",
                             DateReceive = new DateTime(2024, 9, 18, 14, 30, 0, 0, DateTimeKind.Unspecified),
                             Email = "nguyenducanh01.57@gmail.com",
@@ -1978,7 +2032,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            StudentConsultationId = new Guid("a4464935-6abe-4959-909d-c2005b5c2a52"),
+                            StudentConsultationId = new Guid("b5231b72-b081-4630-b7b3-1909e7c1d98a"),
                             CampusId = "Hanoi",
                             DateReceive = new DateTime(2024, 9, 18, 14, 30, 0, 0, DateTimeKind.Unspecified),
                             Email = "nguyenducanh01.57@gmail.com",
@@ -2158,6 +2212,30 @@ namespace Data.Migrations
                     b.HasIndex("PriorityDetailPriorityID");
 
                     b.ToTable("StudentProfile", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            SpId = new Guid("41a2ad7d-1af6-464e-bbf4-0d18ae664851"),
+                            AccountId = new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"),
+                            CIAddress = "HCM",
+                            CIDate = new DateTime(2024, 11, 16, 3, 0, 53, 231, DateTimeKind.Local).AddTicks(5499),
+                            CampusId = "Hanoi",
+                            CitizenIentificationNumber = "038301012121",
+                            Dob = new DateTime(2024, 11, 16, 3, 0, 53, 231, DateTimeKind.Local).AddTicks(5501),
+                            EmailStudent = "nguyenducanh01.57@gmail.com",
+                            Fullname = "Nguyễn Đức Anh",
+                            Gender = true,
+                            Major1 = "HAO",
+                            PhoneStudent = "0971341555",
+                            PriorityDetailPriorityID = 1,
+                            TimeRegister = new DateTime(2024, 11, 16, 3, 0, 53, 231, DateTimeKind.Local).AddTicks(5502),
+                            TypeOfDiplomaMajor1 = 5,
+                            TypeOfDiplomaMajor2 = 5,
+                            TypeofStatusMajor1 = 2,
+                            TypeofStatusMajor2 = 2,
+                            TypeofStatusProfile = 1
+                        });
                 });
 
             modelBuilder.Entity("Data.Models.Subject", b =>
@@ -3408,10 +3486,15 @@ namespace Data.Migrations
                     b.Property<int>("TypeDiploma")
                         .HasColumnType("int");
 
+                    b.Property<int>("AdmissionInformationID")
+                        .HasColumnType("int");
+
                     b.Property<int?>("TypeOfTranscript")
                         .HasColumnType("int");
 
-                    b.HasKey("MajorID", "TypeDiploma");
+                    b.HasKey("MajorID", "TypeDiploma", "AdmissionInformationID");
+
+                    b.HasIndex("AdmissionInformationID", "MajorID");
 
                     b.ToTable("TypeAdmission", (string)null);
 
@@ -3419,469 +3502,272 @@ namespace Data.Migrations
                         new
                         {
                             MajorID = "HME",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HME",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HGE",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HGE",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HWE",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HWE",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HWE",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HTE",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HTE",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HTE",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HEA",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HEA",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HEA",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HJA",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HJA",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HJA",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HKA",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HKA",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HKA",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HSM",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HSM",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HSM",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HHM",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HHM",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HHM",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HRM",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HRM",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HRM",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HBT",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HBT",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HBT",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HBS",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HBS",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HBS",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HAO",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HAO",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HAO",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HSO",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HSO",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HSO",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HFO",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HFO",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HFO",
                             TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SME",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SME",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SME",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SGE",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SGE",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SGE",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SWE",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SWE",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SWE",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "STE",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "STE",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "STE",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SEA",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SEA",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SEA",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SJA",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SJA",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SJA",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SKA",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SKA",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SKA",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SSM",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SSM",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SSM",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SHM",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SHM",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SHM",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SRM",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SRM",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SRM",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SBT",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SBT",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SBT",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SBS",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SBS",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SBS",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SAO",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SAO",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SAO",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SSO",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SSO",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SSO",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SFO",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SFO",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SFO",
-                            TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         });
                 });
@@ -3909,35 +3795,35 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("b8fd818f-63f1-49ee-bec5-f7b66cafbfca"),
-                            ConcurrencyStamp = "ffbbc06a-ab27-4f25-952e-7ff599f530f1",
+                            ConcurrencyStamp = "7f572bcd-ed03-4920-b21a-e47fb315293e",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("d2d63c5b-d09b-4828-8322-f18ba103fe86"),
-                            ConcurrencyStamp = "7bcf0e45-e570-46b3-bcde-66301129b266",
+                            ConcurrencyStamp = "544606db-86ca-4a92-979d-ad67ea3ede22",
                             Name = "Student",
                             NormalizedName = "STUDENT"
                         },
                         new
                         {
                             Id = new Guid("62378687-e16c-4d94-b767-de9f0bfe9498"),
-                            ConcurrencyStamp = "f9018243-2f29-475d-ba8f-512bffe27c40",
+                            ConcurrencyStamp = "c1161131-dd88-448a-b08b-b8d66a819be9",
                             Name = "AdmissionOfficer",
                             NormalizedName = "ADMISSIONOFFICER"
                         },
                         new
                         {
                             Id = new Guid("602f7a5f-e0a7-4c00-9da0-a413bfcfab3a"),
-                            ConcurrencyStamp = "b824b4dc-1136-4ec8-bf3b-98b146f7f035",
+                            ConcurrencyStamp = "248e00e8-0f15-4183-9ff7-76535da59c3c",
                             Name = "SchoolService",
                             NormalizedName = "SCHOOLSERVICE"
                         },
                         new
                         {
                             Id = new Guid("e5ec8836-e240-4bfc-9bbe-33f2cc7a404d"),
-                            ConcurrencyStamp = "e702673d-63c2-4b0d-b056-8c1b861dc878",
+                            ConcurrencyStamp = "148dff24-d3f4-4760-9b7c-423a49668f97",
                             Name = "AdmissionCouncil",
                             NormalizedName = "ADMISSIONCOUNCIL"
                         });
@@ -4295,13 +4181,13 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Models.TypeAdmission", b =>
                 {
-                    b.HasOne("Data.Models.Major", "Major")
+                    b.HasOne("Data.Models.MajorAdmission", "MajorAdmission")
                         .WithMany("TypeAdmissions")
-                        .HasForeignKey("MajorID")
+                        .HasForeignKey("AdmissionInformationID", "MajorID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.Navigation("Major");
+                    b.Navigation("MajorAdmission");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -4408,7 +4294,10 @@ namespace Data.Migrations
                     b.Navigation("StudentConsultations");
 
                     b.Navigation("Subjects");
+                });
 
+            modelBuilder.Entity("Data.Models.MajorAdmission", b =>
+                {
                     b.Navigation("TypeAdmissions");
                 });
 

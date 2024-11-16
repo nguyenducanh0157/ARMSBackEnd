@@ -27,13 +27,13 @@ namespace Service.MajorSer
         public async Task<List<MajorAdmission>> GetMajorsIsVocationalSchool(string campusId)
         {
             var result = await _majorRepository.GetMajorAdmissions(campusId);
-            var activeMajors = result.Where(major => major.Major.isVocationalSchool == true).ToList();
+            var activeMajors = result.Where(major => major.Major.isVocationalSchool == true && major.Status==true).ToList();
             return activeMajors;
         }
         public async Task<List<MajorAdmission>> GetMajorsIsCollege(string campusId)
         {
             var result = await _majorRepository.GetMajorAdmissions(campusId);
-            var activeMajors = result.Where(major => major.Major.isVocationalSchool == false).ToList();
+            var activeMajors = result.Where(major => major.Major.isVocationalSchool == false && major.Status == true).ToList();
             return activeMajors;
         }
 
@@ -45,17 +45,23 @@ namespace Service.MajorSer
 
         public async Task UpdateMajor(Major major)=> await _majorRepository.UpdateMajor(major);
 
-        public async Task<List<MajorAdmission>> GetMajorsAdmin(string campusId)=> await _majorRepository.GetMajorAdmissions(campusId);
+        public async Task<List<MajorAdmission>> GetMajorsManage(string campusId)
+        {
+            var result = await _majorRepository.GetMajorAdmissions(campusId);
+            return result;
 
-        //public async Task UpdateMajorAdmission(Major Major)
-        //{
-        //    var majorValid = await _majorRepository.GetMajorDetail(Major.MajorID);
-        //    if (majorValid == null) throw new Exception("Không tồn tại ngành học");
-        //    majorValid.Status = Major.Status;
-        //    majorValid.Target = Major.Target;
-        //    majorValid.TypeAdmissions = Major.TypeAdmissions;
-        //    await _majorRepository.UpdateMajor(majorValid);
-        //}
+        }
+
+        public async Task UpdateMajorAdmission(MajorAdmission Major)
+        {
+            var majorValid = await _majorRepository.GetMajorDetail(Major.MajorID, Major.AdmissionInformationID);
+            if (majorValid == null) throw new Exception("Không tồn tại ngành học");
+            majorValid.Status = Major.Status;
+            majorValid.Target = Major.Target;
+            majorValid.SubjectGroupsJson = Major.SubjectGroupsJson;
+            majorValid.TypeAdmissions = Major.TypeAdmissions;
+            await _majorRepository.UpdateMajorAdmission(majorValid);
+        }
 
         public Task<MajorAdmission> GetMajorDetail(string MajorID, int AdmissionInformationID)
             => _majorRepository.GetMajorDetail(MajorID, AdmissionInformationID);
@@ -65,9 +71,5 @@ namespace Service.MajorSer
             throw new NotImplementedException();
         }
 
-        public Task UpdateMajorAdmission(Major Major)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

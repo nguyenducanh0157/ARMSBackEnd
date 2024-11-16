@@ -25,6 +25,9 @@ namespace Data.Seeding
                     MajorID = "HME",
                     Status = true,
                     Target = 200,
+                    TotalScore = 24,
+                    TotalScoreAcademic = 24,
+                    SubjectGroups = new List<SubjectGroup> { SubjectGroup.A00, SubjectGroup.A01 }
                 },
                 new MajorAdmission()
                 {
@@ -32,6 +35,9 @@ namespace Data.Seeding
                     MajorID = "HGE",
                     Status = true,
                     Target = 200,
+                    TotalScore = 24,
+                    TotalScoreAcademic = 24,
+                    SubjectGroups = new List<SubjectGroup> { SubjectGroup.A00, SubjectGroup.A01 }
                 },
                 new MajorAdmission()
                 {
@@ -39,6 +45,9 @@ namespace Data.Seeding
                     MajorID = "HWE",
                     Status = true,
                     Target = 200,
+                    TotalScore = 24,
+                    TotalScoreAcademic = 24,
+                    SubjectGroups = new List<SubjectGroup> { SubjectGroup.A00, SubjectGroup.A01 }
                 },
                 new MajorAdmission()
                 {
@@ -46,6 +55,9 @@ namespace Data.Seeding
                     MajorID = "HTE", // Ensure no duplicates
                     Status = true,
                     Target = 200,
+                    TotalScore = 24,
+                    TotalScoreAcademic = 24,
+                    SubjectGroups = new List<SubjectGroup> { SubjectGroup.A00, SubjectGroup.A01 }
                 },
                 new MajorAdmission()
                 {
@@ -53,6 +65,9 @@ namespace Data.Seeding
                     MajorID = "HEA",
                     Status = true,
                     Target = 200,
+                    TotalScore = 24,
+                    TotalScoreAcademic = 24,
+                    SubjectGroups = new List<SubjectGroup> { SubjectGroup.A00, SubjectGroup.A01 }
                 },
                 new MajorAdmission()
                 {
@@ -60,6 +75,9 @@ namespace Data.Seeding
                     MajorID = "HJA",
                     Status = true,
                     Target = 200,
+                    TotalScore = 24,
+                    TotalScoreAcademic = 24,
+                    SubjectGroups = new List<SubjectGroup> { SubjectGroup.A00, SubjectGroup.A01 }
                 },
                 new MajorAdmission()
                 {
@@ -67,6 +85,9 @@ namespace Data.Seeding
                     MajorID = "HKA",
                     Status = true,
                     Target = 200,
+                    TotalScore = 24,
+                    TotalScoreAcademic = 24,
+                    SubjectGroups = new List<SubjectGroup> { SubjectGroup.A00, SubjectGroup.A01 }
                 },
                 new MajorAdmission()
                 {
@@ -74,6 +95,9 @@ namespace Data.Seeding
                     MajorID = "HSM",
                     Status = true,
                     Target = 200,
+                    TotalScore = 24,
+                    TotalScoreAcademic = 24,
+                    SubjectGroups = new List<SubjectGroup> { SubjectGroup.A00, SubjectGroup.A01 }
                 },
                 new MajorAdmission()
                 {
@@ -81,6 +105,9 @@ namespace Data.Seeding
                     MajorID = "HHM",
                     Status = true,
                     Target = 200,
+                    TotalScore = 24,
+                    TotalScoreAcademic = 24,
+                    SubjectGroups = new List<SubjectGroup> { SubjectGroup.A00, SubjectGroup.A01 }
                 },
                 new MajorAdmission()
                 {
@@ -88,6 +115,9 @@ namespace Data.Seeding
                     MajorID = "HRM",
                     Status = true,
                     Target = 200,
+                    TotalScore = 24,
+                    TotalScoreAcademic = 24,
+                    SubjectGroups = new List<SubjectGroup> { SubjectGroup.A00, SubjectGroup.A01 }
                 },
                 new MajorAdmission()
                 {
@@ -95,6 +125,9 @@ namespace Data.Seeding
                     MajorID = "HBT",
                     Status = true,
                     Target = 200,
+                    TotalScore = 24,
+                    TotalScoreAcademic = 24,
+                    SubjectGroups = new List<SubjectGroup> { SubjectGroup.A00, SubjectGroup.A01 }
                 },
                 new MajorAdmission()
                 {
@@ -102,6 +135,9 @@ namespace Data.Seeding
                     MajorID = "HBS",
                     Status = true,
                     Target = 200,
+                    TotalScore = 24,
+                    TotalScoreAcademic = 24,
+                    SubjectGroups = new List<SubjectGroup> { SubjectGroup.A00, SubjectGroup.A01 }
                 },
                 new MajorAdmission()
                 {
@@ -109,6 +145,9 @@ namespace Data.Seeding
                     MajorID = "HAO",
                     Status = true,
                     Target = 200,
+                    TotalScore = 24,
+                    TotalScoreAcademic = 24,
+                    SubjectGroups = new List<SubjectGroup> { SubjectGroup.A00, SubjectGroup.A01 }
                 },
                 new MajorAdmission()
                 {
@@ -116,6 +155,9 @@ namespace Data.Seeding
                     MajorID = "HSO",
                     Status = true,
                     Target = 200,
+                    TotalScore = 24,
+                    TotalScoreAcademic = 24,
+                    SubjectGroups = new List<SubjectGroup> { SubjectGroup.A00, SubjectGroup.A01 }
                 },
                 new MajorAdmission()
                 {
@@ -123,6 +165,9 @@ namespace Data.Seeding
                     MajorID = "HFO",
                     Status = false,
                     Target = 200,
+                    TotalScore = 24,
+                    TotalScoreAcademic = 24,
+                    SubjectGroups = new List<SubjectGroup> { SubjectGroup.A00, SubjectGroup.A01 }
                 }
             );
         }

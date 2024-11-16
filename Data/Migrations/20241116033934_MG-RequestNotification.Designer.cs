@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(ArmsDbContext))]
-    [Migration("20241114203634_MG-AI-update-1")]
-    partial class MGAIupdate1
+    [Migration("20241116033934_MG-RequestNotification")]
+    partial class MGRequestNotification
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -146,16 +146,16 @@ namespace Data.Migrations
                             Id = new Guid("b8c777a9-55b9-4b3d-860a-d7b56e4c24b7"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "d48d7196-9986-4850-8bfc-8ba13d73d07c",
+                            ConcurrencyStamp = "e0bc2964-7d8a-49ef-8489-5471e2460edd",
                             Email = "AdminHaNoi@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Admin Hanoi",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMINHANOI@GMAIL.COM",
                             NormalizedUserName = "ADMINISTRATOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHCQwJ4FRpQn37QJ0EUjU1AZ/mZBvLmw+SCprwdPoTSzhfiNaKooY9vo5doRk/bOpg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENMjDNO22L5k4/X0rzmuO7YVpVaYTJ30xkoubhcZSsutxhj8Z9g78htvxBHuJwsnHw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cba781c6-e914-4f00-9123-c74a607e4f91",
+                            SecurityStamp = "85650f72-442b-49e9-b7ba-1639e7f5c92d",
                             TwoFactorEnabled = false,
                             UserName = "Administrator",
                             isAccountActive = false
@@ -165,16 +165,16 @@ namespace Data.Migrations
                             Id = new Guid("5738248d-b40e-4332-9b9e-deb0abc8f8dd"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "04908347-1786-4da8-911c-9d38766b9def",
+                            ConcurrencyStamp = "8f3e3f23-6d48-49d2-861f-a34b46153d81",
                             Email = "AdmissionOfficer@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Admin Officer Hanoi",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMISSIONOFFICER@GMAIL.COM",
                             NormalizedUserName = "ADMISSIONOFFICER",
-                            PasswordHash = "AQAAAAEAACcQAAAAECO2qI8mlho68JWEjGTJaf+BpN4SvmqfVqWnQz7tQZN/v4mzjnqh+Gl7qxv4NDKaAA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEM45qmEBk8dtSl/91I7pISk1P1bCFGtSkaEpq/0xYo1p5vhx0ZUW2ZH1LmXWJniIZg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1a853a6f-637f-4b57-b264-5394691a03fb",
+                            SecurityStamp = "a15d250c-98ca-46e1-bc9b-f166cf736bf7",
                             TwoFactorEnabled = false,
                             UserName = "AdmissionOfficer",
                             isAccountActive = false
@@ -184,16 +184,16 @@ namespace Data.Migrations
                             Id = new Guid("17baf918-d5d2-4628-aad1-8a4926520676"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "e1e61497-190e-4b29-a07f-1f70ca3f4161",
+                            ConcurrencyStamp = "7b2247ff-114a-4d16-913a-43a92516aeb5",
                             Email = "SchoolService@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "School Service Hanoi",
                             LockoutEnabled = false,
                             NormalizedEmail = "SCHOOLSERVICE@GMAIL.COM",
                             NormalizedUserName = "SCHOOLSERVICE",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEr1NsaUkpIWVlvOVPgNQ1I+O46rXQATIC4IXR5svyaQY/KPwHDv7vSjU6MRv/m/Bg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBBQtXJU/t+5ytJKu7MUp2JUn02DjrrZxmsosFWZndWtSK87g0nZK7FezOQt4A+4Tw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f7dc0019-3936-419c-8d1e-d08a24596eea",
+                            SecurityStamp = "29de30c4-cf97-42d3-a1f3-8f5b1af9cfe6",
                             TwoFactorEnabled = false,
                             UserName = "SchoolService",
                             isAccountActive = false
@@ -203,16 +203,16 @@ namespace Data.Migrations
                             Id = new Guid("aa321fa2-d640-449f-9cf3-d5a14001aa3e"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "f381f2ac-4159-4123-9e9f-435247b8c7e0",
+                            ConcurrencyStamp = "7c69d2a1-a589-48fa-9858-b7d8f6dfae7f",
                             Email = "AdmissionCouncil@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Admission Council Hanoi",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMISSIONCOUNCIL@GMAIL.COM",
                             NormalizedUserName = "ADMISSIONCOUNCIL",
-                            PasswordHash = "AQAAAAEAACcQAAAAELfFjLk2/yhcYXXmVaR5Lv2128kI6uv2hmPnv3RQT21FDchlOBd9dBfTmltfK9Wsxg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGaN2vc/wwNC2E/OB3zgkibqX3Wukxqxk9v2ZfjkdzZG06NYZJkkOA70Gu+2W99BtQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3aba857b-0340-4417-ab34-7792d873402d",
+                            SecurityStamp = "5e38538a-6203-4e87-90cb-d5174adba82a",
                             TwoFactorEnabled = false,
                             UserName = "AdmissionCouncil",
                             isAccountActive = false
@@ -222,7 +222,7 @@ namespace Data.Migrations
                             Id = new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"),
                             AccessFailedCount = 0,
                             CampusId = "Hanoi",
-                            ConcurrencyStamp = "d39470b9-2537-4fb9-9c9f-be787975a7e7",
+                            ConcurrencyStamp = "46966d84-fe29-4074-b92f-51e44509079e",
                             Email = "nguyenducanh01.57@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Nguyễn Đức Anh",
@@ -230,380 +230,13 @@ namespace Data.Migrations
                             MajorId = "HWE",
                             NormalizedEmail = "NGUYENDUCANH01.57@GMAIL.COM",
                             NormalizedUserName = "STUDENT",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKNz3N4xEjTjbyWUWddtL/RuhIK9qxgb74NGi1ugMrLNKnKQI618ygiM7Pdeb4uT+g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPX4FNtRfX7AoFMdfdUAC+yCSXubUC2ZrWJH+NvDaONKU7LzrPW/Jb7hAiP/g4Hp0A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fd651367-7aee-4c92-9638-143996e4d400",
+                            SecurityStamp = "fe459fa8-4eb7-4d5f-9b6e-05e957a09bca",
                             StudentCode = "HWE160153",
                             TwoFactorEnabled = false,
                             UserName = "DucAnh",
                             isAccountActive = false
-                        });
-                });
-
-            modelBuilder.Entity("Data.Models.AdmissionDetailForMajor", b =>
-                {
-                    b.Property<Guid>("ADMId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("MajorID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<bool>("StatusScore")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("StatusScoreAcademic")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SubjectGroupsJson")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("TotalScore")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("TotalScoreAcademic")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("int");
-
-                    b.HasKey("ADMId");
-
-                    b.HasIndex("MajorID");
-
-                    b.ToTable("AdmissionDetailForMajor", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            ADMId = new Guid("5c8e9972-7642-4b08-9642-c510e3cd40dc"),
-                            MajorID = "HME",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("664b31e7-4a22-4d47-a46c-2e2876337ac7"),
-                            MajorID = "HGE",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("257447a5-016c-40d9-9c5f-1a2cc68e0654"),
-                            MajorID = "HWE",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("b7328cad-128f-4da3-9cfa-0bd91116275a"),
-                            MajorID = "HTE",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("cfb75e89-ecd3-4071-9245-2e7286b6f84d"),
-                            MajorID = "HEA",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[44,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("3ed63cec-79a4-4304-bfa0-a326a4dbb03d"),
-                            MajorID = "HJA",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("c1c38421-4c8f-4cb8-9d03-d3c99d6b9bd1"),
-                            MajorID = "HKA",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("c811ce07-8d53-4f1c-9825-ebb6c863604f"),
-                            MajorID = "HSM",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("6aae2f69-cd16-4290-8eac-b03d03c16835"),
-                            MajorID = "HHM",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("5a55fd66-ead6-4e28-b767-637e4d3656b5"),
-                            MajorID = "HRM",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("c32fcdb7-cab8-4527-be00-4fb9b048228a"),
-                            MajorID = "HBT",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("0ab2351f-0ca6-4403-9016-50c327abb57b"),
-                            MajorID = "HBS",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("7cf476fa-47d2-427a-9621-70695e42c879"),
-                            MajorID = "HAO",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("7d894ea8-6fb5-458a-b517-662b3711cc5a"),
-                            MajorID = "HSO",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("f7bb1048-c92d-41bf-8c4d-d13ab969c1ee"),
-                            MajorID = "HFO",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("9052109a-a8c5-4730-a543-b66d4a736e9e"),
-                            MajorID = "SME",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("94813c38-d1e9-47ff-9e43-e674e3b66143"),
-                            MajorID = "SGE",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("1143c408-074c-4dec-abc7-75df9e2e30eb"),
-                            MajorID = "SWE",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("c0b50822-83b9-47b6-a0a2-642cf30c0e92"),
-                            MajorID = "STE",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("7a895569-b382-4040-b7f2-c1cece4120e2"),
-                            MajorID = "SEA",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[44,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("0af73741-4a03-4b83-92e0-6979ec99e2b1"),
-                            MajorID = "SJA",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("303d38bc-27ba-4a42-b888-e3585f3f0ac2"),
-                            MajorID = "SKA",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("6258745d-e751-4550-aff4-3b783861cccc"),
-                            MajorID = "SSM",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("2a99daf5-59bf-4f18-a313-3db130de0978"),
-                            MajorID = "SHM",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("d79d4365-aad0-4098-a9e4-e2d5f1e576c0"),
-                            MajorID = "SRM",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("937633c0-2266-44a2-bc60-f9fd8dfe131c"),
-                            MajorID = "SBT",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("c0ddeb3e-d353-4b5c-82b7-32c1899ea9dc"),
-                            MajorID = "SBS",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("46acc71b-9aa6-4996-96ea-a08a98c95fbd"),
-                            MajorID = "SAO",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("79612d45-3bf5-44d9-b235-0a41b95ecf3a"),
-                            MajorID = "SSO",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
-                        },
-                        new
-                        {
-                            ADMId = new Guid("a6bf07c8-c54a-4433-9387-c0df073bff58"),
-                            MajorID = "SFO",
-                            StatusScore = true,
-                            StatusScoreAcademic = true,
-                            SubjectGroupsJson = "[0,1]",
-                            TotalScore = 24m,
-                            TotalScoreAcademic = 24m,
-                            Year = 2024
                         });
                 });
 
@@ -736,10 +369,6 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CampusId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime>("EndAdmission")
                         .HasColumnType("datetime2");
 
@@ -756,8 +385,6 @@ namespace Data.Migrations
 
                     b.HasIndex("AdmissionInformationID");
 
-                    b.HasIndex("CampusId");
-
                     b.ToTable("AdmissionTime", (string)null);
 
                     b.HasData(
@@ -766,7 +393,6 @@ namespace Data.Migrations
                             AIId = 1,
                             AdmissionInformationID = 1,
                             AdmissionInformationName = "Đợt 1",
-                            CampusId = "Hanoi",
                             EndAdmission = new DateTime(2024, 4, 30, 23, 59, 59, 0, DateTimeKind.Unspecified),
                             EndRegister = new DateTime(2024, 3, 1, 23, 59, 59, 0, DateTimeKind.Unspecified),
                             StartAdmission = new DateTime(2024, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -777,7 +403,6 @@ namespace Data.Migrations
                             AIId = 2,
                             AdmissionInformationID = 1,
                             AdmissionInformationName = "Đợt 2",
-                            CampusId = "Hanoi",
                             EndAdmission = new DateTime(2024, 7, 30, 23, 59, 59, 0, DateTimeKind.Unspecified),
                             EndRegister = new DateTime(2024, 6, 1, 23, 59, 59, 0, DateTimeKind.Unspecified),
                             StartAdmission = new DateTime(2024, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -788,7 +413,6 @@ namespace Data.Migrations
                             AIId = 3,
                             AdmissionInformationID = 1,
                             AdmissionInformationName = "Đợt 3",
-                            CampusId = "Hanoi",
                             EndAdmission = new DateTime(2024, 9, 1, 23, 59, 59, 0, DateTimeKind.Unspecified),
                             EndRegister = new DateTime(2024, 8, 30, 23, 59, 59, 0, DateTimeKind.Unspecified),
                             StartAdmission = new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -837,7 +461,7 @@ namespace Data.Migrations
                             BlogId = 1,
                             BlogCategoryId = 3,
                             Content = "Trăng tròn đã vươn cao tại Hoà Lạc, Rằm tháng Tám đã gần đi qua, các Cóc “ngoan xinh iu” của FPTU đã đi chơi Trung thu về chưa? \r\n🥮 Trung thu là dịp để chúng ta ngồi lại bên nhau, hàn huyên với gia đình, bạn bè và những người thân yêu. Hãy cùng tận hưởng Tết Trung Thu bên bánh dẻo, bánh nướng và thả mình vào ánh trăng lung linh để cảm nhận những khoảnh khắc tuyệt diệu, đáng quý này nhé!\r\n✨ Nhân dịp Tết Trung thu, xin gửi những lời chúc tốt đẹp nhất đến thầy cô, anh chị cán bộ trường Đại học FPT, cùng các bạn sinh viên thân yêu! Chúc mọi người một mùa trăng an yên hơn sau những ảnh hưởng lớn của bão vừa qua.\r\n 📌 VÀ ĐỪNG QUÊN lên dây cót, bật chế độ sẵn sàng đón chờ những sự kiện “cực kỳ hoành tráng” đang tới gần. Kết nối, khám phá và trải nghiệm hết mình trong kỳ fall này bạn nhé!",
-                            DateCreate = new DateTime(2024, 11, 15, 3, 36, 33, 1, DateTimeKind.Local).AddTicks(8241),
+                            DateCreate = new DateTime(2024, 11, 16, 10, 39, 33, 101, DateTimeKind.Local).AddTicks(2671),
                             Description = "Trăng tròn đã vươn cao tại Hoà Lạc, Rằm tháng Tám đã gần đi qua, các Cóc “ngoan xinh iu” của FPTU đã đi chơi Trung thu về chưa?",
                             Title = "Trăng tròn đã vươn cao tại Hoà Lạc"
                         },
@@ -846,7 +470,7 @@ namespace Data.Migrations
                             BlogId = 2,
                             BlogCategoryId = 3,
                             Content = "[𝐊𝐈𝐂𝐊 𝐎𝐅𝐅] - 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓\r\n🏞 Tại vùng đất Hola Campus, nơi mà tinh thần học tập, sáng tạo nghệ thuật và sức mạnh thể chất được đề cao luôn tồn tại một lực lượng quân chủng mang tên 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 - mang trong mình trọng trách quan trọng nhất đó là bảo vệ và phát triển lãnh thổ với ba đại đội: Cơ bắp, Biết tuốt và Bay bổng. \r\n✨ Vào năm 2024, những người đứng đầu của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 đã quyết định tổ chức một sự kiện, một ngày hội đặc biệt mang tên 𝐽𝑖𝑚𝑏𝑜 𝑈𝑛𝑖𝑡𝑦 𝐹𝑒𝑠𝑡. Sự kiện là dịp để các chiến sĩ của cả 3 Đại đội gặp mặt, giao lưu và học hỏi lẫn nhau không chỉ về tinh thần đồng đội mà còn được khám phá thêm những kỹ năng từ các đội khác. \r\n🌷 Đặc biệt, 𝐽𝑖𝑚𝑏𝑜 𝑈𝑛𝑖𝑡𝑦 𝐹𝑒𝑠𝑡 không chỉ giới hạn cho các chiến sĩ của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 mà còn mở cửa chào đón tất cả những người trẻ của vùng đất Hola Campus có quan tâm và muốn trải nghiệm môi trường, văn hóa đặc trưng của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 tham gia sự kiện. Nếu như bạn đã sẵn sàng với các chiến binh bước vào thế giới của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 cùng một tinh thần nhiệt huyết và tràn đầy năng lượng để vượt qua những thử thách đầy cam go thì hãy cùng chúng mình đón chờ hành trình sắp tới nhé!\r\n---------------------------------------\r\n🔥 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓 🔥\r\n◻️ Thời gian: 13h - 17h30 thứ hai, ngày 30/09/2024\r\n◻️ Địa điểm: Đường 30m, Đại học FPT Hà Nội \r\n---------------------------------------\r\nTHÔNG TIN LIÊN HỆ\r\n◻️ Trưởng ban Tổ chức: Kiều Bảo Lộc (0367488155)\r\n◻️ Trưởng ban HR: Nguyễn Ngọc Quỳnh (0865349170)",
-                            DateCreate = new DateTime(2024, 11, 15, 3, 36, 33, 1, DateTimeKind.Local).AddTicks(8249),
+                            DateCreate = new DateTime(2024, 11, 16, 10, 39, 33, 101, DateTimeKind.Local).AddTicks(2681),
                             Description = " 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 - mang trong mình trọng trách quan trọng nhất đó là bảo vệ và phát triển lãnh thổ với ba đại đội: Cơ bắp, Biết tuốt và Bay bổng.",
                             Title = "[𝐊𝐈𝐂𝐊 𝐎𝐅𝐅] - 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓"
                         },
@@ -855,7 +479,7 @@ namespace Data.Migrations
                             BlogId = 3,
                             BlogCategoryId = 2,
                             Content = "🌟[ORIENTATION WEEK]🌟 GIỚI THIỆU CÁC PHÒNG BAN CHỨC NĂNG TẠI ĐẠI HỌC FPT\r\n🔥Ngay lúc này đây, Phòng Hợp tác Quốc tế và Phát triển Cá nhân ICPDP đang có mặt tại Hội trường NIC cùng các tân sinh viên K20 tham gia Buổi học định hướng với chủ đề “Giới thiệu các phòng ban tại Đại học FPT”.\r\n🔥Tại buổi định hướng, các Cóc út đã được lắng nghe anh Lê Huy Hoàng - Cán bộ quản lý IC, đại diện phòng ICPDP chia sẻ về vai trò và chức năng của Phòng ICPDP, về các cơ hội học tập, trải nghiệm trong và ngoài nước dành cho tất cả các bạn sinh viên FPT.\r\n🫶Phòng ICPDP rất sẵn lòng đồng hành cùng các Cóc trong hành trình 4 năm thanh xuân tại Đại học FPT. Hy vọng chúng mình sẽ có thật nhiều kỷ niệm tại Đại học FPT Hà Nội. \r\n-----------------------------------------------------------\r\nMọi thắc mắc vui lòng liên hệ: Phòng Hợp tác Quốc tế và Phát triển cá nhân ICPDP FPTU",
-                            DateCreate = new DateTime(2024, 11, 15, 3, 36, 33, 1, DateTimeKind.Local).AddTicks(8250),
+                            DateCreate = new DateTime(2024, 11, 16, 10, 39, 33, 101, DateTimeKind.Local).AddTicks(2682),
                             Description = " Giới thiệu các phòng ban tại Đại học FPT",
                             Title = "🌟[ORIENTATION WEEK]🌟 GIỚI THIỆU CÁC PHÒNG BAN CHỨC NĂNG TẠI ĐẠI HỌC FPT"
                         },
@@ -864,7 +488,7 @@ namespace Data.Migrations
                             BlogId = 4,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 11, 15, 3, 36, 33, 1, DateTimeKind.Local).AddTicks(8251),
+                            DateCreate = new DateTime(2024, 11, 16, 10, 39, 33, 101, DateTimeKind.Local).AddTicks(2683),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -873,7 +497,7 @@ namespace Data.Migrations
                             BlogId = 5,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 11, 15, 3, 36, 33, 1, DateTimeKind.Local).AddTicks(8252),
+                            DateCreate = new DateTime(2024, 11, 16, 10, 39, 33, 101, DateTimeKind.Local).AddTicks(2684),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -882,7 +506,7 @@ namespace Data.Migrations
                             BlogId = 6,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 11, 15, 3, 36, 33, 1, DateTimeKind.Local).AddTicks(8253),
+                            DateCreate = new DateTime(2024, 11, 16, 10, 39, 33, 101, DateTimeKind.Local).AddTicks(2685),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -891,7 +515,7 @@ namespace Data.Migrations
                             BlogId = 7,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 11, 15, 3, 36, 33, 1, DateTimeKind.Local).AddTicks(8254),
+                            DateCreate = new DateTime(2024, 11, 16, 10, 39, 33, 101, DateTimeKind.Local).AddTicks(2685),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -900,7 +524,7 @@ namespace Data.Migrations
                             BlogId = 8,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 11, 15, 3, 36, 33, 1, DateTimeKind.Local).AddTicks(8254),
+                            DateCreate = new DateTime(2024, 11, 16, 10, 39, 33, 101, DateTimeKind.Local).AddTicks(2686),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         },
@@ -909,7 +533,7 @@ namespace Data.Migrations
                             BlogId = 9,
                             BlogCategoryId = 1,
                             Content = " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!",
-                            DateCreate = new DateTime(2024, 11, 15, 3, 36, 33, 1, DateTimeKind.Local).AddTicks(8255),
+                            DateCreate = new DateTime(2024, 11, 16, 10, 39, 33, 101, DateTimeKind.Local).AddTicks(2687),
                             Description = " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).",
                             Title = "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈"
                         });
@@ -1141,12 +765,6 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("Target")
-                        .HasColumnType("int");
-
                     b.Property<string>("TimeStudy")
                         .HasColumnType("nvarchar(max)");
 
@@ -1171,8 +789,6 @@ namespace Data.Migrations
                             Description = "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.",
                             MajorCode = "7480201",
                             MajorName = "Lập trình mobile",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1184,8 +800,6 @@ namespace Data.Migrations
                             Description = "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.",
                             MajorCode = "7480201",
                             MajorName = "Lập trình game",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1197,8 +811,6 @@ namespace Data.Migrations
                             Description = "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.",
                             MajorCode = "7480201",
                             MajorName = "Lập trình web",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1210,8 +822,6 @@ namespace Data.Migrations
                             Description = "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.",
                             MajorCode = "7480201",
                             MajorName = "Kiểm thử",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1223,8 +833,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "7220201",
                             MajorName = "Ngôn ngữ anh",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1236,8 +844,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "7220209",
                             MajorName = "Ngôn ngữ nhật",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1249,8 +855,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "7220210",
                             MajorName = "Ngôn ngữ hàn",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "24 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1262,8 +866,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "7340101",
                             MajorName = "Marketing",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1275,8 +877,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "7340101",
                             MajorName = "Quản trị khách sạn",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "24 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1288,8 +888,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "7340101",
                             MajorName = "Quản trị nhà hàng",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "24 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1301,8 +899,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "71490",
                             MajorName = "Phum xăm thẩm mỹ",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = true
@@ -1314,8 +910,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "71490",
                             MajorName = "Chăm sóc da và massage",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = true
@@ -1327,8 +921,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "71490",
                             MajorName = "Kiểm toán",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1340,8 +932,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "71490",
                             MajorName = "Thư ký văn phòng",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "24 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1353,8 +943,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "71490",
                             MajorName = "Kỹ thuật chế biến món ăn",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = true
@@ -1366,8 +954,6 @@ namespace Data.Migrations
                             Description = "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.",
                             MajorCode = "7480201",
                             MajorName = "Lập trình mobile",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1379,8 +965,6 @@ namespace Data.Migrations
                             Description = "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.",
                             MajorCode = "7480201",
                             MajorName = "Lập trình game",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1392,8 +976,6 @@ namespace Data.Migrations
                             Description = "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.",
                             MajorCode = "7480201",
                             MajorName = "Lập trình web",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1405,8 +987,6 @@ namespace Data.Migrations
                             Description = "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.",
                             MajorCode = "7480201",
                             MajorName = "Kiểm thử",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1418,8 +998,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "7220201",
                             MajorName = "Ngôn ngữ anh",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1431,8 +1009,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "7220209",
                             MajorName = "Ngôn ngữ nhật",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1444,8 +1020,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "7220210",
                             MajorName = "Ngôn ngữ hàn",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "24 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1457,8 +1031,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "7340101",
                             MajorName = "Marketing",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1470,8 +1042,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "7340101",
                             MajorName = "Quản trị khách sạn",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "24 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1483,8 +1053,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "7340101",
                             MajorName = "Quản trị nhà hàng",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "24 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1496,8 +1064,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "71490",
                             MajorName = "Phum xăm thẩm mỹ",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = true
@@ -1509,8 +1075,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "71490",
                             MajorName = "Chăm sóc da và massage",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = true
@@ -1522,8 +1086,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "71490",
                             MajorName = "Kiểm toán",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1535,8 +1097,6 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "71490",
                             MajorName = "Thư ký văn phòng",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "24 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = false
@@ -1548,11 +1108,192 @@ namespace Data.Migrations
                             Description = "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.",
                             MajorCode = "71490",
                             MajorName = "Kỹ thuật chế biến món ăn",
-                            Status = true,
-                            Target = 200,
                             TimeStudy = "2 năm",
                             Tuition = 12000000m,
                             isVocationalSchool = true
+                        });
+                });
+
+            modelBuilder.Entity("Data.Models.MajorAdmission", b =>
+                {
+                    b.Property<int>("AdmissionInformationID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MajorID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SubjectGroupsJson")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Target")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("TotalScore")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("TotalScoreAcademic")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("AdmissionInformationID", "MajorID");
+
+                    b.HasIndex("MajorID");
+
+                    b.ToTable("MajorAdmission", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            AdmissionInformationID = 1,
+                            MajorID = "HME",
+                            Status = true,
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
+                        },
+                        new
+                        {
+                            AdmissionInformationID = 1,
+                            MajorID = "HGE",
+                            Status = true,
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
+                        },
+                        new
+                        {
+                            AdmissionInformationID = 1,
+                            MajorID = "HWE",
+                            Status = true,
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
+                        },
+                        new
+                        {
+                            AdmissionInformationID = 1,
+                            MajorID = "HTE",
+                            Status = true,
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
+                        },
+                        new
+                        {
+                            AdmissionInformationID = 1,
+                            MajorID = "HEA",
+                            Status = true,
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
+                        },
+                        new
+                        {
+                            AdmissionInformationID = 1,
+                            MajorID = "HJA",
+                            Status = true,
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
+                        },
+                        new
+                        {
+                            AdmissionInformationID = 1,
+                            MajorID = "HKA",
+                            Status = true,
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
+                        },
+                        new
+                        {
+                            AdmissionInformationID = 1,
+                            MajorID = "HSM",
+                            Status = true,
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
+                        },
+                        new
+                        {
+                            AdmissionInformationID = 1,
+                            MajorID = "HHM",
+                            Status = true,
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
+                        },
+                        new
+                        {
+                            AdmissionInformationID = 1,
+                            MajorID = "HRM",
+                            Status = true,
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
+                        },
+                        new
+                        {
+                            AdmissionInformationID = 1,
+                            MajorID = "HBT",
+                            Status = true,
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
+                        },
+                        new
+                        {
+                            AdmissionInformationID = 1,
+                            MajorID = "HBS",
+                            Status = true,
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
+                        },
+                        new
+                        {
+                            AdmissionInformationID = 1,
+                            MajorID = "HAO",
+                            Status = true,
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
+                        },
+                        new
+                        {
+                            AdmissionInformationID = 1,
+                            MajorID = "HSO",
+                            Status = true,
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
+                        },
+                        new
+                        {
+                            AdmissionInformationID = 1,
+                            MajorID = "HFO",
+                            Status = false,
+                            SubjectGroupsJson = "[0,1]",
+                            Target = 200,
+                            TotalScore = 24m,
+                            TotalScoreAcademic = 24m
                         });
                 });
 
@@ -1753,7 +1494,7 @@ namespace Data.Migrations
                             RequestID = 1,
                             AccountId = new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"),
                             CampusId = "Hanoi",
-                            DateRequest = new DateTime(2024, 11, 15, 3, 36, 33, 1, DateTimeKind.Local).AddTicks(8374),
+                            DateRequest = new DateTime(2024, 11, 16, 10, 39, 33, 101, DateTimeKind.Local).AddTicks(2794),
                             Description = "Em muốn chuyển ngành!",
                             FileReasonRequestChangeMajor = "file",
                             MajorNew = "HME",
@@ -1766,7 +1507,7 @@ namespace Data.Migrations
                             RequestID = 2,
                             AccountId = new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"),
                             CampusId = "Hanoi",
-                            DateRequest = new DateTime(2024, 11, 15, 3, 36, 33, 1, DateTimeKind.Local).AddTicks(8377),
+                            DateRequest = new DateTime(2024, 11, 16, 10, 39, 33, 101, DateTimeKind.Local).AddTicks(2798),
                             Description = "Em muốn chuyển ngành!",
                             FileReasonRequestChangeMajor = "file",
                             MajorNew = "HME",
@@ -1774,6 +1515,31 @@ namespace Data.Migrations
                             Status = 2,
                             isRequestChangeMajor = true
                         });
+                });
+
+            modelBuilder.Entity("Data.Models.RequestNotification", b =>
+                {
+                    b.Property<Guid?>("RequestId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("AccountId")
+                        .IsRequired()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RequestId");
+
+                    b.HasIndex("AccountId");
+
+                    b.ToTable("RequestNotification", (string)null);
                 });
 
             modelBuilder.Entity("Data.Models.Slider", b =>
@@ -1912,7 +1678,7 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            StudentConsultationId = new Guid("a02ac614-a9d8-4592-9d8d-9ec3c69e2c82"),
+                            StudentConsultationId = new Guid("c3da8247-0ef0-460c-815b-b49d669a7ac8"),
                             CampusId = "Hanoi",
                             DateReceive = new DateTime(2024, 9, 18, 14, 30, 0, 0, DateTimeKind.Unspecified),
                             Email = "nguyenducanh01.57@gmail.com",
@@ -1924,7 +1690,7 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            StudentConsultationId = new Guid("d891ec48-36eb-4742-a28b-55cef9a5c5dd"),
+                            StudentConsultationId = new Guid("631a84b2-6de9-4c17-9756-bdaa4273008e"),
                             CampusId = "Hanoi",
                             DateReceive = new DateTime(2024, 9, 18, 14, 30, 0, 0, DateTimeKind.Unspecified),
                             Email = "nguyenducanh01.57@gmail.com",
@@ -2104,6 +1870,31 @@ namespace Data.Migrations
                     b.HasIndex("PriorityDetailPriorityID");
 
                     b.ToTable("StudentProfile", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            SpId = new Guid("41a2ad7d-1af6-464e-bbf4-0d18ae664851"),
+                            AccountId = new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"),
+                            CIAddress = "HCM",
+                            CIDate = new DateTime(2024, 11, 16, 10, 39, 33, 101, DateTimeKind.Local).AddTicks(2777),
+                            CampusId = "Hanoi",
+                            CitizenIentificationNumber = "038301012121",
+                            Dob = new DateTime(2024, 11, 16, 10, 39, 33, 101, DateTimeKind.Local).AddTicks(2779),
+                            EmailStudent = "nguyenducanh01.57@gmail.com",
+                            Fullname = "Nguyễn Đức Anh",
+                            Gender = true,
+                            Major1 = "HAO",
+                            Major2 = "HWE",
+                            PhoneStudent = "0971341555",
+                            PriorityDetailPriorityID = 1,
+                            TimeRegister = new DateTime(2024, 11, 16, 10, 39, 33, 101, DateTimeKind.Local).AddTicks(2782),
+                            TypeOfDiplomaMajor1 = 5,
+                            TypeOfDiplomaMajor2 = 5,
+                            TypeofStatusMajor1 = 2,
+                            TypeofStatusMajor2 = 2,
+                            TypeofStatusProfile = 1
+                        });
                 });
 
             modelBuilder.Entity("Data.Models.Subject", b =>
@@ -3354,10 +3145,15 @@ namespace Data.Migrations
                     b.Property<int>("TypeDiploma")
                         .HasColumnType("int");
 
+                    b.Property<int>("AdmissionInformationID")
+                        .HasColumnType("int");
+
                     b.Property<int?>("TypeOfTranscript")
                         .HasColumnType("int");
 
-                    b.HasKey("MajorID", "TypeDiploma");
+                    b.HasKey("MajorID", "TypeDiploma", "AdmissionInformationID");
+
+                    b.HasIndex("AdmissionInformationID", "MajorID");
 
                     b.ToTable("TypeAdmission", (string)null);
 
@@ -3365,469 +3161,272 @@ namespace Data.Migrations
                         new
                         {
                             MajorID = "HME",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HME",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HGE",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HGE",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HWE",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HWE",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HWE",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HTE",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HTE",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HTE",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HEA",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HEA",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HEA",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HJA",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HJA",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HJA",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HKA",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HKA",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HKA",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HSM",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HSM",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HSM",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HHM",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HHM",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HHM",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HRM",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HRM",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HRM",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HBT",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HBT",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HBT",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HBS",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HBS",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HBS",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HAO",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HAO",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HAO",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HSO",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HSO",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HSO",
                             TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         },
                         new
                         {
                             MajorID = "HFO",
-                            TypeDiploma = 2
+                            TypeDiploma = 2,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HFO",
-                            TypeDiploma = 1
+                            TypeDiploma = 1,
+                            AdmissionInformationID = 1
                         },
                         new
                         {
                             MajorID = "HFO",
                             TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SME",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SME",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SME",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SGE",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SGE",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SGE",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SWE",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SWE",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SWE",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "STE",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "STE",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "STE",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SEA",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SEA",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SEA",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SJA",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SJA",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SJA",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SKA",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SKA",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SKA",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SSM",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SSM",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SSM",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SHM",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SHM",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SHM",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SRM",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SRM",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SRM",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SBT",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SBT",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SBT",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SBS",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SBS",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SBS",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SAO",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SAO",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SAO",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SSO",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SSO",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SSO",
-                            TypeDiploma = 3,
-                            TypeOfTranscript = 1
-                        },
-                        new
-                        {
-                            MajorID = "SFO",
-                            TypeDiploma = 2
-                        },
-                        new
-                        {
-                            MajorID = "SFO",
-                            TypeDiploma = 1
-                        },
-                        new
-                        {
-                            MajorID = "SFO",
-                            TypeDiploma = 3,
+                            AdmissionInformationID = 1,
                             TypeOfTranscript = 1
                         });
                 });
@@ -3855,35 +3454,35 @@ namespace Data.Migrations
                         new
                         {
                             Id = new Guid("b8fd818f-63f1-49ee-bec5-f7b66cafbfca"),
-                            ConcurrencyStamp = "25bf293f-872c-4328-8957-866d7a0581b5",
+                            ConcurrencyStamp = "9194e149-dbab-4d48-9671-71113fdaa9d0",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("d2d63c5b-d09b-4828-8322-f18ba103fe86"),
-                            ConcurrencyStamp = "00ee626f-bea1-41b3-8852-69ae9dd8d9bb",
+                            ConcurrencyStamp = "ca1deff3-dabe-43ad-a81a-4f80ce73fb77",
                             Name = "Student",
                             NormalizedName = "STUDENT"
                         },
                         new
                         {
                             Id = new Guid("62378687-e16c-4d94-b767-de9f0bfe9498"),
-                            ConcurrencyStamp = "dc46c642-fe92-418c-96c0-b1dca62f21c0",
+                            ConcurrencyStamp = "4f0a0fdb-634a-4337-857b-644146edf0b1",
                             Name = "AdmissionOfficer",
                             NormalizedName = "ADMISSIONOFFICER"
                         },
                         new
                         {
                             Id = new Guid("602f7a5f-e0a7-4c00-9da0-a413bfcfab3a"),
-                            ConcurrencyStamp = "9f90366b-471b-4cf8-8819-4f790305611e",
+                            ConcurrencyStamp = "8b39f430-671c-4afb-841d-19d5431111b8",
                             Name = "SchoolService",
                             NormalizedName = "SCHOOLSERVICE"
                         },
                         new
                         {
                             Id = new Guid("e5ec8836-e240-4bfc-9bbe-33f2cc7a404d"),
-                            ConcurrencyStamp = "0651c779-029e-47ac-a307-de6d2f890120",
+                            ConcurrencyStamp = "edbd0c35-ecb4-465a-81a4-54553b342b55",
                             Name = "AdmissionCouncil",
                             NormalizedName = "ADMISSIONCOUNCIL"
                         });
@@ -4045,17 +3644,6 @@ namespace Data.Migrations
                     b.Navigation("Major");
                 });
 
-            modelBuilder.Entity("Data.Models.AdmissionDetailForMajor", b =>
-                {
-                    b.HasOne("Data.Models.Major", "Major")
-                        .WithMany("AdmissionDetailForMajors")
-                        .HasForeignKey("MajorID")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("Major");
-                });
-
             modelBuilder.Entity("Data.Models.AdmissionInformation", b =>
                 {
                     b.HasOne("Data.Models.Campus", "Campus")
@@ -4075,15 +3663,7 @@ namespace Data.Migrations
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("Data.Models.Campus", "Campus")
-                        .WithMany("AdmissionTimes")
-                        .HasForeignKey("CampusId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
                     b.Navigation("AdmissionInformation");
-
-                    b.Navigation("Campus");
                 });
 
             modelBuilder.Entity("Data.Models.Blog", b =>
@@ -4117,6 +3697,25 @@ namespace Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Campus");
+                });
+
+            modelBuilder.Entity("Data.Models.MajorAdmission", b =>
+                {
+                    b.HasOne("Data.Models.AdmissionInformation", "AdmissionInformation")
+                        .WithMany("MajorAdmissions")
+                        .HasForeignKey("AdmissionInformationID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Data.Models.Major", "Major")
+                        .WithMany("MajorAdmissions")
+                        .HasForeignKey("MajorID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AdmissionInformation");
+
+                    b.Navigation("Major");
                 });
 
             modelBuilder.Entity("Data.Models.PayFeeAdmission", b =>
@@ -4161,6 +3760,17 @@ namespace Data.Migrations
                     b.Navigation("MajorN");
 
                     b.Navigation("MajorO");
+                });
+
+            modelBuilder.Entity("Data.Models.RequestNotification", b =>
+                {
+                    b.HasOne("Data.Models.Account", "Account")
+                        .WithMany("RequestNotifications")
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Account");
                 });
 
             modelBuilder.Entity("Data.Models.Slider", b =>
@@ -4230,13 +3840,13 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Models.TypeAdmission", b =>
                 {
-                    b.HasOne("Data.Models.Major", "Major")
+                    b.HasOne("Data.Models.MajorAdmission", "MajorAdmission")
                         .WithMany("TypeAdmissions")
-                        .HasForeignKey("MajorID")
+                        .HasForeignKey("AdmissionInformationID", "MajorID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.Navigation("Major");
+                    b.Navigation("MajorAdmission");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -4294,12 +3904,16 @@ namespace Data.Migrations
                 {
                     b.Navigation("RequestChangeMajors");
 
+                    b.Navigation("RequestNotifications");
+
                     b.Navigation("StudentProfile");
                 });
 
             modelBuilder.Entity("Data.Models.AdmissionInformation", b =>
                 {
                     b.Navigation("AdmissionTimes");
+
+                    b.Navigation("MajorAdmissions");
                 });
 
             modelBuilder.Entity("Data.Models.BlogCategory", b =>
@@ -4312,8 +3926,6 @@ namespace Data.Migrations
                     b.Navigation("Accounts");
 
                     b.Navigation("AdmissionInformations");
-
-                    b.Navigation("AdmissionTimes");
 
                     b.Navigation("BlogCategories");
 
@@ -4332,7 +3944,7 @@ namespace Data.Migrations
                 {
                     b.Navigation("Accounts");
 
-                    b.Navigation("AdmissionDetailForMajors");
+                    b.Navigation("MajorAdmissions");
 
                     b.Navigation("RequestChangeMajorsN");
 
@@ -4341,7 +3953,10 @@ namespace Data.Migrations
                     b.Navigation("StudentConsultations");
 
                     b.Navigation("Subjects");
+                });
 
+            modelBuilder.Entity("Data.Models.MajorAdmission", b =>
+                {
                     b.Navigation("TypeAdmissions");
                 });
 

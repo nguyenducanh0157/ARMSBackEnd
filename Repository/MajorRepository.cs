@@ -20,8 +20,8 @@ namespace Repository.MajorRepo
             try
             {
                 List<Major> majors = await _context.Majors
-                    .Include(x => x.AdmissionDetailForMajors)
-                    .Include(x => x.TypeAdmissions)
+                    //.Include(x => x.AdmissionDetailForMajors)
+                    //.Include(x => x.TypeAdmissions)
                     .Where(x => x.CampusId.Equals(campusId) )
                     .ToListAsync();
                 //&& x.Status==true
@@ -43,8 +43,7 @@ namespace Repository.MajorRepo
                 List<MajorAdmission> majors = await _context.MajorAdmissions
                     .Include(x=>x.Major)
                     .Include(x => x.AdmissionInformation)
-                    .Include(x => x.Major.TypeAdmissions)
-                    .Include(x => x.Major.AdmissionDetailForMajors)
+                    .Include(x => x.TypeAdmissions)
                     .OrderBy(x => x.Major.isVocationalSchool)
                     .Where(x => x.AdmissionInformationID == AI.AdmissionInformationID).ToListAsync();
                 return majors;
@@ -83,8 +82,7 @@ namespace Repository.MajorRepo
                 MajorAdmission major = await _context.MajorAdmissions
                    .Include(x => x.Major)
                    .Include(x=> x.Major.Subjects.OrderBy(s => s.SemesterNumber))
-                   .Include(x => x.Major.TypeAdmissions)
-                    .Include(x => x.Major.AdmissionDetailForMajors)
+                    .Include(x => x.TypeAdmissions)
                    .Include(x => x.AdmissionInformation)
                    .SingleOrDefaultAsync(x => x.AdmissionInformationID == AdmissionInformationID && x.MajorID == MajorID);
                 if (major == null)
@@ -117,6 +115,18 @@ namespace Repository.MajorRepo
             try
             {
                 _context.Entry<Major>(major).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Chỉnh sửa không thành công");
+            }
+        }
+        public async Task UpdateMajorAdmission(MajorAdmission major)
+        {
+            try
+            {
+                _context.Entry<MajorAdmission>(major).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
             catch (Exception)

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Data.Migrations
 {
-    public partial class MGCreateDatabase : Migration
+    public partial class MGCreateDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -67,7 +67,7 @@ namespace Data.Migrations
                     Year = table.Column<int>(type: "int", nullable: true),
                     StartAdmission = table.Column<DateTime>(type: "datetime2", nullable: true),
                     EndAdmission = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Status = table.Column<bool>(type: "bit", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: true),
                     AdmissionProfileDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CampusId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
@@ -109,8 +109,6 @@ namespace Data.Migrations
                     MajorCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MajorName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Target = table.Column<int>(type: "int", nullable: true),
-                    Status = table.Column<bool>(type: "bit", nullable: false),
                     TimeStudy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     isVocationalSchool = table.Column<bool>(type: "bit", nullable: false),
                     CampusId = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -158,7 +156,6 @@ namespace Data.Migrations
                     EndRegister = table.Column<DateTime>(type: "datetime2", nullable: false),
                     StartAdmission = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndAdmission = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CampusId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     AdmissionInformationID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -169,11 +166,6 @@ namespace Data.Migrations
                         column: x => x.AdmissionInformationID,
                         principalTable: "AdmissionInformation",
                         principalColumn: "AdmissionInformationID");
-                    table.ForeignKey(
-                        name: "FK_AdmissionTime_Campus_CampusId",
-                        column: x => x.CampusId,
-                        principalTable: "Campus",
-                        principalColumn: "CampusId");
                 });
 
             migrationBuilder.CreateTable(
@@ -270,6 +262,35 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MajorAdmission",
+                columns: table => new
+                {
+                    AdmissionInformationID = table.Column<int>(type: "int", nullable: false),
+                    MajorID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Status = table.Column<bool>(type: "bit", nullable: false),
+                    Target = table.Column<int>(type: "int", nullable: false),
+                    TotalScore = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    TotalScoreAcademic = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SubjectGroupsJson = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MajorAdmission", x => new { x.AdmissionInformationID, x.MajorID });
+                    table.ForeignKey(
+                        name: "FK_MajorAdmission_AdmissionInformation_AdmissionInformationID",
+                        column: x => x.AdmissionInformationID,
+                        principalTable: "AdmissionInformation",
+                        principalColumn: "AdmissionInformationID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MajorAdmission_Major_MajorID",
+                        column: x => x.MajorID,
+                        principalTable: "Major",
+                        principalColumn: "MajorID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "StudentConsultation",
                 columns: table => new
                 {
@@ -316,24 +337,6 @@ namespace Data.Migrations
                     table.PrimaryKey("PK_Subject", x => new { x.SubjectCode, x.MajorID });
                     table.ForeignKey(
                         name: "FK_Subject_Major_MajorID",
-                        column: x => x.MajorID,
-                        principalTable: "Major",
-                        principalColumn: "MajorID");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TypeAdmission",
-                columns: table => new
-                {
-                    MajorID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    TypeDiploma = table.Column<int>(type: "int", nullable: false),
-                    TypeOfTranscript = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TypeAdmission", x => new { x.MajorID, x.TypeDiploma });
-                    table.ForeignKey(
-                        name: "FK_TypeAdmission_Major_MajorID",
                         column: x => x.MajorID,
                         principalTable: "Major",
                         principalColumn: "MajorID");
@@ -564,6 +567,25 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TypeAdmission",
+                columns: table => new
+                {
+                    MajorID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    AdmissionInformationID = table.Column<int>(type: "int", nullable: false),
+                    TypeDiploma = table.Column<int>(type: "int", nullable: false),
+                    TypeOfTranscript = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TypeAdmission", x => new { x.MajorID, x.TypeDiploma, x.AdmissionInformationID });
+                    table.ForeignKey(
+                        name: "FK_TypeAdmission_MajorAdmission_AdmissionInformationID_MajorID",
+                        columns: x => new { x.AdmissionInformationID, x.MajorID },
+                        principalTable: "MajorAdmission",
+                        principalColumns: new[] { "AdmissionInformationID", "MajorID" });
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AcademicTranscript",
                 columns: table => new
                 {
@@ -647,11 +669,11 @@ namespace Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("602f7a5f-e0a7-4c00-9da0-a413bfcfab3a"), "3b93e1bf-759c-4ed7-8cb6-e2179dd4755f", "SchoolService", "SCHOOLSERVICE" },
-                    { new Guid("62378687-e16c-4d94-b767-de9f0bfe9498"), "21ecfdf6-019f-43f9-bf12-8dbd994da3f5", "AdmissionOfficer", "ADMISSIONOFFICER" },
-                    { new Guid("b8fd818f-63f1-49ee-bec5-f7b66cafbfca"), "a1a2db2f-382b-4d17-947e-604dba56b801", "Admin", "ADMIN" },
-                    { new Guid("d2d63c5b-d09b-4828-8322-f18ba103fe86"), "6d65c1a8-acc6-4d9e-be06-920db1cb2041", "Student", "STUDENT" },
-                    { new Guid("e5ec8836-e240-4bfc-9bbe-33f2cc7a404d"), "edf51237-f58e-4811-82f5-f6c561b1ccdb", "AdmissionCouncil", "ADMISSIONCOUNCIL" }
+                    { new Guid("602f7a5f-e0a7-4c00-9da0-a413bfcfab3a"), "5c872630-5b25-40ed-bee7-8bb807bdcf4e", "SchoolService", "SCHOOLSERVICE" },
+                    { new Guid("62378687-e16c-4d94-b767-de9f0bfe9498"), "662fe8f2-4fde-48e0-b25e-ef18d86e88d3", "AdmissionOfficer", "ADMISSIONOFFICER" },
+                    { new Guid("b8fd818f-63f1-49ee-bec5-f7b66cafbfca"), "e96fd647-e742-4f7d-b4c5-a6d55481b96a", "Admin", "ADMIN" },
+                    { new Guid("d2d63c5b-d09b-4828-8322-f18ba103fe86"), "b962fee2-39a9-402e-a203-39988e38bd70", "Student", "STUDENT" },
+                    { new Guid("e5ec8836-e240-4bfc-9bbe-33f2cc7a404d"), "a08bb7d7-56a1-42b4-996a-665dfa2df50b", "AdmissionCouncil", "ADMISSIONCOUNCIL" }
                 });
 
             migrationBuilder.InsertData(
@@ -659,10 +681,10 @@ namespace Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "AvatarURL", "CampusId", "ConcurrencyStamp", "Dob", "Email", "EmailConfirmed", "Fullname", "Gender", "LockoutEnabled", "LockoutEnd", "MajorId", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "Phone", "PhoneNumber", "PhoneNumberConfirmed", "SPId", "SecurityStamp", "StudentCode", "TwoFactorEnabled", "UserName", "isAccountActive" },
                 values: new object[,]
                 {
-                    { new Guid("17baf918-d5d2-4628-aad1-8a4926520676"), 0, null, "Hanoi", "0bdc0c5f-47ad-4e67-9b4e-2501c55c34dc", null, "SchoolService@gmail.com", true, "School Service Hanoi", null, false, null, null, "SCHOOLSERVICE@GMAIL.COM", "SCHOOLSERVICE", "AQAAAAEAACcQAAAAEONkpztUAYFo7PyBKJjzy9odkxgQ4jYGwsuyvQ6hwhSZmKz5qGmzwBWyVdW01mHtVg==", null, null, false, null, "a97cbab6-2316-4a87-8ac3-e97a15ea52a5", null, false, "SchoolService", false },
-                    { new Guid("5738248d-b40e-4332-9b9e-deb0abc8f8dd"), 0, null, "Hanoi", "5559c804-d175-48cf-8b22-1e6288145792", null, "AdmissionOfficer@gmail.com", true, "Admin Officer Hanoi", null, false, null, null, "ADMISSIONOFFICER@GMAIL.COM", "ADMISSIONOFFICER", "AQAAAAEAACcQAAAAELizGQw2XulLXE5CFr9fYpqI59/XLpMnFDgaOA2SVMUuuMudfyx/LtczOAUjAe7tWw==", null, null, false, null, "df41cdd3-cd34-414b-8ecd-82767bd1c311", null, false, "AdmissionOfficer", false },
-                    { new Guid("aa321fa2-d640-449f-9cf3-d5a14001aa3e"), 0, null, "Hanoi", "b2dfc260-da60-4500-bcfb-c55f74d90970", null, "AdmissionCouncil@gmail.com", true, "Admission Council Hanoi", null, false, null, null, "ADMISSIONCOUNCIL@GMAIL.COM", "ADMISSIONCOUNCIL", "AQAAAAEAACcQAAAAEJNEMwOfFVwVx9N6/yYm4nKe7UytsUAVnLlxm/FeKJRcsyDlypF4FaVtFFS++qZpXg==", null, null, false, null, "842aa640-a71b-4e9c-ab9a-b11f944871e2", null, false, "AdmissionCouncil", false },
-                    { new Guid("b8c777a9-55b9-4b3d-860a-d7b56e4c24b7"), 0, null, "Hanoi", "b3969d26-7ac5-40d6-8008-a4fa65949fcd", null, "AdminHaNoi@gmail.com", true, "Admin Hanoi", null, false, null, null, "ADMINHANOI@GMAIL.COM", "ADMINISTRATOR", "AQAAAAEAACcQAAAAENSO8zwEw0rNpSPY8S2q0UthpkeXOPqkjD06sYocodr5+1Vzr3U2ar+EyNHAKGlWPg==", null, null, false, null, "02a3fff7-f1dd-458c-a21e-8e925c7849a0", null, false, "Administrator", false }
+                    { new Guid("17baf918-d5d2-4628-aad1-8a4926520676"), 0, null, "Hanoi", "32df6f81-b47d-4fcf-a511-a42514e8a428", null, "SchoolService@gmail.com", true, "School Service Hanoi", null, false, null, null, "SCHOOLSERVICE@GMAIL.COM", "SCHOOLSERVICE", "AQAAAAEAACcQAAAAEOH3ahvQFUxkYy94U8VO3x+TukgXuKfWR9kIbhQTnUUCw3ODHvwQ2by6xlVPDBc/Nw==", null, null, false, null, "0d51f22c-34d5-42eb-bd9c-d24d482a00b7", null, false, "SchoolService", false },
+                    { new Guid("5738248d-b40e-4332-9b9e-deb0abc8f8dd"), 0, null, "Hanoi", "c6b474ec-6c97-4dad-a421-d7792eeace0d", null, "AdmissionOfficer@gmail.com", true, "Admin Officer Hanoi", null, false, null, null, "ADMISSIONOFFICER@GMAIL.COM", "ADMISSIONOFFICER", "AQAAAAEAACcQAAAAEHdtMuCy+uvL7X88PiM91OMNUCOEXNmtYDxijgYgPCdyS255srvTL/NIVKNIwd37pg==", null, null, false, null, "1bc13cff-55e0-49a3-8dc2-c04213b45e50", null, false, "AdmissionOfficer", false },
+                    { new Guid("aa321fa2-d640-449f-9cf3-d5a14001aa3e"), 0, null, "Hanoi", "a65b8b79-a392-4ed5-b0fe-d3fc1fcc91a2", null, "AdmissionCouncil@gmail.com", true, "Admission Council Hanoi", null, false, null, null, "ADMISSIONCOUNCIL@GMAIL.COM", "ADMISSIONCOUNCIL", "AQAAAAEAACcQAAAAEIkDiV0pBqRBWtbgpvbTuqoYSmVOVvJwWcPc0rsoYfvAOLUk3ph+MSpJCA65xwd89A==", null, null, false, null, "1ca17ebf-bd22-4926-b1b6-55ff9b93c58d", null, false, "AdmissionCouncil", false },
+                    { new Guid("b8c777a9-55b9-4b3d-860a-d7b56e4c24b7"), 0, null, "Hanoi", "18253525-034c-4a35-b0c9-e1ecdfb7aead", null, "AdminHaNoi@gmail.com", true, "Admin Hanoi", null, false, null, null, "ADMINHANOI@GMAIL.COM", "ADMINISTRATOR", "AQAAAAEAACcQAAAAEN/785/HIDFk8yvjyk8YD6HixDmRe09fshV5Vn5+rvHLG1+cOS8tdU9cedPLJKL08A==", null, null, false, null, "7d34d1f8-2a23-4aaf-ac53-2dac6fc77370", null, false, "Administrator", false }
                 });
 
             migrationBuilder.InsertData(
@@ -670,12 +692,12 @@ namespace Data.Migrations
                 columns: new[] { "AdmissionInformationID", "AdmissionProfileDescription", "CampusId", "EndAdmission", "FeeAdmission", "FeeRegister", "StartAdmission", "Status", "Year" },
                 values: new object[,]
                 {
-                    { 1, "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n", "Hanoi", new DateTime(2024, 8, 30, 23, 59, 59, 0, DateTimeKind.Unspecified), 4600000m, 100000m, new DateTime(2023, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, 2024 },
-                    { 2, "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n", "Danang", new DateTime(2024, 8, 30, 23, 59, 59, 0, DateTimeKind.Unspecified), 4600000m, 100000m, new DateTime(2023, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, 2024 },
-                    { 3, "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n", "Cantho", new DateTime(2024, 8, 30, 23, 59, 59, 0, DateTimeKind.Unspecified), 4600000m, 100000m, new DateTime(2023, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, 2024 },
-                    { 4, "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n", "HCM", new DateTime(2024, 8, 30, 23, 59, 59, 0, DateTimeKind.Unspecified), 4600000m, 100000m, new DateTime(2023, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, 2024 },
-                    { 5, "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n", "Thanhhoa", new DateTime(2024, 8, 30, 23, 59, 59, 0, DateTimeKind.Unspecified), 4600000m, 100000m, new DateTime(2023, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, 2024 },
-                    { 6, "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n", "Hanoi", new DateTime(2023, 8, 30, 23, 59, 59, 0, DateTimeKind.Unspecified), 4600000m, 100000m, new DateTime(2022, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, 2023 }
+                    { 1, "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n", "Hanoi", new DateTime(2024, 8, 30, 23, 59, 59, 0, DateTimeKind.Unspecified), 4600000m, 100000m, new DateTime(2023, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 2024 },
+                    { 2, "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n", "Danang", new DateTime(2024, 8, 30, 23, 59, 59, 0, DateTimeKind.Unspecified), 4600000m, 100000m, new DateTime(2023, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 2024 },
+                    { 3, "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n", "Cantho", new DateTime(2024, 8, 30, 23, 59, 59, 0, DateTimeKind.Unspecified), 4600000m, 100000m, new DateTime(2023, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 2024 },
+                    { 4, "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n", "HCM", new DateTime(2024, 8, 30, 23, 59, 59, 0, DateTimeKind.Unspecified), 4600000m, 100000m, new DateTime(2023, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 2024 },
+                    { 5, "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n", "Thanhhoa", new DateTime(2024, 8, 30, 23, 59, 59, 0, DateTimeKind.Unspecified), 4600000m, 100000m, new DateTime(2023, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 2024 },
+                    { 6, "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n", "Hanoi", new DateTime(2023, 8, 30, 23, 59, 59, 0, DateTimeKind.Unspecified), 4600000m, 100000m, new DateTime(2022, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, 2023 }
                 });
 
             migrationBuilder.InsertData(
@@ -702,46 +724,46 @@ namespace Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Major",
-                columns: new[] { "MajorID", "CampusId", "Description", "MajorCode", "MajorName", "Status", "Target", "TimeStudy", "Tuition", "isVocationalSchool" },
+                columns: new[] { "MajorID", "CampusId", "Description", "MajorCode", "MajorName", "TimeStudy", "Tuition", "isVocationalSchool" },
                 values: new object[,]
                 {
-                    { "HAO", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "71490", "Kiểm toán", true, 200, "2 năm", 12000000m, false },
-                    { "HBS", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "71490", "Chăm sóc da và massage", true, 200, "2 năm", 12000000m, true },
-                    { "HBT", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "71490", "Phum xăm thẩm mỹ", true, 200, "2 năm", 12000000m, true },
-                    { "HEA", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7220201", "Ngôn ngữ anh", true, 200, "2 năm", 12000000m, false },
-                    { "HFO", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "71490", "Kỹ thuật chế biến món ăn", true, 200, "2 năm", 12000000m, true },
-                    { "HGE", "Hanoi", "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.", "7480201", "Lập trình game", true, 200, "2 năm", 12000000m, false },
-                    { "HHM", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7340101", "Quản trị khách sạn", true, 200, "24 năm", 12000000m, false },
-                    { "HJA", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7220209", "Ngôn ngữ nhật", true, 200, "2 năm", 12000000m, false },
-                    { "HKA", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7220210", "Ngôn ngữ hàn", true, 200, "24 năm", 12000000m, false },
-                    { "HME", "Hanoi", "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.", "7480201", "Lập trình mobile", true, 200, "2 năm", 12000000m, false },
-                    { "HRM", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7340101", "Quản trị nhà hàng", true, 200, "24 năm", 12000000m, false },
-                    { "HSM", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7340101", "Marketing", true, 200, "2 năm", 12000000m, false },
-                    { "HSO", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "71490", "Thư ký văn phòng", true, 200, "24 năm", 12000000m, false },
-                    { "HTE", "Hanoi", "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.", "7480201", "Kiểm thử", true, 200, "2 năm", 12000000m, false },
-                    { "HWE", "Hanoi", "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.", "7480201", "Lập trình web", true, 200, "2 năm", 12000000m, false },
-                    { "SAO", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "71490", "Kiểm toán", true, 200, "2 năm", 12000000m, false },
-                    { "SBS", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "71490", "Chăm sóc da và massage", true, 200, "2 năm", 12000000m, true }
+                    { "HAO", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "71490", "Kiểm toán", "2 năm", 12000000m, false },
+                    { "HBS", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "71490", "Chăm sóc da và massage", "2 năm", 12000000m, true },
+                    { "HBT", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "71490", "Phum xăm thẩm mỹ", "2 năm", 12000000m, true },
+                    { "HEA", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7220201", "Ngôn ngữ anh", "2 năm", 12000000m, false },
+                    { "HFO", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "71490", "Kỹ thuật chế biến món ăn", "2 năm", 12000000m, true },
+                    { "HGE", "Hanoi", "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.", "7480201", "Lập trình game", "2 năm", 12000000m, false },
+                    { "HHM", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7340101", "Quản trị khách sạn", "24 năm", 12000000m, false },
+                    { "HJA", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7220209", "Ngôn ngữ nhật", "2 năm", 12000000m, false },
+                    { "HKA", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7220210", "Ngôn ngữ hàn", "24 năm", 12000000m, false },
+                    { "HME", "Hanoi", "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.", "7480201", "Lập trình mobile", "2 năm", 12000000m, false },
+                    { "HRM", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7340101", "Quản trị nhà hàng", "24 năm", 12000000m, false },
+                    { "HSM", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7340101", "Marketing", "2 năm", 12000000m, false },
+                    { "HSO", "Hanoi", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "71490", "Thư ký văn phòng", "24 năm", 12000000m, false },
+                    { "HTE", "Hanoi", "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.", "7480201", "Kiểm thử", "2 năm", 12000000m, false },
+                    { "HWE", "Hanoi", "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.", "7480201", "Lập trình web", "2 năm", 12000000m, false },
+                    { "SAO", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "71490", "Kiểm toán", "2 năm", 12000000m, false },
+                    { "SBS", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "71490", "Chăm sóc da và massage", "2 năm", 12000000m, true }
                 });
 
             migrationBuilder.InsertData(
                 table: "Major",
-                columns: new[] { "MajorID", "CampusId", "Description", "MajorCode", "MajorName", "Status", "Target", "TimeStudy", "Tuition", "isVocationalSchool" },
+                columns: new[] { "MajorID", "CampusId", "Description", "MajorCode", "MajorName", "TimeStudy", "Tuition", "isVocationalSchool" },
                 values: new object[,]
                 {
-                    { "SBT", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "71490", "Phum xăm thẩm mỹ", true, 200, "2 năm", 12000000m, true },
-                    { "SEA", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7220201", "Ngôn ngữ anh", true, 200, "2 năm", 12000000m, false },
-                    { "SFO", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "71490", "Kỹ thuật chế biến món ăn", true, 200, "2 năm", 12000000m, true },
-                    { "SGE", "HCM", "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.", "7480201", "Lập trình game", true, 200, "2 năm", 12000000m, false },
-                    { "SHM", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7340101", "Quản trị khách sạn", true, 200, "24 năm", 12000000m, false },
-                    { "SJA", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7220209", "Ngôn ngữ nhật", true, 200, "2 năm", 12000000m, false },
-                    { "SKA", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7220210", "Ngôn ngữ hàn", true, 200, "24 năm", 12000000m, false },
-                    { "SME", "HCM", "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.", "7480201", "Lập trình mobile", true, 200, "2 năm", 12000000m, false },
-                    { "SRM", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7340101", "Quản trị nhà hàng", true, 200, "24 năm", 12000000m, false },
-                    { "SSM", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7340101", "Marketing", true, 200, "2 năm", 12000000m, false },
-                    { "SSO", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "71490", "Thư ký văn phòng", true, 200, "24 năm", 12000000m, false },
-                    { "STE", "HCM", "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.", "7480201", "Kiểm thử", true, 200, "2 năm", 12000000m, false },
-                    { "SWE", "HCM", "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.", "7480201", "Lập trình web", true, 200, "2 năm", 12000000m, false }
+                    { "SBT", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "71490", "Phum xăm thẩm mỹ", "2 năm", 12000000m, true },
+                    { "SEA", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7220201", "Ngôn ngữ anh", "2 năm", 12000000m, false },
+                    { "SFO", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "71490", "Kỹ thuật chế biến món ăn", "2 năm", 12000000m, true },
+                    { "SGE", "HCM", "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.", "7480201", "Lập trình game", "2 năm", 12000000m, false },
+                    { "SHM", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7340101", "Quản trị khách sạn", "24 năm", 12000000m, false },
+                    { "SJA", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7220209", "Ngôn ngữ nhật", "2 năm", 12000000m, false },
+                    { "SKA", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7220210", "Ngôn ngữ hàn", "24 năm", 12000000m, false },
+                    { "SME", "HCM", "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.", "7480201", "Lập trình mobile", "2 năm", 12000000m, false },
+                    { "SRM", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7340101", "Quản trị nhà hàng", "24 năm", 12000000m, false },
+                    { "SSM", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "7340101", "Marketing", "2 năm", 12000000m, false },
+                    { "SSO", "HCM", "Ngành “Tiếng Anh” bậc TCCN là ngành học cung cấp cho người học kiến thức cơ bản về ngôn ngữ và rèn luyện các kỹ năng Tiếng Anh cơ bản giúp người học sử dụng tốt trong môi trường toàn cầu hoá. Ngành tiếng Anh bậc TCCN bao gồm các môn học rèn luyện bốn kỹ năng trong tiếng Anh là nghe, nói, đọc và viết; thảo luận và giao tiếp tiếng Anh cơ bản; thực hiện các bảng biểu và mẫu đơn cơ bản bằng tiếng Anh; trình bày và truyền đạt quan điểm về các chủ đề thường gặp; thuyết trình tiếng Anh cơ bản; đọc hiểu các tài liệu thương mại và thư tín cơ bản; viết các mẫu thông báo, thư tín và tài liệu Tiếng Anh cơ. Ngành “Tiếng Anh” bậc TCCN còn giúp người học đạt được năng lực tiếng Anh B1 theo Khung tham chiếu trình độ ngôn ngữ chung Châu Âu (CEFR) và có thể học liên thông trình độ Cao đẳng.", "71490", "Thư ký văn phòng", "24 năm", 12000000m, false },
+                    { "STE", "HCM", "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.", "7480201", "Kiểm thử", "2 năm", 12000000m, false },
+                    { "SWE", "HCM", "Tin học ứng dụng (CNTT) sử dụng hệ thống các thiết bị và máy tính (bao gồm phần cứng, phần mềm) để cung cấp một giải pháp xử lý thông tin trên nền công nghệ cho các cá nhân, tổ chức có yêu cầu. Các giải pháp CNTT rất đa dạng: phần mềm quản lý nhân viên trong cơ quan, tổ chức, website dạy học qua mạng, hệ thống máy tính phục vụ cho nhu cầu tính cước, phần mềm trên các thiết bị di động hoặc những chương trình giải trí trên Internet v.v… Bởi vậy, đối tượng phục vụ của ngành CNTT ngày càng phong phú.", "7480201", "Lập trình web", "2 năm", 12000000m, false }
                 });
 
             migrationBuilder.InsertData(
@@ -764,53 +786,53 @@ namespace Data.Migrations
             migrationBuilder.InsertData(
                 table: "Account",
                 columns: new[] { "Id", "AccessFailedCount", "AvatarURL", "CampusId", "ConcurrencyStamp", "Dob", "Email", "EmailConfirmed", "Fullname", "Gender", "LockoutEnabled", "LockoutEnd", "MajorId", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "Phone", "PhoneNumber", "PhoneNumberConfirmed", "SPId", "SecurityStamp", "StudentCode", "TwoFactorEnabled", "UserName", "isAccountActive" },
-                values: new object[] { new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"), 0, null, "Hanoi", "8b2a7a42-6688-4b1f-8202-c4d0c6c71353", null, "nguyenducanh01.57@gmail.com", true, "Nguyễn Đức Anh", null, false, null, "HWE", "NGUYENDUCANH01.57@GMAIL.COM", "STUDENT", "AQAAAAEAACcQAAAAEDiY9DFwjTNNuOmgfBvM59KyLreCfSdn/Zi9F3ACwsoDVoyvB7nuLUkQ5vtyqYCizg==", null, null, false, null, "4db24dab-7e77-4a38-90c9-7b8cbce03fd7", "HWE160153", false, "DucAnh", false });
+                values: new object[] { new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"), 0, null, "Hanoi", "9b8893e3-e26b-4f10-92a3-4c674bba820e", null, "nguyenducanh01.57@gmail.com", true, "Nguyễn Đức Anh", null, false, null, "HWE", "NGUYENDUCANH01.57@GMAIL.COM", "STUDENT", "AQAAAAEAACcQAAAAEKWOF47E2fBN9Sxwy4TNq4g6Rzb9N141gQcvzRX4qiQ0AEQ1O1jkPjpzESW48uyGiA==", null, null, false, null, "140446e8-d828-4c7c-9b9f-34a1b318b78c", "HWE160153", false, "DucAnh", false });
 
             migrationBuilder.InsertData(
                 table: "AdmissionDetailForMajor",
                 columns: new[] { "ADMId", "MajorID", "StatusScore", "StatusScoreAcademic", "SubjectGroupsJson", "TotalScore", "TotalScoreAcademic", "Year" },
                 values: new object[,]
                 {
-                    { new Guid("0a2ef77d-b807-4873-9ca7-aec1234813ac"), "HBS", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("0af20ea2-41ef-4308-aa94-1271da4e245c"), "SEA", true, true, "[44,1]", 24m, 24m, 2024 },
-                    { new Guid("0e18981a-bcd3-4412-81be-0265369ea233"), "SBS", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("13b6e191-cff1-44cb-96df-ed311f23a083"), "SJA", true, true, "[0,1]", 24m, 24m, 2024 },
                     { new Guid("257447a5-016c-40d9-9c5f-1a2cc68e0654"), "HWE", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("27a8d09a-5127-4094-8daf-8105f56084f2"), "SFO", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("2b957490-9a65-4207-9b65-c89798fc9042"), "SSO", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("35e4b167-2601-4a90-9306-b3bb8ae22c6f"), "SAO", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("3516a1e1-7f36-42c1-84df-3a1f32a123e2"), "HAO", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("3c637b85-93b9-4b41-9246-ee4731e3bb4a"), "SSO", true, true, "[0,1]", 24m, 24m, 2024 },
                     { new Guid("3ed63cec-79a4-4304-bfa0-a326a4dbb03d"), "HJA", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("457ddbfe-c1dd-4f52-9191-86aa99687bdf"), "HFO", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("52658528-5be3-4386-8916-1292fbfc3c55"), "SBT", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("4035e90f-da41-437f-b43b-4991de99ef59"), "SFO", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("42213182-76ff-4b9f-bbfd-899d210bbaf3"), "HFO", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("42f9c58a-d63c-4460-a1a3-3798d9622897"), "SBT", true, true, "[0,1]", 24m, 24m, 2024 },
                     { new Guid("5c8e9972-7642-4b08-9642-c510e3cd40dc"), "HME", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("65f10a9e-3ef7-44cc-9051-918768aa8af0"), "HAO", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("5da7b723-3e7e-4c4a-a34a-f9c50e03a136"), "SRM", true, true, "[0,1]", 24m, 24m, 2024 },
                     { new Guid("664b31e7-4a22-4d47-a46c-2e2876337ac7"), "HGE", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("7b9ec832-32f6-4fde-82ea-80cdcd44c2f5"), "SWE", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("8053f1a7-e896-49b1-beec-60d4b6163f8b"), "HRM", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("8267667f-2321-415e-afc4-d5a276d8212e"), "SHM", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("83f8d4d1-7f08-4008-9b9e-8955ee9574e1"), "STE", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("84763dfc-57bc-4e33-962f-65eb9ff61ca6"), "SSM", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("8bb397eb-1867-4947-9e3b-dfe3f598a385"), "HSO", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("8f45cc65-4138-420e-9eb2-5d9198e99851"), "HKA", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("90ee8468-b29e-446c-a233-596a218dc8c6"), "SGE", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("9d2ebf40-39cd-4d1d-808d-fbc554f7cc32"), "SKA", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("a029c455-99d4-472c-8cb3-10b0b54428f3"), "SJA", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("a93a4a0b-c1bf-471c-873a-dda038f06588"), "HBT", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("71737a91-2339-40c4-987f-9ffd1951ba8d"), "SKA", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("7e3be7f4-7ef3-4cf1-a578-d364615cfd9b"), "SAO", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("82769faa-f4d9-477c-8256-80b77fd7f672"), "SSM", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("87bf1e4c-1715-47c9-ae8e-b192c423fa99"), "HBT", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("8ab5528b-de85-401f-b2bc-125d30608d6a"), "HKA", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("8aeccf0b-847d-40ed-88db-d67e6ef75db1"), "SHM", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("94814fcd-295d-477c-8dc2-572efcea32a8"), "SWE", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("a1d1a52d-505b-4680-974f-4e13beb333f2"), "SGE", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("a48c706b-b3cf-4758-930d-057841fd2792"), "HSM", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("aaaf47fd-396e-480c-a0b3-7485f9a6bced"), "HBS", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("aaee54ce-2325-4e79-87f7-4f4a6112256a"), "HRM", true, true, "[0,1]", 24m, 24m, 2024 },
                     { new Guid("b7328cad-128f-4da3-9cfa-0bd91116275a"), "HTE", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("b8e28b56-2926-4a58-ac07-abd9899a8227"), "SRM", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("c39fe8e3-35ec-48b2-918a-595ed73094db"), "HHM", true, true, "[0,1]", 24m, 24m, 2024 },
-                    { new Guid("c9ea8880-4dc4-4e77-870e-9f1d0a17cc15"), "HSM", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("c5463e60-fdf0-4a44-bb45-aa3c410df516"), "HHM", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("c829b2f4-9230-447d-b4e7-edfc23dd7667"), "STE", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("cd0d92f5-a5ed-40cd-b645-1534b95a01c8"), "SME", true, true, "[0,1]", 24m, 24m, 2024 },
                     { new Guid("cfb75e89-ecd3-4071-9245-2e7286b6f84d"), "HEA", true, true, "[44,1]", 24m, 24m, 2024 },
-                    { new Guid("f1000507-ed3b-4a3c-9ce8-6db48a3e8d02"), "SME", true, true, "[0,1]", 24m, 24m, 2024 }
+                    { new Guid("d8a529fc-5d79-41c5-baf9-9722639374e6"), "HSO", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("f5f88d06-0760-4d0f-a744-c0037bfed7f6"), "SBS", true, true, "[0,1]", 24m, 24m, 2024 },
+                    { new Guid("f6bf1785-96e2-449e-8a79-b7996d06c90b"), "SEA", true, true, "[44,1]", 24m, 24m, 2024 }
                 });
 
             migrationBuilder.InsertData(
                 table: "AdmissionTime",
-                columns: new[] { "AIId", "AdmissionInformationID", "AdmissionInformationName", "CampusId", "EndAdmission", "EndRegister", "StartAdmission", "StartRegister" },
+                columns: new[] { "AIId", "AdmissionInformationID", "AdmissionInformationName", "EndAdmission", "EndRegister", "StartAdmission", "StartRegister" },
                 values: new object[,]
                 {
-                    { 1, 1, "Đợt 1", "Hanoi", new DateTime(2024, 4, 30, 23, 59, 59, 0, DateTimeKind.Unspecified), new DateTime(2024, 3, 1, 23, 59, 59, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, 1, "Đợt 2", "Hanoi", new DateTime(2024, 7, 30, 23, 59, 59, 0, DateTimeKind.Unspecified), new DateTime(2024, 6, 1, 23, 59, 59, 0, DateTimeKind.Unspecified), new DateTime(2024, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 3, 1, "Đợt 3", "Hanoi", new DateTime(2024, 9, 1, 23, 59, 59, 0, DateTimeKind.Unspecified), new DateTime(2024, 8, 30, 23, 59, 59, 0, DateTimeKind.Unspecified), new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 6, 2, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 1, 1, "Đợt 1", new DateTime(2024, 4, 30, 23, 59, 59, 0, DateTimeKind.Unspecified), new DateTime(2024, 3, 1, 23, 59, 59, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, 1, "Đợt 2", new DateTime(2024, 7, 30, 23, 59, 59, 0, DateTimeKind.Unspecified), new DateTime(2024, 6, 1, 23, 59, 59, 0, DateTimeKind.Unspecified), new DateTime(2024, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, 1, "Đợt 3", new DateTime(2024, 9, 1, 23, 59, 59, 0, DateTimeKind.Unspecified), new DateTime(2024, 8, 30, 23, 59, 59, 0, DateTimeKind.Unspecified), new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 6, 2, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.InsertData(
@@ -818,28 +840,50 @@ namespace Data.Migrations
                 columns: new[] { "BlogId", "BlogCategoryId", "Content", "DateCreate", "Description", "Img", "Title" },
                 values: new object[,]
                 {
-                    { 1, 3, "Trăng tròn đã vươn cao tại Hoà Lạc, Rằm tháng Tám đã gần đi qua, các Cóc “ngoan xinh iu” của FPTU đã đi chơi Trung thu về chưa? \r\n🥮 Trung thu là dịp để chúng ta ngồi lại bên nhau, hàn huyên với gia đình, bạn bè và những người thân yêu. Hãy cùng tận hưởng Tết Trung Thu bên bánh dẻo, bánh nướng và thả mình vào ánh trăng lung linh để cảm nhận những khoảnh khắc tuyệt diệu, đáng quý này nhé!\r\n✨ Nhân dịp Tết Trung thu, xin gửi những lời chúc tốt đẹp nhất đến thầy cô, anh chị cán bộ trường Đại học FPT, cùng các bạn sinh viên thân yêu! Chúc mọi người một mùa trăng an yên hơn sau những ảnh hưởng lớn của bão vừa qua.\r\n 📌 VÀ ĐỪNG QUÊN lên dây cót, bật chế độ sẵn sàng đón chờ những sự kiện “cực kỳ hoành tráng” đang tới gần. Kết nối, khám phá và trải nghiệm hết mình trong kỳ fall này bạn nhé!", new DateTime(2024, 11, 15, 3, 11, 38, 876, DateTimeKind.Local).AddTicks(8921), "Trăng tròn đã vươn cao tại Hoà Lạc, Rằm tháng Tám đã gần đi qua, các Cóc “ngoan xinh iu” của FPTU đã đi chơi Trung thu về chưa?", null, "Trăng tròn đã vươn cao tại Hoà Lạc" },
-                    { 2, 3, "[𝐊𝐈𝐂𝐊 𝐎𝐅𝐅] - 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓\r\n🏞 Tại vùng đất Hola Campus, nơi mà tinh thần học tập, sáng tạo nghệ thuật và sức mạnh thể chất được đề cao luôn tồn tại một lực lượng quân chủng mang tên 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 - mang trong mình trọng trách quan trọng nhất đó là bảo vệ và phát triển lãnh thổ với ba đại đội: Cơ bắp, Biết tuốt và Bay bổng. \r\n✨ Vào năm 2024, những người đứng đầu của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 đã quyết định tổ chức một sự kiện, một ngày hội đặc biệt mang tên 𝐽𝑖𝑚𝑏𝑜 𝑈𝑛𝑖𝑡𝑦 𝐹𝑒𝑠𝑡. Sự kiện là dịp để các chiến sĩ của cả 3 Đại đội gặp mặt, giao lưu và học hỏi lẫn nhau không chỉ về tinh thần đồng đội mà còn được khám phá thêm những kỹ năng từ các đội khác. \r\n🌷 Đặc biệt, 𝐽𝑖𝑚𝑏𝑜 𝑈𝑛𝑖𝑡𝑦 𝐹𝑒𝑠𝑡 không chỉ giới hạn cho các chiến sĩ của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 mà còn mở cửa chào đón tất cả những người trẻ của vùng đất Hola Campus có quan tâm và muốn trải nghiệm môi trường, văn hóa đặc trưng của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 tham gia sự kiện. Nếu như bạn đã sẵn sàng với các chiến binh bước vào thế giới của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 cùng một tinh thần nhiệt huyết và tràn đầy năng lượng để vượt qua những thử thách đầy cam go thì hãy cùng chúng mình đón chờ hành trình sắp tới nhé!\r\n---------------------------------------\r\n🔥 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓 🔥\r\n◻️ Thời gian: 13h - 17h30 thứ hai, ngày 30/09/2024\r\n◻️ Địa điểm: Đường 30m, Đại học FPT Hà Nội \r\n---------------------------------------\r\nTHÔNG TIN LIÊN HỆ\r\n◻️ Trưởng ban Tổ chức: Kiều Bảo Lộc (0367488155)\r\n◻️ Trưởng ban HR: Nguyễn Ngọc Quỳnh (0865349170)", new DateTime(2024, 11, 15, 3, 11, 38, 876, DateTimeKind.Local).AddTicks(8929), " 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 - mang trong mình trọng trách quan trọng nhất đó là bảo vệ và phát triển lãnh thổ với ba đại đội: Cơ bắp, Biết tuốt và Bay bổng.", null, "[𝐊𝐈𝐂𝐊 𝐎𝐅𝐅] - 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓" },
-                    { 3, 2, "🌟[ORIENTATION WEEK]🌟 GIỚI THIỆU CÁC PHÒNG BAN CHỨC NĂNG TẠI ĐẠI HỌC FPT\r\n🔥Ngay lúc này đây, Phòng Hợp tác Quốc tế và Phát triển Cá nhân ICPDP đang có mặt tại Hội trường NIC cùng các tân sinh viên K20 tham gia Buổi học định hướng với chủ đề “Giới thiệu các phòng ban tại Đại học FPT”.\r\n🔥Tại buổi định hướng, các Cóc út đã được lắng nghe anh Lê Huy Hoàng - Cán bộ quản lý IC, đại diện phòng ICPDP chia sẻ về vai trò và chức năng của Phòng ICPDP, về các cơ hội học tập, trải nghiệm trong và ngoài nước dành cho tất cả các bạn sinh viên FPT.\r\n🫶Phòng ICPDP rất sẵn lòng đồng hành cùng các Cóc trong hành trình 4 năm thanh xuân tại Đại học FPT. Hy vọng chúng mình sẽ có thật nhiều kỷ niệm tại Đại học FPT Hà Nội. \r\n-----------------------------------------------------------\r\nMọi thắc mắc vui lòng liên hệ: Phòng Hợp tác Quốc tế và Phát triển cá nhân ICPDP FPTU", new DateTime(2024, 11, 15, 3, 11, 38, 876, DateTimeKind.Local).AddTicks(8930), " Giới thiệu các phòng ban tại Đại học FPT", null, "🌟[ORIENTATION WEEK]🌟 GIỚI THIỆU CÁC PHÒNG BAN CHỨC NĂNG TẠI ĐẠI HỌC FPT" },
-                    { 4, 1, " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!", new DateTime(2024, 11, 15, 3, 11, 38, 876, DateTimeKind.Local).AddTicks(8931), " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).", null, "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈" },
-                    { 5, 1, " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!", new DateTime(2024, 11, 15, 3, 11, 38, 876, DateTimeKind.Local).AddTicks(8932), " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).", null, "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈" },
-                    { 6, 1, " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!", new DateTime(2024, 11, 15, 3, 11, 38, 876, DateTimeKind.Local).AddTicks(8932), " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).", null, "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈" },
-                    { 7, 1, " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!", new DateTime(2024, 11, 15, 3, 11, 38, 876, DateTimeKind.Local).AddTicks(8933), " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).", null, "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈" },
-                    { 8, 1, " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!", new DateTime(2024, 11, 15, 3, 11, 38, 876, DateTimeKind.Local).AddTicks(8934), " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).", null, "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈" }
+                    { 1, 3, "Trăng tròn đã vươn cao tại Hoà Lạc, Rằm tháng Tám đã gần đi qua, các Cóc “ngoan xinh iu” của FPTU đã đi chơi Trung thu về chưa? \r\n🥮 Trung thu là dịp để chúng ta ngồi lại bên nhau, hàn huyên với gia đình, bạn bè và những người thân yêu. Hãy cùng tận hưởng Tết Trung Thu bên bánh dẻo, bánh nướng và thả mình vào ánh trăng lung linh để cảm nhận những khoảnh khắc tuyệt diệu, đáng quý này nhé!\r\n✨ Nhân dịp Tết Trung thu, xin gửi những lời chúc tốt đẹp nhất đến thầy cô, anh chị cán bộ trường Đại học FPT, cùng các bạn sinh viên thân yêu! Chúc mọi người một mùa trăng an yên hơn sau những ảnh hưởng lớn của bão vừa qua.\r\n 📌 VÀ ĐỪNG QUÊN lên dây cót, bật chế độ sẵn sàng đón chờ những sự kiện “cực kỳ hoành tráng” đang tới gần. Kết nối, khám phá và trải nghiệm hết mình trong kỳ fall này bạn nhé!", new DateTime(2024, 11, 16, 2, 59, 16, 285, DateTimeKind.Local).AddTicks(5054), "Trăng tròn đã vươn cao tại Hoà Lạc, Rằm tháng Tám đã gần đi qua, các Cóc “ngoan xinh iu” của FPTU đã đi chơi Trung thu về chưa?", null, "Trăng tròn đã vươn cao tại Hoà Lạc" },
+                    { 2, 3, "[𝐊𝐈𝐂𝐊 𝐎𝐅𝐅] - 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓\r\n🏞 Tại vùng đất Hola Campus, nơi mà tinh thần học tập, sáng tạo nghệ thuật và sức mạnh thể chất được đề cao luôn tồn tại một lực lượng quân chủng mang tên 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 - mang trong mình trọng trách quan trọng nhất đó là bảo vệ và phát triển lãnh thổ với ba đại đội: Cơ bắp, Biết tuốt và Bay bổng. \r\n✨ Vào năm 2024, những người đứng đầu của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 đã quyết định tổ chức một sự kiện, một ngày hội đặc biệt mang tên 𝐽𝑖𝑚𝑏𝑜 𝑈𝑛𝑖𝑡𝑦 𝐹𝑒𝑠𝑡. Sự kiện là dịp để các chiến sĩ của cả 3 Đại đội gặp mặt, giao lưu và học hỏi lẫn nhau không chỉ về tinh thần đồng đội mà còn được khám phá thêm những kỹ năng từ các đội khác. \r\n🌷 Đặc biệt, 𝐽𝑖𝑚𝑏𝑜 𝑈𝑛𝑖𝑡𝑦 𝐹𝑒𝑠𝑡 không chỉ giới hạn cho các chiến sĩ của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 mà còn mở cửa chào đón tất cả những người trẻ của vùng đất Hola Campus có quan tâm và muốn trải nghiệm môi trường, văn hóa đặc trưng của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 tham gia sự kiện. Nếu như bạn đã sẵn sàng với các chiến binh bước vào thế giới của 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 cùng một tinh thần nhiệt huyết và tràn đầy năng lượng để vượt qua những thử thách đầy cam go thì hãy cùng chúng mình đón chờ hành trình sắp tới nhé!\r\n---------------------------------------\r\n🔥 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓 🔥\r\n◻️ Thời gian: 13h - 17h30 thứ hai, ngày 30/09/2024\r\n◻️ Địa điểm: Đường 30m, Đại học FPT Hà Nội \r\n---------------------------------------\r\nTHÔNG TIN LIÊN HỆ\r\n◻️ Trưởng ban Tổ chức: Kiều Bảo Lộc (0367488155)\r\n◻️ Trưởng ban HR: Nguyễn Ngọc Quỳnh (0865349170)", new DateTime(2024, 11, 16, 2, 59, 16, 285, DateTimeKind.Local).AddTicks(5064), " 𝐉𝐢𝐦𝐛𝐨 𝐀𝐫𝐦𝐲 - mang trong mình trọng trách quan trọng nhất đó là bảo vệ và phát triển lãnh thổ với ba đại đội: Cơ bắp, Biết tuốt và Bay bổng.", null, "[𝐊𝐈𝐂𝐊 𝐎𝐅𝐅] - 𝐉𝐈𝐌𝐁𝐎 𝐔𝐍𝐈𝐓𝐘 𝐅𝐄𝐒𝐓" },
+                    { 3, 2, "🌟[ORIENTATION WEEK]🌟 GIỚI THIỆU CÁC PHÒNG BAN CHỨC NĂNG TẠI ĐẠI HỌC FPT\r\n🔥Ngay lúc này đây, Phòng Hợp tác Quốc tế và Phát triển Cá nhân ICPDP đang có mặt tại Hội trường NIC cùng các tân sinh viên K20 tham gia Buổi học định hướng với chủ đề “Giới thiệu các phòng ban tại Đại học FPT”.\r\n🔥Tại buổi định hướng, các Cóc út đã được lắng nghe anh Lê Huy Hoàng - Cán bộ quản lý IC, đại diện phòng ICPDP chia sẻ về vai trò và chức năng của Phòng ICPDP, về các cơ hội học tập, trải nghiệm trong và ngoài nước dành cho tất cả các bạn sinh viên FPT.\r\n🫶Phòng ICPDP rất sẵn lòng đồng hành cùng các Cóc trong hành trình 4 năm thanh xuân tại Đại học FPT. Hy vọng chúng mình sẽ có thật nhiều kỷ niệm tại Đại học FPT Hà Nội. \r\n-----------------------------------------------------------\r\nMọi thắc mắc vui lòng liên hệ: Phòng Hợp tác Quốc tế và Phát triển cá nhân ICPDP FPTU", new DateTime(2024, 11, 16, 2, 59, 16, 285, DateTimeKind.Local).AddTicks(5065), " Giới thiệu các phòng ban tại Đại học FPT", null, "🌟[ORIENTATION WEEK]🌟 GIỚI THIỆU CÁC PHÒNG BAN CHỨC NĂNG TẠI ĐẠI HỌC FPT" },
+                    { 4, 1, " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!", new DateTime(2024, 11, 16, 2, 59, 16, 285, DateTimeKind.Local).AddTicks(5066), " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).", null, "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈" },
+                    { 5, 1, " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!", new DateTime(2024, 11, 16, 2, 59, 16, 285, DateTimeKind.Local).AddTicks(5067), " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).", null, "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈" },
+                    { 6, 1, " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!", new DateTime(2024, 11, 16, 2, 59, 16, 285, DateTimeKind.Local).AddTicks(5068), " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).", null, "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈" },
+                    { 7, 1, " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!", new DateTime(2024, 11, 16, 2, 59, 16, 285, DateTimeKind.Local).AddTicks(5069), " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).", null, "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈" },
+                    { 8, 1, " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!", new DateTime(2024, 11, 16, 2, 59, 16, 285, DateTimeKind.Local).AddTicks(5071), " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).", null, "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Blog",
                 columns: new[] { "BlogId", "BlogCategoryId", "Content", "DateCreate", "Description", "Img", "Title" },
-                values: new object[] { 9, 1, " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!", new DateTime(2024, 11, 15, 3, 11, 38, 876, DateTimeKind.Local).AddTicks(8934), " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).", null, "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈" });
+                values: new object[] { 9, 1, " 🌈 Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).\r\n🕰️ Thời gian: \r\nSáng: 8h -12h\r\nChiều: 13h30- 17h30\r\n✅ Các bạn học sinh và phụ huynh lưu ý, khi đến trường thì vào CỔNG SỐ 1 - chỗ cây ATM TP Bank màu tím và đi vào Văn phòng tuyển sinh từ lớp 12 trở lên để làm thủ tục nhập học.\r\n👉 Còn đợi gì nữa, xách balo lên trường nộp hồ sơ và tham quan ngay nào!", new DateTime(2024, 11, 16, 2, 59, 16, 285, DateTimeKind.Local).AddTicks(5072), " Để phục vụ nhu cầu tư vấn, đăng ký nhập học của các bạn học sinh, bắt đầu từ tuần này Văn phòng tuyển sinh của Trường Cao đẳng FPT Polytechnic Hà Nội sẽ làm việc tất cả các ngày trong tuần (từ thứ 2 đến thứ bảy).", null, "🔈 THÔNG BÁO: VĂN PHÒNG TUYỂN SINH CỦA FPT POLYTECHNIC HÀ NỘI SẼ LÀM VIỆC CẢ TUẦN 🔈" });
+
+            migrationBuilder.InsertData(
+                table: "MajorAdmission",
+                columns: new[] { "AdmissionInformationID", "MajorID", "Status", "SubjectGroupsJson", "Target", "TotalScore", "TotalScoreAcademic" },
+                values: new object[,]
+                {
+                    { 1, "HAO", true, "[0,1]", 200, 24m, 24m },
+                    { 1, "HBS", true, "[0,1]", 200, 24m, 24m },
+                    { 1, "HBT", true, "[0,1]", 200, 24m, 24m },
+                    { 1, "HEA", true, "[0,1]", 200, 24m, 24m },
+                    { 1, "HFO", false, "[0,1]", 200, 24m, 24m },
+                    { 1, "HGE", true, "[0,1]", 200, 24m, 24m },
+                    { 1, "HHM", true, "[0,1]", 200, 24m, 24m },
+                    { 1, "HJA", true, "[0,1]", 200, 24m, 24m },
+                    { 1, "HKA", true, "[0,1]", 200, 24m, 24m },
+                    { 1, "HME", true, "[0,1]", 200, 24m, 24m },
+                    { 1, "HRM", true, "[0,1]", 200, 24m, 24m },
+                    { 1, "HSM", true, "[0,1]", 200, 24m, 24m },
+                    { 1, "HSO", true, "[0,1]", 200, 24m, 24m },
+                    { 1, "HTE", true, "[0,1]", 200, 24m, 24m },
+                    { 1, "HWE", true, "[0,1]", 200, 24m, 24m }
+                });
 
             migrationBuilder.InsertData(
                 table: "StudentConsultation",
                 columns: new[] { "StudentConsultationId", "CampusId", "DateReceive", "Email", "FullName", "LinkFB", "MajorID", "Notes", "PhoneNumber", "Status" },
                 values: new object[,]
                 {
-                    { new Guid("75d12c81-6c25-4b74-8edd-602f97098745"), "Hanoi", new DateTime(2024, 9, 18, 14, 30, 0, 0, DateTimeKind.Unspecified), "nguyenducanh01.57@gmail.com", "Nguyen Đức Anh", "https://www.facebook.com/profile.php?id=61551770462937", "HME", null, "0123456789", 0 },
-                    { new Guid("d860dfdc-ed6c-428e-929e-b140d4aaf4c0"), "Hanoi", new DateTime(2024, 9, 18, 14, 30, 0, 0, DateTimeKind.Unspecified), "nguyenducanh01.57@gmail.com", "Nguyen Đức Anh", "https://www.facebook.com/profile.php?id=61551770462937", "HME", null, "0123456789", 3 }
+                    { new Guid("28f4b6cb-b7bc-42c6-b0d3-1027ef68a38e"), "Hanoi", new DateTime(2024, 9, 18, 14, 30, 0, 0, DateTimeKind.Unspecified), "nguyenducanh01.57@gmail.com", "Nguyen Đức Anh", "https://www.facebook.com/profile.php?id=61551770462937", "HME", null, "0123456789", 0 },
+                    { new Guid("745afc82-539a-4599-a099-7e7a10252853"), "Hanoi", new DateTime(2024, 9, 18, 14, 30, 0, 0, DateTimeKind.Unspecified), "nguyenducanh01.57@gmail.com", "Nguyen Đức Anh", "https://www.facebook.com/profile.php?id=61551770462937", "HME", null, "0123456789", 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -870,7 +914,14 @@ namespace Data.Migrations
                     { "HSO", "ENG101", null, 3, 0, "2 tháng", "Tiếng anh 1" },
                     { "HTE", "ENG101", null, 3, 0, "2 tháng", "Tiếng anh 1" },
                     { "HWE", "ENG101", null, 3, 0, "2 tháng", "Tiếng anh 1" },
-                    { "SAO", "ENG101", null, 3, 0, "2 tháng", "Tiếng anh 1" },
+                    { "SAO", "ENG101", null, 3, 0, "2 tháng", "Tiếng anh 1" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Subject",
+                columns: new[] { "MajorID", "SubjectCode", "Note", "NumberOfCredits", "SemesterNumber", "StudyTime", "SubjectName" },
+                values: new object[,]
+                {
                     { "SBS", "ENG101", null, 3, 0, "2 tháng", "Tiếng anh 1" },
                     { "SBT", "ENG101", null, 3, 0, "2 tháng", "Tiếng anh 1" },
                     { "SEA", "ENG101", null, 3, 0, "2 tháng", "Tiếng anh 1" },
@@ -885,14 +936,7 @@ namespace Data.Migrations
                     { "SSO", "ENG101", null, 3, 0, "2 tháng", "Tiếng anh 1" },
                     { "STE", "ENG101", null, 3, 0, "2 tháng", "Tiếng anh 1" },
                     { "SWE", "ENG101", null, 3, 0, "2 tháng", "Tiếng anh 1" },
-                    { "HAO", "ENG102", null, 3, 0, "2 tháng", "Tiếng anh 2" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Subject",
-                columns: new[] { "MajorID", "SubjectCode", "Note", "NumberOfCredits", "SemesterNumber", "StudyTime", "SubjectName" },
-                values: new object[,]
-                {
+                    { "HAO", "ENG102", null, 3, 0, "2 tháng", "Tiếng anh 2" },
                     { "HBS", "ENG102", null, 3, 0, "2 tháng", "Tiếng anh 2" },
                     { "HBT", "ENG102", null, 3, 0, "2 tháng", "Tiếng anh 2" },
                     { "HEA", "ENG102", null, 3, 0, "2 tháng", "Tiếng anh 2" },
@@ -919,7 +963,14 @@ namespace Data.Migrations
                     { "SME", "ENG102", null, 3, 0, "2 tháng", "Tiếng anh 2" },
                     { "SRM", "ENG102", null, 3, 0, "2 tháng", "Tiếng anh 2" },
                     { "SSM", "ENG102", null, 3, 0, "2 tháng", "Tiếng anh 2" },
-                    { "SSO", "ENG102", null, 3, 0, "2 tháng", "Tiếng anh 2" },
+                    { "SSO", "ENG102", null, 3, 0, "2 tháng", "Tiếng anh 2" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Subject",
+                columns: new[] { "MajorID", "SubjectCode", "Note", "NumberOfCredits", "SemesterNumber", "StudyTime", "SubjectName" },
+                values: new object[,]
+                {
                     { "STE", "ENG102", null, 3, 0, "2 tháng", "Tiếng anh 2" },
                     { "SWE", "ENG102", null, 3, 0, "2 tháng", "Tiếng anh 2" },
                     { "HAO", "ENG103", null, 3, 0, "2 tháng", "Tiếng anh 3" },
@@ -934,14 +985,7 @@ namespace Data.Migrations
                     { "SME", "ENG103", null, 3, 0, "2 tháng", "Tiếng anh 3" },
                     { "SRM", "ENG103", null, 3, 0, "2 tháng", "Tiếng anh 3" },
                     { "SSM", "ENG103", null, 3, 0, "2 tháng", "Tiếng anh 3" },
-                    { "HAO", "GDQP", null, 0, 0, "1 tháng", "Giáo dục quốc phòng" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Subject",
-                columns: new[] { "MajorID", "SubjectCode", "Note", "NumberOfCredits", "SemesterNumber", "StudyTime", "SubjectName" },
-                values: new object[,]
-                {
+                    { "HAO", "GDQP", null, 0, 0, "1 tháng", "Giáo dục quốc phòng" },
                     { "HBS", "GDQP", null, 0, 0, "1 tháng", "Giáo dục quốc phòng" },
                     { "HBT", "GDQP", null, 0, 0, "1 tháng", "Giáo dục quốc phòng" },
                     { "HEA", "GDQP", null, 0, 0, "1 tháng", "Giáo dục quốc phòng" },
@@ -968,7 +1012,14 @@ namespace Data.Migrations
                     { "SME", "GDQP", null, 0, 0, "1 tháng", "Giáo dục quốc phòng" },
                     { "SRM", "GDQP", null, 0, 0, "1 tháng", "Giáo dục quốc phòng" },
                     { "SSM", "GDQP", null, 0, 0, "1 tháng", "Giáo dục quốc phòng" },
-                    { "SSO", "GDQP", null, 0, 0, "1 tháng", "Giáo dục quốc phòng" },
+                    { "SSO", "GDQP", null, 0, 0, "1 tháng", "Giáo dục quốc phòng" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Subject",
+                columns: new[] { "MajorID", "SubjectCode", "Note", "NumberOfCredits", "SemesterNumber", "StudyTime", "SubjectName" },
+                values: new object[,]
+                {
                     { "STE", "GDQP", null, 0, 0, "1 tháng", "Giáo dục quốc phòng" },
                     { "SWE", "GDQP", null, 0, 0, "1 tháng", "Giáo dục quốc phòng" },
                     { "HGE", "MAD101", null, 3, 2, "4 tháng", "Toán cho ngành kỹ thuật" },
@@ -983,14 +1034,7 @@ namespace Data.Migrations
                     { "HME", "MAE101", null, 3, 1, "4 tháng", "Toán rời rạc" },
                     { "HTE", "MAE101", null, 3, 1, "4 tháng", "Toán rời rạc" },
                     { "HWE", "MAE101", null, 3, 1, "4 tháng", "Toán rời rạc" },
-                    { "SGE", "MAE101", null, 3, 1, "4 tháng", "Toán rời rạc" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Subject",
-                columns: new[] { "MajorID", "SubjectCode", "Note", "NumberOfCredits", "SemesterNumber", "StudyTime", "SubjectName" },
-                values: new object[,]
-                {
+                    { "SGE", "MAE101", null, 3, 1, "4 tháng", "Toán rời rạc" },
                     { "SME", "MAE101", null, 3, 1, "4 tháng", "Toán rời rạc" },
                     { "STE", "MAE101", null, 3, 1, "4 tháng", "Toán rời rạc" },
                     { "SWE", "MAE101", null, 3, 1, "4 tháng", "Toán rời rạc" },
@@ -1002,115 +1046,6 @@ namespace Data.Migrations
                     { "SME", "PRF101", null, 3, 1, "4 tháng", "Cơ sở lập trình" },
                     { "STE", "PRF101", null, 3, 1, "4 tháng", "Cơ sở lập trình" },
                     { "SWE", "PRF101", null, 3, 1, "4 tháng", "Cơ sở lập trình" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "TypeAdmission",
-                columns: new[] { "MajorID", "TypeDiploma", "TypeOfTranscript" },
-                values: new object[,]
-                {
-                    { "HAO", 1, null },
-                    { "HAO", 2, null },
-                    { "HAO", 3, 1 },
-                    { "HBS", 1, null },
-                    { "HBS", 2, null },
-                    { "HBS", 3, 1 },
-                    { "HBT", 1, null },
-                    { "HBT", 2, null },
-                    { "HBT", 3, 1 },
-                    { "HEA", 1, null },
-                    { "HEA", 2, null },
-                    { "HEA", 3, 1 },
-                    { "HFO", 1, null },
-                    { "HFO", 2, null },
-                    { "HFO", 3, 1 },
-                    { "HGE", 1, null },
-                    { "HGE", 2, null },
-                    { "HHM", 1, null },
-                    { "HHM", 2, null },
-                    { "HHM", 3, 1 },
-                    { "HJA", 1, null },
-                    { "HJA", 2, null },
-                    { "HJA", 3, 1 },
-                    { "HKA", 1, null },
-                    { "HKA", 2, null },
-                    { "HKA", 3, 1 },
-                    { "HME", 1, null },
-                    { "HME", 2, null },
-                    { "HRM", 1, null },
-                    { "HRM", 2, null },
-                    { "HRM", 3, 1 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "TypeAdmission",
-                columns: new[] { "MajorID", "TypeDiploma", "TypeOfTranscript" },
-                values: new object[,]
-                {
-                    { "HSM", 1, null },
-                    { "HSM", 2, null },
-                    { "HSM", 3, 1 },
-                    { "HSO", 1, null },
-                    { "HSO", 2, null },
-                    { "HSO", 3, 1 },
-                    { "HTE", 1, null },
-                    { "HTE", 2, null },
-                    { "HTE", 3, 1 },
-                    { "HWE", 1, null },
-                    { "HWE", 2, null },
-                    { "HWE", 3, 1 },
-                    { "SAO", 1, null },
-                    { "SAO", 2, null },
-                    { "SAO", 3, 1 },
-                    { "SBS", 1, null },
-                    { "SBS", 2, null },
-                    { "SBS", 3, 1 },
-                    { "SBT", 1, null },
-                    { "SBT", 2, null },
-                    { "SBT", 3, 1 },
-                    { "SEA", 1, null },
-                    { "SEA", 2, null },
-                    { "SEA", 3, 1 },
-                    { "SFO", 1, null },
-                    { "SFO", 2, null },
-                    { "SFO", 3, 1 },
-                    { "SGE", 1, null },
-                    { "SGE", 2, null },
-                    { "SGE", 3, 1 },
-                    { "SHM", 1, null },
-                    { "SHM", 2, null },
-                    { "SHM", 3, 1 },
-                    { "SJA", 1, null },
-                    { "SJA", 2, null },
-                    { "SJA", 3, 1 },
-                    { "SKA", 1, null },
-                    { "SKA", 2, null },
-                    { "SKA", 3, 1 },
-                    { "SME", 1, null },
-                    { "SME", 2, null },
-                    { "SME", 3, 1 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "TypeAdmission",
-                columns: new[] { "MajorID", "TypeDiploma", "TypeOfTranscript" },
-                values: new object[,]
-                {
-                    { "SRM", 1, null },
-                    { "SRM", 2, null },
-                    { "SRM", 3, 1 },
-                    { "SSM", 1, null },
-                    { "SSM", 2, null },
-                    { "SSM", 3, 1 },
-                    { "SSO", 1, null },
-                    { "SSO", 2, null },
-                    { "SSO", 3, 1 },
-                    { "STE", 1, null },
-                    { "STE", 2, null },
-                    { "STE", 3, 1 },
-                    { "SWE", 1, null },
-                    { "SWE", 2, null },
-                    { "SWE", 3, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -1127,12 +1062,25 @@ namespace Data.Migrations
             migrationBuilder.InsertData(
                 table: "Request",
                 columns: new[] { "RequestID", "AccountId", "CampusId", "DateRequest", "Description", "FileReasonRequestChangeMajor", "MajorNew", "MajorOld", "Reply", "Status", "isRequestChangeMajor" },
-                values: new object[] { 1, new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"), "Hanoi", new DateTime(2024, 11, 15, 3, 11, 38, 876, DateTimeKind.Local).AddTicks(9047), "Em muốn chuyển ngành!", "file", "HME", "HAO", null, 2, true });
+                values: new object[,]
+                {
+                    { 1, new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"), "Hanoi", new DateTime(2024, 11, 16, 2, 59, 16, 285, DateTimeKind.Local).AddTicks(5176), "Em muốn chuyển ngành!", "file", "HME", "HAO", null, 2, true },
+                    { 2, new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"), "Hanoi", new DateTime(2024, 11, 16, 2, 59, 16, 285, DateTimeKind.Local).AddTicks(5179), "Em muốn chuyển ngành!", "file", "HME", "HAO", null, 2, true }
+                });
 
             migrationBuilder.InsertData(
-                table: "Request",
-                columns: new[] { "RequestID", "AccountId", "CampusId", "DateRequest", "Description", "FileReasonRequestChangeMajor", "MajorNew", "MajorOld", "Reply", "Status", "isRequestChangeMajor" },
-                values: new object[] { 2, new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"), "Hanoi", new DateTime(2024, 11, 15, 3, 11, 38, 876, DateTimeKind.Local).AddTicks(9050), "Em muốn chuyển ngành!", "file", "HME", "HAO", null, 2, true });
+                table: "StudentProfile",
+                columns: new[] { "SpId", "AccountId", "AddressRecipientResults", "CIAddress", "CIDate", "CampusId", "CitizenIentificationNumber", "District", "Dob", "EmailStudent", "Fullname", "FullnameParents", "Gender", "ImgAcademicTranscript1", "ImgAcademicTranscript2", "ImgAcademicTranscript3", "ImgAcademicTranscript4", "ImgAcademicTranscript5", "ImgAcademicTranscript6", "ImgAcademicTranscript7", "ImgAcademicTranscript8", "ImgAcademicTranscript9", "ImgCitizenIdentification1", "ImgCitizenIdentification2", "ImgDiplomaMajor1", "ImgDiplomaMajor2", "Imgpriority", "Major1", "Major2", "Nation", "Note", "PermanentAddress", "PhoneParents", "PhoneStudent", "PriorityDetailPriorityID", "Province", "RecipientResults", "SchoolName", "SpecificAddress", "StudentCode", "TimeRegister", "TypeOfDiplomaMajor1", "TypeOfDiplomaMajor2", "TypeOfTranscriptMajor1", "TypeOfTranscriptMajor2", "TypeofStatusMajor1", "TypeofStatusMajor2", "TypeofStatusProfile", "Ward", "YearOfGraduation" },
+                values: new object[] { new Guid("41a2ad7d-1af6-464e-bbf4-0d18ae664851"), new Guid("2f36ad81-47c3-4194-9af8-ba19300695aa"), null, "HCM", new DateTime(2024, 11, 16, 2, 59, 16, 285, DateTimeKind.Local).AddTicks(5158), "Hanoi", "038301012121", null, new DateTime(2024, 11, 16, 2, 59, 16, 285, DateTimeKind.Local).AddTicks(5159), "nguyenducanh01.57@gmail.com", "Nguyễn Đức Anh", null, true, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "HAO", null, null, null, null, null, "0971341555", 1, null, null, null, null, null, new DateTime(2024, 11, 16, 2, 59, 16, 285, DateTimeKind.Local).AddTicks(5164), 5, 5, null, null, 2, 2, 1, null, null });
+
+            migrationBuilder.InsertData(
+                table: "TypeAdmission",
+                columns: new[] { "AdmissionInformationID", "MajorID", "TypeDiploma", "TypeOfTranscript" },
+                values: new object[,]
+                {
+                    { 1, "HME", 1, null },
+                    { 1, "HME", 2, null }
+                });
 
             migrationBuilder.InsertData(
                 table: "UserRoles",
@@ -1170,11 +1118,6 @@ namespace Data.Migrations
                 column: "AdmissionInformationID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AdmissionTime_CampusId",
-                table: "AdmissionTime",
-                column: "CampusId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Blog_BlogCategoryId",
                 table: "Blog",
                 column: "BlogCategoryId");
@@ -1188,6 +1131,11 @@ namespace Data.Migrations
                 name: "IX_Major_CampusId",
                 table: "Major",
                 column: "CampusId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MajorAdmission_MajorID",
+                table: "MajorAdmission",
+                column: "MajorID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PayFeeAdmission_SpId",
@@ -1257,6 +1205,11 @@ namespace Data.Migrations
                 column: "MajorID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_TypeAdmission_AdmissionInformationID_MajorID",
+                table: "TypeAdmission",
+                columns: new[] { "AdmissionInformationID", "MajorID" });
+
+            migrationBuilder.CreateIndex(
                 name: "IX_UserClaims_UserId",
                 table: "UserClaims",
                 column: "UserId");
@@ -1315,13 +1268,13 @@ namespace Data.Migrations
                 name: "UserTokens");
 
             migrationBuilder.DropTable(
-                name: "AdmissionInformation");
-
-            migrationBuilder.DropTable(
                 name: "BlogCategory");
 
             migrationBuilder.DropTable(
                 name: "StudentProfile");
+
+            migrationBuilder.DropTable(
+                name: "MajorAdmission");
 
             migrationBuilder.DropTable(
                 name: "Roles");
@@ -1331,6 +1284,9 @@ namespace Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "PriorityDetail");
+
+            migrationBuilder.DropTable(
+                name: "AdmissionInformation");
 
             migrationBuilder.DropTable(
                 name: "Major");
