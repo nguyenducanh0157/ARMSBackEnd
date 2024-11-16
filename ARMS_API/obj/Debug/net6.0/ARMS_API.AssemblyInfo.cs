@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ARMS_API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+615f8b8e95c08dc64889849f4e024ee007cdb0cb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f330bff00a2d1c2cbfa7d3a34bd3ac312441e61c")]
 [assembly: System.Reflection.AssemblyProductAttribute("ARMS_API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ARMS_API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

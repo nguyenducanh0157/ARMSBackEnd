@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Org.BouncyCastle.Asn1.Ocsp;
+using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -52,7 +53,7 @@ namespace ARMS_API.Controllers
                 }
             }
             var userRoles = await _userManager.GetRolesAsync(user);
-
+            var role = userRoles.FirstOrDefault();
             var authClaims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, user.Fullname),
@@ -74,6 +75,8 @@ namespace ARMS_API.Controllers
             ResponseLogin respone = new ResponseLogin();
             respone.Bear = new JwtSecurityTokenHandler().WriteToken(Bear);
             respone.Expiration = Bear.ValidTo;
+            respone.CampusId = model.CampusId;
+            respone.Role = role;
             return Ok(respone);
         }
         [HttpPost("login-by-email")]
@@ -102,7 +105,7 @@ namespace ARMS_API.Controllers
                     }
 
                 var userRoles = await _userManager.GetRolesAsync(user);
-
+                var role = userRoles.FirstOrDefault();
                 var authClaims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, user.Fullname),
@@ -124,12 +127,14 @@ namespace ARMS_API.Controllers
                 ResponseLogin respone = new ResponseLogin();
                 respone.Bear = new JwtSecurityTokenHandler().WriteToken(Bear);
                 respone.Expiration = Bear.ValidTo;
+                respone.CampusId = request.CampusId;
+                respone.Role = role;
                 return Ok(respone);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return Ok(new ResponseViewModel() { Status = false, Message = ex.Message });
+                return Ok(new ResponseViewModel() { Status = false, Message = ex.Message});
             }
         }
         private JwtSecurityToken GetToken(List<Claim> authClaims)
