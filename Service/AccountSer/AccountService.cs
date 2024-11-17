@@ -28,10 +28,27 @@ namespace Service.AccountSer
         public async Task<List<Account>> GetAccounts(string campusId)
         {
             var allUsers = await _userManager.Users
-                    .Where(user => user.CampusId == campusId)
+                    .Include(x=>x.Major)
+                    .Where(user => user.CampusId == campusId && (user.TypeAccount == TypeAccount.Account || user.TypeAccount == TypeAccount.RequestAccountAccept))
                     .ToListAsync();
+            var adminRoleId = Guid.Parse("B8FD818F-63F1-49EE-BEC5-F7B66CAFBFCA");
 
-            return allUsers;
+            // Lọc bỏ tài khoản có vai trò Admin
+            var filteredUsers = new List<Account>();
+
+            foreach (var user in allUsers)
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+                var isAdmin = roles.Any(roleName =>
+                    _roleManager.Roles.Any(role => role.Name == roleName && role.Id == adminRoleId)
+                );
+
+                if (!isAdmin)
+                {
+                    filteredUsers.Add(user);
+                }
+            }
+            return filteredUsers;
         }
 
         public async Task<List<Account>> GetAccountStudent(string campusId)

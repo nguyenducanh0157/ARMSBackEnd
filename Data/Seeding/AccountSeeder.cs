@@ -45,6 +45,7 @@ namespace Data.Seeding
                     CampusId = "Hanoi",
                     Fullname = "Admin Hanoi",
                     isAccountActive = true,
+                    TypeAccount = TypeAccount.Account,
                 },
                  new Account()
                  {
@@ -59,6 +60,7 @@ namespace Data.Seeding
                      CampusId = "Hanoi",
                      Fullname = "Admin Officer Hanoi",
                      isAccountActive = true,
+                     TypeAccount = TypeAccount.Account,
                  },
                  new Account()
                  {
@@ -73,6 +75,7 @@ namespace Data.Seeding
                      CampusId = "Hanoi",
                      Fullname = "School Service Hanoi",
                      isAccountActive = true,
+                     TypeAccount = TypeAccount.Account,
                  },
                  new Account()
                  {
@@ -87,6 +90,7 @@ namespace Data.Seeding
                      CampusId = "Hanoi",
                      Fullname = "Admission Council Hanoi",
                      isAccountActive = true,
+                     TypeAccount = TypeAccount.Account,
                  },
                  new Account()
                  {
@@ -103,6 +107,7 @@ namespace Data.Seeding
                      StudentCode = "HWE160153",
                      MajorId="HWE",
                      isAccountActive = true,
+                     TypeAccount = TypeAccount.RequestAccountAccept,
                  });
 
             // Seed User in role

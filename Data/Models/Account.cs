@@ -19,11 +19,19 @@ namespace Data.Models
         public virtual Campus Campus { get; set; }
         public string? StudentCode { get; set; }
         public string? MajorId { get; set; }
+        public TypeAccount TypeAccount { get; set; }
 
         public int? SPId { get; set; }
         public virtual Major? Major { get; set; }
         public virtual StudentProfile? StudentProfile { get; set; }
         public virtual ICollection<Request>? RequestChangeMajors { get; set; }
-        public virtual ICollection<RequestNotification>? RequestNotifications { get; set; } // school gửi các thông báo thì xem từng gửi những thông báo gì ở đây 
+        public virtual ICollection<RequestNotification>? RequestNotifications { get; set; }
+    }
+    public enum TypeAccount
+    {
+        Account,
+        RequestAccountInProcess,
+        RequestAccountAccept,
+        RequestAccountRejected
     }
 }

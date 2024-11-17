@@ -190,6 +190,11 @@ namespace ARMS_API.Config
 
                 config.CreateMap<RequestWithDrawal_SS_DTO, Request>();
                 config.CreateMap<Request, RequestWithDrawal_SS_DTO>();
+
+                // account manage
+                config.CreateMap<Account, Account_DTO>()
+                .ForMember(dest => dest.MajorCode, opt => opt.MapFrom(src => src.Major.MajorCode))
+                .ForMember(dest => dest.MajorName, opt => opt.MapFrom(src => src.Major.MajorName));
             });
 
             return mapperConfig.CreateMapper();

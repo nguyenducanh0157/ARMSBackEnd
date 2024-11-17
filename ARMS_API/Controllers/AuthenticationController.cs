@@ -34,13 +34,13 @@ namespace ARMS_API.Controllers
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginDTO model)
         {
-            if (model == null || model.email == null || model.CampusId == null)
+            if (model == null || model.username == null || model.CampusId == null)
             {
                 throw new Exception("Không nhận được thông tin người dùng");
             }
             //var user = await _userManager.FindByEmailAsync(model.email);
             var user = await _userManager.Users
-                                    .Where(user => user.CampusId == model.CampusId && user.Email == model.email && user.isAccountActive == true)
+                                    .Where(user => user.CampusId == model.CampusId && user.UserName == model.username && user.isAccountActive == true)
                                     .FirstOrDefaultAsync();
             if (user == null)
             {

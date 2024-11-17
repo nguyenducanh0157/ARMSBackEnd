@@ -11,5 +11,17 @@ namespace Data.DTO
         public string? Fullname { get; set; }
         public string? StudentCode { get; set; }
     }
-
+    public class Account_DTO
+    {
+        public Guid Id { get; set; }
+        public string? Fullname { get; set; }
+        public bool? Gender { get; set; }
+        public string? Email { get; set; }
+        public string? Phone { get; set; }
+        public DateTime? Dob { get; set; }
+        public bool isAccountActive { get; set; }
+        public string? MajorCode { get; set; }
+        public string? MajorName { get; set; }
+        public string RoleName { get; set; }
+    }
 }
