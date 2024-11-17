@@ -16,5 +16,6 @@ namespace Data.Models
         public DateTime EndAdmission { get; set; }
         public int AdmissionInformationID { get; set; }
         public virtual AdmissionInformation? AdmissionInformation { get; set; }
+        public virtual List<StudentProfile>? StudentProfiles { get; set; }
     }
 }

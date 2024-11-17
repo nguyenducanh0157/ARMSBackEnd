@@ -77,7 +77,47 @@ namespace ARMS_API.Controllers
             // Thêm trạng thái thanh toán vào chuỗi truy vấn
             queryString.Append(checkResponse.Success == true ? "status=success" : "status=fail");
 
-            return Redirect($"http://localhost:3000/nop-ho-so/nop-ho-so?{queryString}");
+            return Redirect($"http://localhost:3000/nop-ho-so?{queryString}");
+        }
+        // api thanh toán học phí và phí giữ chỗ
+        [HttpPost("pay-admission")]
+        public async Task<IActionResult> CreatePaymentFeeAdmission([FromBody] VnPaymentRequestModel request)
+        {
+            Guid codePay = Guid.NewGuid();
+            //AdmissionInformation AI = await _admissionInformationService.GetAdmissionInformation(request.Campus);
+            //decimal fee = AI.FeeRegister;
+            decimal fee = 4600000;
+            DateTime timecreate = DateTime.UtcNow;
+            if (request == null)
+            {
+                return BadRequest("Invalid payment request!");
+            }
+
+            var paymentUrl = _vnPayService.CreatePaymentUrlAdmission(HttpContext, codePay, fee, timecreate);
+
+            return Ok(new { PaymentUrl = paymentUrl });
+        }
+        [HttpGet("vnpay_return_admission")]
+        public IActionResult VNPayReturnAdmission()
+        {
+            // Lấy tất cả các tham số trả về từ VNPAY
+            var queryParams = Request.Query;
+
+            // Kiểm tra phản hồi thanh toán từ VNPAY
+            var checkResponse = _vnPayService.PaymentExecute(queryParams);
+
+            // Tạo chuỗi truy vấn để chuyển tiếp đến frontend với tất cả các tham số
+            var queryString = new StringBuilder();
+            foreach (var param in queryParams)
+            {
+                // Sử dụng UrlEncode để mã hóa giá trị tham số
+                var encodedValue = Uri.EscapeDataString(param.Value);
+                queryString.Append($"{param.Key}={encodedValue}&");
+            }
+            // Thêm trạng thái thanh toán vào chuỗi truy vấn
+            queryString.Append(checkResponse.Success == true ? "status=success" : "status=fail");
+
+            return Redirect($"http://localhost:3000/tra-cuu-ho-so?{queryString}");
         }
     }
 }

@@ -54,6 +54,8 @@ namespace Data.DTO
         public virtual ICollection<AcademicTranscript_View_DTO>? AcademicTranscriptsMajor1 { get; set; }
         public virtual ICollection<AcademicTranscript_View_DTO>? AcademicTranscriptsMajor2 { get; set; }
         public virtual PayFeeAdmissionDTO? PayFeeAdmission { get; set; }
+        // đợt tuyển sinh
+        public int AIId { get; set; }
 
     }
     public class RegisterAdmissionProfileDTO_Update

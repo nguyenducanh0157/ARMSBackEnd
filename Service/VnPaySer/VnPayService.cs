@@ -45,6 +45,32 @@ namespace Service.VnPaySer
             Console.WriteLine(_config["VNPay:TmnCode"]);
             return _config["VNPay:Url"] + paymentUrl;
         }
+        public string CreatePaymentUrlAdmission(HttpContext context, Guid codePayment, decimal fee, DateTime dateCreate)
+        {
+            var tick = DateTime.Now.Ticks.ToString();
+
+            var vnpay = new VnPayLibrary();
+            vnpay.AddRequestData("vnp_Version", _config["VNPay:Version"]);
+            vnpay.AddRequestData("vnp_Command", _config["VNPay:Command"]);
+            vnpay.AddRequestData("vnp_TmnCode", _config["VNPay:TmnCode"]);
+            vnpay.AddRequestData("vnp_Amount", ((int)(fee * 100)).ToString());
+
+            vnpay.AddRequestData("vnp_CreateDate", dateCreate.ToString("yyyyMMddHHmmss"));
+            vnpay.AddRequestData("vnp_CurrCode", _config["VNPay:CurrCode"]);
+            vnpay.AddRequestData("vnp_IpAddr", Utils.GetIpAddress(context));
+            vnpay.AddRequestData("vnp_Locale", _config["VNPay:Locale"]);
+
+            vnpay.AddRequestData("vnp_OrderInfo", "Thanh toán hoá đơn:" + codePayment);
+            vnpay.AddRequestData("vnp_OrderType", "other");
+            vnpay.AddRequestData("vnp_ReturnUrl", _config["VNPay:PaymentBackReturnUrlAdmission"]);
+
+            vnpay.AddRequestData("vnp_TxnRef", tick);
+
+            var paymentUrl = vnpay.CreateRequestUrl(_config["VNPay:BaseUrl"], _config["VNPay:HashSecret"]);
+            Console.WriteLine(_config["VNPay:HashSecret"]);
+            Console.WriteLine(_config["VNPay:TmnCode"]);
+            return _config["VNPay:Url"] + paymentUrl;
+        }
 
         public PayFeeAdmission PaymentExecute(IQueryCollection collections)
         {

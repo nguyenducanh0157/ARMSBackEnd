@@ -48,6 +48,7 @@ namespace Data.Models
         public string? ImgAcademicTranscript8 { get; set; }//kỳ 2 - lớp 12
         public string? ImgAcademicTranscript9 { get; set; }//cuối năm - lớp 12
         public DateTime TimeRegister { get; set; }
+
         public string? Note { get; set; }
         public virtual TypeOfDiploma? TypeOfDiplomaMajor1 { get; set; }// loại bằng ngành 1
         public virtual TypeOfTranscript? TypeOfTranscriptMajor1 { get; set; }// loại học bạ ngành 1
@@ -61,6 +62,9 @@ namespace Data.Models
         // hồ sơ nhập học
         public string? AdmissionForm { get; set; }
         public string? BirthCertificate { get; set; }
+        // đợt tuyển sinh
+        public int AIId { get; set; }
+        public virtual AdmissionTime? AdmissionTime { get; set; }
         // account
         public Guid? AccountId { get; set; }
         public virtual Account? Account { get; set; }

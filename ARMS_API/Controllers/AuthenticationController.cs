@@ -1,4 +1,5 @@
-﻿using Data.DTO;
+﻿using ARMS_API.Helper;
+using Data.DTO;
 using Data.Models;
 using FirebaseAdmin.Auth;
 using Google.Apis.Auth;
@@ -24,11 +25,13 @@ namespace ARMS_API.Controllers
         private readonly UserManager<Account> _userManager;
         private readonly RoleManager<IdentityRole<Guid>> _roleManager;
         private readonly IConfiguration _configuration;
-        public AuthenticationController(UserManager<Account> userManager, RoleManager<IdentityRole<Guid>> roleManager, IConfiguration configuration)
+        private readonly FirebaseService _firebaseService;
+        public AuthenticationController(UserManager<Account> userManager, RoleManager<IdentityRole<Guid>> roleManager, IConfiguration configuration, FirebaseService firebaseService)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
+            _firebaseService = firebaseService;
         }
         [HttpPost]
         [Route("login")]

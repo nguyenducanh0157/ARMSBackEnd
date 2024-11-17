@@ -25,7 +25,7 @@ namespace ARMS_API.Controllers
         private readonly IMapper _mapper;
         private ValidRegisterAdmission _validInput;
         private UserInput _userInput;
-        private readonly IEmailService _emailService;
+        private readonly IEmailService _emailByTextService;
         private readonly IMemoryCache _cache;
         private readonly TimeSpan _otpLifetime = TimeSpan.FromMinutes(5);
         private readonly TokenHealper _tokenHealper;
@@ -33,7 +33,7 @@ namespace ARMS_API.Controllers
             IMapper mapper,
             ValidRegisterAdmission validInput,
             UserInput userInput,
-            IEmailService emailService,
+            IEmailService emailByTextService,
             IMemoryCache cache,
             TokenHealper tokenHealper,
             IPayFeeAdmissionService payFeeAdmissionService)
@@ -42,7 +42,7 @@ namespace ARMS_API.Controllers
             _mapper = mapper;
             _validInput = validInput;
             _userInput = userInput;
-            _emailService = emailService;
+            _emailByTextService = emailByTextService;
             _cache = cache;
             _tokenHealper = tokenHealper;
             _payFeeAdmissionService = payFeeAdmissionService;
@@ -227,7 +227,7 @@ namespace ARMS_API.Controllers
             emailRequest.Subject = "Send OTP";
             emailRequest.Body = $"OTP của bạn là: {otp}";
             _cache.Set(emailRequest.ToEmail, otp, _otpLifetime);
-            await _emailService.SendEmailAsync(emailRequest);
+            await _emailByTextService.SendEmailAsync(emailRequest);
             return Ok(new { Message = "Mã OTP đã được gửi đến email của bạn!", Email = sp.EmailStudent });
         }
         [HttpPost("verify-OTP")]

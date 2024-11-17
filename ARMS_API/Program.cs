@@ -155,7 +155,8 @@ builder.Services.AddScoped<IPriorityService, PriorityService>();
 builder.Services.AddScoped<IPayFeeAdmissionService, PayFeeAdmissionService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IRequestNotificationService, RequestNotificationService>();
-builder.Services.AddScoped< EmailQueue>();
+builder.Services.AddScoped<EmailQueue>();
+builder.Services.AddSingleton<FirebaseService>();
 //Services
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IVnPayService, VnPayService>();

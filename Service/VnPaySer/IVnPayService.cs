@@ -13,6 +13,7 @@ namespace Service.VnPaySer
     public interface IVnPayService
     {
         string CreatePaymentUrl(HttpContext context, Guid codePayment, decimal fee, DateTime dateCreate);
+        string CreatePaymentUrlAdmission(HttpContext context, Guid codePayment, decimal fee, DateTime dateCreate);
         PayFeeAdmission PaymentExecute(IQueryCollection collections);
     }
 }

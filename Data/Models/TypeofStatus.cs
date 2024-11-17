@@ -20,7 +20,8 @@ namespace Data.Models
     {
         Fail,
         Pass,
-        Inprocess
+        Inprocess,
+        Pending
     }
     public enum TypeofRequestChangeMajor
     {

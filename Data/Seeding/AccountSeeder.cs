@@ -123,7 +123,7 @@ namespace Data.Seeding
                 new IdentityUserRole<Guid> { UserId = Guid.Parse("AA321FA2-D640-449F-9CF3-D5A14001AA3E"), RoleId = Guid.Parse("E5EC8836-E240-4BFC-9BBE-33F2CC7A404D") },
                 ////seed student
                 new IdentityUserRole<Guid> { UserId = Guid.Parse("2F36AD81-47C3-4194-9AF8-BA19300695AA"), RoleId = Guid.Parse("D2D63C5B-D09B-4828-8322-F18BA103FE86") }
-                ); ;
+                );
         }
     }
 }

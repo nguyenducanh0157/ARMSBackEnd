@@ -2738,11 +2738,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Job\\Đức Anh\\DABE\\Repository\\Repository.csproj",
+      "projectUniqueName": "D:\\Job\\Đức Anh\\BE_new\\Repository\\Repository.csproj",
       "projectName": "Repository",
-      "projectPath": "D:\\Job\\Đức Anh\\DABE\\Repository\\Repository.csproj",
+      "projectPath": "D:\\Job\\Đức Anh\\BE_new\\Repository\\Repository.csproj",
       "packagesPath": "C:\\Users\\-ASUS-\\.nuget\\packages\\",
-      "outputPath": "D:\\Job\\Đức Anh\\DABE\\Repository\\obj\\",
+      "outputPath": "D:\\Job\\Đức Anh\\BE_new\\Repository\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\-ASUS-\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2759,8 +2759,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Job\\Đức Anh\\DABE\\Data\\Data.csproj": {
-              "projectPath": "D:\\Job\\Đức Anh\\DABE\\Data\\Data.csproj"
+            "D:\\Job\\Đức Anh\\BE_new\\Data\\Data.csproj": {
+              "projectPath": "D:\\Job\\Đức Anh\\BE_new\\Data\\Data.csproj"
             }
           }
         }
