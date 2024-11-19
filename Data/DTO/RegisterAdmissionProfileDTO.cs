@@ -167,6 +167,9 @@ namespace Data.DTO
         public string? CampusName { get; set; }
         public virtual PriorityDetailDTO? PriorityDetail { get; set; }// loại điểm ưu tiên
         public virtual PayFeeAdmissionDTO? PayFeeAdmission { get; set; }
+        // hồ sơ nhập học
+        public string? AdmissionForm { get; set; }
+        public string? BirthCertificate { get; set; }
 
     }
     public class AcademicTranscript_View_DTO
