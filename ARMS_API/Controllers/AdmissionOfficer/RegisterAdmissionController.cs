@@ -86,6 +86,62 @@ namespace ARMS_API.Controllers.AdmissionOfficer
                 });
             }
         }
+        [HttpGet("list-admission")]
+        public async Task<IActionResult> ListAdmission(string CampusId, string? Search, int CurrentPage)
+        {
+            try
+            {
+                ResponeModel<AdmissionProfile_AO_DTO> result = new ResponeModel<AdmissionProfile_AO_DTO>();
+                result.CurrentPage = CurrentPage;
+                result.CampusId = CampusId;
+                result.Search = Search;
+
+                List<StudentProfile> response = await _studentProfileService.GetAdmission(CampusId);
+                // Search
+                if (!string.IsNullOrEmpty(Search))
+                {
+                    string searchTerm = _userInput.NormalizeText(Search);
+                    response = response
+                                .Where(sp => sp != null && (
+                                    _userInput.NormalizeText(sp.Fullname ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.FullnameParents ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.CitizenIentificationNumber ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.District ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.EmailStudent ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.Nation ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.Note ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.PhoneParents ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.PhoneStudent ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.SpecificAddress ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.AddressRecipientResults ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.SchoolName ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.Ward ?? "").Contains(searchTerm) ||
+                                    _userInput.NormalizeText(sp.CIAddress ?? "").Contains(searchTerm)
+                                ))
+                                .ToList();
+                }
+
+                //mapper
+
+                result.PageCount = (int)Math.Ceiling(response.Count() / (double)result.PageSize);
+                var studentProfiles = response
+                    .Skip(((int)result.CurrentPage - 1) * (int)result.PageSize)
+                    .Take((int)result.PageSize)
+                    .ToList();
+                List<AdmissionProfile_AO_DTO> studentProfile = _mapper.Map<List<AdmissionProfile_AO_DTO>>(studentProfiles);
+                result.Item = studentProfile;
+                result.TotalItems = response.Count;
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResponseViewModel()
+                {
+                    Status = false,
+                    Message = ex.Message
+                });
+            }
+        }
         [HttpGet("get-register-admission/{id}")]
         public async Task<IActionResult> GetRegisterAdmission(string id)
         {

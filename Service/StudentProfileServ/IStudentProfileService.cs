@@ -18,5 +18,7 @@ namespace Service.StudentProfileServ
         Task<StudentProfile?> GetStudentProfileBySpIdAsync(Guid id);
         Task<StudentProfile?> GetStudentProfileBySpCIIdAsync(string id);
         Task<StudentProfile> UpdateStudentRegister(StudentProfile StudentProfile);
+        Task<List<StudentProfile>> GetAdmission(string CampusId);
+        Task<List<StudentProfile>> GetRegisterAdmissionForAC(string CampusId);
     }
 }

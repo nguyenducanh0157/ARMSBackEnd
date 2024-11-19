@@ -38,8 +38,20 @@ namespace Service.StudentProfileServ
             => await _studentProfileRepository.GetExistCCCDStudent(CID);
 
         public async Task<List<StudentProfile>> GetRegisterAdmission(string CampusId)
-            => await _studentProfileRepository.GetRegisterAdmission(CampusId);
-
+        {
+            var list = await _studentProfileRepository.GetRegisterAdmission(CampusId);
+            return list.Where(x=>x.TypeofStatusProfile== TypeofStatus.SuccessProfileRegister && x.TypeofStatusProfile == TypeofStatus.ConfirmSuccessProfileRegister).ToList();
+        }
+        public async Task<List<StudentProfile>> GetRegisterAdmissionForAC(string CampusId)
+        {
+            var list = await _studentProfileRepository.GetRegisterAdmission(CampusId);
+            return list.Where(x =>  x.TypeofStatusProfile == TypeofStatus.ConfirmSuccessProfileRegister).ToList();
+        }
+        public async Task<List<StudentProfile>> GetAdmission(string CampusId)
+        {
+            var list = await _studentProfileRepository.GetRegisterAdmission(CampusId);
+            return list.Where(x => x.TypeofStatusProfile == TypeofStatus.ConfirmSuccessProfileAdmission && x.TypeofStatusProfile == TypeofStatus.SuccessProfileAdmission).ToList();
+        }
         public async Task<StudentProfile?> GetStudentProfileBySpCIIdAsync(string id)
             => await _studentProfileRepository.GetStudentProfileBySpCIIdAsync(id);
 

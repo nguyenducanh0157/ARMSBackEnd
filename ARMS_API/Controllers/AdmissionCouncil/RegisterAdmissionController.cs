@@ -40,7 +40,7 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 result.CampusId = CampusId;
                 result.Search = Search;
 
-                List<StudentProfile> response = await _studentProfileService.GetRegisterAdmission(CampusId);
+                List<StudentProfile> response = await _studentProfileService.GetRegisterAdmissionForAC(CampusId);
                 // Search
                 if (!string.IsNullOrEmpty(Search))
                 {
