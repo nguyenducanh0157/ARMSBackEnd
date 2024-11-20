@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Data.DTO;
 using Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.AccountSer;
@@ -10,6 +11,7 @@ namespace ARMS_API.Controllers.Student
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Student")]
     public class RequestWithDrawalController : ControllerBase
     {
         private IRequestService _request;

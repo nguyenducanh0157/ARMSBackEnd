@@ -47,6 +47,27 @@ namespace ARMS_API.Controllers.Student
                 return BadRequest();
             }
         }
+        [HttpGet("get-major")]
+        public async Task<IActionResult> GetMajor()
+        {
+            try
+            {
+                var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return Unauthorized("Không tìm thấy ID người dùng!");
+                }
+                Account major = await _accountService.GetAccountByUserId(Guid.Parse(userId));
+                Account_Major_DTO responeResult = _mapper.Map<Account_Major_DTO>(major);
+                return Ok(responeResult);
+
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
+        }
         [HttpPost("add-request-change-major")]
         public async Task<IActionResult> AddRegisterAdmission([FromBody] RequestChangeMajor_Student_DTO requestChangeMajor_Student_DTO)
         {

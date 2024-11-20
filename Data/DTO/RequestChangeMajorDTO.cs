@@ -13,6 +13,7 @@ namespace Data.DTO
         public string MajorNew { get; set; }
         public string MajorOld { get; set; }
         public DateTime DateRequest { get; set; }
+        public string? Reply { get; set; }
         public string Description { get; set; }
         public string FileReasonRequestChangeMajor { get; set; }
         public TypeofRequestChangeMajor Status { get; set; }
@@ -24,6 +25,7 @@ namespace Data.DTO
         public int RequestID { get; set; }
         public DateTime DateRequest { get; set; }
         public string Description { get; set; }
+        public string? Reply { get; set; }
         public string FileReasonRequestChangeMajor { get; set; }
         public TypeofRequestChangeMajor Status { get; set; }
     }

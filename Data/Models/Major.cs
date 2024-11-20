@@ -24,5 +24,10 @@ namespace Data.Models
         public virtual ICollection<Request>? RequestChangeMajorsN { get; set; }
         public virtual ICollection<Request>? RequestChangeMajorsO { get; set; }
         public virtual ICollection<MajorAdmission>? MajorAdmissions { get; set; }
+
+        public static implicit operator Major(Account v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
