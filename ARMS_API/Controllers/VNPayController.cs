@@ -14,12 +14,12 @@ namespace ARMS_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PayController : ControllerBase
+    public class VNPayController : ControllerBase
     {
         private readonly IVnPayService _vnPayService;
         private readonly IAdmissionInformationService _admissionInformationService;
 
-        public PayController(IVnPayService vnPayService,IAdmissionInformationService admissionInformationService)
+        public VNPayController(IVnPayService vnPayService,IAdmissionInformationService admissionInformationService)
         {
             _vnPayService = vnPayService;
             _admissionInformationService = admissionInformationService;
