@@ -14,12 +14,12 @@ namespace ARMS_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VNPayController : ControllerBase
+    public class PayController : ControllerBase
     {
         private readonly IVnPayService _vnPayService;
         private readonly IAdmissionInformationService _admissionInformationService;
 
-        public VNPayController(IVnPayService vnPayService,IAdmissionInformationService admissionInformationService)
+        public PayController(IVnPayService vnPayService,IAdmissionInformationService admissionInformationService)
         {
             _vnPayService = vnPayService;
             _admissionInformationService = admissionInformationService;
@@ -28,9 +28,8 @@ namespace ARMS_API.Controllers
         public async Task<IActionResult> CreatePayment([FromBody] VnPaymentRequestModel request)
         {
             Guid codePay = Guid.NewGuid();
-            //AdmissionInformation AI = await _admissionInformationService.GetAdmissionInformation(request.Campus);
-            //decimal fee = AI.FeeRegister;
-            decimal fee = 100000;
+            AdmissionInformation AI = await _admissionInformationService.GetAdmissionInformationByStatus(request.Campus);
+            decimal fee = AI.FeeRegister;
             DateTime timecreate = DateTime.UtcNow;
             if (request == null)
             {
@@ -41,40 +40,17 @@ namespace ARMS_API.Controllers
 
             return Ok(new { PaymentUrl = paymentUrl });
         }
-        //[HttpGet("vnpay_return")]
-        //public IActionResult VNPayReturnTest()
-        //{
-
-        //    var checkrespone = _vnPayService.PaymentExecute(Request.Query);
-
-        //    if (checkrespone.Success == true)
-        //    {
-
-        //        return Ok(new { message = "Giao dịch thành công", checkrespone});
-        //    }
-        //    else
-        //    {
-        //        return BadRequest(new { message = "Giao dịch thất bại", checkrespone.TransactionStatus });
-        //    }
-        //}
         [HttpGet("vnpay_return")]
         public IActionResult VNPayReturn()
         {
-            // Lấy tất cả các tham số trả về từ VNPAY
             var queryParams = Request.Query;
-
-            // Kiểm tra phản hồi thanh toán từ VNPAY
             var checkResponse = _vnPayService.PaymentExecute(queryParams);
-
-            // Tạo chuỗi truy vấn để chuyển tiếp đến frontend với tất cả các tham số
             var queryString = new StringBuilder();
             foreach (var param in queryParams)
             {
-                // Sử dụng UrlEncode để mã hóa giá trị tham số
                 var encodedValue = Uri.EscapeDataString(param.Value);
                 queryString.Append($"{param.Key}={encodedValue}&");
             }
-            // Thêm trạng thái thanh toán vào chuỗi truy vấn
             queryString.Append(checkResponse.Success == true ? "status=success" : "status=fail");
 
             return Redirect($"http://localhost:3000/nop-ho-so?{queryString}");
@@ -84,9 +60,8 @@ namespace ARMS_API.Controllers
         public async Task<IActionResult> CreatePaymentFeeAdmission([FromBody] VnPaymentRequestModel request)
         {
             Guid codePay = Guid.NewGuid();
-            //AdmissionInformation AI = await _admissionInformationService.GetAdmissionInformation(request.Campus);
-            //decimal fee = AI.FeeRegister;
-            decimal fee = 4600000;
+            AdmissionInformation AI = await _admissionInformationService.GetAdmissionInformationByStatus(request.Campus);
+            decimal fee = AI.FeeRegister;
             DateTime timecreate = DateTime.UtcNow;
             if (request == null)
             {
@@ -100,21 +75,16 @@ namespace ARMS_API.Controllers
         [HttpGet("vnpay_return_admission")]
         public IActionResult VNPayReturnAdmission()
         {
-            // Lấy tất cả các tham số trả về từ VNPAY
             var queryParams = Request.Query;
 
-            // Kiểm tra phản hồi thanh toán từ VNPAY
             var checkResponse = _vnPayService.PaymentExecute(queryParams);
 
-            // Tạo chuỗi truy vấn để chuyển tiếp đến frontend với tất cả các tham số
             var queryString = new StringBuilder();
             foreach (var param in queryParams)
             {
-                // Sử dụng UrlEncode để mã hóa giá trị tham số
                 var encodedValue = Uri.EscapeDataString(param.Value);
                 queryString.Append($"{param.Key}={encodedValue}&");
             }
-            // Thêm trạng thái thanh toán vào chuỗi truy vấn
             queryString.Append(checkResponse.Success == true ? "status=success" : "status=fail");
 
             return Redirect($"http://localhost:3000/tra-cuu-ho-so?{queryString}");

@@ -89,6 +89,7 @@ namespace Service.VnPaySer
             var vnp_BankTranNo = vnpay.GetResponseData("vnp_BankTranNo");
             var vnp_CardType = vnpay.GetResponseData("vnp_CardType");
             var vnp_OrderInfo = vnpay.GetResponseData("vnp_OrderInfo");
+            var vnp_OrderType = vnpay.GetResponseData("vnp_OrderType");
             var vnp_PayDate = DateTime.ParseExact(vnpay.GetResponseData("vnp_PayDate"), "yyyyMMddHHmmss", null);
             var vnp_ResponseCode = vnpay.GetResponseData("vnp_ResponseCode");
             var vnp_TmnCode = vnpay.GetResponseData("vnp_TmnCode");
@@ -104,7 +105,6 @@ namespace Service.VnPaySer
                     Success = false
                 };
             }
-
             return new PayFeeAdmission
             {
                 Success = true,
@@ -119,7 +119,8 @@ namespace Service.VnPaySer
                 TmnCode = vnp_TmnCode,
                 TransactionNo = vnp_TransactionNo,
                 TransactionStatus = vnp_TransactionStatus,
-                SecureHash = vnp_SecureHash
+                SecureHash = vnp_SecureHash,
+                OrderType = vnp_OrderType
             };
         }
     }

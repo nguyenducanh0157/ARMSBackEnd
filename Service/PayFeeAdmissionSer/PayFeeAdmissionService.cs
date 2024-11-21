@@ -20,8 +20,6 @@ namespace Service.PayFeeAdmissionSer
         public Task AddNewPayFeeAdmission(PayFeeAdmission payFeeAdmission) => _payFeeAdmissionRepository.AddNewPayFeeAdmission(payFeeAdmission);
 
         public Task<List<PayFeeAdmission>> GetPayFeeAdmissions(string campusId)
-        {
-            throw new NotImplementedException();
-        }
+        => _payFeeAdmissionRepository.GetPayFeeAdmissions(campusId);
     }
 }

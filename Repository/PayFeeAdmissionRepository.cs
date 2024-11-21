@@ -19,6 +19,8 @@ namespace Repository
             try
             {
                 List<PayFeeAdmission> PayFeeAdmissions = await _context.PayFeeAdmissions
+                    .Include(x=>x.StudentProfile)
+                    .Where(x=>x.StudentProfile.CampusId == campusId)
                     .ToListAsync();
                 return PayFeeAdmissions;
 

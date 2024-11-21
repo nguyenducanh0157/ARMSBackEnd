@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using Repository.StudentProfileRepo;
+using Service.AdmissionInformationSer;
 using Service.EmailSer;
 using Service.PayFeeAdmissionSer;
 using Service.StudentProfileServ;
@@ -29,6 +30,7 @@ namespace ARMS_API.Controllers
         private readonly IMemoryCache _cache;
         private readonly TimeSpan _otpLifetime = TimeSpan.FromMinutes(5);
         private readonly TokenHealper _tokenHealper;
+        private IAdmissionInformationService _admissionInformationService;
         public RegisterAdmissionController(IStudentProfileService studentProfileService,
             IMapper mapper,
             ValidRegisterAdmission validInput,
@@ -36,7 +38,9 @@ namespace ARMS_API.Controllers
             IEmailService emailByTextService,
             IMemoryCache cache,
             TokenHealper tokenHealper,
-            IPayFeeAdmissionService payFeeAdmissionService)
+            IPayFeeAdmissionService payFeeAdmissionService,
+            IAdmissionInformationService admissionInformationService
+            )
         {
             _studentProfileService = studentProfileService;
             _mapper = mapper;
@@ -46,6 +50,7 @@ namespace ARMS_API.Controllers
             _cache = cache;
             _tokenHealper = tokenHealper;
             _payFeeAdmissionService = payFeeAdmissionService;
+            _admissionInformationService = admissionInformationService;
         }
 
 
@@ -66,17 +71,20 @@ namespace ARMS_API.Controllers
                 //mapper
 
                 StudentProfile studentProfile = await _studentProfileService.GetStudentProfileBySpCIIdAsync(admissionProfileDTO.CitizenIentificationNumber);
-                if (studentProfile.PayFeeAdmissions == null)
+                if (studentProfile == null)
                 {
-                    studentProfile.PayFeeAdmissions = new List<PayFeeAdmission>();
+                    return NotFound(new ResponseViewModel
+                    {
+                        Status = false,
+                        Message = "Không tìm thấy hồ sơ sinh viên!"
+                    });
                 }
                 PayFeeAdmission PayFeeAdmission = _mapper.Map<PayFeeAdmission>(admissionProfileDTO.PayFeeAdmission);
-                if (admissionProfileDTO.PayFeeAdmission.TransactionStatus == "00")
-                {
                 studentProfile.TypeofStatusProfile = TypeofStatus.SuccessProfileAdmission;
                 PayFeeAdmission.isFeeRegister = false;
                 studentProfile.PayFeeAdmissions.Add(PayFeeAdmission);
-                }
+                studentProfile.AdmissionForm = admissionProfileDTO.AdmissionForm;
+                studentProfile.BirthCertificate = admissionProfileDTO.BirthCertificate;
                 //update profile
                 await _studentProfileService.UpdateStudentRegister(studentProfile);
                 return Ok(new ResponseViewModel()
@@ -118,6 +126,9 @@ namespace ARMS_API.Controllers
                 StudentProfile studentProfile = _mapper.Map<StudentProfile>(registerAdmissionProfileDTO);
                 studentProfile.TypeofStatusMajor1 = TypeofStatusForMajor.Inprocess;
                 studentProfile.TypeofStatusMajor2 = TypeofStatusForMajor.Inprocess;
+
+                AdmissionInformation response = await _admissionInformationService.GetAdmissionInformationByStatus(registerAdmissionProfileDTO.CampusId);
+                studentProfile.AIId = response.AdmissionInformationID;
                 if (studentProfile.PayFeeAdmissions == null)
                 {
                     studentProfile.PayFeeAdmissions = new List<PayFeeAdmission>();

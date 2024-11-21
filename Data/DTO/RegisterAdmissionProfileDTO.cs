@@ -11,6 +11,7 @@ namespace Data.DTO
     {
         public string Fullname { get; set; }
         public DateTime? Dob { get; set; }
+        public string? StudentCode { get; set; }
         public bool? Gender { get; set; }
         public string? Nation { get; set; } // dân tộc
         public string? CitizenIentificationNumber { get; set; } // căn cước công dân
@@ -54,8 +55,6 @@ namespace Data.DTO
         public virtual ICollection<AcademicTranscript_View_DTO>? AcademicTranscriptsMajor1 { get; set; }
         public virtual ICollection<AcademicTranscript_View_DTO>? AcademicTranscriptsMajor2 { get; set; }
         public virtual PayFeeAdmissionDTO? PayFeeAdmission { get; set; }
-        // đợt tuyển sinh
-        public int AIId { get; set; }
 
     }
     public class RegisterAdmissionProfileDTO_Update
