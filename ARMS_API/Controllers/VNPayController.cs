@@ -53,7 +53,7 @@ namespace ARMS_API.Controllers
             }
             queryString.Append(checkResponse.Success == true ? "status=success" : "status=fail");
 
-            return Redirect($"http://localhost:3000/nop-ho-so?{queryString}");
+            return Redirect($"http://localhost:3000/thanh-toan?{queryString}");
         }
         // api thanh toán học phí và phí giữ chỗ
         [HttpPost("pay-admission")]
