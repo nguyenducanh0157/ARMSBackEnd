@@ -119,8 +119,7 @@ namespace Service.VnPaySer
                 TmnCode = vnp_TmnCode,
                 TransactionNo = vnp_TransactionNo,
                 TransactionStatus = vnp_TransactionStatus,
-                SecureHash = vnp_SecureHash,
-                OrderType = vnp_OrderType
+                SecureHash = vnp_SecureHash
             };
         }
     }

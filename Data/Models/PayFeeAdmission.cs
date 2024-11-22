@@ -20,7 +20,7 @@ namespace Data.Models
         public string TransactionNo { get; set; }
         public string TransactionStatus { get; set; }
         public string SecureHash { get; set; }
-        public string OrderType { get; set; }
+        public string? OrderType { get; set; }
         public bool? isFeeRegister { get; set; }
         public bool? Success { get; set; }
         public Guid SpId { get; set; }
