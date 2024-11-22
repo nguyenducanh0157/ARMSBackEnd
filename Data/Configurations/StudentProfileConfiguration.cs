@@ -23,6 +23,8 @@ namespace Data.Configurations
             #region config relation
             builder.HasOne(x => x.Campus).WithMany(x => x.StudentProfiles).HasForeignKey(x => x.CampusId);
             builder.HasOne(x => x.AdmissionTime).WithMany(x => x.StudentProfiles).HasForeignKey(x => x.AIId);
+            builder.HasOne(x => x.MajorNV1).WithMany(x => x.StudentProfile1).HasForeignKey(x => x.Major1);
+            builder.HasOne(x => x.MajorNV2).WithMany(x => x.StudentProfile2).HasForeignKey(x => x.Major2);
             builder.HasOne(sp => sp.Account)
                .WithOne(a => a.StudentProfile)
                .HasForeignKey<StudentProfile>(sp => sp.AccountId);

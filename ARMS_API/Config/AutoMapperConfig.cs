@@ -136,6 +136,8 @@ namespace ARMS_API.Config
                    )
                ));
                 config.CreateMap<StudentProfile, AdmissionProfile_DTO>()
+                 .ForMember(dest => dest.MajorName1, opt => opt.MapFrom(src => src.MajorNV1.MajorName))
+                 .ForMember(dest => dest.MajorName2, opt => opt.MapFrom(src => src.MajorNV2.MajorName))
                 .ForMember(dest => dest.AcademicTranscriptsMajor1, opt => opt.MapFrom(src =>
                     src.AcademicTranscripts
                         .Where(x => x.isMajor1 == true) // Lọc các phần tử có IsMajor1 = true

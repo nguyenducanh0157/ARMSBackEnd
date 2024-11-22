@@ -50,6 +50,8 @@ namespace Repository.StudentProfileRepo
                     .Include(x=>x.Campus)
                     .Include(x => x.PriorityDetail)
                     .Include(x => x.PayFeeAdmissions)
+                    .Include(x => x.MajorNV1)
+                    .Include(x => x.MajorNV2)
                     .FirstOrDefaultAsync(x => x.CitizenIentificationNumber.Equals(CID));
                 
                 return sf;

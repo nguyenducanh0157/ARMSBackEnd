@@ -23,6 +23,8 @@ namespace Data.Models
         public virtual ICollection<StudentConsultation>? StudentConsultations { get; set; }
         public virtual ICollection<Request>? RequestChangeMajorsN { get; set; }
         public virtual ICollection<Request>? RequestChangeMajorsO { get; set; }
+        public virtual ICollection<StudentProfile>? StudentProfile1 { get; set; }
+        public virtual ICollection<StudentProfile>? StudentProfile2 { get; set; }
         public virtual ICollection<MajorAdmission>? MajorAdmissions { get; set; }
 
         public static implicit operator Major(Account v)

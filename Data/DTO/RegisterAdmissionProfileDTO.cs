@@ -131,7 +131,9 @@ namespace Data.DTO
         public string? PhoneParents { get; set; }
         public string CampusId { get; set; }
         public string? Major1 { get; set; }
+        public string MajorName1 { get; set; }
         public string? Major2 { get; set; }
+        public string MajorName2 { get; set; }
         public int? YearOfGraduation { get; set; }
         public string? SchoolName { get; set; }
         public bool? RecipientResults { get; set; } // true học sinh nhận kết quả

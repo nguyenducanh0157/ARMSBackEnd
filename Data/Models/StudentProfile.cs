@@ -71,5 +71,8 @@ namespace Data.Models
         public virtual Campus? Campus { get; set; }
         public virtual ICollection<AcademicTranscript>? AcademicTranscripts { get; set; }
         public virtual ICollection<PayFeeAdmission>? PayFeeAdmissions { get; set; }
+        // ngành đăng ký
+        public virtual Major? MajorNV1 { get; set; }//  ngành 1
+        public virtual Major? MajorNV2 { get; set; }//  ngành 2
     }
 }

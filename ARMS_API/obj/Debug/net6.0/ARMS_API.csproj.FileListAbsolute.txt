@@ -104,7 +104,6 @@ D:\Job\Đức Anh\BE_new\ARMS_API\obj\Debug\net6.0\ARMS_API.GeneratedMSBuildEdit
 D:\Job\Đức Anh\BE_new\ARMS_API\obj\Debug\net6.0\ARMS_API.AssemblyInfoInputs.cache
 D:\Job\Đức Anh\BE_new\ARMS_API\obj\Debug\net6.0\ARMS_API.AssemblyInfo.cs
 D:\Job\Đức Anh\BE_new\ARMS_API\obj\Debug\net6.0\ARMS_API.csproj.CoreCompileInputs.cache
-D:\Job\Đức Anh\BE_new\ARMS_API\obj\Debug\net6.0\ARMS_API.MvcApplicationPartsAssemblyInfo.cs
 D:\Job\Đức Anh\BE_new\ARMS_API\obj\Debug\net6.0\ARMS_API.MvcApplicationPartsAssemblyInfo.cache
 D:\Job\Đức Anh\BE_new\ARMS_API\obj\Debug\net6.0\ARMS_API.sourcelink.json
 D:\Job\Đức Anh\BE_new\ARMS_API\obj\Debug\net6.0\staticwebassets.build.json
@@ -121,3 +120,4 @@ D:\Job\Đức Anh\BE_new\ARMS_API\obj\Debug\net6.0\refint\ARMS_API.dll
 D:\Job\Đức Anh\BE_new\ARMS_API\obj\Debug\net6.0\ARMS_API.pdb
 D:\Job\Đức Anh\BE_new\ARMS_API\obj\Debug\net6.0\ARMS_API.genruntimeconfig.cache
 D:\Job\Đức Anh\BE_new\ARMS_API\obj\Debug\net6.0\ref\ARMS_API.dll
+D:\Job\Đức Anh\BE_new\ARMS_API\bin\Debug\net6.0\arms-acdfc-firebase-adminsdk-k69jb-12c5c29272.json

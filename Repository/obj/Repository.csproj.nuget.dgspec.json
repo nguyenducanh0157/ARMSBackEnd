@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Job\\Đức Anh\\BE_new\\Repository\\Repository.csproj": {}
+    "D:\\Job\\Đức Anh\\Clone_BE\\Repository\\Repository.csproj": {}
   },
   "projects": {
-    "D:\\Job\\Đức Anh\\BE_new\\Data\\Data.csproj": {
+    "D:\\Job\\Đức Anh\\Clone_BE\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Job\\Đức Anh\\BE_new\\Data\\Data.csproj",
+        "projectUniqueName": "D:\\Job\\Đức Anh\\Clone_BE\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "D:\\Job\\Đức Anh\\BE_new\\Data\\Data.csproj",
+        "projectPath": "D:\\Job\\Đức Anh\\Clone_BE\\Data\\Data.csproj",
         "packagesPath": "C:\\Users\\-ASUS-\\.nuget\\packages\\",
-        "outputPath": "D:\\Job\\Đức Anh\\BE_new\\Data\\obj\\",
+        "outputPath": "D:\\Job\\Đức Anh\\Clone_BE\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\-ASUS-\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -89,14 +89,14 @@
         }
       }
     },
-    "D:\\Job\\Đức Anh\\BE_new\\Repository\\Repository.csproj": {
+    "D:\\Job\\Đức Anh\\Clone_BE\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Job\\Đức Anh\\BE_new\\Repository\\Repository.csproj",
+        "projectUniqueName": "D:\\Job\\Đức Anh\\Clone_BE\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "D:\\Job\\Đức Anh\\BE_new\\Repository\\Repository.csproj",
+        "projectPath": "D:\\Job\\Đức Anh\\Clone_BE\\Repository\\Repository.csproj",
         "packagesPath": "C:\\Users\\-ASUS-\\.nuget\\packages\\",
-        "outputPath": "D:\\Job\\Đức Anh\\BE_new\\Repository\\obj\\",
+        "outputPath": "D:\\Job\\Đức Anh\\Clone_BE\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\-ASUS-\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -113,8 +113,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Job\\Đức Anh\\BE_new\\Data\\Data.csproj": {
-                "projectPath": "D:\\Job\\Đức Anh\\BE_new\\Data\\Data.csproj"
+              "D:\\Job\\Đức Anh\\Clone_BE\\Data\\Data.csproj": {
+                "projectPath": "D:\\Job\\Đức Anh\\Clone_BE\\Data\\Data.csproj"
               }
             }
           }
