@@ -126,6 +126,7 @@ namespace ARMS_API.Controllers
                 StudentProfile studentProfile = _mapper.Map<StudentProfile>(registerAdmissionProfileDTO);
                 studentProfile.TypeofStatusMajor1 = TypeofStatusForMajor.Inprocess;
                 studentProfile.TypeofStatusMajor2 = TypeofStatusForMajor.Inprocess;
+                studentProfile.TimeRegister = DateTime.Now;
 
                 AdmissionInformation response = await _admissionInformationService.GetAdmissionInformationByStatus(registerAdmissionProfileDTO.CampusId);
                 studentProfile.AIId = response.AdmissionInformationID;

@@ -116,8 +116,8 @@ namespace Repository.StudentProfileRepo
             {
                 var RegisterAdmission = await _context.StudentProfiles
                     .Include(x=>x.Campus)
-                    //.Include(x => x.AcademicTranscripts)
-                    //.Include(x => x.PriorityDetail)
+                    .Include(x => x.AcademicTranscripts)
+                    .Include(x => x.PriorityDetail)
                     .Where(x => x.CampusId == CampusId)
                     .OrderByDescending(x => x.PriorityDetailPriorityID)
                     .OrderBy(x => x.TimeRegister)
