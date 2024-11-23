@@ -9,5 +9,6 @@ namespace Data.DTO
     public class VnPaymentRequestModel
     {
         public string Campus { get; set; }
+        public string Major { get; set; }
     }
 }

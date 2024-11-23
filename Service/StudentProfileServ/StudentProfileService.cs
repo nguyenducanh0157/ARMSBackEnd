@@ -65,5 +65,8 @@ namespace Service.StudentProfileServ
         public async Task<bool> isExistPhoneNumberStudent(string phonenumber) => await _studentProfileRepository.isExistPhoneNumberStudent(phonenumber);
 
         public async Task<StudentProfile> UpdateStudentRegister(StudentProfile StudentProfile) => await _studentProfileRepository.UpdateStudentRegister(StudentProfile);
+
+        public Task<int> CountAdmissionMajor(string majorId, string CampusId)
+        => _studentProfileRepository.CountAdmissionMajor(majorId, CampusId);
     }
 }

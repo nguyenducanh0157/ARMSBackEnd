@@ -113,6 +113,31 @@ namespace Repository.MajorRepo
             }
 
         }
+        public async Task<MajorAdmission> GetMajorDetail(string MajorID, string campusId)
+        {
+
+            try
+            {
+                var AI = await _context.AdmissionInformations.FirstOrDefaultAsync(x => x.Status == TypeOfAdmissionInformation.Process && x.CampusId == campusId);
+                MajorAdmission major = await _context.MajorAdmissions
+                   .Include(x => x.Major)
+                   .Include(x => x.Major.Subjects.OrderBy(s => s.SemesterNumber))
+                    .Include(x => x.TypeAdmissions)
+                   .Include(x => x.AdmissionInformation)
+                   .SingleOrDefaultAsync(x => x.AdmissionInformationID == AI.AdmissionInformationID && x.MajorID == MajorID);
+                if (major == null)
+                {
+                    throw new KeyNotFoundException($"Major with ID {MajorID} not found.");
+                }
+                return major;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+
+        }
         public async Task AddNewMajor(Major major)
         {
             try

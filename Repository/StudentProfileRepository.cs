@@ -99,7 +99,7 @@ namespace Repository.StudentProfileRepo
                 var majorAdmission = await _context.StudentProfiles
                     .Where(x=>(x.Major1 == majorId 
                     || x.Major2== majorId) && x.CampusId == CampusId 
-                    &&( x.TypeofStatusMajor1 == TypeofStatusForMajor.Pass || x.TypeofStatusMajor2 == TypeofStatusForMajor.Pass))
+                    &&( x.TypeofStatusMajor1 == TypeofStatusForMajor.Pass || x.TypeofStatusMajor2 == TypeofStatusForMajor.Pass && (x.TypeofStatusProfile == TypeofStatus.SuccessProfileAdmission|| x.TypeofStatusProfile == TypeofStatus.ConfirmSuccessProfileAdmission || x.TypeofStatusProfile == TypeofStatus.Done)))
                     .ToListAsync();
 
                 return majorAdmission.Count();

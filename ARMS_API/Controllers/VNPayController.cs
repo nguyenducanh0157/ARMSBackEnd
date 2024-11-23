@@ -9,6 +9,7 @@ using Service;
 using Service.VnPaySer;
 using Service.AdmissionInformationSer;
 using Data.Models;
+using Service.MajorSer;
 
 namespace ARMS_API.Controllers
 {
@@ -17,12 +18,14 @@ namespace ARMS_API.Controllers
     public class VNPayController : ControllerBase
     {
         private readonly IVnPayService _vnPayService;
+        private readonly IMajorService _majorService;
         private readonly IAdmissionInformationService _admissionInformationService;
 
-        public VNPayController(IVnPayService vnPayService,IAdmissionInformationService admissionInformationService)
+        public VNPayController(IVnPayService vnPayService,IAdmissionInformationService admissionInformationService, IMajorService majorService)
         {
             _vnPayService = vnPayService;
             _admissionInformationService = admissionInformationService;
+            _majorService = majorService;
         }
         [HttpPost("pay-register-admission")]
         public async Task<IActionResult> CreatePayment([FromBody] VnPaymentRequestModel request)
@@ -62,6 +65,9 @@ namespace ARMS_API.Controllers
             Guid codePay = Guid.NewGuid();
             AdmissionInformation AI = await _admissionInformationService.GetAdmissionInformationByStatus(request.Campus);
             decimal fee = AI.FeeRegister;
+            Major major = await _majorService.GetMajor(request.Major);
+            fee = (decimal)(fee + major.Tuition);
+
             DateTime timecreate = DateTime.UtcNow;
             if (request == null)
             {

@@ -11,6 +11,7 @@ using Microsoft.Extensions.Caching.Memory;
 using Repository.StudentProfileRepo;
 using Service.AdmissionInformationSer;
 using Service.EmailSer;
+using Service.MajorSer;
 using Service.PayFeeAdmissionSer;
 using Service.StudentProfileServ;
 using System.Security.Cryptography;
@@ -23,6 +24,7 @@ namespace ARMS_API.Controllers
     {
         private IStudentProfileService _studentProfileService;
         private IPayFeeAdmissionService _payFeeAdmissionService;
+        private IMajorService _majorService;
         private readonly IMapper _mapper;
         private ValidRegisterAdmission _validInput;
         private UserInput _userInput;
@@ -39,7 +41,8 @@ namespace ARMS_API.Controllers
             IMemoryCache cache,
             TokenHealper tokenHealper,
             IPayFeeAdmissionService payFeeAdmissionService,
-            IAdmissionInformationService admissionInformationService
+            IAdmissionInformationService admissionInformationService,
+            IMajorService majorService
             )
         {
             _studentProfileService = studentProfileService;
@@ -51,6 +54,7 @@ namespace ARMS_API.Controllers
             _tokenHealper = tokenHealper;
             _payFeeAdmissionService = payFeeAdmissionService;
             _admissionInformationService = admissionInformationService;
+            _majorService = majorService;
         }
 
 
@@ -255,6 +259,35 @@ namespace ARMS_API.Controllers
             }
 
             return Unauthorized("OTP không hợp lệ.");
+        }
+        [HttpGet("check-slot-profile-admission")]
+        public async Task<IActionResult> CountProfile(string major, string campus)
+        {
+            try
+            {
+
+                int countProfile = await _studentProfileService.CountAdmissionMajor(major, campus);
+                var majorTarget = await _majorService.GetMajorDetail(major,campus);
+                if(countProfile == majorTarget.Target)
+                {
+                    return BadRequest(new ResponseViewModel()
+                    {
+                        Status = false,
+                        Message = "Số lượng hồ sơ đã đủ!"
+                    });
+                }
+
+                return Ok();
+
+            }
+            catch (Exception)
+            {
+                return BadRequest(new ResponseViewModel()
+                {
+                    Status = false,
+                    Message = "Server lỗi!"
+                });
+            }
         }
     }
 }

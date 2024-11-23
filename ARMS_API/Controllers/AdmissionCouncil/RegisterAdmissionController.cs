@@ -15,7 +15,7 @@ namespace ARMS_API.Controllers.AdmissionCouncil
 {
     [Route("api/admin-council/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "AdminOfficer")]
+    [Authorize(Roles = "AdmissionCouncil")]
     public class RegisterAdmissionController : ControllerBase
     {
         private IStudentProfileService _studentProfileService;
@@ -135,6 +135,7 @@ namespace ARMS_API.Controllers.AdmissionCouncil
         {
             try
             {
+
                 StudentProfile stf = await _studentProfileService.GetStudentProfileBySpIdAsync(AdmissionProfile_UpdateStatus_DTO.SpId);
                 if (stf == null)
                 {
@@ -165,5 +166,6 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 });
             }
         }
+        
     }
 }

@@ -2,6 +2,7 @@
 using AutoMapper;
 using Data.DTO;
 using Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.AdmissionInformationSer;
@@ -13,6 +14,7 @@ namespace ARMS_API.Controllers.AdmissionCouncil
 {
     [Route("api/admission-council/[controller]")]
     [ApiController]
+    [Authorize(Roles = "AdmissionCouncil")]
     public class AdmissionInformationController : ControllerBase
     {
         private IAdmissionInformationService _admissionInformationService;

@@ -20,5 +20,6 @@ namespace Service.StudentProfileServ
         Task<StudentProfile> UpdateStudentRegister(StudentProfile StudentProfile);
         Task<List<StudentProfile>> GetAdmission(string CampusId);
         Task<List<StudentProfile>> GetRegisterAdmissionForAC(string CampusId);
+        Task<int> CountAdmissionMajor(string majorId, string CampusId);
     }
 }
