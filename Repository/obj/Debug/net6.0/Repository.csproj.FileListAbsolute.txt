@@ -326,4 +326,3 @@ D:\Job\Đức Anh\BE_new\Repository\obj\Debug\net6.0\refint\Repository.dll
 D:\Job\Đức Anh\BE_new\Repository\obj\Debug\net6.0\Repository.pdb
 D:\Job\Đức Anh\BE_new\Repository\obj\Debug\net6.0\Repository.genruntimeconfig.cache
 D:\Job\Đức Anh\BE_new\Repository\obj\Debug\net6.0\ref\Repository.dll
-D:\Job\Đức Anh\Clone_BE\Repository\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll

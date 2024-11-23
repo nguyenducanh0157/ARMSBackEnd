@@ -85,63 +85,63 @@ namespace ARMS_API.Controllers
             respone.Role = role;
             return Ok(respone);
         }
-        [HttpPost("login-by-email")]
-        [AllowAnonymous]
-        public async Task<IActionResult> AccessByEmail([FromBody] EmailLoginViewModel request)
-        {
-            ResponseViewModel response = new ResponseViewModel();
-            try
-            {
-                if (request == null || request.Email == null || request.CampusId == null)
-                {
-                    throw new Exception("Không nhận được thông tin người dùng");
-                }
+        //[HttpPost("login-by-email")]
+        //[AllowAnonymous]
+        //public async Task<IActionResult> AccessByEmail([FromBody] EmailLoginViewModel request)
+        //{
+        //    ResponseViewModel response = new ResponseViewModel();
+        //    try
+        //    {
+        //        if (request == null || request.Email == null || request.CampusId == null)
+        //        {
+        //            throw new Exception("Không nhận được thông tin người dùng");
+        //        }
 
-                string email = request.Email;
-                string campusId = request.CampusId;
-                var user = await _userManager.Users
-                                    .Where(user => user.CampusId == campusId && user.Email == email && user.isAccountActive==true)
-                                    .FirstOrDefaultAsync();
+        //        string email = request.Email;
+        //        string campusId = request.CampusId;
+        //        var user = await _userManager.Users
+        //                            .Where(user => user.CampusId == campusId && user.Email == email && user.isAccountActive==true)
+        //                            .FirstOrDefaultAsync();
 
 
-                if (user == null)
-                    {
-                        throw new Exception("Tài khoản của bạn không tồn tại trong campus hiện tại");
-                    }
+        //        if (user == null)
+        //            {
+        //                throw new Exception("Tài khoản của bạn không tồn tại trong campus hiện tại");
+        //            }
 
-                var userRoles = await _userManager.GetRolesAsync(user);
-                var role = userRoles.FirstOrDefault();
-                var authClaims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name, user.Fullname),
-                        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                    };
+        //        var userRoles = await _userManager.GetRolesAsync(user);
+        //        var role = userRoles.FirstOrDefault();
+        //        var authClaims = new List<Claim>
+        //            {
+        //                new Claim(ClaimTypes.Name, user.Fullname),
+        //                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+        //                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+        //            };
 
-                foreach (var userRole in userRoles)
-                {
-                    authClaims.Add(new Claim(ClaimTypes.Role, userRole));
-                }
+        //        foreach (var userRole in userRoles)
+        //        {
+        //            authClaims.Add(new Claim(ClaimTypes.Role, userRole));
+        //        }
 
-                if (!String.IsNullOrEmpty(user.AvatarURL))
-                {
-                    authClaims.Add(new Claim("AvatarUrl", user.AvatarURL));
-                }
-                var Bear = GetToken(authClaims);
+        //        if (!String.IsNullOrEmpty(user.AvatarURL))
+        //        {
+        //            authClaims.Add(new Claim("AvatarUrl", user.AvatarURL));
+        //        }
+        //        var Bear = GetToken(authClaims);
 
-                ResponseLogin respone = new ResponseLogin();
-                respone.Bear = new JwtSecurityTokenHandler().WriteToken(Bear);
-                respone.Expiration = Bear.ValidTo;
-                respone.CampusId = request.CampusId;
-                respone.Role = role;
-                return Ok(respone);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-                return Ok(new ResponseViewModel() { Status = false, Message = ex.Message});
-            }
-        }
+        //        ResponseLogin respone = new ResponseLogin();
+        //        respone.Bear = new JwtSecurityTokenHandler().WriteToken(Bear);
+        //        respone.Expiration = Bear.ValidTo;
+        //        respone.CampusId = request.CampusId;
+        //        respone.Role = role;
+        //        return Ok(respone);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.ToString());
+        //        return Ok(new ResponseViewModel() { Status = false, Message = ex.Message});
+        //    }
+        //}
         [HttpPost("gg/login-with-google")]
         [AllowAnonymous]
         public async Task<IActionResult> LoginWithGoogle([FromBody] GGLoginViewModel GGLoginViewModel)

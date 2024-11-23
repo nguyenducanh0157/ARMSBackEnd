@@ -16,6 +16,10 @@ namespace Service.AdmissionInformationSer
         {
             _admissionInfomationRepository = new AdmissionInfomationRepository(context);
         }
+
+        public Task Add(AdmissionInformation AdmissionInformation)
+        => _admissionInfomationRepository.Add(AdmissionInformation);
+
         public async Task<List<AdmissionInformation>> GetAdmissionInformation(string campus)
         {
             try
@@ -30,6 +34,9 @@ namespace Service.AdmissionInformationSer
                 throw;
             }
         }
+
+        public Task<AdmissionInformation> GetAdmissionInformationById(int AdmissionInformationID)
+        => _admissionInfomationRepository.GetAdmissionInformationById(AdmissionInformationID);
 
         public async Task<AdmissionInformation> GetAdmissionInformationByStatus(string campus)
         {
@@ -50,11 +57,11 @@ namespace Service.AdmissionInformationSer
         {
             try
             {
-                var ValidadmissionInformation = await _admissionInfomationRepository.GetAdmissionInformation(AdmissionInformation.CampusId);
-                //ValidadmissionInformation.FeeAdmission = AdmissionInformation.FeeAdmission;
-                //ValidadmissionInformation.FeeRegister = AdmissionInformation.FeeRegister;
-                //ValidadmissionInformation.AdmissionProfileDescription = AdmissionInformation.AdmissionProfileDescription;
-                //await _admissionInfomationRepository.UpdateAdmissionInformation(ValidadmissionInformation);
+                var ValidadmissionInformation = await _admissionInfomationRepository.GetAdmissionInformationById(AdmissionInformation.AdmissionInformationID);
+                ValidadmissionInformation.FeeRegister = AdmissionInformation.FeeAdmission;
+                ValidadmissionInformation.FeeRegister = AdmissionInformation.FeeRegister;
+                ValidadmissionInformation.AdmissionProfileDescription = AdmissionInformation.AdmissionProfileDescription;
+                await _admissionInfomationRepository.UpdateAdmissionInformation(ValidadmissionInformation);
             }
             catch (Exception)
             {

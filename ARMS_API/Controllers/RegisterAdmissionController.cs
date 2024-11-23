@@ -109,7 +109,7 @@ namespace ARMS_API.Controllers
             try
             {
                 //check data
-                _validInput.InputAddRegisterAdmission(registerAdmissionProfileDTO);
+               // _validInput.InputAddRegisterAdmission(registerAdmissionProfileDTO);
                 // payment
 
                 // check status pay fee

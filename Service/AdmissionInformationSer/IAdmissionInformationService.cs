@@ -12,5 +12,7 @@ namespace Service.AdmissionInformationSer
         Task<AdmissionInformation> GetAdmissionInformationByStatus(string campus);
         Task<List<AdmissionInformation>> GetAdmissionInformation(string campus);
         Task UpdateAdmissionInformation(AdmissionInformation AdmissionInformation);
+        Task Add(AdmissionInformation AdmissionInformation);
+        Task<AdmissionInformation> GetAdmissionInformationById(int AdmissionInformationID);
     }
 }

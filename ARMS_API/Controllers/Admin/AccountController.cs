@@ -106,5 +106,91 @@ namespace ARMS_API.Controllers.Admin
                 return BadRequest();
             }
         }
+        [HttpPost("create-account")]
+        public async Task<IActionResult> CreateAccount([FromBody] CreateAccountDTO model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            try
+            {
+                // Map DTO to the Account entity
+                var account = _mapper.Map<Account>(model);
+                if (model.UserName==null) {
+                    account.UserName = model.StudentCode;
+                }
+                account.isAccountActive = false;
+                // Create the account in the Identity system
+                var result = await _userManager.CreateAsync(account, "A123@123a");
+                if (!result.Succeeded)
+                    return BadRequest(result.Errors);
+
+                // Assign roles to the account
+                if (!string.IsNullOrEmpty(model.RoleName))
+                {
+                    var roleExists = await _roleManager.RoleExistsAsync(model.RoleName);
+                    if (!roleExists)
+                        return BadRequest($"Role '{model.RoleName}' does not exist.");
+
+                    await _userManager.AddToRoleAsync(account, model.RoleName);
+                }
+
+                return Ok(new { Message = "Tạo tài khoản thành công", AccountId = account.Id });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "Tạo tài khoản không thành công!"});
+            }
+        }
+        [HttpPut("update-account/{id}")]
+        public async Task<IActionResult> UpdateAccount(Guid id, [FromBody] UpdateAccountDTO model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            try
+            {
+                // Find the account by ID
+                var account = await _userManager.FindByIdAsync(id.ToString());
+                if (account == null)
+                    return NotFound(new { Message = "Tài khoản không tồn tại." });
+
+                // Update account properties
+                account.Fullname = model.Fullname ?? account.Fullname;
+                account.Phone = model.Phone ?? account.Phone;
+                account.Dob = model.Dob ?? account.Dob;
+                account.Gender = model.Gender ?? account.Gender;
+                account.isAccountActive = model.isAccountActive;
+                account.Email = model.Email;
+                account.UserName = model.UserName;
+                account.TypeAccount = model.TypeAccount;
+                account.StudentCode = model.StudentCode;
+
+                // Update account in the database
+                var updateResult = await _userManager.UpdateAsync(account);
+                if (!updateResult.Succeeded)
+                    return BadRequest(updateResult.Errors);
+
+                // Update roles if provided
+                if (!string.IsNullOrEmpty(model.RoleName))
+                {
+                    var currentRoles = await _userManager.GetRolesAsync(account);
+                    await _userManager.RemoveFromRolesAsync(account, currentRoles);
+
+                    var roleExists = await _roleManager.RoleExistsAsync(model.RoleName);
+                    if (!roleExists)
+                        return BadRequest($"Vai trò '{model.RoleName}' không tồn tại.");
+
+                    await _userManager.AddToRoleAsync(account, model.RoleName);
+                }
+
+                return Ok(new { Message = "Cập nhật tài khoản thành công", AccountId = account.Id });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "Cập nhật tài khoản không thành công!" });
+            }
+        }
+
     }
 }

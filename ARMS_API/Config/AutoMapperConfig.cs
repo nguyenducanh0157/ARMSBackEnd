@@ -180,6 +180,7 @@ namespace ARMS_API.Config
                 config.CreateMap<Major, Major_RequestChange_DTO>();
                 config.CreateMap<Account_RequestChangeMajor_DTO, Account>();
                 config.CreateMap<Account, Account_RequestChangeMajor_DTO>();
+
                 
                 config.CreateMap<Account_Major_DTO, Account>();
                 config.CreateMap<Account, Account_Major_DTO>();
@@ -200,6 +201,7 @@ namespace ARMS_API.Config
                 config.CreateMap<Account, Account_DTO>()
                 .ForMember(dest => dest.MajorCode, opt => opt.MapFrom(src => src.Major.MajorCode))
                 .ForMember(dest => dest.MajorName, opt => opt.MapFrom(src => src.Major.MajorName));
+                config.CreateMap<CreateAccountDTO, Account>();
             });
 
             return mapperConfig.CreateMapper();

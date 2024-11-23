@@ -40,12 +40,38 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 return BadRequest();
             }
         }
+        [HttpPost("add-admission-time")]
+        public async Task<IActionResult> AddAdmissionTime([FromBody] AdmissionInformation_Update_DTO AdmissionInformationDTO)
+        {
+            try
+            {
+                //check data
+                _validAdmissionInformation.ValidDataAdmissionInfor(AdmissionInformationDTO);
+                //mapper
+                AdmissionInformation AdmissionInformation = _mapper.Map<AdmissionInformation>(AdmissionInformationDTO);
+                //add new
+                await _admissionInformationService.Add(AdmissionInformation);
+                return Ok(new ResponseViewModel()
+                {
+                    Status = true,
+                    Message = "Tạo mới mới thành công!"
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResponseViewModel()
+                {
+                    Status = false,
+                    Message = ex.Message
+                });
+            }
+        }
         [HttpPut("update-admission-information")]
         public async Task<IActionResult> UpdateAdmissionInformation(AdmissionInformation_Update_DTO AdmissionInformationDTO)
         {
             try
             {
-                var checkdata = await _campusService.GetCampus(AdmissionInformationDTO.CampusId);
+                var checkdata = await _admissionInformationService.GetAdmissionInformationById(AdmissionInformationDTO.AdmissionInformationID);
                 if (checkdata == null) return NotFound();
                 //check data
                 _validAdmissionInformation.ValidDataAdmissionInfor(AdmissionInformationDTO);

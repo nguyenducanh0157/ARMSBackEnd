@@ -106,26 +106,26 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 });
             }
         }
-        //[HttpPut("update-student-register")]
-        //public async Task<IActionResult> UpdateStudentRegister(AdmissionProfile_AO_DTO AdmissionProfile_DTO)
-        //{
-        //    try
-        //    {
-        //        StudentProfile responeResult = _mapper.Map<StudentProfile>(AdmissionProfile_DTO);
-        //        await _studentProfileService.UpdateStudentRegister(responeResult);
+        [HttpPut("update-student-register")]
+        public async Task<IActionResult> UpdateStudentRegister(AdmissionProfile_AO_DTO AdmissionProfile_DTO)
+        {
+            try
+            {
+                StudentProfile responeResult = _mapper.Map<StudentProfile>(AdmissionProfile_DTO);
+                await _studentProfileService.UpdateStudentRegister(responeResult);
 
-        //        return Ok(new ResponseViewModel()
-        //        {
-        //            Status = true,
-        //            Message = "Cập nhật thành công!"
-        //        });
+                return Ok(new ResponseViewModel()
+                {
+                    Status = true,
+                    Message = "Cập nhật thành công!"
+                });
 
-        //    }
-        //    catch (Exception)
-        //    {
+            }
+            catch (Exception)
+            {
 
-        //        return BadRequest();
-        //    }
-        //}
+                return BadRequest();
+            }
+        }
     }
 }

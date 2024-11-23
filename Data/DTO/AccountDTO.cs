@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,4 +35,34 @@ public class Account_DTO
         public string? MajorCode { get; set; }
         public string? MajorName { get; set; }
     }
+    public class CreateAccountDTO
+    {
+        public string UserName { get; set; }
+        public string? Fullname { get; set; }
+        public bool? Gender { get; set; }
+        public string? Phone { get; set; }
+        public DateTime? Dob { get; set; }
+        public string CampusId { get; set; }
+        public string? StudentCode { get; set; }
+        public string? MajorId { get; set; }
+        public TypeAccount TypeAccount { get; set; }
+        public string RoleName { get; set; }
+        public int? SPId { get; set; }
+        public string? Email { get; set; }
+    }
+    public class UpdateAccountDTO
+    {
+        public string UserName { get; set; }
+        public string? Fullname { get; set; }
+        public bool? Gender { get; set; }
+        public string? Phone { get; set; }
+        public DateTime? Dob { get; set; }
+        public string? StudentCode { get; set; }
+        public string? MajorId { get; set; }
+        public TypeAccount TypeAccount { get; set; }
+        public string RoleName { get; set; }
+        public bool isAccountActive { get; set; }
+        public string? Email { get; set; }
+    }
+
 }

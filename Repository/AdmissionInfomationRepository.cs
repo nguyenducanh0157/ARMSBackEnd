@@ -39,6 +39,19 @@ namespace Repository
                 throw;
             }
         }
+        public async Task<AdmissionInformation> GetAdmissionInformationById(int AdmissionInformationID)
+        {
+            try
+            {
+                AdmissionInformation AdmissionInformation = await _context.AdmissionInformations
+                    .FirstOrDefaultAsync(x => x.AdmissionInformationID == AdmissionInformationID);
+                return AdmissionInformation;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         public async Task UpdateAdmissionInformation(AdmissionInformation AdmissionInformation)
         {
             try
@@ -49,6 +62,18 @@ namespace Repository
             catch (Exception)
             {
                 throw new Exception("Chỉnh sửa không thành công");
+            }
+        }
+        public async Task Add(AdmissionInformation AdmissionInformation)
+        {
+            try
+            {
+                await _context.AdmissionInformations.AddAsync(AdmissionInformation);
+                _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Tạo mới không thành công");
             }
         }
     }
