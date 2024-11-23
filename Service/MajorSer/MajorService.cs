@@ -41,6 +41,20 @@ namespace Service.MajorSer
             var activeMajors = result.Where(major => major.Major.isVocationalSchool == false && major.Status == true).ToList();
             return activeMajors;
         }
+        public async Task<List<MajorAdmission>> GetMajorsIsCollegeForVocationalSchool(string campusId)
+        {
+            // Lấy danh sách majors từ repository
+            var result = await _majorRepository.GetMajorAdmissions(campusId);
+
+            // Lọc danh sách majors theo các tiêu chí
+            var activeMajors = result.Where(major =>
+                !major.Major.isVocationalSchool &&  // Không phải trường nghề
+                major.Status &&                     // Major có trạng thái kích hoạt
+                major.TypeAdmissions.Any(x => x.TypeDiploma == TypeOfDiploma.LienThong) // Có liên thông
+            ).ToList();
+
+            return activeMajors;
+        }
 
         public async Task AddNewMajor(Major major)
         {

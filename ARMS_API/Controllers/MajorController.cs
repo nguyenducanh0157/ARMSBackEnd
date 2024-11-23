@@ -55,6 +55,24 @@ namespace ARMS_API.Controllers
                 return BadRequest();
             }
         }
+        [HttpGet("get-majors-college-for-vocational-school")]
+        public async Task<IActionResult> GetMajorsCollegeForVocationalSchool(string campus)
+        {
+            try
+            {
+
+                List<MajorAdmission> response = await _majorService.GetMajorsIsCollegeForVocationalSchool(campus);
+
+                List<MajorDTO> responeResult = _mapper.Map<List<MajorDTO>>(response);
+                return Ok(responeResult);
+
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
+        }
         [HttpGet("get-major-details")]
         public async Task<IActionResult> GetMajorDetail(string MajorId, int AdmissionInformationID)
         {

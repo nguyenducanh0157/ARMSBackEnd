@@ -335,7 +335,8 @@ namespace Data.Seeding
                  {
                      MajorID = "HME",
                      AdmissionInformationID = 11,
-                     TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                     TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
 
                  },
                  new TypeAdmission()
@@ -349,7 +350,8 @@ namespace Data.Seeding
                  {
                      MajorID = "HGE",
                      AdmissionInformationID = 11,
-                     TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                     TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_12
 
                  },
                  new TypeAdmission()
@@ -371,7 +373,7 @@ namespace Data.Seeding
                      MajorID = "HWE",
                      AdmissionInformationID = 11,
                      TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3ky
                  },
                  new TypeAdmission()
                  {
@@ -392,7 +394,7 @@ namespace Data.Seeding
                      MajorID = "HTE",
                      AdmissionInformationID = 11,
                      TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_lop10_lop11_HK1_12
                  },
                  new TypeAdmission()
                  {
@@ -414,7 +416,7 @@ namespace Data.Seeding
                      MajorID = "HEA",
                      AdmissionInformationID = 11,
                      TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_12
                  },
                  new TypeAdmission()
                  {
@@ -427,7 +429,7 @@ namespace Data.Seeding
                 {
                     MajorID = "HJA",
                     AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                    TypeDiploma = TypeOfDiploma.LienThong,
 
                 },
                 new TypeAdmission()
