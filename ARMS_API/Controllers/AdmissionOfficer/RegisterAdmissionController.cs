@@ -187,5 +187,40 @@ namespace ARMS_API.Controllers.AdmissionOfficer
                 return BadRequest();
             }
         }
+        [HttpPut("update-student-register-status")]
+        public async Task<IActionResult> UpdateStudentRegisterStatus(AdmissionProfile_UpdateStatus_DTO AdmissionProfile_UpdateStatus_DTO)
+        {
+            try
+            {
+                StudentProfile stf = await _studentProfileService.GetStudentProfileBySpIdAsync(AdmissionProfile_UpdateStatus_DTO.SpId);
+                if (stf == null)
+                {
+                    return NotFound(new ResponseViewModel()
+                    {
+                        Status = false,
+                        Message = "Không tìm thấy hồ sơ!"
+                    });
+                }
+                stf.TypeofStatusProfile = AdmissionProfile_UpdateStatus_DTO.TypeofStatusProfile;
+
+                // Save the updated profile
+                await _studentProfileService.UpdateStudentRegister(stf);
+
+                return Ok(new ResponseViewModel()
+                {
+                    Status = true,
+                    Message = "Cập nhật thành công!"
+                });
+
+            }
+            catch (Exception)
+            {
+                return BadRequest(new ResponseViewModel()
+                {
+                    Status = false,
+                    Message = "Không tìm thấy hồ sơ!"
+                });
+            }
+        }
     }
 }

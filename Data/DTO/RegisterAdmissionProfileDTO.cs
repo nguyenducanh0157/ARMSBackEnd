@@ -263,10 +263,16 @@ namespace Data.DTO
         public virtual TypeofStatusForMajor? TypeofStatusMajor1 { get; set; } // trạng thái xét tuyển ngành 1
         public virtual TypeofStatusForMajor? TypeofStatusMajor2 { get; set; } // trạng thái xét tuyển ngành 2
         public virtual TypeofStatus? TypeofStatusProfile { get; set; } // trạng thái hồ sơ
+        public string? Note { get; set; }
 
         // view
         public string? CampusName { get; set; }
         public virtual PriorityDetailDTO? PriorityDetail { get; set; }// loại điểm ưu tiên
         public DateTime TimeRegister { get; set; }
+    }
+    public class AdmissionProfile_UpdateStatus_DTO
+    {
+        public Guid SpId { get; set; }
+        public  TypeofStatus TypeofStatusProfile { get; set; } 
     }
 }
