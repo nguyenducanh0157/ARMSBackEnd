@@ -45,7 +45,7 @@ namespace Service.StudentProfileServ
         public async Task<List<StudentProfile>> GetRegisterAdmissionForAC(string CampusId)
         {
             var list = await _studentProfileRepository.GetRegisterAdmission(CampusId);
-            return list.Where(x =>  x.TypeofStatusProfile == TypeofStatus.ConfirmSuccessProfileRegister).ToList();
+            return list.Where(x =>  x.TypeofStatusProfile == TypeofStatus.SuccessProfileRegister).ToList();
         }
         public async Task<List<StudentProfile>> GetAdmission(string CampusId)
         {
