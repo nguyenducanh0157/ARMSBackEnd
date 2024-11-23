@@ -161,8 +161,9 @@ namespace ARMS_API.Config
 
                 config.CreateMap<AdmissionProfile_AO_DTO, StudentProfile>();
                 config.CreateMap<StudentProfile, AdmissionProfile_AO_DTO>()
-               .ForMember(dest => dest.CampusName, opt => opt.MapFrom(src => src.Campus.CampusName));
-
+               .ForMember(dest => dest.CampusName, opt => opt.MapFrom(src => src.Campus.CampusName))
+                .ForMember(dest => dest.MajorName1, opt => opt.MapFrom(src => src.MajorNV1.MajorName))
+                 .ForMember(dest => dest.MajorName2, opt => opt.MapFrom(src => src.MajorNV2.MajorName));
                 config.CreateMap<PriorityDetail, PriorityDetailDTO>();
                 config.CreateMap<PriorityDetailDTO, PriorityDetail>();
 

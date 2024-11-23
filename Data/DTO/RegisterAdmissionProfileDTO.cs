@@ -181,6 +181,8 @@ namespace Data.DTO
     }
     public class AcademicTranscriptDTO
     {
+        public Guid? ATId { get; set; }
+        public Guid? SpId { get; set; }
         public string SubjectName { get; set; }
         public decimal SubjectPoint { get; set; }
         public bool isMajor1 { get; set; }
@@ -212,6 +214,7 @@ namespace Data.DTO
         public string TransactionStatus { get; set; }
         public string SecureHash { get; set; }
         public bool isFeeRegister { get; set; }
+        public bool? Success { get; set; }
     }
     public class AdmissionProfile_AO_DTO
     {
@@ -233,7 +236,9 @@ namespace Data.DTO
         public string? PhoneParents { get; set; }
         public string CampusId { get; set; }
         public string? Major1 { get; set; }
+        public string MajorName1 { get; set; }
         public string? Major2 { get; set; }
+        public string MajorName2 { get; set; }
         public int? YearOfGraduation { get; set; }
         public string? SchoolName { get; set; }
         public bool? RecipientResults { get; set; } // true học sinh nhận kết quả
@@ -264,11 +269,16 @@ namespace Data.DTO
         public virtual TypeofStatusForMajor? TypeofStatusMajor2 { get; set; } // trạng thái xét tuyển ngành 2
         public virtual TypeofStatus? TypeofStatusProfile { get; set; } // trạng thái hồ sơ
         public string? Note { get; set; }
+        public string? AdmissionForm { get; set; }
+        public string? BirthCertificate { get; set; }
 
         // view
         public string? CampusName { get; set; }
         public virtual PriorityDetailDTO? PriorityDetail { get; set; }// loại điểm ưu tiên
         public DateTime TimeRegister { get; set; }
+        public virtual ICollection<AcademicTranscriptDTO>? AcademicTranscripts { get; set; }
+        public virtual ICollection<PayFeeAdmissionDTO>? PayFeeAdmissions { get; set; }
+
     }
     public class AdmissionProfile_UpdateStatus_DTO
     {
