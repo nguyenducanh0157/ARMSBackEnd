@@ -138,8 +138,12 @@ namespace Repository.StudentProfileRepo
         {
             var studentProfile = await _context.StudentProfiles
                 .Include(x => x.Campus)
-                .Include(x => x.AcademicTranscripts)
-                .Include(x => x.PriorityDetail)
+                    .Include(x => x.AcademicTranscripts)
+                    .Include(x => x.PriorityDetail)
+                    .Include(x => x.PayFeeAdmissions)
+                    .Include(x => x.MajorNV1)
+                    .Include(x => x.MajorNV2)
+
                 .FirstOrDefaultAsync(x => x.SpId == id);
 
             return studentProfile;
