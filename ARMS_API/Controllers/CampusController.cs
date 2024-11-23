@@ -45,6 +45,21 @@ namespace ARMS_API.Controllers
                 return BadRequest();
             }
         }
+        [HttpGet("get-campus")]
+        public async Task<IActionResult> GetCampuses(string campusid)
+        {
+            try
+            {
+                List<Campus> response = await _campusService.GetCampuses();
+                Campus campus = response.FirstOrDefault(x => x.CampusId == campusid);
+                CampusDTO responeResult = _mapper.Map<CampusDTO>(campus);
+                return Ok(responeResult);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
         [HttpGet("get-sliders")]
         public async Task<IActionResult> GetSliders(string campusId)
         {
