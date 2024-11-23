@@ -115,6 +115,19 @@ namespace ARMS_API.Controllers.AdmissionCouncil
             try
             {
                 StudentProfile responeResult = _mapper.Map<StudentProfile>(AdmissionProfile_DTO);
+                if (responeResult.TypeofStatusMajor1 == TypeofStatusForMajor.Pass)
+                {
+                    responeResult.TypeofStatusMajor2 = TypeofStatusForMajor.Pending;
+                    responeResult.TypeofStatusProfile = TypeofStatus.WaitingPaymentAdmission;
+                }
+                if (responeResult.TypeofStatusMajor1 == TypeofStatusForMajor.Fail && responeResult.TypeofStatusMajor2 == TypeofStatusForMajor.Pass)
+                {
+                    responeResult.TypeofStatusProfile = TypeofStatus.WaitingPaymentAdmission;
+                }
+                if (responeResult.TypeofStatusMajor1 == TypeofStatusForMajor.Fail && responeResult.TypeofStatusMajor2 == TypeofStatusForMajor.Fail)
+                {
+                    responeResult.TypeofStatusProfile = TypeofStatus.Done;
+                }
                 await _studentProfileService.UpdateStudentRegister(responeResult);
 
                 return Ok(new ResponseViewModel()
@@ -145,7 +158,24 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                         Message = "Không tìm thấy hồ sơ!"
                     });
                 }
-                stf.TypeofStatusProfile = AdmissionProfile_UpdateStatus_DTO.TypeofStatusProfile;
+                if (AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor1 == TypeofStatusForMajor.Pass)
+                {
+                    stf.TypeofStatusMajor1 = TypeofStatusForMajor.Pass;
+                    stf.TypeofStatusMajor2 = TypeofStatusForMajor.Pending;
+                    stf.TypeofStatusProfile = TypeofStatus.WaitingPaymentAdmission;
+                }
+                if (AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor1 == TypeofStatusForMajor.Fail && AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor2 == TypeofStatusForMajor.Pass)
+                {
+                    stf.TypeofStatusMajor1 = TypeofStatusForMajor.Fail;
+                    stf.TypeofStatusMajor2 = TypeofStatusForMajor.Pass;
+                    stf.TypeofStatusProfile = TypeofStatus.WaitingPaymentAdmission;
+                }
+                if (AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor1 == TypeofStatusForMajor.Fail && AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor2 == TypeofStatusForMajor.Fail)
+                {
+                    stf.TypeofStatusMajor1 = TypeofStatusForMajor.Fail;
+                    stf.TypeofStatusMajor2 = TypeofStatusForMajor.Fail;
+                    stf.TypeofStatusProfile = TypeofStatus.Done;
+                }
 
                 // Save the updated profile
                 await _studentProfileService.UpdateStudentRegister(stf);

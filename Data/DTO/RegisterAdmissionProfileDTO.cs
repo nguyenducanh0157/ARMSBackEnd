@@ -283,6 +283,8 @@ namespace Data.DTO
     public class AdmissionProfile_UpdateStatus_DTO
     {
         public Guid SpId { get; set; }
-        public  TypeofStatus TypeofStatusProfile { get; set; } 
+        public  TypeofStatus? TypeofStatusProfile { get; set; }
+        public virtual TypeofStatusForMajor? TypeofStatusMajor1 { get; set; } // trạng thái xét tuyển ngành 1
+        public virtual TypeofStatusForMajor? TypeofStatusMajor2 { get; set; } // trạng thái xét tuyển ngành 2
     }
 }
