@@ -43,8 +43,11 @@ namespace ARMS_API.Controllers.Student
             }
             catch (Exception)
             {
-
-                return BadRequest();
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã xảy ra lỗi! Vui lòng thử lại sau!"
+                });
             }
         }
         [HttpGet("get-major")]
@@ -64,8 +67,11 @@ namespace ARMS_API.Controllers.Student
             }
             catch (Exception)
             {
-
-                return BadRequest();
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã xảy ra lỗi! Vui lòng thử lại sau!"
+                });
             }
         }
         [HttpPost("add-request-change-major")]
@@ -73,10 +79,34 @@ namespace ARMS_API.Controllers.Student
         {
             try
             {
+                if (requestChangeMajor_Student_DTO == null)
+                {
+                    return BadRequest(new ResponseViewModel()
+                    {
+                        Status = false,
+                        Message = "Không nhận được dữ liệu yêu cầu!"
+                    });
+                }
                 var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return Unauthorized(new ResponseViewModel()
+                    {
+                        Status = false,
+                        Message = "Vui lòng đăng nhập lại để tiếp tục sử dụng!"
+                    });
+                }
+
                 //get acccount by userId
                 var account = await _accountService.GetAccountByUserId(Guid.Parse(userId));
-
+                if (account == null)
+                {
+                    return BadRequest(new ResponseViewModel()
+                    {
+                        Status = false,
+                        Message = "Không tìm thấy tài khoản người dùng!"
+                    });
+                }
                 //mapper
                 Request RequestChangeMajor = _mapper.Map<Request>(requestChangeMajor_Student_DTO);
                 RequestChangeMajor.Status = TypeofRequestChangeMajor.Inprocess;
@@ -94,12 +124,12 @@ namespace ARMS_API.Controllers.Student
                     Message = "Gửi yêu cầu thành công!"
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return BadRequest(new ResponseViewModel()
+                return BadRequest(new ResponseViewModel
                 {
                     Status = false,
-                    Message = ex.Message
+                    Message = "Đã xảy ra lỗi! Vui lòng thử lại sau!"
                 });
             }
         }

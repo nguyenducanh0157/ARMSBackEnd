@@ -27,10 +27,7 @@ namespace ARMS_API.Controllers.Student
             try
             {
                 var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-                if (string.IsNullOrEmpty(userId))
-                {
-                    return Unauthorized("Không tìm thấy ID người dùng!");
-                }
+                if (string.IsNullOrEmpty(userId)) return Unauthorized("Không tìm thấy ID người dùng!");
                 Account major = await _accountService.GetAccountByUserId(Guid.Parse(userId));
                 Account_DTO responeResult = _mapper.Map<Account_DTO>(major);
                 return Ok(responeResult);
@@ -38,8 +35,11 @@ namespace ARMS_API.Controllers.Student
             }
             catch (Exception)
             {
-
-                return BadRequest();
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã xảy ra lỗi! Vui lòng thử lại sau!"
+                });
             }
         }
     }

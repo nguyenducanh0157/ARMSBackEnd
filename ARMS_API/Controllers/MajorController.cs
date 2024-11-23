@@ -33,8 +33,11 @@ namespace ARMS_API.Controllers
             }
             catch (Exception)
             {
-
-                return BadRequest();
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã xảy ra lỗi! Vui lòng thử lại sau!"
+                });
             }
         }
         [HttpGet("get-majors-college")]
@@ -51,8 +54,11 @@ namespace ARMS_API.Controllers
             }
             catch (Exception)
             {
-
-                return BadRequest();
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã xảy ra lỗi! Vui lòng thử lại sau!"
+                });
             }
         }
         [HttpGet("get-majors-college-for-vocational-school")]
@@ -69,8 +75,11 @@ namespace ARMS_API.Controllers
             }
             catch (Exception)
             {
-
-                return BadRequest();
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã xảy ra lỗi! Vui lòng thử lại sau!"
+                });
             }
         }
         [HttpGet("get-major-details")]
@@ -80,14 +89,25 @@ namespace ARMS_API.Controllers
             {
 
                 MajorAdmission response = await _majorService.GetMajorDetail(MajorId,AdmissionInformationID);
+                if (response == null)
+                {
+                    return NotFound(new ResponseViewModel
+                    {
+                        Status = false,
+                        Message = "Không tìm thấy ngành học!"
+                    });
+                }
                 MajorDTO responeResult = _mapper.Map<MajorDTO>(response);
                 return Ok(responeResult);
 
             }
             catch (Exception)
             {
-
-                return BadRequest();
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã xảy ra lỗi! Vui lòng thử lại sau!"
+                });
             }
         }
     }

@@ -24,6 +24,8 @@ namespace Data.DTO
         public DateTime? EndAdmission { get; set; }
         public TypeOfAdmissionInformation? Status { get; set; }
         public string? AdmissionProfileDescription { get; set; }
+        public virtual ICollection<AdmissionTime_Admission_DTO>? AdmissionTimes { get; set; }
+        public virtual ICollection<Major_AC_DTO>? MajorAdmissions { get; set; }
     }
     public class AdmissionInformation_Update_DTO
     {

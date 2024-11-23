@@ -44,6 +44,9 @@ namespace Repository
             try
             {
                 AdmissionInformation AdmissionInformation = await _context.AdmissionInformations
+                    .Include(x=>x.AdmissionTimes)
+                    .Include(x => x.MajorAdmissions)
+                    .ThenInclude(ma => ma.Major)
                     .FirstOrDefaultAsync(x => x.AdmissionInformationID == AdmissionInformationID);
                 return AdmissionInformation;
             }

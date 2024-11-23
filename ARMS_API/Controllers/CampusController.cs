@@ -28,7 +28,11 @@ namespace ARMS_API.Controllers
             }
             catch (Exception)
             {
-                return BadRequest();
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã xảy ra lỗi! Vui lòng thử lại sau!"
+                });
             }
         }
         [HttpGet("get-campuses")]
@@ -42,7 +46,11 @@ namespace ARMS_API.Controllers
             }
             catch (Exception)
             {
-                return BadRequest();
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã xảy ra lỗi! Vui lòng thử lại sau!"
+                });
             }
         }
         [HttpGet("get-campus")]
@@ -57,7 +65,11 @@ namespace ARMS_API.Controllers
             }
             catch (Exception)
             {
-                return BadRequest();
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã xảy ra lỗi! Vui lòng thử lại sau!"
+                });
             }
         }
         [HttpGet("get-sliders")]
@@ -71,7 +83,11 @@ namespace ARMS_API.Controllers
             }
             catch (Exception)
             {
-                return BadRequest();
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã xảy ra lỗi! Vui lòng thử lại sau!"
+                });
             }
         }
         [HttpGet("get-history")]
@@ -84,7 +100,11 @@ namespace ARMS_API.Controllers
             }
             catch (Exception)
             {
-                return BadRequest();
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã xảy ra lỗi! Vui lòng thử lại sau!"
+                });
             }
         }
         [HttpGet("get-achievements")]
@@ -97,7 +117,11 @@ namespace ARMS_API.Controllers
             }
             catch (Exception)
             {
-                return BadRequest();
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã xảy ra lỗi! Vui lòng thử lại sau!"
+                });
             }
         }
         [HttpGet("get-whychooseus")]
@@ -110,7 +134,11 @@ namespace ARMS_API.Controllers
             }
             catch (Exception)
             {
-                return BadRequest();
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã xảy ra lỗi! Vui lòng thử lại sau!"
+                });
             }
         }
         [HttpGet("get-trainingmotto")]
@@ -123,7 +151,11 @@ namespace ARMS_API.Controllers
             }
             catch (Exception)
             {
-                return BadRequest();
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã xảy ra lỗi! Vui lòng thử lại sau!"
+                });
             }
         }
 

@@ -14,7 +14,7 @@ namespace ARMS_API.Controllers.AdmissionCouncil
 {
     [Route("api/admission-council/[controller]")]
     [ApiController]
-    [Authorize(Roles = "AdmissionCouncil")]
+    //[Authorize(Roles = "AdmissionCouncil")]
     public class AdmissionInformationController : ControllerBase
     {
         private IAdmissionInformationService _admissionInformationService;
@@ -35,6 +35,20 @@ namespace ARMS_API.Controllers.AdmissionCouncil
             {
                 List <AdmissionInformation> response = await _admissionInformationService.GetAdmissionInformation(CampusId);
                 List<AdmissionInformation_AC_DTO> responeResult = _mapper.Map<List<AdmissionInformation_AC_DTO>>(response);
+                return Ok(responeResult);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        [HttpGet("get-admission-information-by-id")]
+        public async Task<IActionResult> GetAdmissionInformationById(int AdmissionInformationID)
+        {
+            try
+            {
+                AdmissionInformation response = await _admissionInformationService.GetAdmissionInformationById(AdmissionInformationID);
+                AdmissionInformation_AC_DTO responeResult = _mapper.Map<AdmissionInformation_AC_DTO>(response);
                 return Ok(responeResult);
             }
             catch (Exception)

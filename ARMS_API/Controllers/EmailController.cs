@@ -10,6 +10,7 @@ namespace ARMS_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    // đây là code test email
     public class EmailController : ControllerBase
     {
         private readonly IEmailService _emailService;

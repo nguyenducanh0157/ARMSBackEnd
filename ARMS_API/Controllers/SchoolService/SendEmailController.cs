@@ -13,6 +13,7 @@ namespace ARMS_API.Controllers.SchoolService
 {
     [Route("api/SchoolService/[controller]")]
     [ApiController]
+    //[Authorize(Roles = "SchoolService")]
     public class SendEmailController : ControllerBase
     {
         private readonly IEmailService _emailService;

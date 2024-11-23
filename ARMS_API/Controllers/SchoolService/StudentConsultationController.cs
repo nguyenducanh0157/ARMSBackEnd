@@ -2,17 +2,16 @@
 using AutoMapper;
 using Data.DTO;
 using Data.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Repository.MajorRepo;
 using Service.StudentConsultationSer;
 
-namespace ARMS_API.Controllers.AdmissionOfficer
+namespace ARMS_API.Controllers.SchoolService
 {
-    [Route("api/admin-officer/[controller]")]
-
+    [Route("api/SchoolService/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "AdminOfficer")]
+    //[Authorize(Roles = "SchoolService")]
     public class StudentConsultationController : ControllerBase
     {
         private IStudentConsultationService _studentConsultationService;
@@ -26,17 +25,68 @@ namespace ARMS_API.Controllers.AdmissionOfficer
             _validInput = validInput;
             _userInput = userInput;
         }
+        [HttpPost]
+        public async Task<IActionResult> AddStudentConsultation([FromBody] List<StudentConsultationDTO> studentConsultationDTOs)
+        {
+            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            var invalidObjects = new List<object>(); // Lưu các object bị lỗi
+            var validObjects = new List<StudentConsultationDTO>(); // Lưu các object hợp lệ
+
+            foreach (var dto in studentConsultationDTOs)
+            {
+                try
+                {
+                    // Kiểm tra dữ liệu
+                    _validInput.InputStudentConsultation(dto);
+
+                    // Nếu không có lỗi, thêm vào danh sách hợp lệ
+                    validObjects.Add(dto);
+                }
+                catch (Exception ex)
+                {
+                    // Nếu có lỗi, thêm vào danh sách không hợp lệ với thông báo lỗi
+                    invalidObjects.Add(new
+                    {
+                        Data = dto,
+                        Error = ex.Message
+                    });
+                }
+            }
+
+            // Xử lý các object hợp lệ
+            foreach (var validDto in validObjects)
+            {
+                var studentConsultation = _mapper.Map<StudentConsultation>(validDto);
+                studentConsultation.StudentConsultationId = Guid.NewGuid();
+                studentConsultation.Status = StatusConsultation.Reception;
+                studentConsultation.DateReceive = DateTime.Now;
+                studentConsultation.CreateBy = Guid.Parse(userId);
+                await _studentConsultationService.AddNewStudentConsultation(studentConsultation);
+            }
+
+            // Trả về kết quả
+            return Ok(new
+            {
+                Status = true,
+                Message = "Xử lý hoàn tất!",
+                TotalProcessed = validObjects.Count,
+                TotalErrors = invalidObjects.Count,
+                InvalidObjects = invalidObjects
+            });
+        }
         [HttpGet("get-list-student-consultation")]
         public async Task<IActionResult> GetStudentConsultation(string CampusId, string? Search, int CurrentPage, bool? isVocationalSchool)
         {
             try
             {
-                ResponeModel<StudentConsultation_AO_DTO> result = new ResponeModel<StudentConsultation_AO_DTO>();
+                var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+                ResponeModel<StudentConsultation_SS_DTO> result = new ResponeModel<StudentConsultation_SS_DTO>();
                 result.CurrentPage = CurrentPage;
                 result.CampusId = CampusId;
                 result.Search = Search;
 
                 List<StudentConsultation> response = await _studentConsultationService.GetListStudentConsultation(CampusId);
+                response = response.Where(x => x.CreateBy == Guid.Parse(userId)).ToList();
                 // Search
                 if (!string.IsNullOrEmpty(Search))
                 {
@@ -66,10 +116,10 @@ namespace ARMS_API.Controllers.AdmissionOfficer
 
                 // Map to StudentConsultation_AO_DTO
 
-                List<StudentConsultation_AO_DTO> responeResult = _mapper.Map<List<StudentConsultation_AO_DTO>>(response);
+                List<StudentConsultation_SS_DTO> responeResult = _mapper.Map<List<StudentConsultation_SS_DTO>>(response);
                 result.Item = responeResult;
 
-                
+
                 return Ok(result);
 
             }
@@ -79,27 +129,6 @@ namespace ARMS_API.Controllers.AdmissionOfficer
                 return BadRequest();
             }
         }
-        [HttpPut("update-student-consultation")]
-        public async Task<IActionResult> UpdateStudentConsultation(StudentConsultation_AO_DTO StudentConsultationDTO)
-        {
-            try
-            {
-                _validInput.UpdateStudentConsultation(StudentConsultationDTO);
-                StudentConsultation responeResult = _mapper.Map<StudentConsultation>(StudentConsultationDTO);
-                await _studentConsultationService.UpdateStudentConsultation(responeResult);
 
-                return Ok(new ResponseViewModel()
-                {
-                    Status = true,
-                    Message = "Cập nhật thành công!"
-                });
-
-            }
-            catch (Exception)
-            {
-
-                return BadRequest();
-            }
-        }
     }
 }

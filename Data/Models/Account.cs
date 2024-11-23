@@ -26,6 +26,7 @@ namespace Data.Models
         public virtual StudentProfile? StudentProfile { get; set; }
         public virtual ICollection<Request>? RequestChangeMajors { get; set; }
         public virtual ICollection<RequestNotification>? RequestNotifications { get; set; }
+        public virtual ICollection<StudentConsultation>? StudentConsultations { get; set; }
     }
     public enum TypeAccount
     {

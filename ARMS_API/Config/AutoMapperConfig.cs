@@ -43,6 +43,10 @@ namespace ARMS_API.Config
                                       SubjectGroupName = EnumExtensions.GetEnumDescription(g)
                                   }).ToList()));
                 config.CreateMap<Major_Admission_DTO, MajorAdmission>();
+                config.CreateMap<Major_AC_DTO, MajorAdmission>();
+                config.CreateMap<MajorAdmission, Major_AC_DTO>()
+                 .ForMember(dest => dest.MajorName, opt => opt.MapFrom(src => src.Major.MajorName))
+                .ForMember(dest => dest.MajorCode, opt => opt.MapFrom(src => src.Major.MajorCode));
 
                 config.CreateMap<Major_Manage_DTO, Major>();
                 config.CreateMap<Major_Admission_DTO, Major>();
@@ -66,6 +70,9 @@ namespace ARMS_API.Config
                 config.CreateMap<StudentConsultation, StudentConsultation_AO_DTO>()
                 .ForMember(dest => dest.MajorName, opt => opt.MapFrom(src => src.Major.MajorName));
                 config.CreateMap<StudentConsultation_AO_DTO, StudentConsultation>();
+                config.CreateMap<StudentConsultation, StudentConsultation_SS_DTO>()
+                .ForMember(dest => dest.MajorName, opt => opt.MapFrom(src => src.Major.MajorName));
+                config.CreateMap<StudentConsultation_SS_DTO, StudentConsultation>();
 
                 //admission time
                 config.CreateMap<AdmissionTime, AdmissionTimeDTO>();
@@ -75,6 +82,8 @@ namespace ARMS_API.Config
                 // admission information 
                 config.CreateMap<AdmissionInformation, AdmissionInformationDTO>();
                 config.CreateMap<AdmissionInformation_Update_DTO, AdmissionInformation>();
+                config.CreateMap<AdmissionInformation, AdmissionInformation_AC_DTO>();
+                config.CreateMap<AdmissionInformation_AC_DTO, AdmissionInformation>();
 
                 config.CreateMap<AdmissionInformation, AdmissionInformation_AC_DTO>();
                 // request change major

@@ -29,7 +29,11 @@ namespace ARMS_API.Controllers
             }
             catch (Exception)
             {
-                return BadRequest();
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã xảy ra lỗi! Vui lòng thử lại sau!"
+                });
             }
         }
     }
