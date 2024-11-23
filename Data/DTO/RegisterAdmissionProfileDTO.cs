@@ -267,5 +267,6 @@ namespace Data.DTO
         // view
         public string? CampusName { get; set; }
         public virtual PriorityDetailDTO? PriorityDetail { get; set; }// loại điểm ưu tiên
+        public DateTime TimeRegister { get; set; }
     }
 }

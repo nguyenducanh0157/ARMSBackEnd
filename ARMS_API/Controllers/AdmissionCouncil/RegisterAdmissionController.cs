@@ -29,9 +29,8 @@ namespace ARMS_API.Controllers.AdmissionCouncil
             _validInput = validInput;
             _userInput = userInput;
         }
-
         [HttpGet("list-register-admission")]
-        public async Task<IActionResult> ListRegisterAdmission(string CampusId, string? Search, int CurrentPage)
+        public async Task<IActionResult> ListRegisterAdmission(string CampusId, string? Search, int CurrentPage, TypeofStatus? TypeofStatus)
         {
             try
             {
@@ -40,7 +39,7 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 result.CampusId = CampusId;
                 result.Search = Search;
 
-                List<StudentProfile> response = await _studentProfileService.GetRegisterAdmissionForAC(CampusId);
+                List<StudentProfile> response = await _studentProfileService.GetRegisterAdmission(CampusId);
                 // Search
                 if (!string.IsNullOrEmpty(Search))
                 {
@@ -63,6 +62,10 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                                     _userInput.NormalizeText(sp.CIAddress ?? "").Contains(searchTerm)
                                 ))
                                 .ToList();
+                }
+                if (TypeofStatus != null)
+                {
+                    response = response.Where(x => x.TypeofStatusProfile == TypeofStatus).ToList();
                 }
 
                 //mapper
