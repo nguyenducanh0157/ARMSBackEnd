@@ -3,6 +3,7 @@ using ARMS_API.ValidData;
 using AutoMapper;
 using Data.DTO;
 using Data.Models;
+using FirebaseAdmin.Messaging;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -289,5 +290,135 @@ namespace ARMS_API.Controllers
                 });
             }
         }
+        [HttpGet("check-cccd")]
+        public async Task<IActionResult> CheckCCCD(string CCCD)
+        {
+            try
+            {
+                var checkResult = CCCD switch
+                {
+                    null => "empty",
+                    var ccd when !_userInput.IsValidCCCD(ccd) => "invalid",
+                    var ccd when await _studentProfileService.isExistCCCDStudent(ccd) => "exists",
+                    _ => "valid" 
+                };
+
+                return checkResult switch
+                {
+                    "empty" => BadRequest(new ResponseViewModel()
+                    {
+                        Status = false,
+                        Message = "Không được để trống số căn cước công dân!"
+                    }),
+                    "invalid" => BadRequest(new ResponseViewModel()
+                    {
+                        Status = false,
+                        Message = "Định dạng số căn cước công dân không đúng!"
+                    }),
+                    "exists" => BadRequest(new ResponseViewModel()
+                    {
+                        Status = false,
+                        Message = "Căn cước công dân đã tồn tại!"
+                    }),
+                    _ => Ok()
+                };
+            }
+            catch (Exception)
+            {
+                return BadRequest(new ResponseViewModel()
+                {
+                    Status = false,
+                    Message = "Server lỗi!"
+                });
+            }
+        }
+
+
+        [HttpGet("check-email")]
+        public async Task<IActionResult> CheckEmail(string email)
+        {
+            try
+            {
+                var checkResult = email switch
+                {
+                    var e when string.IsNullOrEmpty(e) => "empty",
+                    var e when !_userInput.IsValidEmail(e) => "invalid",
+                    var e when await _studentProfileService.isExistEmailStudent(e) => "exists", 
+                    _ => "valid"  
+                };
+
+                return checkResult switch
+                {
+                    "empty" => BadRequest(new ResponseViewModel()
+                    {
+                        Status = false,
+                        Message = "Không được để trống email của học sinh!"
+                    }),
+                    "invalid" => BadRequest(new ResponseViewModel()
+                    {
+                        Status = false,
+                        Message = "Email học sinh không hợp lệ!"
+                    }),
+                    "exists" => BadRequest(new ResponseViewModel()
+                    {
+                        Status = false,
+                        Message = "Email đã được đăng ký!"
+                    }),
+                    _ => Ok()
+                };
+            }
+            catch (Exception)
+            {
+                return BadRequest(new ResponseViewModel()
+                {
+                    Status = false,
+                    Message = "Server lỗi!"
+                });
+            }
+        }
+
+        [HttpGet("check-phone")]
+        public async Task<IActionResult> CheckPhone(string phone)
+        {
+            try
+            {
+                var checkResult = phone switch
+                {
+                    var p when string.IsNullOrEmpty(p) => "empty", 
+                    var p when !_userInput.IsValidPhoneNumber(p) => "invalid",
+                    var p when await _studentProfileService.isExistEmailStudent(p) => "exists",
+                    _ => "valid"
+                };
+
+                return checkResult switch
+                {
+                    "empty" => BadRequest(new ResponseViewModel()
+                    {
+                        Status = false,
+                        Message = "Không được để trống số điện thoại của học sinh!"
+                    }),
+                    "invalid" => BadRequest(new ResponseViewModel()
+                    {
+                        Status = false,
+                        Message = "Số điện thoại học sinh không hợp lệ!"
+                    }),
+                    "exists" => BadRequest(new ResponseViewModel()
+                    {
+                        Status = false,
+                        Message = "Số điện thoại đã được đăng ký!"
+                    }),
+                    _ => Ok()
+                };
+            }
+            catch (Exception)
+            {
+                return BadRequest(new ResponseViewModel()
+                {
+                    Status = false,
+                    Message = "Server lỗi!"
+                });
+            }
+        }
+
     }
 }
