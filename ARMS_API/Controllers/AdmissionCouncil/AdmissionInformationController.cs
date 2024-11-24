@@ -62,7 +62,8 @@ namespace ARMS_API.Controllers.AdmissionCouncil
             try
             {
                 //check data
-                //_validAdmissionInformation.ValidDataAdmissionInfor(AdmissionInformationDTO);
+                _validAdmissionInformation.ValidDataAdmissionInforAdd(AdmissionInformationDTO, AdmissionInformationDTO.CampusId);
+                _validAdmissionInformation.ValidateAdmissionTimes(AdmissionInformationDTO);
                 //mapper
                 AdmissionInformation AdmissionInformation = _mapper.Map<AdmissionInformation>(AdmissionInformationDTO);
                 //add new
@@ -70,7 +71,7 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 return Ok(new ResponseViewModel()
                 {
                     Status = true,
-                    Message = "Tạo mới mới thành công!"
+                    Message = "Tạo mới thành công!"
                 });
             }
             catch (Exception ex)
@@ -90,7 +91,7 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 var checkdata = await _admissionInformationService.GetAdmissionInformationById(AdmissionInformationDTO.AdmissionInformationID);
                 if (checkdata == null) return NotFound();
                 //check data
-                _validAdmissionInformation.ValidDataAdmissionInfor(AdmissionInformationDTO);
+                _validAdmissionInformation.ValidDataAdmissionInfor(AdmissionInformationDTO, checkdata.CampusId);
                 //mapper
                 AdmissionInformation admissionInformation = _mapper.Map<AdmissionInformation>(AdmissionInformationDTO);
                 await _admissionInformationService.UpdateAdmissionInformation(admissionInformation);
@@ -101,10 +102,14 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 });
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                return BadRequest();
+                return BadRequest((new ResponseViewModel()
+                {
+                    Status = false,
+                    Message = ex.Message
+                })) ;
             }
         }
     }
