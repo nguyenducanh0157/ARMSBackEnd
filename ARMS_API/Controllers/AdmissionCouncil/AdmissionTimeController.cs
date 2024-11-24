@@ -44,8 +44,8 @@ namespace ARMS_API.Controllers.AdmissionCouncil
             try
             {
                 //check data
-                //_validAdmissionTime.ValidDataAdmissionTime
-                //    (admissionTimeDTO.Year, admissionTimeDTO.StartAdmission, admissionTimeDTO.EndAdmission, admissionTimeDTO.StartRegister, admissionTimeDTO.EndRegister, admissionTimeDTO.AdmissionInformationName);
+                _validAdmissionTime.ValidDataAdmissionTime
+                    (admissionTimeDTO);
                 //mapper
                 AdmissionTime AdmissionTime = _mapper.Map<AdmissionTime>(admissionTimeDTO);
                 //add new

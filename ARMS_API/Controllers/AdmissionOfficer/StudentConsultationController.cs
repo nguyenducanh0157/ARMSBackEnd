@@ -27,7 +27,7 @@ namespace ARMS_API.Controllers.AdmissionOfficer
             _userInput = userInput;
         }
         [HttpGet("get-list-student-consultation")]
-        public async Task<IActionResult> GetStudentConsultation(string CampusId, string? Search, int CurrentPage, bool? isVocationalSchool)
+        public async Task<IActionResult> GetStudentConsultation(string CampusId, string? Search, int CurrentPage, bool? isVocationalSchool, StatusConsultation? Status)
         {
             try
             {
@@ -55,6 +55,10 @@ namespace ARMS_API.Controllers.AdmissionOfficer
                 if (isVocationalSchool != null)
                 {
                     response = response.Where(x => x.Major.isVocationalSchool == isVocationalSchool).ToList();
+                }
+                if (Status != null)
+                {
+                    response = response.Where(x => x.Status == Status).ToList();
                 }
 
                 // Paging
