@@ -287,5 +287,6 @@ namespace Data.DTO
         public virtual TypeofStatus? TypeofStatusProfile { get; set; }
         public virtual TypeofStatusForMajor? TypeofStatusMajor1 { get; set; } // trạng thái xét tuyển ngành 1
         public virtual TypeofStatusForMajor? TypeofStatusMajor2 { get; set; } // trạng thái xét tuyển ngành 2
+        public string? Note { get; set; }// note của hồ sơ
     }
 }

@@ -83,10 +83,13 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 });
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                return BadRequest();
+                return BadRequest(new ResponseViewModel()
+                {
+                    Status = false,
+                    Message = ex.Message
+                });
             }
         }
         

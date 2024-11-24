@@ -58,7 +58,7 @@ namespace Service.AdmissionInformationSer
             try
             {
                 var ValidadmissionInformation = await _admissionInfomationRepository.GetAdmissionInformationById(AdmissionInformation.AdmissionInformationID);
-                ValidadmissionInformation.FeeRegister = AdmissionInformation.FeeAdmission;
+                ValidadmissionInformation.FeeRegister = AdmissionInformation.FeeRegister;
                 ValidadmissionInformation.FeeAdmission = AdmissionInformation.FeeAdmission;
                 ValidadmissionInformation.AdmissionProfileDescription = AdmissionInformation.AdmissionProfileDescription;
                 await _admissionInfomationRepository.UpdateAdmissionInformation(ValidadmissionInformation);

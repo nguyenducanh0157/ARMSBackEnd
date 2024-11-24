@@ -39,7 +39,7 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 result.CampusId = CampusId;
                 result.Search = Search;
 
-                List<StudentProfile> response = await _studentProfileService.GetRegisterAdmission(CampusId);
+                List<StudentProfile> response = await _studentProfileService.GetRegisterAdmissionForAC(CampusId);
                 // Search
                 if (!string.IsNullOrEmpty(Search))
                 {
@@ -196,6 +196,45 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 });
             }
         }
-        
+        [HttpPut("change-student-register-status")]
+        public async Task<IActionResult> ChangeStudentRegisterStatus(AdmissionProfile_UpdateStatus_DTO AdmissionProfile_UpdateStatus_DTO)
+        {
+            try
+            {
+
+                StudentProfile stf = await _studentProfileService.GetStudentProfileBySpIdAsync(AdmissionProfile_UpdateStatus_DTO.SpId);
+                if (stf == null)
+                {
+                    return NotFound(new ResponseViewModel()
+                    {
+                        Status = false,
+                        Message = "Không tìm thấy hồ sơ!"
+                    });
+                }
+                stf.TypeofStatusMajor1 = AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor1;
+                stf.TypeofStatusMajor2 = AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor2;
+                stf.TypeofStatusProfile = AdmissionProfile_UpdateStatus_DTO.TypeofStatusProfile;
+                stf.Note = AdmissionProfile_UpdateStatus_DTO.Note;
+
+                // Save the updated profile
+                await _studentProfileService.UpdateStudentRegister(stf);
+
+                return Ok(new ResponseViewModel()
+                {
+                    Status = true,
+                    Message = "Cập nhật thành công!"
+                });
+
+            }
+            catch (Exception)
+            {
+                return BadRequest(new ResponseViewModel()
+                {
+                    Status = false,
+                    Message = "Không tìm thấy hồ sơ!"
+                });
+            }
+        }
+
     }
 }
