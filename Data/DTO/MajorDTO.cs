@@ -101,5 +101,15 @@ namespace Data.DTO
             set => SubjectGroupsJson = JsonSerializer.Serialize(value);
         }
     }
-    
+    public class Major_Add_DTO
+    {
+        public int AdmissionInformationID { get; set; }
+        public string MajorID { get; set; }
+        public bool Status { get; set; }
+        public int? Target { get; set; }
+        public decimal? TotalScore { get; set; }
+        public decimal? TotalScoreAcademic { get; set; }
+        public string? SubjectGroupsJson { get; set; }
+    }
+
 }

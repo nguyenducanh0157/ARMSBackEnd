@@ -71,7 +71,7 @@ namespace Repository
         {
             try
             {
-                await _context.AdmissionInformations.AddAsync(AdmissionInformation);
+                await _context.AdmissionInformations.AddRangeAsync(AdmissionInformation);
                 _context.SaveChanges();
             }
             catch (Exception)

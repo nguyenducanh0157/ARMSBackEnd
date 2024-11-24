@@ -20,7 +20,6 @@ namespace Data.DTO
     {
         public int AIId { get; set; }
         public string AdmissionInformationName { get; set; }
-        public int Year { get; set; }
         public DateTime StartRegister { get; set; }
         public DateTime EndRegister { get; set; }
         public DateTime StartAdmission { get; set; }
@@ -30,7 +29,6 @@ namespace Data.DTO
     {
         public int AIId { get; set; }
         public string AdmissionInformationName { get; set; }
-        public int Year { get; set; }
         public DateTime StartRegister { get; set; }
         public DateTime EndRegister { get; set; }
         public DateTime StartAdmission { get; set; }

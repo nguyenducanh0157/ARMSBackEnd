@@ -56,13 +56,13 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 return BadRequest();
             }
         }
-        [HttpPost("add-admission-time")]
-        public async Task<IActionResult> AddAdmissionTime([FromBody] AdmissionInformation_Update_DTO AdmissionInformationDTO)
+        [HttpPost("add-admission-information")]
+        public async Task<IActionResult> AddAdmissionTime([FromBody] AdmissionInformation_Add_DTO AdmissionInformationDTO)
         {
             try
             {
                 //check data
-                _validAdmissionInformation.ValidDataAdmissionInfor(AdmissionInformationDTO);
+                //_validAdmissionInformation.ValidDataAdmissionInfor(AdmissionInformationDTO);
                 //mapper
                 AdmissionInformation AdmissionInformation = _mapper.Map<AdmissionInformation>(AdmissionInformationDTO);
                 //add new

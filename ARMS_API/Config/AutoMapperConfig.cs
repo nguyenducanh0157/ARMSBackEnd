@@ -82,6 +82,11 @@ namespace ARMS_API.Config
                 // admission information 
                 config.CreateMap<AdmissionInformation, AdmissionInformationDTO>();
                 config.CreateMap<AdmissionInformation_Update_DTO, AdmissionInformation>();
+                config.CreateMap<AdmissionInformation, AdmissionInformation_Add_DTO>();
+                config.CreateMap<AdmissionTime_Add_DTO, AdmissionTime>();
+                config.CreateMap<Major_Add_DTO, MajorAdmission>();
+
+
                 config.CreateMap<AdmissionInformation, AdmissionInformation_AC_DTO>();
                 config.CreateMap<AdmissionInformation_AC_DTO, AdmissionInformation>();
 

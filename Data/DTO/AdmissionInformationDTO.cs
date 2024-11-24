@@ -27,6 +27,19 @@ namespace Data.DTO
         public virtual ICollection<AdmissionTime_Admission_DTO>? AdmissionTimes { get; set; }
         public virtual ICollection<Major_AC_DTO>? MajorAdmissions { get; set; }
     }
+    public class AdmissionInformation_Add_DTO
+    {
+        public decimal FeeRegister { get; set; }
+        public decimal FeeAdmission { get; set; }
+        public int? Year { get; set; }
+        public DateTime? StartAdmission { get; set; }
+        public DateTime? EndAdmission { get; set; }
+        public TypeOfAdmissionInformation? Status { get; set; }
+        public string? AdmissionProfileDescription { get; set; }
+        public string CampusId { get; set; }
+        public virtual ICollection<AdmissionTime_Add_DTO>? AdmissionTimes { get; set; }
+        public virtual ICollection<Major_Add_DTO>? MajorAdmissions { get; set; }
+    }
     public class AdmissionInformation_Update_DTO
     {
         public int AdmissionInformationID { get; set; }
