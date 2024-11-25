@@ -134,7 +134,7 @@ namespace ARMS_API.Controllers
                 studentProfile.TimeRegister = DateTime.Now;
 
                 AdmissionInformation response = await _admissionInformationService.GetAdmissionInformationByStatus(registerAdmissionProfileDTO.CampusId);
-                studentProfile.AIId = response.AdmissionInformationID;
+                studentProfile.AdmissionTimeId = response.AdmissionInformationID;
                 if (studentProfile.PayFeeAdmissions == null)
                 {
                     studentProfile.PayFeeAdmissions = new List<PayFeeAdmission>();

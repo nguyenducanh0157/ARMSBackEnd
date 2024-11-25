@@ -8,8 +8,8 @@ namespace Data.Models
 {
     public class AdmissionTime
     {
-        public int AIId { get; set; }
-        public string AdmissionInformationName { get; set; }
+        public int AdmissionTimeId { get; set; }
+        public string AdmissionTimeName { get; set; }
         public DateTime StartRegister { get; set;}
         public DateTime EndRegister { get; set; }
         public DateTime StartAdmission { get; set; }

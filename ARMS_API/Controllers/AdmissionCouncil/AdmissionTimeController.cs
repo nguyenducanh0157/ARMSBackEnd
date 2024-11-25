@@ -12,7 +12,7 @@ namespace ARMS_API.Controllers.AdmissionCouncil
 {
     [Route("api/admission-council/[controller]")]
     [ApiController]
-    [Authorize(Roles = "AdmissionCouncil")]
+    //[Authorize(Roles = "AdmissionCouncil")]
     public class AdmissionTimeController : ControllerBase
     {
         private IAdmissionTimeService _admissionTimeService;
@@ -44,8 +44,8 @@ namespace ARMS_API.Controllers.AdmissionCouncil
             try
             {
                 //check data
-                _validAdmissionTime.ValidDataAdmissionTime
-                    (admissionTimeDTO);
+                //_validAdmissionTime.ValidDataAdmissionTime
+                //    (admissionTimeDTO);
                 //mapper
                 AdmissionTime AdmissionTime = _mapper.Map<AdmissionTime>(admissionTimeDTO);
                 //add new
@@ -53,7 +53,7 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 return Ok(new ResponseViewModel()
                 {
                     Status = true,
-                    Message = "Tạo mới mới thành công!"
+                    Message = "Tạo mới thành công!"
                 });
             }
             catch (Exception ex)

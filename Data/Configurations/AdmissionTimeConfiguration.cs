@@ -14,8 +14,8 @@ namespace Data.Configurations
         public void Configure(EntityTypeBuilder<AdmissionTime> builder)
         {
             builder.ToTable(nameof(AdmissionTime));
-            builder.HasKey(x=>x.AIId);
-            builder.Property(x => x.AdmissionInformationName).IsRequired();
+            builder.HasKey(x=>x.AdmissionTimeId);
+            builder.Property(x => x.AdmissionTimeName).IsRequired();
             builder.Property(x => x.StartRegister).IsRequired();
             builder.Property(x => x.EndRegister).IsRequired();
             builder.Property(x => x.StartAdmission).IsRequired();

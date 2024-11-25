@@ -63,7 +63,7 @@ namespace Data.Models
         public string? AdmissionForm { get; set; }
         public string? BirthCertificate { get; set; }
         // đợt tuyển sinh
-        public int AIId { get; set; }
+        public int AdmissionTimeId { get; set; }
         public virtual AdmissionTime? AdmissionTime { get; set; }
         // account
         public Guid? AccountId { get; set; }

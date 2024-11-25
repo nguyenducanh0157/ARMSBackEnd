@@ -10,6 +10,6 @@ namespace Data.Models
     {
         Done,
         Process,
-        Pending
+        Pending,
     }
 }

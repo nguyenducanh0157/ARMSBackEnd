@@ -22,8 +22,8 @@ namespace Data.Seeding
             modelBuilder.Entity<AdmissionTime>().HasData(
                new AdmissionTime()
                {
-                   AIId = 1,
-                   AdmissionInformationName = "Đợt 1",
+                   AdmissionTimeId = 1,
+                   AdmissionTimeName = "Đợt 1",
                    StartRegister = new DateTime(2023, 09, 01, 00, 00, 0),
                    EndRegister = new DateTime(2023, 12, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2024, 1, 01, 00, 00, 0),
@@ -32,8 +32,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 2,
-                   AdmissionInformationName = "Đợt 2",
+                   AdmissionTimeId = 2,
+                   AdmissionTimeName = "Đợt 2",
                    StartRegister = new DateTime(2024, 1, 01, 00, 00, 0),
                    EndRegister = new DateTime(2024, 4, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2024, 5, 01, 00, 00, 0),
@@ -42,8 +42,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 3,
-                   AdmissionInformationName = "Đợt 3",
+                   AdmissionTimeId = 3,
+                   AdmissionTimeName = "Đợt 3",
                    StartRegister = new DateTime(2024, 5, 01, 00, 00, 0),
                    EndRegister = new DateTime(2024, 8, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2024, 8, 15, 00, 00, 0),
@@ -52,8 +52,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 4,
-                   AdmissionInformationName = "Đợt 1",
+                   AdmissionTimeId = 4,
+                   AdmissionTimeName = "Đợt 1",
                    StartRegister = new DateTime(2023, 09, 01, 00, 00, 0),
                    EndRegister = new DateTime(2023, 12, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2024, 1, 01, 00, 00, 0),
@@ -62,8 +62,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 5,
-                   AdmissionInformationName = "Đợt 2",
+                   AdmissionTimeId = 5,
+                   AdmissionTimeName = "Đợt 2",
                    StartRegister = new DateTime(2024, 1, 01, 00, 00, 0),
                    EndRegister = new DateTime(2024, 4, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2024, 5, 01, 00, 00, 0),
@@ -72,8 +72,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 6,
-                   AdmissionInformationName = "Đợt 3",
+                   AdmissionTimeId = 6,
+                   AdmissionTimeName = "Đợt 3",
                    StartRegister = new DateTime(2024, 5, 01, 00, 00, 0),
                    EndRegister = new DateTime(2024, 8, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2024, 8, 15, 00, 00, 0),
@@ -82,8 +82,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 7,
-                   AdmissionInformationName = "Đợt 1",
+                   AdmissionTimeId = 7,
+                   AdmissionTimeName = "Đợt 1",
                    StartRegister = new DateTime(2023, 09, 01, 00, 00, 0),
                    EndRegister = new DateTime(2023, 12, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2024, 1, 01, 00, 00, 0),
@@ -92,8 +92,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 8,
-                   AdmissionInformationName = "Đợt 2",
+                   AdmissionTimeId = 8,
+                   AdmissionTimeName = "Đợt 2",
                    StartRegister = new DateTime(2024, 1, 01, 00, 00, 0),
                    EndRegister = new DateTime(2024, 4, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2024, 5, 01, 00, 00, 0),
@@ -102,8 +102,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 9,
-                   AdmissionInformationName = "Đợt 3",
+                   AdmissionTimeId = 9,
+                   AdmissionTimeName = "Đợt 3",
                    StartRegister = new DateTime(2024, 5, 01, 00, 00, 0),
                    EndRegister = new DateTime(2024, 8, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2024, 8, 15, 00, 00, 0),
@@ -112,8 +112,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 10,
-                   AdmissionInformationName = "Đợt 1",
+                   AdmissionTimeId = 10,
+                   AdmissionTimeName = "Đợt 1",
                    StartRegister = new DateTime(2023, 09, 01, 00, 00, 0),
                    EndRegister = new DateTime(2023, 12, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2024, 1, 01, 00, 00, 0),
@@ -122,8 +122,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 11,
-                   AdmissionInformationName = "Đợt 2",
+                   AdmissionTimeId = 11,
+                   AdmissionTimeName = "Đợt 2",
                    StartRegister = new DateTime(2024, 1, 01, 00, 00, 0),
                    EndRegister = new DateTime(2024, 4, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2024, 5, 01, 00, 00, 0),
@@ -132,8 +132,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 12,
-                   AdmissionInformationName = "Đợt 3",
+                   AdmissionTimeId = 12,
+                   AdmissionTimeName = "Đợt 3",
                    StartRegister = new DateTime(2024, 5, 01, 00, 00, 0),
                    EndRegister = new DateTime(2024, 8, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2024, 8, 15, 00, 00, 0),
@@ -142,8 +142,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 13,
-                   AdmissionInformationName = "Đợt 1",
+                   AdmissionTimeId = 13,
+                   AdmissionTimeName = "Đợt 1",
                    StartRegister = new DateTime(2023, 09, 01, 00, 00, 0),
                    EndRegister = new DateTime(2023, 12, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2024, 1, 01, 00, 00, 0),
@@ -152,8 +152,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 14,
-                   AdmissionInformationName = "Đợt 2",
+                   AdmissionTimeId = 14,
+                   AdmissionTimeName = "Đợt 2",
                    StartRegister = new DateTime(2024, 1, 01, 00, 00, 0),
                    EndRegister = new DateTime(2024, 4, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2024, 5, 01, 00, 00, 0),
@@ -162,8 +162,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 15,
-                   AdmissionInformationName = "Đợt 3",
+                   AdmissionTimeId = 15,
+                   AdmissionTimeName = "Đợt 3",
                    StartRegister = new DateTime(2024, 5, 01, 00, 00, 0),
                    EndRegister = new DateTime(2024, 8, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2024, 8, 15, 00, 00, 0),
@@ -172,8 +172,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 16,
-                   AdmissionInformationName = "Đợt 1",
+                   AdmissionTimeId = 16,
+                   AdmissionTimeName = "Đợt 1",
                    StartRegister = new DateTime(2022, 09, 01, 00, 00, 0),
                    EndRegister = new DateTime(2022, 12, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2023, 1, 01, 00, 00, 0),
@@ -182,8 +182,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 17,
-                   AdmissionInformationName = "Đợt 2",
+                   AdmissionTimeId = 17,
+                   AdmissionTimeName = "Đợt 2",
                    StartRegister = new DateTime(2023, 1, 01, 00, 00, 0),
                    EndRegister = new DateTime(2023, 4, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2023, 5, 01, 00, 00, 0),
@@ -192,8 +192,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 18,
-                   AdmissionInformationName = "Đợt 3",
+                   AdmissionTimeId = 18,
+                   AdmissionTimeName = "Đợt 3",
                    StartRegister = new DateTime(2023, 5, 01, 00, 00, 0),
                    EndRegister = new DateTime(2023, 8, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2023, 8, 15, 00, 00, 0),
@@ -202,8 +202,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 19,
-                   AdmissionInformationName = "Đợt 1",
+                   AdmissionTimeId = 19,
+                   AdmissionTimeName = "Đợt 1",
                    StartRegister = new DateTime(2022, 09, 01, 00, 00, 0),
                    EndRegister = new DateTime(2022, 12, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2023, 1, 01, 00, 00, 0),
@@ -212,8 +212,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 20,
-                   AdmissionInformationName = "Đợt 2",
+                   AdmissionTimeId = 20,
+                   AdmissionTimeName = "Đợt 2",
                    StartRegister = new DateTime(2023, 1, 01, 00, 00, 0),
                    EndRegister = new DateTime(2023, 4, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2023, 5, 01, 00, 00, 0),
@@ -222,8 +222,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 21,
-                   AdmissionInformationName = "Đợt 3",
+                   AdmissionTimeId = 21,
+                   AdmissionTimeName = "Đợt 3",
                    StartRegister = new DateTime(2023, 5, 01, 00, 00, 0),
                    EndRegister = new DateTime(2023, 8, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2023, 8, 15, 00, 00, 0),
@@ -232,8 +232,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 22,
-                   AdmissionInformationName = "Đợt 1",
+                   AdmissionTimeId = 22,
+                   AdmissionTimeName = "Đợt 1",
                    StartRegister = new DateTime(2022, 09, 01, 00, 00, 0),
                    EndRegister = new DateTime(2022, 12, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2023, 1, 01, 00, 00, 0),
@@ -242,8 +242,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 23,
-                   AdmissionInformationName = "Đợt 2",
+                   AdmissionTimeId = 23,
+                   AdmissionTimeName = "Đợt 2",
                    StartRegister = new DateTime(2023, 1, 01, 00, 00, 0),
                    EndRegister = new DateTime(2023, 4, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2023, 5, 01, 00, 00, 0),
@@ -252,8 +252,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 24,
-                   AdmissionInformationName = "Đợt 3",
+                   AdmissionTimeId = 24,
+                   AdmissionTimeName = "Đợt 3",
                    StartRegister = new DateTime(2023, 5, 01, 00, 00, 0),
                    EndRegister = new DateTime(2023, 8, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2023, 8, 15, 00, 00, 0),
@@ -262,8 +262,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 25,
-                   AdmissionInformationName = "Đợt 1",
+                   AdmissionTimeId = 25,
+                   AdmissionTimeName = "Đợt 1",
                    StartRegister = new DateTime(2022, 09, 01, 00, 00, 0),
                    EndRegister = new DateTime(2022, 12, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2023, 1, 01, 00, 00, 0),
@@ -272,8 +272,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 26,
-                   AdmissionInformationName = "Đợt 2",
+                   AdmissionTimeId = 26,
+                   AdmissionTimeName = "Đợt 2",
                    StartRegister = new DateTime(2023, 1, 01, 00, 00, 0),
                    EndRegister = new DateTime(2023, 4, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2023, 5, 01, 00, 00, 0),
@@ -282,8 +282,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 27,
-                   AdmissionInformationName = "Đợt 3",
+                   AdmissionTimeId = 27,
+                   AdmissionTimeName = "Đợt 3",
                    StartRegister = new DateTime(2023, 5, 01, 00, 00, 0),
                    EndRegister = new DateTime(2023, 8, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2023, 8, 15, 00, 00, 0),
@@ -292,8 +292,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 28,
-                   AdmissionInformationName = "Đợt 1",
+                   AdmissionTimeId = 28,
+                   AdmissionTimeName = "Đợt 1",
                    StartRegister = new DateTime(2022, 09, 01, 00, 00, 0),
                    EndRegister = new DateTime(2022, 12, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2023, 1, 01, 00, 00, 0),
@@ -302,8 +302,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 29,
-                   AdmissionInformationName = "Đợt 2",
+                   AdmissionTimeId = 29,
+                   AdmissionTimeName = "Đợt 2",
                    StartRegister = new DateTime(2023, 1, 01, 00, 00, 0),
                    EndRegister = new DateTime(2023, 4, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2023, 5, 01, 00, 00, 0),
@@ -312,8 +312,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 30,
-                   AdmissionInformationName = "Đợt 3",
+                   AdmissionTimeId = 30,
+                   AdmissionTimeName = "Đợt 3",
                    StartRegister = new DateTime(2023, 5, 01, 00, 00, 0),
                    EndRegister = new DateTime(2023, 8, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2023, 8, 15, 00, 00, 0),
@@ -322,8 +322,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 31,
-                   AdmissionInformationName = "Đợt 1",
+                   AdmissionTimeId = 31,
+                   AdmissionTimeName = "Đợt 1",
                    StartRegister = new DateTime(2024, 09, 01, 00, 00, 0),
                    EndRegister = new DateTime(2024, 12, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2025, 1, 01, 00, 00, 0),
@@ -332,8 +332,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 32,
-                   AdmissionInformationName = "Đợt 2",
+                   AdmissionTimeId = 32,
+                   AdmissionTimeName = "Đợt 2",
                    StartRegister = new DateTime(2025, 1, 01, 00, 00, 0),
                    EndRegister = new DateTime(2025, 4, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2025, 5, 01, 00, 00, 0),
@@ -342,8 +342,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 33,
-                   AdmissionInformationName = "Đợt 3",
+                   AdmissionTimeId = 33,
+                   AdmissionTimeName = "Đợt 3",
                    StartRegister = new DateTime(2025, 5, 01, 00, 00, 0),
                    EndRegister = new DateTime(2025, 8, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2025, 8, 15, 00, 00, 0),
@@ -352,8 +352,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 34,
-                   AdmissionInformationName = "Đợt 1",
+                   AdmissionTimeId = 34,
+                   AdmissionTimeName = "Đợt 1",
                    StartRegister = new DateTime(2024, 09, 01, 00, 00, 0),
                    EndRegister = new DateTime(2024, 12, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2025, 1, 01, 00, 00, 0),
@@ -362,8 +362,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 35,
-                   AdmissionInformationName = "Đợt 2",
+                   AdmissionTimeId = 35,
+                   AdmissionTimeName = "Đợt 2",
                    StartRegister = new DateTime(2025, 1, 01, 00, 00, 0),
                    EndRegister = new DateTime(2025, 4, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2025, 5, 01, 00, 00, 0),
@@ -372,8 +372,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 36,
-                   AdmissionInformationName = "Đợt 3",
+                   AdmissionTimeId = 36,
+                   AdmissionTimeName = "Đợt 3",
                    StartRegister = new DateTime(2025, 5, 01, 00, 00, 0),
                    EndRegister = new DateTime(2025, 8, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2025, 8, 15, 00, 00, 0),
@@ -382,8 +382,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 37,
-                   AdmissionInformationName = "Đợt 1",
+                   AdmissionTimeId = 37,
+                   AdmissionTimeName = "Đợt 1",
                    StartRegister = new DateTime(2024, 09, 01, 00, 00, 0),
                    EndRegister = new DateTime(2024, 12, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2025, 1, 01, 00, 00, 0),
@@ -392,8 +392,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 38,
-                   AdmissionInformationName = "Đợt 2",
+                   AdmissionTimeId = 38,
+                   AdmissionTimeName = "Đợt 2",
                    StartRegister = new DateTime(2025, 1, 01, 00, 00, 0),
                    EndRegister = new DateTime(2025, 4, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2025, 5, 01, 00, 00, 0),
@@ -402,8 +402,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 39,
-                   AdmissionInformationName = "Đợt 3",
+                   AdmissionTimeId = 39,
+                   AdmissionTimeName = "Đợt 3",
                    StartRegister = new DateTime(2025, 5, 01, 00, 00, 0),
                    EndRegister = new DateTime(2025, 8, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2025, 8, 15, 00, 00, 0),
@@ -412,8 +412,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 40,
-                   AdmissionInformationName = "Đợt 1",
+                   AdmissionTimeId = 40,
+                   AdmissionTimeName = "Đợt 1",
                    StartRegister = new DateTime(2024, 09, 01, 00, 00, 0),
                    EndRegister = new DateTime(2024, 12, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2025, 1, 01, 00, 00, 0),
@@ -422,8 +422,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 41,
-                   AdmissionInformationName = "Đợt 2",
+                   AdmissionTimeId = 41,
+                   AdmissionTimeName = "Đợt 2",
                    StartRegister = new DateTime(2025, 1, 01, 00, 00, 0),
                    EndRegister = new DateTime(2025, 4, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2025, 5, 01, 00, 00, 0),
@@ -432,8 +432,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 42,
-                   AdmissionInformationName = "Đợt 3",
+                   AdmissionTimeId = 42,
+                   AdmissionTimeName = "Đợt 3",
                    StartRegister = new DateTime(2025, 5, 01, 00, 00, 0),
                    EndRegister = new DateTime(2025, 8, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2025, 8, 15, 00, 00, 0),
@@ -442,8 +442,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 43,
-                   AdmissionInformationName = "Đợt 1",
+                   AdmissionTimeId = 43,
+                   AdmissionTimeName = "Đợt 1",
                    StartRegister = new DateTime(2024, 09, 01, 00, 00, 0),
                    EndRegister = new DateTime(2024, 12, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2025, 1, 01, 00, 00, 0),
@@ -452,8 +452,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 44,
-                   AdmissionInformationName = "Đợt 2",
+                   AdmissionTimeId = 44,
+                   AdmissionTimeName = "Đợt 2",
                    StartRegister = new DateTime(2025, 1, 01, 00, 00, 0),
                    EndRegister = new DateTime(2025, 4, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2025, 5, 01, 00, 00, 0),
@@ -462,8 +462,8 @@ namespace Data.Seeding
                },
                new AdmissionTime()
                {
-                   AIId = 45,
-                   AdmissionInformationName = "Đợt 3",
+                   AdmissionTimeId = 45,
+                   AdmissionTimeName = "Đợt 3",
                    StartRegister = new DateTime(2025, 5, 01, 00, 00, 0),
                    EndRegister = new DateTime(2025, 8, 30, 23, 59, 59),
                    StartAdmission = new DateTime(2025, 8, 15, 00, 00, 0),

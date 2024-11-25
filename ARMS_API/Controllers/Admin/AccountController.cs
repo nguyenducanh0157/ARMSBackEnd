@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Service.AccountSer;
 using Service.AdmissionTimeSer;
 using static Google.Apis.Requests.BatchRequest;
@@ -106,6 +107,73 @@ namespace ARMS_API.Controllers.Admin
                 return BadRequest();
             }
         }
+        [HttpGet("get-accounts-student")]
+        public async Task<IActionResult> GetAccountsRequest(string? CampusId, string? Search, int CurrentPage, TypeAccount? TypeAccount)
+        {
+            try
+            {
+                ResponeModel<Account_DTO> result = new ResponeModel<Account_DTO>();
+                result.CurrentPage = CurrentPage;
+                result.CampusId = CampusId;
+                result.Search = Search;
+
+                // Lấy danh sách tài khoản
+                List<Account> accounts = await _accountService.GetAccounts(CampusId);
+                // Search
+                if (!string.IsNullOrEmpty(Search))
+                {
+                    string searchTerm = _userInput.NormalizeText(Search);
+                    accounts = accounts
+                    .Where(account =>
+                    {
+                        string fullname = _userInput.NormalizeText(account?.Fullname ?? "");
+                        string phone = _userInput.NormalizeText(account?.Phone ?? "");
+                        string major = _userInput.NormalizeText(account?.Major?.MajorName ?? "");
+                        return fullname.Contains(searchTerm) || phone.Contains(searchTerm) || major.Contains(searchTerm);
+                    })
+                                .ToList();
+                }
+                // Lấy vai trò cho từng tài khoản
+                var rolesDictionary = new Dictionary<string, string>();
+                foreach (var account in accounts)
+                {
+                    var roles = await _userManager.GetRolesAsync(account);
+                    rolesDictionary[account.Id.ToString()] = roles.FirstOrDefault() ?? "No Role";
+                }
+                // Lọc theo vai trò nếu có tham số 'role'
+                if (TypeAccount!=null)
+                {
+                    accounts = accounts
+                        .Where(ac => ac.TypeAccount == TypeAccount)
+                        .ToList();
+                }
+
+
+                // Paging
+                result.PageCount = (int)Math.Ceiling(accounts.Count() / (double)result.PageSize);
+                var accs = accounts
+                    .Skip(((int)result.CurrentPage - 1) * (int)result.PageSize)
+                    .Take((int)result.PageSize)
+                    .ToList();
+                var accountDTOs = _mapper.Map<List<Account_DTO>>(accs);
+
+                foreach (var dto in accountDTOs)
+                {
+                    if (rolesDictionary.TryGetValue(dto.Id.ToString(), out var roleName))
+                    {
+                        dto.RoleName = roleName;
+                    }
+                }
+                result.Item = accountDTOs;
+                result.TotalItems = accounts.Count;
+
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
         [HttpPost("create-account")]
         public async Task<IActionResult> CreateAccount([FromBody] CreateAccountDTO model)
         {
@@ -122,6 +190,7 @@ namespace ARMS_API.Controllers.Admin
                 account.isAccountActive = false;
                 // Create the account in the Identity system
                 var result = await _userManager.CreateAsync(account, "A123@123a");
+
                 if (!result.Succeeded)
                     return BadRequest(result.Errors);
 

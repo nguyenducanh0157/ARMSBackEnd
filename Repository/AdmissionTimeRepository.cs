@@ -29,12 +29,25 @@ namespace Repository
                 throw;
             }
         }
-        public async Task<AdmissionTime> GetAdmissionTime(int AIId)
+        public async Task<List<AdmissionTime>> GetAdmissionTimes(int AdmissionInformationID)
+        {
+            try
+            {
+                List<AdmissionTime> AdmissionTime = await _context.AdmissionTimes
+                    .Where(x => x.AdmissionInformationID == AdmissionInformationID).ToListAsync();
+                return AdmissionTime;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public async Task<AdmissionTime> GetAdmissionTime(int AdmissionTimeId)
         {
             try
             {
                 AdmissionTime AdmissionTime = await _context.AdmissionTimes
-                    .FirstOrDefaultAsync(x => x.AIId == AIId);
+                    .SingleOrDefaultAsync(x => x.AdmissionTimeId == AdmissionTimeId);
                 return AdmissionTime;
             }
             catch (Exception)
@@ -46,8 +59,8 @@ namespace Repository
         {
             try
             {
-                await _context.AdmissionTimes.AddAsync(AdmissionTime);
-                _context.SaveChanges();
+                 _context.AdmissionTimes.AddRangeAsync(AdmissionTime);
+                await _context.SaveChangesAsync();
             }
             catch (Exception)
             {

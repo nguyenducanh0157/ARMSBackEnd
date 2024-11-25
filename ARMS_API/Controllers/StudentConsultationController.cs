@@ -51,6 +51,29 @@ namespace ARMS_API.Controllers
                 });
             }
         }
+        [HttpGet("download-template")]
+        public IActionResult DownloadTemplate()
+        {
+            try
+            {
+                // Tính đường dẫn từ thư mục gốc của ứng dụng
+                var rootPath = Directory.GetCurrentDirectory(); // Gốc của dự án
+                var filePath = Path.Combine(rootPath, "File", "Đăng ký tư vấn.xlsx");
+
+                if (!System.IO.File.Exists(filePath))
+                {
+                    return NotFound(new { message = "Không tìm thấy file." });
+                }
+
+                var fileBytes = System.IO.File.ReadAllBytes(filePath);
+                return File(fileBytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "Đăng ký tư vấn.xlsx");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Đã xảy ra lỗi khi tải file.", details = ex.Message });
+            }
+        }
+
 
     }
 }

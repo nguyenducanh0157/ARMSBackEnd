@@ -244,3 +244,7 @@ D:\Job\Đức Anh\Clone_BE\ARMS_API\obj\Debug\net6.0\refint\ARMS_API.dll
 D:\Job\Đức Anh\Clone_BE\ARMS_API\obj\Debug\net6.0\ARMS_API.pdb
 D:\Job\Đức Anh\Clone_BE\ARMS_API\obj\Debug\net6.0\ARMS_API.genruntimeconfig.cache
 D:\Job\Đức Anh\Clone_BE\ARMS_API\obj\Debug\net6.0\ref\ARMS_API.dll
+D:\Job\Đức Anh\Clone_BE\ARMS_API\bin\Debug\net6.0\EPPlus.dll
+D:\Job\Đức Anh\Clone_BE\ARMS_API\bin\Debug\net6.0\EPPlus.Interfaces.dll
+D:\Job\Đức Anh\Clone_BE\ARMS_API\bin\Debug\net6.0\EPPlus.System.Drawing.dll
+D:\Job\Đức Anh\Clone_BE\ARMS_API\bin\Debug\net6.0\Microsoft.IO.RecyclableMemoryStream.dll

@@ -133,33 +133,33 @@ namespace ARMS_API.ValidData
                     // Kiểm tra xem thời gian của AdmissionTime có nằm trong khoảng thời gian của AdmissionInformation không
                     if (admissionTime.StartRegister < admissionInformationDTO.StartAdmission || admissionTime.StartRegister > admissionInformationDTO.EndAdmission)
                     {
-                        throw new Exception($"Thời gian bắt đầu đăng ký của {admissionTime.AdmissionInformationName} không nằm trong khoảng thời gian tuyển sinh.");
+                        throw new Exception($"Thời gian bắt đầu đăng ký của {admissionTime.AdmissionTimeName} không nằm trong khoảng thời gian tuyển sinh.");
                     }
 
                     if (admissionTime.EndRegister < admissionInformationDTO.StartAdmission || admissionTime.EndRegister > admissionInformationDTO.EndAdmission)
                     {
-                        throw new Exception($"Thời gian kết thúc đăng ký của {admissionTime.AdmissionInformationName} không nằm trong khoảng thời gian tuyển sinh.");
+                        throw new Exception($"Thời gian kết thúc đăng ký của {admissionTime.AdmissionTimeName} không nằm trong khoảng thời gian tuyển sinh.");
                     }
 
                     if (admissionTime.StartAdmission < admissionInformationDTO.StartAdmission || admissionTime.StartAdmission > admissionInformationDTO.EndAdmission)
                     {
-                        throw new Exception($"Thời gian bắt đầu tuyển sinh của {admissionTime.AdmissionInformationName} không nằm trong khoảng thời gian tuyển sinh.");
+                        throw new Exception($"Thời gian bắt đầu tuyển sinh của {admissionTime.AdmissionTimeName} không nằm trong khoảng thời gian tuyển sinh.");
                     }
 
                     if (admissionTime.EndAdmission < admissionInformationDTO.StartAdmission || admissionTime.EndAdmission > admissionInformationDTO.EndAdmission)
                     {
-                        throw new Exception($"Thời gian kết thúc tuyển sinh của {admissionTime.AdmissionInformationName} không nằm trong khoảng thời gian tuyển sinh.");
+                        throw new Exception($"Thời gian kết thúc tuyển sinh của {admissionTime.AdmissionTimeName} không nằm trong khoảng thời gian tuyển sinh.");
                     }
 
                     // Kiểm tra nếu thời gian bắt đầu lớn hơn kết thúc cho từng thời gian của AdmissionTime
                     if (admissionTime.StartRegister >= admissionTime.EndRegister)
                     {
-                        throw new Exception($"Thời gian bắt đầu đăng ký của {admissionTime.AdmissionInformationName} phải nhỏ hơn thời gian kết thúc đăng ký.");
+                        throw new Exception($"Thời gian bắt đầu đăng ký của {admissionTime.AdmissionTimeName} phải nhỏ hơn thời gian kết thúc đăng ký.");
                     }
 
                     if (admissionTime.StartAdmission >= admissionTime.EndAdmission)
                     {
-                        throw new Exception($"Thời gian bắt đầu tuyển sinh của {admissionTime.AdmissionInformationName} phải nhỏ hơn thời gian kết thúc tuyển sinh.");
+                        throw new Exception($"Thời gian bắt đầu tuyển sinh của {admissionTime.AdmissionTimeName} phải nhỏ hơn thời gian kết thúc tuyển sinh.");
                     }
                     foreach (var at in admissionInformationDTO.AdmissionTimes.OrderBy(a => a.StartAdmission))  // Sắp xếp theo StartAdmission
                     {
@@ -175,12 +175,12 @@ namespace ARMS_API.ValidData
                             // Kiểm tra thời gian của đợt mới với đợt trước
                             if (at.StartRegister < previousAdmissionTime.EndRegister || at.EndRegister > previousAdmissionTime.StartRegister)
                             {
-                                throw new Exception($"Thời gian đăng ký của đợt {at.AdmissionInformationName} không hợp lệ với đợt tuyển sinh trước.");
+                                throw new Exception($"Thời gian đăng ký của đợt {at.AdmissionTimeName} không hợp lệ với đợt tuyển sinh trước.");
                             }
 
                             if (at.StartAdmission < previousAdmissionTime.EndAdmission || at.EndAdmission > previousAdmissionTime.StartAdmission)
                             {
-                                throw new Exception($"Thời gian tuyển sinh của đợt {at.AdmissionInformationName} không hợp lệ với đợt tuyển sinh trước.");
+                                throw new Exception($"Thời gian tuyển sinh của đợt {at.AdmissionTimeName} không hợp lệ với đợt tuyển sinh trước.");
                             }
                         }
 
@@ -190,12 +190,12 @@ namespace ARMS_API.ValidData
                             // Kiểm tra thời gian của đợt mới với đợt sau
                             if (at.StartRegister >= nextAdmissionTime.EndRegister || at.EndRegister <= nextAdmissionTime.StartRegister)
                             {
-                                throw new Exception($"Thời gian đăng ký của đợt {at.AdmissionInformationName} không hợp lệ với đợt tuyển sinh sau.");
+                                throw new Exception($"Thời gian đăng ký của đợt {at.AdmissionTimeName} không hợp lệ với đợt tuyển sinh sau.");
                             }
 
                             if (at.StartAdmission >= nextAdmissionTime.EndAdmission || at.EndAdmission <= nextAdmissionTime.StartAdmission)
                             {
-                                throw new Exception($"Thời gian tuyển sinh của đợt {at.AdmissionInformationName} không hợp lệ với đợt tuyển sinh sau.");
+                                throw new Exception($"Thời gian tuyển sinh của đợt {at.AdmissionTimeName} không hợp lệ với đợt tuyển sinh sau.");
                             }
                         }
 
