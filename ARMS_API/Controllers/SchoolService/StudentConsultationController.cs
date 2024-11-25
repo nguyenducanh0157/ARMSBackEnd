@@ -158,88 +158,168 @@ namespace ARMS_API.Controllers.SchoolService
         [HttpPost("upload-excel")]
         public async Task<IActionResult> AddStudentConsultationFromExcel([FromForm] IFormFile file)
         {
+            var campusIds = new[] { "Hà Nội", "Hồ Chí Minh", "Cần Thơ", "Thanh Hóa", "Đà Nẵng" };
+
             if (file == null || file.Length == 0)
             {
-                return BadRequest(new { Status = false, Message = "Không tìm thấy tệp tin!" });
+                return BadRequest(new { Status = false, Message = "Không tìm thấy tệp tin hoặc tệp tin rỗng!" });
             }
 
             var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-            var user = await _userManager.FindByIdAsync(userId);
-            var invalidObjects = new List<object>(); // Lưu các object bị lỗi
-            var validObjects = new List<StudentConsultationDTO>(); // Lưu các object hợp lệ
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized(new { Status = false, Message = "Người dùng không xác thực!" });
+            }
 
             try
             {
-                // Đọc tệp Excel
-                using (var package = new ExcelPackage(file.OpenReadStream()))
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                using var package = new ExcelPackage(file.OpenReadStream());
+
+                if (package.Workbook.Worksheets.Count == 0)
                 {
-                    // Giả sử tệp Excel có một sheet đầu tiên
-                    var worksheet = package.Workbook.Worksheets[0];
-
-                    // Lặp qua các dòng trong Excel và lấy dữ liệu
-                    for (int row = 2; row <= worksheet.Dimension.End.Row; row++) // Bắt đầu từ dòng 2 nếu dòng 1 là header
-                    {
-                        var dto = new StudentConsultationDTO
-                        {
-                            // Đọc dữ liệu từ các cột trong tệp Excel
-                            FullName = worksheet.Cells[row, 1].Text, // Cột 1
-                            PhoneNumber = worksheet.Cells[row, 2].Text, // Cột 2
-                            Email = worksheet.Cells[row, 3].Text, // Cột 3
-                            MajorID = worksheet.Cells[row, 4].Text, // Cột 4
-                            LinkFB = worksheet.Cells[row, 5].Text, // Cột 5
-                            CampusId = GetCampusId(worksheet.Cells[row, 6].Text), // Cột 6
-                        };
-
-                        try
-                        {
-                            // Kiểm tra dữ liệu
-                            _validInput.InputStudentConsultation(dto);
-
-                            // Nếu không có lỗi, thêm vào danh sách hợp lệ
-                            validObjects.Add(dto);
-                        }
-                        catch (Exception ex)
-                        {
-                            // Nếu có lỗi, thêm vào danh sách không hợp lệ với thông báo lỗi
-                            invalidObjects.Add(new
-                            {
-                                Data = dto,
-                                Error = ex.Message
-                            });
-                        }
-                    }
+                    return BadRequest(new { Status = false, Message = "Tệp Excel không có sheet nào!" });
                 }
 
-                // Xử lý các object hợp lệ
+                var worksheet = package.Workbook.Worksheets[0];
+                if (worksheet?.Dimension == null)
+                {
+                    return BadRequest(new { Status = false, Message = "Sheet đầu tiên trong tệp Excel trống!" });
+                }
+
+                var invalidObjects = new List<dynamic>();
+                var validObjects = new List<StudentConsultationDTO>();
+
+                for (int row = 2; row <= worksheet.Dimension.End.Row; row++)
+                {
+                    try
+                    {
+                        var fullName = worksheet.Cells[row, 1]?.Text?.Trim();
+                        var phoneNumber = worksheet.Cells[row, 2]?.Text?.Trim();
+                        var email = worksheet.Cells[row, 3]?.Text?.Trim();
+                        var majorId = worksheet.Cells[row, 4]?.Text?.Trim();
+                        var linkFb = worksheet.Cells[row, 5]?.Text?.Trim();
+                        var campusId = GetCampusId(worksheet.Cells[row, 6]?.Text?.Trim());
+
+
+
+                        var dto = new StudentConsultationDTO
+                        {
+                            FullName = fullName,
+                            PhoneNumber = phoneNumber,
+                            Email = email,
+                            MajorID = majorId,
+                            LinkFB = linkFb,
+                            CampusId = campusId
+                        };
+                        _validInput.InputStudentConsultation(dto);
+                        validObjects.Add(dto);
+                    }
+                    catch (Exception ex)
+                    {
+                        invalidObjects.Add(new
+                        {
+                            Row = row,
+                            FullName = worksheet.Cells[row, 1]?.Text,
+                            PhoneNumber = worksheet.Cells[row, 2]?.Text,
+                            Email = worksheet.Cells[row, 3]?.Text,
+                            MajorID = worksheet.Cells[row, 4]?.Text,
+                            LinkFB = worksheet.Cells[row, 5]?.Text,
+                            CampusId = worksheet.Cells[row, 6]?.Text,
+                            Error = ex.Message
+                        });
+
+                        Console.WriteLine($"Error in row {row}: {ex.Message}");
+                    }
+
+                }
+
                 foreach (var validDto in validObjects)
                 {
                     var studentConsultation = _mapper.Map<StudentConsultation>(validDto);
                     studentConsultation.StudentConsultationId = Guid.NewGuid();
                     studentConsultation.Status = StatusConsultation.Reception;
-                    studentConsultation.DateReceive = DateTime.Now;
+                    studentConsultation.DateReceive = DateTime.UtcNow;
                     studentConsultation.CreateBy = Guid.Parse(userId);
                     await _studentConsultationService.AddNewStudentConsultation(studentConsultation);
                 }
 
-                // Trả về kết quả
+                if (invalidObjects.Count > 0)
+                {
+                    Console.WriteLine(invalidObjects.Count);
+                    using var errorPackage = new ExcelPackage();
+                    var errorSheet = errorPackage.Workbook.Worksheets.Add("Invalid Data");
+
+                    // Sửa header theo yêu cầu
+                    errorSheet.Cells[1, 1].Value = "Họ và tên";
+                    errorSheet.Cells[1, 2].Value = "Số điện thoại";
+                    errorSheet.Cells[1, 3].Value = "Email";
+                    errorSheet.Cells[1, 4].Value = "Ngành học";
+                    errorSheet.Cells[1, 5].Value = "Link facebook";
+                    errorSheet.Cells[1, 6].Value = "Cơ sở";
+                    errorSheet.Cells[1, 7].Value = "Lỗi";
+
+                    // Ghi dữ liệu vào file
+                    for (int i = 0; i < invalidObjects.Count; i++)
+                    {
+                        var error = invalidObjects[i];
+                        errorSheet.Cells[i + 2, 1].Value = error.FullName;
+                        errorSheet.Cells[i + 2, 2].Value = error.PhoneNumber;
+                        errorSheet.Cells[i + 2, 3].Value = error.Email;
+                        errorSheet.Cells[i + 2, 4].Value = error.MajorID;
+                        errorSheet.Cells[i + 2, 5].Value = error.LinkFB;
+                        
+                        errorSheet.Cells[i + 2, 7].Value = error.Error;
+
+                        var campusRange = string.Join(",", campusIds); // Tạo chuỗi danh sách các thành phố
+                        var campusCell = errorSheet.Cells[i + 2, 6];
+
+                        // Áp dụng Data Validation cho ô CampusId
+                        var validation = campusCell.DataValidation.AddListDataValidation();
+                        validation.Formula.Values.Add(campusRange);
+
+                    }
+
+                    var errorFileContent = errorPackage.GetAsByteArray();
+                    var fileName = $"Errors.xlsx";
+                    return File(errorFileContent, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+
+                }
+                else
+                {
                 return Ok(new
                 {
                     Status = true,
                     Message = "Xử lý hoàn tất!",
                     TotalProcessed = validObjects.Count,
-                    TotalErrors = invalidObjects.Count,
-                    InvalidObjects = invalidObjects
+                    TotalErrors = invalidObjects.Count
                 });
+
+                }
+
+
             }
             catch (Exception ex)
             {
-                // Nếu có lỗi trong quá trình đọc tệp hoặc xử lý dữ liệu
-                return StatusCode(500, new { Status = false, Message = "Có lỗi xảy ra trong quá trình xử lý tệp", Error = ex.Message });
+                return StatusCode(500, new
+                {
+                    Status = false,
+                    Message = "Có lỗi xảy ra trong quá trình xử lý tệp",
+                    Error = ex.Message
+                });
             }
         }
+
+
+
         private string GetCampusId(string campusName)
         {
-            var campusMapping = new Dictionary<string, string>
+            if (string.IsNullOrWhiteSpace(campusName))
+            {
+                throw new ArgumentException("Tên cơ sở không được để trống.");
+            }
+
+            var campusMapping = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
             {
                 { "Hà Nội", "Hanoi" },
                 { "Hồ Chí Minh", "HCM" },
@@ -250,10 +330,11 @@ namespace ARMS_API.Controllers.SchoolService
 
             if (campusMapping.TryGetValue(campusName.Trim(), out var campusId))
             {
-                return campusId; // Return the corresponding campus ID
+                return campusId;
             }
 
-            return null; // Return null if campus name not found
+            throw new ArgumentException($"Không tìm thấy cơ sở có tên: {campusName}");
         }
+
     }
 }
