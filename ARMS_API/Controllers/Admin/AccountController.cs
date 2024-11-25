@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Service.AccountSer;
 using Service.AdmissionTimeSer;
+using Service.MajorSer;
 using static Google.Apis.Requests.BatchRequest;
 
 namespace ARMS_API.Controllers.Admin
@@ -21,10 +22,11 @@ namespace ARMS_API.Controllers.Admin
         private IAccountService _accountService;
         private readonly UserManager<Account> _userManager;
         private readonly RoleManager<IdentityRole<Guid>> _roleManager;
+        private readonly IMajorService _majorService;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
         private UserInput _userInput;
-        public AccountController(IAccountService accountService, IMapper mapper, UserManager<Account> userManager, RoleManager<IdentityRole<Guid>> roleManager, IConfiguration configuration, UserInput userInput)
+        public AccountController(IAccountService accountService, IMapper mapper, UserManager<Account> userManager, RoleManager<IdentityRole<Guid>> roleManager, IConfiguration configuration, UserInput userInput,IMajorService majorService)
         {
             _accountService = accountService;
             _userManager = userManager;
@@ -32,6 +34,7 @@ namespace ARMS_API.Controllers.Admin
             _configuration = configuration;
             _mapper = mapper;
             _userInput = userInput;
+            _majorService = majorService;
         }
         [HttpGet("get-accounts")]
         public async Task<IActionResult> GetAccounts(string? CampusId, string? Search, int CurrentPage, string? role)
@@ -101,6 +104,30 @@ namespace ARMS_API.Controllers.Admin
                 result.TotalItems = accounts.Count;
 
                 return Ok(result);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        [HttpGet("get-account/{id}")]
+        public async Task<IActionResult> GetAccounts(Guid id)
+        {
+            try
+            {
+                var account = await _userManager.FindByIdAsync(id.ToString());
+                account.Major = await _majorService.GetMajor(account.MajorId);
+                // Lấy vai trò cho từng tài khoản
+                var rolesDictionary = new Dictionary<string, string>();
+                    var roles = await _userManager.GetRolesAsync(account);
+                    rolesDictionary[account.Id.ToString()] = roles.FirstOrDefault() ?? "No Role";
+                var accountDTO = _mapper.Map<Account_DTO>(account);
+                if (rolesDictionary.TryGetValue(account.Id.ToString(), out var roleName))
+                {
+                    accountDTO.RoleName = roleName;
+                }
+
+                return Ok(accountDTO);
             }
             catch (Exception)
             {
