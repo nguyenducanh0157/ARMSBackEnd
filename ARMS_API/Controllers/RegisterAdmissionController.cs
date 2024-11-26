@@ -1,4 +1,4 @@
-﻿using ARMS_API.Helper;
+﻿ using ARMS_API.Helper;
 using ARMS_API.ValidData;
 using AutoMapper;
 using Data.DTO;
@@ -15,6 +15,7 @@ using Service.EmailSer;
 using Service.LocationSer;
 using Service.MajorSer;
 using Service.PayFeeAdmissionSer;
+using Service.PriorityService;
 using Service.StudentProfileServ;
 using System.Security.Cryptography;
 
@@ -37,6 +38,7 @@ namespace ARMS_API.Controllers
         private IAdmissionInformationService _admissionInformationService;
         private readonly IEmailService _emailService;
         private readonly ILocationService _locationService;
+        private readonly IPriorityService _priorityService;
         public RegisterAdmissionController(IStudentProfileService studentProfileService,
             IMapper mapper,
             ValidRegisterAdmission validInput,
@@ -48,7 +50,8 @@ namespace ARMS_API.Controllers
             IAdmissionInformationService admissionInformationService,
             IMajorService majorService,
             IEmailService emailService,
-            ILocationService locationService
+            ILocationService locationService,
+            IPriorityService priorityService
             )
         {
             _studentProfileService = studentProfileService;
@@ -63,6 +66,7 @@ namespace ARMS_API.Controllers
             _majorService = majorService;
             _emailService = emailService;
             _locationService = locationService;
+            _priorityService = priorityService;
         }
 
 
@@ -114,7 +118,6 @@ namespace ARMS_API.Controllers
                 });
             }
         }
-        
         [HttpPost("add-register-admission")]
         public async Task<IActionResult> AddAdmissionProfile([FromBody] RegisterAdmissionProfileDTO registerAdmissionProfileDTO)
         {
@@ -150,26 +153,49 @@ namespace ARMS_API.Controllers
                     PayFeeAdmission.isFeeRegister = true;
                     studentProfile.PayFeeAdmissions.Add(PayFeeAdmission);
                 }
+                // send email
                 var major = await _majorService.GetMajor(registerAdmissionProfileDTO.Major1);
                 string major1 = major.MajorName;
-                Console.WriteLine(major1);
                 var majorn2 = await _majorService.GetMajor(registerAdmissionProfileDTO.Major2);
                 string major2 = majorn2.MajorName;
-                Console.WriteLine(major2);
+                var gender = registerAdmissionProfileDTO.Gender == true ? "Nam" : "Nữ";
+                var address = await _locationService.GetFullAddress(registerAdmissionProfileDTO.Province, registerAdmissionProfileDTO.District, registerAdmissionProfileDTO.Ward, registerAdmissionProfileDTO.SpecificAddress);
+                //điểm ưu tiên
+                var priorities = await _priorityService.GetPriorities();
+                var priority = priorities.FirstOrDefault(x=>x.PriorityID == registerAdmissionProfileDTO.PriorityDetailPriorityID);
+                var priorityName = priorities.FirstOrDefault(x => x.PriorityID == registerAdmissionProfileDTO.PriorityDetailPriorityID).PriorityName;
+                int UT = 0;
+                if (priority.TypeOfPriority == TypeOfPriority.UT1) UT = 2;
+                else if (priority.TypeOfPriority == TypeOfPriority.UT1) UT = 1;
+                var priorityMessage = !string.IsNullOrEmpty(priorityName) ? $"{priorityName} được cộng {UT} điểm ưu tiên" : "Không có thông tin ưu tiên.";
+                // Hình thức xét tuyển
+                var TypeOfDiplomaMajor1 = registerAdmissionProfileDTO.TypeOfDiplomaMajor1 switch
+                {
+                    TypeOfDiploma.Tot_nghiep_THCS => "Tốt nghiệp THCS",
+                    TypeOfDiploma.Tot_nghiep_THPT => "Tốt nghiệp THPT",
+                    TypeOfDiploma.Tot_nghiep_CD_DH => "Tốt nghiệp CĐ/ĐH",
+                    TypeOfDiploma.Xet_hoc_ba_THPT => "Xét học bạ THPT",
+                    TypeOfDiploma.LienThong => "Liên thông",
+                    TypeOfDiploma.Xet_diem_thi_THPT => "Xét điểm thi THPT",
+                    _ => "Không có thông tin"
+                };
+                var TypeOfDiplomaMajor2 = registerAdmissionProfileDTO.TypeOfDiplomaMajor2 switch
+                {
+                    TypeOfDiploma.Tot_nghiep_THCS => "Tốt nghiệp THCS",
+                    TypeOfDiploma.Tot_nghiep_THPT => "Tốt nghiệp THPT",
+                    TypeOfDiploma.Tot_nghiep_CD_DH => "Tốt nghiệp CĐ/ĐH",
+                    TypeOfDiploma.Xet_hoc_ba_THPT => "Xét học bạ THPT",
+                    TypeOfDiploma.LienThong => "Liên thông",
+                    TypeOfDiploma.Xet_diem_thi_THPT => "Xét điểm thi THPT",
+                    _ => "Không có thông tin"
+                };
+                // Bảng điểm
+
 
                 //add new
                 await _studentProfileService.AddStudentProfile(studentProfile);
                 _ = Task.Run(async () =>
                 {
-                    var gender = registerAdmissionProfileDTO.Gender == true ? "Nam" : "Nữ";
-                    Console.WriteLine(gender);
-                    var provinceName = await _locationService.GetProvinceName(registerAdmissionProfileDTO.Province);
-                    var districtName = await _locationService.GetDistrictName(registerAdmissionProfileDTO.District);
-                    var wardName = await _locationService.GetWardName(registerAdmissionProfileDTO.Ward);
-                    var specificAddress = registerAdmissionProfileDTO.SpecificAddress;
-                    // Ghép địa chỉ hoàn chỉnh
-                    var address = $"{specificAddress}, {wardName}, {districtName}, {provinceName}";
-                    Console.WriteLine("địa chỉ " + address);
 
 
                     var emailRequest = new EmailRequest
@@ -287,6 +313,22 @@ namespace ARMS_API.Controllers
                                     <strong>Ngành 2:</strong> {major2}
                                 </td>
                             </tr>
+                            <tr>
+                                <th>Ưu tiên</th>
+                                <td>
+                                    <strong> Đối tượng:</strong> {priorityName}<br/>
+                                        <strong>Mô tả:</strong> {priorityMessage}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Hình thức xét tuyển </th>
+                                <td> 
+                                        <strong>Nguyện vọng 1:</strong> {TypeOfDiplomaMajor1}<br/>
+                                        <strong>Nguyện vọng 2:</strong> {TypeOfDiplomaMajor2}
+                                </td>
+                            </tr>
+
+
                         </table>    
 
                         <p>Chúng tôi sẽ xử lý thông tin này và sẽ liên hệ lại với bạn trong thời gian sớm nhất.</p>

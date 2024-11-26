@@ -1,49 +1,52 @@
-﻿using System;
+﻿using Org.BouncyCastle.Bcpg.Sig;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Service.LocationSer
 {
     public class LocationService: ILocationService
     {
-        private readonly HttpClient _httpClient;
 
-        public LocationService(HttpClient httpClient)
+        public async Task<string> GetFullAddress(string provinceCode, string districtCode, string wardCode, string specificAddress)
         {
-            _httpClient = httpClient;
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    // Lấy tên tỉnh/thành
+                    var provinceResponse = await client.GetStringAsync($"https://provinces.open-api.vn/api/p/{provinceCode}");
+                    var provinceData = JsonSerializer.Deserialize<LocationData>(provinceResponse);
+                    var provinceName = provinceData.name;
+
+                    // Lấy tên quận/huyện
+                    var districtResponse = await client.GetStringAsync($"https://provinces.open-api.vn/api/d/{districtCode}");
+                    var districtData = JsonSerializer.Deserialize<LocationData>(districtResponse);
+                    var districtName = districtData.name;
+
+                    // Lấy tên xã/phường
+                    var wardResponse = await client.GetStringAsync($"https://provinces.open-api.vn/api/w/{wardCode}");
+                    var wardData = JsonSerializer.Deserialize<LocationData>(wardResponse);
+                    var wardName = wardData.name;
+
+                    // Ghép địa chỉ hoàn chỉnh
+                    var fullAddress = $"{specificAddress}, {wardName}, {districtName}, {provinceName}";
+                    return fullAddress;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                    return "Lỗi khi lấy địa chỉ";
+                }
+            }
         }
-
-        public async Task<string> GetProvinceName(string provinceCode)
+        public class LocationData
         {
-            // Ví dụ: OpenStreetMap Nominatim API
-            var response = await _httpClient.GetAsync($"https://nominatim.openstreetmap.org/details.php?osmtype=R&osmid={provinceCode}&format=json");
-            response.EnsureSuccessStatusCode();
-
-            var result = await response.Content.ReadFromJsonAsync<dynamic>();
-            return result["display_name"]?.ToString() ?? "Unknown";
-        }
-
-        public async Task<string> GetDistrictName(string districtCode)
-        {
-            // Gọi tương tự như GetProvinceName
-            var response = await _httpClient.GetAsync($"https://nominatim.openstreetmap.org/details.php?osmtype=R&osmid={districtCode}&format=json");
-            response.EnsureSuccessStatusCode();
-
-            var result = await response.Content.ReadFromJsonAsync<dynamic>();
-            return result["display_name"]?.ToString() ?? "Unknown";
-        }
-
-        public async Task<string> GetWardName(string wardCode)
-        {
-            // Gọi tương tự như GetProvinceName
-            var response = await _httpClient.GetAsync($"https://nominatim.openstreetmap.org/details.php?osmtype=R&osmid={wardCode}&format=json");
-            response.EnsureSuccessStatusCode();
-
-            var result = await response.Content.ReadFromJsonAsync<dynamic>();
-            return result["display_name"]?.ToString() ?? "Unknown";
+            public string name { get; set; }
         }
     }
 }

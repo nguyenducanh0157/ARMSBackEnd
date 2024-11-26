@@ -8,8 +8,6 @@ namespace Service.LocationSer
 {
     public interface ILocationService
     {
-        Task<string> GetProvinceName(string provinceCode);
-        Task<string> GetDistrictName(string districtCode);
-        Task<string> GetWardName(string wardCode);
+        Task<string> GetFullAddress(string provinceCode, string districtCode, string wardCode, string specificAddress);
     }
 }
