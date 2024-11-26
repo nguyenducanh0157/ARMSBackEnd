@@ -303,7 +303,6 @@ namespace ARMS_API.Controllers.Admin
                 account.isAccountActive = model.isAccountActive;
                 account.Email = model.Email;
                 account.TypeAccount = model.TypeAccount;
-                account.StudentCode = model.StudentCode;
 
                 // Update account in the database
                 var updateResult = await _userManager.UpdateAsync(account);

@@ -54,15 +54,14 @@ public class Account_DTO
     }
     public class UpdateAccountDTO
     {
-        public string UserName { get; set; }
+        public string? UserName { get; set; }
         public string? Fullname { get; set; }
         public bool? Gender { get; set; }
         public string? Phone { get; set; }
         public DateTime? Dob { get; set; }
-        public string? StudentCode { get; set; }
         public string? MajorId { get; set; }
         public TypeAccount TypeAccount { get; set; }
-        public string RoleName { get; set; }
+        public string? RoleName { get; set; }
         public bool isAccountActive { get; set; }
         public string? Email { get; set; }
     }

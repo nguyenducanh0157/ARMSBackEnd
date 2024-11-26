@@ -30,14 +30,20 @@ namespace Service.EmailSer
 
                 message.Subject = emailRequest.Subject;
 
-                message.Body = new TextPart("html")
+                var bodyBuilder = new BodyBuilder
                 {
-                    Text = emailRequest.Body
+                    HtmlBody = emailRequest.Body // Set the HTML content
                 };
+                message.Body = bodyBuilder.ToMessageBody();
+
+                // Sử dụng using để tự động dispose tài nguyên
                 using (var client = new SmtpClient())
                 {
+                    // Kết nối và xác thực với máy chủ SMTP
                     await client.ConnectAsync(_emailSettings.SmtpServer, _emailSettings.Port, SecureSocketOptions.StartTls);
                     await client.AuthenticateAsync(_emailSettings.Email, _emailSettings.AppPassword);
+
+                    // Gửi email
                     await client.SendAsync(message);
                     await client.DisconnectAsync(true);
                 }
@@ -49,5 +55,6 @@ namespace Service.EmailSer
                 return new ResponseViewModel() { Status = false, Message = ex.Message };
             }
         }
+
     }
 }

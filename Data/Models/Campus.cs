@@ -11,6 +11,7 @@ namespace Data.Models
     {
         public string CampusId { get; set; }
         public string CampusName { get; set; }
+        public string CampusCode { get; set; }
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public string? History { get; set; }

@@ -107,6 +107,60 @@ namespace ARMS_API.Controllers
                 studentProfile.BirthCertificate = admissionProfileDTO.BirthCertificate;
                 //update profile
                 await _studentProfileService.UpdateStudentRegister(studentProfile);
+                _ = Task.Run(async () =>
+                {
+
+                    var Body = $@"<!DOCTYPE html>
+                <html lang=""en"">
+                <head>
+                    <meta charset=""UTF-8"">
+                    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+                    <title>Thông tin Đăng ký Tuyển sinh</title>
+                    <style>
+                        body {{  
+                            font-family: Arial, sans-serif;
+                            line-height: 1.6;
+                            margin: 20px;
+                        }}
+                        .container {{
+                            max-width: 800px;
+                            margin: 0 auto;
+                            border: 1px solid #ddd;
+                            border-radius: 10px;
+                            padding: 20px;
+                            background-color: #f9f9f9;
+                        }}
+                        h1 {{
+                            text-align: center;
+                            color: #333;
+                        }}
+
+                    </style>
+                </head>
+                <body>
+                    <div class=""container"">
+                        <h1 style=""color: orange"">Thông tin đăng ký Tuyển sinh</h1>
+                        <p>Thân gửi bạn 
+                            <strong>{studentProfile.Fullname},</strong>
+                        </p>
+                        <p>Chúng tôi rất vui vì nhận được sự quan tâm từ bạn. 
+
+                        <p>Hồ sơ của bạn đã được nhập học thành công! Chúng tôi sẽ liên hệ bạn trong thời gian sớm nhất để hòan tất thủ tục nhập học!</p>
+                        <p>Trân trọng,</p>
+                        <p>Phòng Tuyển sinh</p>
+                    </div>
+                </body>
+                </html>";
+                    var emailRequest = new EmailRequestNotify
+                    {
+                        ToEmail = studentProfile.EmailStudent,
+                        Subject = "Thông báo nhập học thành công!",
+                        Body = Body,
+                    };
+
+                    await _emailNotifyService.SendEmailByHTMLAsync(emailRequest);
+                });
+
                 return Ok(new ResponseViewModel()
                 {
                     Status = true,
@@ -207,7 +261,7 @@ namespace ARMS_API.Controllers
                     <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
                     <title>Thông tin Đăng ký Tuyển sinh</title>
                     <style>
-                        body {{
+                        body {{  
                             font-family: Arial, sans-serif;
                             line-height: 1.6;
                             margin: 20px;
@@ -364,9 +418,6 @@ namespace ARMS_API.Controllers
         {
             try
             {
-
-                //mapper
-                // Map registerAdmissionProfileDTO sang StudentProfile
                 StudentProfile studentProfile = await _studentProfileService.GetStudentProfileBySpCIIdAsync(registerAdmissionProfileDTO.CitizenIentificationNumber);
                 if (studentProfile == null)
                 {
@@ -376,6 +427,60 @@ namespace ARMS_API.Controllers
 
                 //add new
                 await _studentProfileService.UpdateStudentRegister(studentProfile);
+                _ = Task.Run(async () =>
+                {
+
+                    var Body = $@"<!DOCTYPE html>
+                <html lang=""en"">
+                <head>
+                    <meta charset=""UTF-8"">
+                    <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+                    <title>Thông tin Đăng ký Tuyển sinh</title>
+                    <style>
+                        body {{  
+                            font-family: Arial, sans-serif;
+                            line-height: 1.6;
+                            margin: 20px;
+                        }}
+                        .container {{
+                            max-width: 800px;
+                            margin: 0 auto;
+                            border: 1px solid #ddd;
+                            border-radius: 10px;
+                            padding: 20px;
+                            background-color: #f9f9f9;
+                        }}
+                        h1 {{
+                            text-align: center;
+                            color: #333;
+                        }}
+
+                    </style>
+                </head>
+                <body>
+                    <div class=""container"">
+                        <h1 style=""color: orange"">Thông tin đăng ký Tuyển sinh</h1>
+                        <p>Thân gửi bạn 
+                            <strong>{registerAdmissionProfileDTO.Fullname},</strong>
+                        </p>
+                        <p>Chúng tôi rất vui vì nhận được sự quan tâm từ bạn. 
+
+                        <p>Hồ sơ của bạn đã được cập nhật thành công! CHúng tôi sẽ phản hồi hồ sơ trong thời gian sớm nhất</p>
+                        <p>Trân trọng,</p>
+                        <p>Phòng Tuyển sinh</p>
+                    </div>
+                </body>
+                </html>";
+                    var emailRequest = new EmailRequestNotify
+                    {
+                        ToEmail = registerAdmissionProfileDTO.EmailStudent,
+                        Subject = "Thông báo chỉnh sửa hồ sơ tuyển sinh thành công!",
+                        Body = Body,
+                    };
+
+                    await _emailNotifyService.SendEmailByHTMLAsync(emailRequest);
+                });
+
                 return Ok(new ResponseViewModel()
                 {
                     Status = true,
