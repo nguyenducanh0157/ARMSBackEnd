@@ -25,14 +25,7 @@ namespace Service.AdmissionTimeSer
             {
                 var data = await _admissionTimeRepository.GetAdmissionTimes(AdmissionTime.AdmissionInformationID);
                 var checkdata = data.Where(x => x.AdmissionInformationID == AdmissionTime.AdmissionInformationID).ToList();
-
-                if (checkdata.Any())
-                {
-                    var checkEndDate = checkdata.Max(x => x.EndRegister);
-                    if (AdmissionTime.StartRegister <= checkEndDate)
-                        throw new Exception("Thời gian bắt đầu không được trước hoặc bằng thời gian kết thúc của đợt tuyển sinh trước!");
-                    await _admissionTimeRepository.AddAdmissionTime(AdmissionTime);
-                }
+                await _admissionTimeRepository.AddAdmissionTime(AdmissionTime);
             }
             catch (Exception)
             {

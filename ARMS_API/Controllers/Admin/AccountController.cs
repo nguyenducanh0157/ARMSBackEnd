@@ -107,7 +107,11 @@ namespace ARMS_API.Controllers.Admin
             }
             catch (Exception)
             {
-                return BadRequest();
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã sảy ra lỗi vui lòng thử lại sau!"
+                });
             }
         }
         [HttpGet("get-account/{id}")]
@@ -131,7 +135,11 @@ namespace ARMS_API.Controllers.Admin
             }
             catch (Exception)
             {
-                return BadRequest();
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã sảy ra lỗi vui lòng thử lại sau!"
+                });
             }
         }
         [HttpGet("get-accounts-student")]
@@ -198,7 +206,11 @@ namespace ARMS_API.Controllers.Admin
             }
             catch (Exception)
             {
-                return BadRequest();
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã sảy ra lỗi vui lòng thử lại sau!"
+                });
             }
         }
         [HttpPost("create-account")]
@@ -214,28 +226,56 @@ namespace ARMS_API.Controllers.Admin
                 if (model.UserName==null) {
                     account.UserName = model.StudentCode;
                 }
+                var user = await _userManager.FindByNameAsync(model.UserName);
+                if (user != null)
+                {
+                    return BadRequest(new ResponseViewModel
+                    {
+                        Status = false,
+                        Message = "Trùng tên đăng nhập!"
+                    });
+                }
                 account.isAccountActive = false;
                 // Create the account in the Identity system
                 var result = await _userManager.CreateAsync(account, "A123@123a");
 
                 if (!result.Succeeded)
-                    return BadRequest(result.Errors);
-
+                {
+                    return BadRequest(new ResponseViewModel
+                    {
+                        Status = false,
+                        Message = "Đã sảy ra lỗi vui lòng thử lại sau!"
+                    });
+                }
                 // Assign roles to the account
                 if (!string.IsNullOrEmpty(model.RoleName))
                 {
                     var roleExists = await _roleManager.RoleExistsAsync(model.RoleName);
                     if (!roleExists)
-                        return BadRequest($"Role '{model.RoleName}' does not exist.");
+                    {
+                        return BadRequest(new ResponseViewModel
+                        {
+                            Status = false,
+                            Message = "Vai trò người dùng không tồn tại!"
+                        });
+                    }
 
                     await _userManager.AddToRoleAsync(account, model.RoleName);
                 }
 
-                return Ok(new { Message = "Tạo tài khoản thành công", AccountId = account.Id });
+                return Ok(new ResponseViewModel
+                {
+                    Status = true,
+                    Message = "Tạo tài khoản thành công!"
+                });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = "Tạo tài khoản không thành công!"});
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã sảy ra lỗi vui lòng thử lại sau!"
+                });
             }
         }
         [HttpPut("update-account/{id}")]
@@ -249,7 +289,11 @@ namespace ARMS_API.Controllers.Admin
                 // Find the account by ID
                 var account = await _userManager.FindByIdAsync(id.ToString());
                 if (account == null)
-                    return NotFound(new { Message = "Tài khoản không tồn tại." });
+                    return BadRequest(new ResponseViewModel
+                    {
+                        Status = false,
+                        Message = "Tài khoản không tồn tại!"
+                    });
 
                 // Update account properties
                 account.Fullname = model.Fullname ?? account.Fullname;
@@ -258,14 +302,19 @@ namespace ARMS_API.Controllers.Admin
                 account.Gender = model.Gender ?? account.Gender;
                 account.isAccountActive = model.isAccountActive;
                 account.Email = model.Email;
-                account.UserName = model.UserName;
                 account.TypeAccount = model.TypeAccount;
                 account.StudentCode = model.StudentCode;
 
                 // Update account in the database
                 var updateResult = await _userManager.UpdateAsync(account);
                 if (!updateResult.Succeeded)
-                    return BadRequest(updateResult.Errors);
+                {
+                    return BadRequest(new ResponseViewModel
+                    {
+                        Status = false,
+                        Message = "Đã sảy ra lỗi vui lòng thử lại sau!"
+                    });
+                }
 
                 // Update roles if provided
                 if (!string.IsNullOrEmpty(model.RoleName))
@@ -275,16 +324,28 @@ namespace ARMS_API.Controllers.Admin
 
                     var roleExists = await _roleManager.RoleExistsAsync(model.RoleName);
                     if (!roleExists)
-                        return BadRequest($"Vai trò '{model.RoleName}' không tồn tại.");
+                        return BadRequest(new ResponseViewModel
+                        {
+                            Status = false,
+                            Message = "Vai trò người dùng không tồn tại!"
+                        });
 
                     await _userManager.AddToRoleAsync(account, model.RoleName);
                 }
 
-                return Ok(new { Message = "Cập nhật tài khoản thành công", AccountId = account.Id });
+                return Ok(new ResponseViewModel
+                {
+                    Status = true,
+                    Message = "Cập nhật thành công!"
+                });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = "Cập nhật tài khoản không thành công!" });
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã sảy ra lỗi vui lòng thử lại sau!"
+                });
             }
         }
 

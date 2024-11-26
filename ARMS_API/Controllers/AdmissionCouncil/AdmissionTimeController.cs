@@ -44,8 +44,8 @@ namespace ARMS_API.Controllers.AdmissionCouncil
             try
             {
                 //check data
-                //_validAdmissionTime.ValidDataAdmissionTime
-                //    (admissionTimeDTO);
+                await _validAdmissionTime.ValidDataAdmissionTime
+                    (admissionTimeDTO);
                 //mapper
                 AdmissionTime AdmissionTime = _mapper.Map<AdmissionTime>(admissionTimeDTO);
                 //add new
@@ -66,13 +66,13 @@ namespace ARMS_API.Controllers.AdmissionCouncil
             }
         }
         [HttpPut("update-admission-time")]
-        public async Task<IActionResult> UpdateAdmissionTime(AdmissionTime_Admission_DTO admissionTimeDTO)
+        public async Task<IActionResult> UpdateAdmissionTime(AdmissionTime_Add_DTO admissionTimeDTO)
         {
             try
             {
                 //check data
-                //_validAdmissionTime.ValidDataAdmissionTime
-                //    (admissionTimeDTO.Year, admissionTimeDTO.StartAdmission, admissionTimeDTO.EndAdmission, admissionTimeDTO.StartRegister, admissionTimeDTO.EndRegister, admissionTimeDTO.AdmissionInformationName);
+                await _validAdmissionTime.ValidDataAdmissionTimeUpdate
+                   (admissionTimeDTO);
                 //mapper
                 AdmissionTime AdmissionTime = _mapper.Map<AdmissionTime>(admissionTimeDTO);
                 await _admissionTimeService.UpdateAdmissionTime(AdmissionTime);
