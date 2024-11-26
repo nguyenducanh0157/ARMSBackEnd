@@ -13,6 +13,8 @@ namespace Data.Models
         public string  Subject { get; set; }
         public string Content { get; set; }
         public DateTime TimeSend { get; set; }
+        public Guid? SendTo { get; set; }
+        public bool? isRead { get; set; }
         public virtual Account? Account { get; set; }
 
     }

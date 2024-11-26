@@ -52,6 +52,7 @@ namespace Repository.StudentProfileRepo
                     .Include(x => x.PayFeeAdmissions)
                     .Include(x => x.MajorNV1)
                     .Include(x => x.MajorNV2)
+                    .Include(x => x.AdmissionTime)
                     .FirstOrDefaultAsync(x => x.CitizenIentificationNumber.Equals(CID));
                 
                 return sf;
@@ -143,7 +144,7 @@ namespace Repository.StudentProfileRepo
                     .Include(x => x.PayFeeAdmissions)
                     .Include(x => x.MajorNV1)
                     .Include(x => x.MajorNV2)
-
+                    .Include(x => x.AdmissionTime)
                 .FirstOrDefaultAsync(x => x.SpId == id);
 
             return studentProfile;
@@ -155,6 +156,7 @@ namespace Repository.StudentProfileRepo
                 .Include(x => x.AcademicTranscripts)
                 .Include(x => x.PriorityDetail)
                 .Include(x=>x.PayFeeAdmissions)
+                .Include(x => x.AdmissionTime)
                 .FirstOrDefaultAsync(x => x.CitizenIentificationNumber == id);
 
             return studentProfile;

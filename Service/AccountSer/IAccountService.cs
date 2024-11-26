@@ -13,5 +13,6 @@ namespace Service.AccountSer
         Task<List<Account>> GetAccountStudent(string campusId);
         Task<List<Account>> GetAccounts(string campusId);
         Task<List<Account>> GetAccountsRequest(string campusId);
+        Task<List<Account>> GetAO(string campusId);
     }
 }

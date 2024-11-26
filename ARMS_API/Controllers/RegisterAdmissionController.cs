@@ -11,12 +11,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using MimeKit;
 using Repository.StudentProfileRepo;
+using Service.AccountSer;
 using Service.AdmissionInformationSer;
 using Service.EmailSer;
 using Service.LocationSer;
 using Service.MajorSer;
 using Service.PayFeeAdmissionSer;
 using Service.PriorityService;
+using Service.RequestNotificationSer;
 using Service.StudentProfileServ;
 using System.Security.Cryptography;
 
@@ -41,6 +43,8 @@ namespace ARMS_API.Controllers
         private readonly IEmailNotifyService _emailNotifyService;
         private readonly ILocationService _locationService;
         private readonly IPriorityService _priorityService;
+        private readonly IAccountService _accountService;
+        private readonly IRequestNotificationService _requestNotificationService;
         public RegisterAdmissionController(IStudentProfileService studentProfileService,
             IMapper mapper,
             ValidRegisterAdmission validInput,
@@ -54,7 +58,9 @@ namespace ARMS_API.Controllers
             IEmailService emailService,
             ILocationService locationService,
             IPriorityService priorityService,
-            IEmailNotifyService emailNotifyService
+            IEmailNotifyService emailNotifyService,
+            IAccountService accountService,
+            IRequestNotificationService requestNotificationService
             )
         {
             _studentProfileService = studentProfileService;
@@ -71,6 +77,8 @@ namespace ARMS_API.Controllers
             _locationService = locationService;
             _priorityService = priorityService;
             _emailNotifyService = emailNotifyService;
+            _accountService = accountService;
+            _requestNotificationService = requestNotificationService;
         }
 
 
@@ -219,13 +227,27 @@ namespace ARMS_API.Controllers
                 var gender = registerAdmissionProfileDTO.Gender == true ? "Nam" : "Nữ";
                 var address = await _locationService.GetFullAddress(registerAdmissionProfileDTO.Province, registerAdmissionProfileDTO.District, registerAdmissionProfileDTO.Ward, registerAdmissionProfileDTO.SpecificAddress);
                 //điểm ưu tiên
+
                 var priorities = await _priorityService.GetPriorities();
-                var priority = priorities.FirstOrDefault(x=>x.PriorityID == registerAdmissionProfileDTO.PriorityDetailPriorityID);
-                var priorityName = priorities.FirstOrDefault(x => x.PriorityID == registerAdmissionProfileDTO.PriorityDetailPriorityID).PriorityName;
+
+                // Nếu `priorities` null, `FirstOrDefault` trả về null, và các thuộc tính sẽ không bị gọi lỗi.
+                var priority = priorities?.FirstOrDefault(x => x.PriorityID == registerAdmissionProfileDTO.PriorityDetailPriorityID);
+
+                // Sử dụng null-coalescing (`??`) để trả về giá trị rỗng nếu `priority` hoặc `priority.PriorityName` null.
+                var priorityName = priority?.PriorityName ?? string.Empty;
+
                 int UT = 0;
-                if (priority.TypeOfPriority == TypeOfPriority.UT1) UT = 2;
-                else if (priority.TypeOfPriority == TypeOfPriority.UT1) UT = 1;
-                var priorityMessage = !string.IsNullOrEmpty(priorityName) ? $"{priorityName} được cộng {UT} điểm ưu tiên" : "Không có thông tin ưu tiên.";
+
+                // Kiểm tra null trước khi sử dụng `TypeOfPriority`
+                if (priority?.TypeOfPriority == TypeOfPriority.UT1) UT = 2;
+                else if (priority?.TypeOfPriority == TypeOfPriority.UT2) UT = 1;
+
+                // Sử dụng null hoặc giá trị mặc định cho `priorityName` và `UT`
+                var priorityMessage = !string.IsNullOrEmpty(priorityName)
+                    ? $"{priorityName} được cộng {UT} điểm ưu tiên"
+                    : "Không có thông tin ưu tiên.";
+
+
                 // Hình thức xét tuyển
                 var TypeOfDiplomaMajor1 = registerAdmissionProfileDTO.TypeOfDiplomaMajor1 switch
                 {
@@ -394,10 +416,70 @@ namespace ARMS_API.Controllers
                         ToEmail = registerAdmissionProfileDTO.EmailStudent,
                         Subject = "Thông báo đăng ký hồ sơ tuyển sinh thành công!",
                         Body = Body,
-                };
-                    
+                    };
+
                     await _emailNotifyService.SendEmailByHTMLAsync(emailRequest);
                 });
+                // thông báo tới các admission officer
+                List<Account> accounts = await _accountService.GetAO(registerAdmissionProfileDTO.CampusId);
+                _ = Task.Run(async () =>
+                {
+                    foreach (var item in accounts)
+                    {
+                        var emailRequest = new EmailRequest
+                        {
+                            ToEmail = item.Email,
+                            Subject = "Học sinh " + registerAdmissionProfileDTO.Fullname + " đã nộp hồ sơ thành công!",
+                            Body = $@"<!DOCTYPE html>
+                                    <html lang=""en"">
+                                    <head>
+                                        <meta charset=""UTF-8"">
+                                        <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+                                        <title>Thông tin Đăng ký Tuyển sinh</title>
+                                        <style>
+                                            body {{  
+                                                font-family: Arial, sans-serif;
+                                                line-height: 1.6;
+                                                margin: 20px;
+                                            }}
+                                            .container {{
+                                                max-width: 800px;
+                                                margin: 0 auto;
+                                                border: 1px solid #ddd;
+                                                border-radius: 10px;
+                                                padding: 20px;
+                                                background-color: #f9f9f9;
+                                            }}
+                                            h1 {{
+                                                text-align: center;
+                                                color: #333;
+                                            }}
+
+                                        </style>
+                                    </head>
+                                    <body>
+                                        <div class=""container"">
+                                            <h1 style=""color: orange"">Thông tin tuyển sinh</h1>
+                                            <p>Hồ sơ của thí sinh {registerAdmissionProfileDTO.Fullname} đã đăng ký thành công vui lòng kiểm tra và phản hồi trong thời gian sớm nhất
+                                            <p>Trân trọng,</p>
+                                            <p>Hệ thống tuyển sinh</p>
+                                        </div>
+                                    </body>
+                                    </html>"
+                        };
+
+                        await _emailService.SendEmailByHTMLAsync(emailRequest);
+                        RequestNotification requestNotification = new RequestNotification()
+                        {
+                            SendTo = item.Id,
+                            Content = "Hồ sơ đăng ký mới",
+                            Subject = "Học sinh " + registerAdmissionProfileDTO.Fullname + " đăng ký thành công!",
+                            TimeSend = DateTime.Now
+                        };
+                        _requestNotificationService.AddNewRequest(requestNotification);
+                    }
+                });
+
                 return Ok(new ResponseViewModel()
                 {
                     Status = true,
@@ -413,6 +495,9 @@ namespace ARMS_API.Controllers
                 });
             }
         }
+
+
+
         [HttpPut("update-register-admission")]
         public async Task<IActionResult> UpdateAdmissionProfile([FromBody] RegisterAdmissionProfileDTO_Update registerAdmissionProfileDTO)
         {
@@ -465,7 +550,7 @@ namespace ARMS_API.Controllers
                         </p>
                         <p>Chúng tôi rất vui vì nhận được sự quan tâm từ bạn. 
 
-                        <p>Hồ sơ của bạn đã được cập nhật thành công! CHúng tôi sẽ phản hồi hồ sơ trong thời gian sớm nhất</p>
+                        <p>Hồ sơ của bạn đã được cập nhật thành công! Chúng tôi sẽ phản hồi hồ sơ trong thời gian sớm nhất</p>
                         <p>Trân trọng,</p>
                         <p>Phòng Tuyển sinh</p>
                     </div>
@@ -480,7 +565,7 @@ namespace ARMS_API.Controllers
 
                     await _emailNotifyService.SendEmailByHTMLAsync(emailRequest);
                 });
-
+               
                 return Ok(new ResponseViewModel()
                 {
                     Status = true,
@@ -496,7 +581,7 @@ namespace ARMS_API.Controllers
                 });
             }
         }
-        [Authorize(Roles = "guest")]
+        //[Authorize(Roles = "guest")]
         [HttpPost("search-register-admission")]
         public async Task<IActionResult> SearchRegisterAdmission([FromBody] RequestSearchRegisterAdmissionProfileDTO requestSearchRegisterAdmissionProfileDTO)
         {

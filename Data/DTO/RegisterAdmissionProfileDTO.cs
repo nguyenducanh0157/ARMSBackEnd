@@ -171,6 +171,7 @@ namespace Data.DTO
         // hồ sơ nhập học
         public string? AdmissionForm { get; set; }
         public string? BirthCertificate { get; set; }
+        public virtual AdmissionTime_Admission_DTO? AdmissionTime { get; set; }
 
     }
     public class AcademicTranscript_View_DTO

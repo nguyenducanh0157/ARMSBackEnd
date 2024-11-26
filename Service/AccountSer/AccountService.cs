@@ -70,7 +70,38 @@ namespace Service.AccountSer
             }
             catch (Exception ex)
             {
-                throw new Exception("An error occurred while fetching student accounts.", ex);
+                throw new Exception("Đã sảy ra lỗi!", ex);
+            }
+        }
+        public async Task<List<Account>> GetAO(string campusId)
+        {
+            try
+            {
+                var RoleId = Guid.Parse("62378687-E16C-4D94-B767-DE9F0BFE9498");
+
+                var allUsers = await _userManager.Users
+                    .Where(user => user.CampusId == campusId)
+                    .ToListAsync();
+
+                var Accounts = new List<Account>();
+                foreach (var user in allUsers)
+                {
+                    var roles = await _userManager.GetRolesAsync(user);
+                    if (roles.Any(roleName =>
+                    {
+                        var role = _roleManager.Roles.FirstOrDefault(r => r.Name == roleName);
+                        return role != null && role.Id == RoleId;
+                    }))
+                    {
+                        Accounts.Add(user);
+                    }
+                }
+
+                return Accounts;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Đã sảy ra lỗi!", ex);
             }
         }
 
