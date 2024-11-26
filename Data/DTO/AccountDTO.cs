@@ -28,6 +28,7 @@ public class Account_DTO
         public string RoleName { get; set; }
         public string CampusId { get; set; }
         public string UserName { get; set; }
+        public TypeAccount TypeAccount { get; set; }
 
     }
     public class Account_Major_DTO

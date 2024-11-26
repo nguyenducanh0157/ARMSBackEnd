@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
+using MimeKit;
 using Repository.StudentProfileRepo;
 using Service.AdmissionInformationSer;
 using Service.EmailSer;
@@ -37,6 +38,7 @@ namespace ARMS_API.Controllers
         private readonly TokenHealper _tokenHealper;
         private IAdmissionInformationService _admissionInformationService;
         private readonly IEmailService _emailService;
+        private readonly IEmailNotifyService _emailNotifyService;
         private readonly ILocationService _locationService;
         private readonly IPriorityService _priorityService;
         public RegisterAdmissionController(IStudentProfileService studentProfileService,
@@ -51,7 +53,8 @@ namespace ARMS_API.Controllers
             IMajorService majorService,
             IEmailService emailService,
             ILocationService locationService,
-            IPriorityService priorityService
+            IPriorityService priorityService,
+            IEmailNotifyService emailNotifyService
             )
         {
             _studentProfileService = studentProfileService;
@@ -67,6 +70,7 @@ namespace ARMS_API.Controllers
             _emailService = emailService;
             _locationService = locationService;
             _priorityService = priorityService;
+            _emailNotifyService = emailNotifyService;
         }
 
 
@@ -189,7 +193,6 @@ namespace ARMS_API.Controllers
                     TypeOfDiploma.Xet_diem_thi_THPT => "Xét điểm thi THPT",
                     _ => "Không có thông tin"
                 };
-                // Bảng điểm
 
 
                 //add new
@@ -197,12 +200,7 @@ namespace ARMS_API.Controllers
                 _ = Task.Run(async () =>
                 {
 
-
-                    var emailRequest = new EmailRequest
-                    {
-                        ToEmail = registerAdmissionProfileDTO.EmailStudent,
-                        Subject = "Thông báo đăng ký hồ sơ tuyển sinh thành công!",
-                        Body = $@"<!DOCTYPE html>
+                    var Body = $@"<!DOCTYPE html>
                 <html lang=""en"">
                 <head>
                     <meta charset=""UTF-8"">
@@ -336,9 +334,15 @@ namespace ARMS_API.Controllers
                         <p>Phòng Tuyển sinh</p>
                     </div>
                 </body>
-                </html>"
-                    };
-                    await _emailService.SendEmailByHTMLAsync(emailRequest);
+                </html>";
+                    var emailRequest = new EmailRequestNotify
+                    {
+                        ToEmail = registerAdmissionProfileDTO.EmailStudent,
+                        Subject = "Thông báo đăng ký hồ sơ tuyển sinh thành công!",
+                        Body = Body,
+                };
+                    
+                    await _emailNotifyService.SendEmailByHTMLAsync(emailRequest);
                 });
                 return Ok(new ResponseViewModel()
                 {

@@ -37,7 +37,7 @@ namespace Service.AccountSer
         {
             var allUsers = await _userManager.Users
                     .Include(x => x.Major)
-                    .Where(user => user.CampusId == campusId && (user.TypeAccount == TypeAccount.RequestAccountAccept || user.TypeAccount == TypeAccount.RequestAccountInProcess || user.TypeAccount == TypeAccount.RequestAccountRejected))
+                    .Where(user => user.CampusId == campusId && ( user.TypeAccount == TypeAccount.RequestAccountInProcess || user.TypeAccount == TypeAccount.RequestAccountRejected))
                     .ToListAsync();
             return allUsers;
         }

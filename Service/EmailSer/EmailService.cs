@@ -69,7 +69,6 @@ namespace Service.EmailSer
                 {
                     Text = emailRequest.Body
                 };
-
                 using (var client = new SmtpClient())
                 {
                     await client.ConnectAsync(_emailSettings.SmtpServer, _emailSettings.Port, SecureSocketOptions.StartTls);
