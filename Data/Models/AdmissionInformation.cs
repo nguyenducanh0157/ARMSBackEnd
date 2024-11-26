@@ -12,6 +12,7 @@ namespace Data.Models
         public decimal FeeRegister { get; set; }
         public decimal FeeAdmission { get; set; }
         public int? Year { get; set; }
+        public int Admissions { get; set; }
         public DateTime? StartAdmission { get; set; }
         public DateTime? EndAdmission { get; set; }
         public TypeOfAdmissionInformation? Status { get; set; }

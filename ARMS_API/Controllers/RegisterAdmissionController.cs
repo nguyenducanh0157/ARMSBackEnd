@@ -6,6 +6,7 @@ using Data.Models;
 using FirebaseAdmin.Messaging;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
@@ -13,6 +14,7 @@ using MimeKit;
 using Repository.StudentProfileRepo;
 using Service.AccountSer;
 using Service.AdmissionInformationSer;
+using Service.CampusSer;
 using Service.EmailSer;
 using Service.LocationSer;
 using Service.MajorSer;
@@ -28,9 +30,9 @@ namespace ARMS_API.Controllers
     [ApiController]
     public class RegisterAdmissionController : ControllerBase
     {
-        private IStudentProfileService _studentProfileService;
-        private IPayFeeAdmissionService _payFeeAdmissionService;
-        private IMajorService _majorService;
+        private readonly IStudentProfileService _studentProfileService;
+        private readonly IPayFeeAdmissionService _payFeeAdmissionService;
+        private readonly IMajorService _majorService;
         private readonly IMapper _mapper;
         private ValidRegisterAdmission _validInput;
         private UserInput _userInput;
@@ -38,13 +40,16 @@ namespace ARMS_API.Controllers
         private readonly IMemoryCache _cache;
         private readonly TimeSpan _otpLifetime = TimeSpan.FromMinutes(5);
         private readonly TokenHealper _tokenHealper;
-        private IAdmissionInformationService _admissionInformationService;
+        private readonly IAdmissionInformationService _admissionInformationService;
         private readonly IEmailService _emailService;
         private readonly IEmailNotifyService _emailNotifyService;
         private readonly ILocationService _locationService;
         private readonly IPriorityService _priorityService;
         private readonly IAccountService _accountService;
         private readonly IRequestNotificationService _requestNotificationService;
+        private readonly ICampusService _campusService;
+        private readonly UserManager<Account> _userManager;
+        private readonly RoleManager<IdentityRole<Guid>> _roleManager;
         public RegisterAdmissionController(IStudentProfileService studentProfileService,
             IMapper mapper,
             ValidRegisterAdmission validInput,
@@ -60,7 +65,10 @@ namespace ARMS_API.Controllers
             IPriorityService priorityService,
             IEmailNotifyService emailNotifyService,
             IAccountService accountService,
-            IRequestNotificationService requestNotificationService
+            IRequestNotificationService requestNotificationService,
+            ICampusService campusService,
+            UserManager<Account> userManager, 
+            RoleManager<IdentityRole<Guid>> roleManager
             )
         {
             _studentProfileService = studentProfileService;
@@ -79,6 +87,9 @@ namespace ARMS_API.Controllers
             _emailNotifyService = emailNotifyService;
             _accountService = accountService;
             _requestNotificationService = requestNotificationService;
+            _campusService = campusService;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
 
 
@@ -169,6 +180,52 @@ namespace ARMS_API.Controllers
                     await _emailNotifyService.SendEmailByHTMLAsync(emailRequest);
                 });
 
+                var accounts = await _accountService.GetAccountStudent(studentProfile.CampusId);
+                int accountCount = accounts.Count(); // Đếm số tài khoản
+                string formattedAccountCount = accountCount.ToString("D4");
+                string StudentCode = "";
+                string major = "";
+                if (studentProfile.TypeofStatusMajor1 == TypeofStatusForMajor.Pass) major = studentProfile.Major1;
+                if (studentProfile.TypeofStatusMajor2 == TypeofStatusForMajor.Pass) major = studentProfile.Major2;
+                if (accounts != null) {
+                    
+                    var admission =await _admissionInformationService.GetAdmissionInformationById(studentProfile.AdmissionTime.AdmissionInformationID);
+                    int admissionName = admission.Admissions;
+                    string formattedAdmissionName = admissionName.ToString("D2");
+                    StudentCode = major + formattedAdmissionName + formattedAccountCount;
+                }
+                // tạo request account student
+
+                Account account = new Account()
+                {
+                    StudentCode = StudentCode,
+                    CampusId = studentProfile.CampusId,
+                    Email = studentProfile.EmailStudent,
+                    Fullname = studentProfile.Fullname,
+                    Dob = studentProfile.Dob,
+                    isAccountActive = false,
+                    Gender = studentProfile.Gender,
+                    MajorId = major,
+                    Phone = studentProfile.PhoneStudent,
+                    SPId = studentProfile.SpId,
+                    UserName = StudentCode,
+                    NormalizedUserName = "Student",
+                    NormalizedEmail = studentProfile.EmailStudent,
+                    EmailConfirmed = true,
+                    PasswordHash = new PasswordHasher<Account>().HashPassword(null, "A123@123a"),
+                    SecurityStamp = Guid.NewGuid().ToString(),
+                    TypeAccount = TypeAccount.RequestAccountInProcess
+                };
+                var result = await _userManager.CreateAsync(account, "A123@123a");
+                if (result.Succeeded)
+                {
+                    // Gán vai trò (nếu cần)
+                    var role = await _roleManager.FindByNameAsync("Student");
+                    if (role != null)
+                    {
+                        var roleResult = await _userManager.AddToRoleAsync(account, role.Name);
+                    }
+                }
                 return Ok(new ResponseViewModel()
                 {
                     Status = true,
@@ -219,6 +276,9 @@ namespace ARMS_API.Controllers
                     PayFeeAdmission.isFeeRegister = true;
                     studentProfile.PayFeeAdmissions.Add(PayFeeAdmission);
                 }
+                //add new
+                await _studentProfileService.AddStudentProfile(studentProfile);
+
                 // send email
                 var major = await _majorService.GetMajor(registerAdmissionProfileDTO.Major1);
                 string major1 = major.MajorName;
@@ -271,8 +331,7 @@ namespace ARMS_API.Controllers
                 };
 
 
-                //add new
-                await _studentProfileService.AddStudentProfile(studentProfile);
+
                 _ = Task.Run(async () =>
                 {
 

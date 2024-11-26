@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Repository.StudentProfileRepo;
+using Service.EmailSer;
 using Service.StudentProfileServ;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -22,12 +23,14 @@ namespace ARMS_API.Controllers.AdmissionOfficer
         private readonly IMapper _mapper;
         private ValidRegisterAdmission _validInput;
         private UserInput _userInput;
-        public RegisterAdmissionController(IStudentProfileService studentProfileService, IMapper mapper, ValidRegisterAdmission validInput, UserInput userInput)
+        private readonly IEmailService _emailService;
+        public RegisterAdmissionController(IStudentProfileService studentProfileService, IMapper mapper, ValidRegisterAdmission validInput, UserInput userInput,IEmailService emailService)
         {
             _studentProfileService = studentProfileService;
             _mapper = mapper;
             _validInput = validInput;
             _userInput = userInput;
+            _emailService = emailService;
         }
 
         [HttpGet("list-register-admission")]
@@ -157,8 +160,74 @@ namespace ARMS_API.Controllers.AdmissionOfficer
                     stf.TypeofStatusMajor1 = TypeofStatusForMajor.Fail;
                     stf.TypeofStatusMajor2 = TypeofStatusForMajor.Fail;
                     stf.TypeofStatusProfile = TypeofStatus.Done;
+                    _ = Task.Run(async () =>
+                    {
+                        var emailRequest = new EmailRequest
+                        {
+                            ToEmail = stf.EmailStudent,
+                            Subject = "Xét duyệt hồ sơ!",
+                            Body = $@"<!DOCTYPE html>
+                                    <html lang=""en"">
+                                    <head>
+                                        <meta charset=""UTF-8"">
+                                        <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+                                        <title>Thông tin Đăng ký Tuyển sinh</title>
+                                        <style>
+                                            body {{  
+                                                font-family: Arial, sans-serif;
+                                                line-height: 1.6;
+                                                margin: 20px;
+                                            }}
+                                            .container {{
+                                                max-width: 800px;
+                                                margin: 0 auto;
+                                                border: 1px solid #ddd;
+                                                border-radius: 10px;
+                                                padding: 20px;
+                                                background-color: #f9f9f9;
+                                            }}
+                                            h1 {{
+                                                text-align: center;
+                                                color: #333;
+                                            }}
+
+                                        </style>
+                                    </head>
+                                    <body>
+                                        <div class=""container"">
+                                            <h1 style=""color: orange"">Thông báo kết quả tuyển sinh</h1>
+                                            <p>Gửi {stf.Fullname},
+                                            <p> Lời đầu tiên nhà trường xin gửi lời cảm ơn vì em đã dành sự gian tâm tới nhà trường.
+                                            <p> Sau thời gian cân nhắc và xem xét hồ sơ. Nhà trường rất tiếc vì hồ sơ của em chưa đủ điều kiện xét tuyển!
+                                            <p> Nhà trường xin gửi lời cảm ơn và chúc em sẽ có thật nhiều thành côgn trong tương lai
+                                            <p>Trân trọng,</p>
+                                            <p>Phòng tuyển sinh</p>
+                                        </div>
+                                    </body>
+                                    </html>"
+                        };
+
+                        await _emailService.SendEmailByHTMLAsync(emailRequest);
+
+                    });
                 }
-                
+                _ = Task.Run(async () =>
+                {
+                    var emailRequest = new EmailRequest
+                    {
+                        ToEmail = stf.EmailStudent,
+                        Subject = "Xét duyệt hồ sơ!",
+                        Body = $@" <h1 style=""color: orange"">Thông báo kết quả tuyển sinh</h1>
+                                            <p>Gửi {stf.Fullname},
+                                            <p> Hồ sơ của em đã được phòng tuyển sinh xét duyệt
+                                            <p> Trong thời gian tới phòng tuyển sinh sẽ gửi thông báo kế quả tuyển sinh em vui lòng theo dõi email và hồ sơ trên hệ thống để nhận kết quả của mình!
+                                            <p>Trân trọng,</p>
+                                            <p>Phòng tuyển sinh</p>"
+                    };
+
+                    await _emailService.SendEmailByHTMLAsync(emailRequest);
+
+                });
 
                 // Save the updated profile
                 await _studentProfileService.UpdateStudentRegister(stf);

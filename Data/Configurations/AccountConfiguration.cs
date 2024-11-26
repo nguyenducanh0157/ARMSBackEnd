@@ -29,11 +29,6 @@ namespace Data.Configurations
             builder.HasOne(x => x.Major)
                    .WithMany(c => c.Accounts)
                    .HasForeignKey(x => x.MajorId);
-
-            //builder.HasOne(x => x.StudentProfile)
-            //       .WithOne(sp => sp.Account)
-            //       .HasForeignKey<StudentProfile>(sp => sp.AccountId);
-
             #endregion
 
 

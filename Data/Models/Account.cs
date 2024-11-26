@@ -21,12 +21,13 @@ namespace Data.Models
         public string? MajorId { get; set; }
         public TypeAccount TypeAccount { get; set; }
 
-        public int? SPId { get; set; }
+        public Guid? SPId { get; set; }
         public virtual Major? Major { get; set; }
         public virtual StudentProfile? StudentProfile { get; set; }
         public virtual ICollection<Request>? RequestChangeMajors { get; set; }
         public virtual ICollection<RequestNotification>? RequestNotifications { get; set; }
         public virtual ICollection<StudentConsultation>? StudentConsultations { get; set; }
+
     }
     public enum TypeAccount
     {

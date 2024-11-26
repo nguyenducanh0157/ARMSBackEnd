@@ -26,8 +26,8 @@ namespace Data.Configurations
             builder.HasOne(x => x.MajorNV1).WithMany(x => x.StudentProfile1).HasForeignKey(x => x.Major1);
             builder.HasOne(x => x.MajorNV2).WithMany(x => x.StudentProfile2).HasForeignKey(x => x.Major2);
             builder.HasOne(sp => sp.Account)
-               .WithOne(a => a.StudentProfile)
-               .HasForeignKey<StudentProfile>(sp => sp.AccountId);
+                        .WithOne(a => a.StudentProfile)
+                        .HasForeignKey<StudentProfile>(sp => sp.AccountId);
             builder.HasOne(x => x.PriorityDetail).WithMany(x => x.StudentProfiles).HasForeignKey(x => x.PriorityDetailPriorityID).OnDelete(DeleteBehavior.NoAction);
             #endregion
         }

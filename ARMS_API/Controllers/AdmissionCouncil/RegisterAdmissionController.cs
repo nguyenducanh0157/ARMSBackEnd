@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Repository.StudentProfileRepo;
+using Service.AdmissionInformationSer;
+using Service.EmailSer;
+using Service.MajorSer;
 using Service.StudentProfileServ;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -22,12 +25,26 @@ namespace ARMS_API.Controllers.AdmissionCouncil
         private readonly IMapper _mapper;
         private ValidRegisterAdmission _validInput;
         private UserInput _userInput;
-        public RegisterAdmissionController(IStudentProfileService studentProfileService, IMapper mapper, ValidRegisterAdmission validInput, UserInput userInput)
+        private readonly IEmailService _emailService;
+        private IMajorService _majorService;
+        private IAdmissionInformationService _admissionInformationService;
+        public RegisterAdmissionController(
+            IStudentProfileService studentProfileService,
+            IMapper mapper, 
+            ValidRegisterAdmission validInput,
+            UserInput userInput, 
+            IEmailService emailService,
+            IMajorService majorService,
+            IAdmissionInformationService admissionInformationService
+        )
         {
             _studentProfileService = studentProfileService;
             _mapper = mapper;
             _validInput = validInput;
             _userInput = userInput;
+            _emailService = emailService;
+            _majorService = majorService;
+            _admissionInformationService = admissionInformationService;
         }
         [HttpGet("list-register-admission")]
         public async Task<IActionResult> ListRegisterAdmission(string CampusId, string? Search, int CurrentPage, TypeofStatus? TypeofStatus)
@@ -158,25 +175,184 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                         Message = "Không tìm thấy hồ sơ!"
                     });
                 }
+                var major = await _majorService.GetMajor(stf.Major1);
+                string major1 = major.MajorName;
+                var majorn2 = await _majorService.GetMajor(stf.Major2);
+                string major2 = majorn2.MajorName;
+                AdmissionTime time = stf.AdmissionTime;
+                AdmissionInformation AdmissionInformation = await _admissionInformationService.GetAdmissionInformationById(time.AdmissionInformationID);
+
                 if (AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor1 == TypeofStatusForMajor.Pass)
                 {
                     stf.TypeofStatusMajor1 = TypeofStatusForMajor.Pass;
                     stf.TypeofStatusMajor2 = TypeofStatusForMajor.Pending;
                     stf.TypeofStatusProfile = TypeofStatus.WaitingPaymentAdmission;
+                    _ = Task.Run(async () =>
+                    {
+                            var emailRequest = new EmailRequest
+                            {
+                                ToEmail = stf.EmailStudent,
+                                Subject = "Xét duyệt hồ sơ!",
+                                Body = $@"<!DOCTYPE html>
+                                    <html lang=""en"">
+                                    <head>
+                                        <meta charset=""UTF-8"">
+                                        <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+                                        <title>Thông tin Đăng ký Tuyển sinh</title>
+                                        <style>
+                                            body {{  
+                                                font-family: Arial, sans-serif;
+                                                line-height: 1.6;
+                                                margin: 20px;
+                                            }}
+                                            .container {{
+                                                max-width: 800px;
+                                                margin: 0 auto;
+                                                border: 1px solid #ddd;
+                                                border-radius: 10px;
+                                                padding: 20px;
+                                                background-color: #f9f9f9;
+                                            }}
+                                            h1 {{
+                                                text-align: center;
+                                                color: #333;
+                                            }}
+
+                                        </style>
+                                    </head>
+                                    <body>
+                                        <div class=""container"">
+                                            <h1 style=""color: orange"">Thông báo kết quả tuyển sinh</h1>
+                                            <p>Gửi {stf.Fullname},
+                                            <p> Chúc mừng em đã đậu nguyện vọng 1 của chuyên ngành {major1}
+                                            <p> Thời gian nhập học sẽ bắt đầu từ {time.StartAdmission} đến {time.EndAdmission}
+                                            <p> Phí nhập học của em sẽ bao gồm: Học phí ({major.Tuition}) và phí nhập học ({AdmissionInformation.FeeAdmission})
+                                            <p> Tổng:{major.Tuition+ AdmissionInformation.FeeAdmission}
+                                            <p>Trân trọng,</p>
+                                            <p>Phòng tuyển sinh</p>
+                                        </div>
+                                    </body>
+                                    </html>"
+                            }; 
+
+                        await _emailService.SendEmailByHTMLAsync(emailRequest);
+
+                    });
+
                 }
                 if (AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor1 == TypeofStatusForMajor.Fail && AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor2 == TypeofStatusForMajor.Pass)
                 {
                     stf.TypeofStatusMajor1 = TypeofStatusForMajor.Fail;
                     stf.TypeofStatusMajor2 = TypeofStatusForMajor.Pass;
                     stf.TypeofStatusProfile = TypeofStatus.WaitingPaymentAdmission;
+                    _ = Task.Run(async () =>
+                    {
+                        var emailRequest = new EmailRequest
+                        {
+                            ToEmail = stf.EmailStudent,
+                            Subject = "Xét duyệt hồ sơ!",
+                            Body = $@"<!DOCTYPE html>
+                                    <html lang=""en"">
+                                    <head>
+                                        <meta charset=""UTF-8"">
+                                        <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+                                        <title>Thông tin Đăng ký Tuyển sinh</title>
+                                        <style>
+                                            body {{  
+                                                font-family: Arial, sans-serif;
+                                                line-height: 1.6;
+                                                margin: 20px;
+                                            }}
+                                            .container {{
+                                                max-width: 800px;
+                                                margin: 0 auto;
+                                                border: 1px solid #ddd;
+                                                border-radius: 10px;
+                                                padding: 20px;
+                                                background-color: #f9f9f9;
+                                            }}
+                                            h1 {{
+                                                text-align: center;
+                                                color: #333;
+                                            }}
+
+                                        </style>
+                                    </head>
+                                    <body>
+                                        <div class=""container"">
+                                            <h1 style=""color: orange"">Thông báo kết quả tuyển sinh</h1>
+                                            <p>Gửi {stf.Fullname},
+                                            <p> Chúc mừng em đã đậu nguyện vọng 1 của chuyên ngành {major2}
+                                            <p> Thời gian nhập học sẽ bắt đầu từ {time.StartAdmission} đến {time.EndAdmission}
+                                            <p> Phí nhập học của em sẽ bao gồm: Học phí ({majorn2.Tuition}) và phí nhập học ({AdmissionInformation.FeeAdmission})
+                                            <p> Tổng:{major.Tuition + AdmissionInformation.FeeAdmission}
+                                            <p>Trân trọng,</p>
+                                            <p>Phòng tuyển sinh</p>
+                                        </div>
+                                    </body>
+                                    </html>"
+                        };
+
+                        await _emailService.SendEmailByHTMLAsync(emailRequest);
+
+                    });
                 }
                 if (AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor1 == TypeofStatusForMajor.Fail && AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor2 == TypeofStatusForMajor.Fail)
                 {
                     stf.TypeofStatusMajor1 = TypeofStatusForMajor.Fail;
                     stf.TypeofStatusMajor2 = TypeofStatusForMajor.Fail;
                     stf.TypeofStatusProfile = TypeofStatus.Done;
-                }
+                    _ = Task.Run(async () =>
+                    {
+                        var emailRequest = new EmailRequest
+                        {
+                            ToEmail = stf.EmailStudent,
+                            Subject = "Xét duyệt hồ sơ!",
+                            Body = $@"<!DOCTYPE html>
+                                    <html lang=""en"">
+                                    <head>
+                                        <meta charset=""UTF-8"">
+                                        <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+                                        <title>Thông tin Đăng ký Tuyển sinh</title>
+                                        <style>
+                                            body {{  
+                                                font-family: Arial, sans-serif;
+                                                line-height: 1.6;
+                                                margin: 20px;
+                                            }}
+                                            .container {{
+                                                max-width: 800px;
+                                                margin: 0 auto;
+                                                border: 1px solid #ddd;
+                                                border-radius: 10px;
+                                                padding: 20px;
+                                                background-color: #f9f9f9;
+                                            }}
+                                            h1 {{
+                                                text-align: center;
+                                                color: #333;
+                                            }}
 
+                                        </style>
+                                    </head>
+                                    <body>
+                                        <div class=""container"">
+                                            <h1 style=""color: orange"">Thông báo kết quả tuyển sinh</h1>
+                                            <p>Gửi {stf.Fullname},
+                                            <p> Lời đầu tiên nhà trường xin gửi lời cảm ơn vì em đã dành sự gian tâm tới nhà trường.
+                                            <p> Sau thời gian cân nhắc và xem xét hồ sơ. Nhà trường rất tiếc vì hồ sơ của em chưa đủ điều kiện xét tuyển!
+                                            <p> Nhà trường xin gửi lời cảm ơn và chúc em sẽ có thật nhiều thành côgn trong tương lai
+                                            <p>Trân trọng,</p>
+                                            <p>Phòng tuyển sinh</p>
+                                        </div>
+                                    </body>
+                                    </html>"
+                        };
+
+                        await _emailService.SendEmailByHTMLAsync(emailRequest);
+
+                    });
+                }
                 // Save the updated profile
                 await _studentProfileService.UpdateStudentRegister(stf);
 
