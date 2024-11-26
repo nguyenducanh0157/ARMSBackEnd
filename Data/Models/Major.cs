@@ -27,9 +27,5 @@ namespace Data.Models
         public virtual ICollection<StudentProfile>? StudentProfile2 { get; set; }
         public virtual ICollection<MajorAdmission>? MajorAdmissions { get; set; }
 
-        public static implicit operator Major(Account v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

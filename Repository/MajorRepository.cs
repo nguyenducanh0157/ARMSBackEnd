@@ -154,8 +154,70 @@ namespace Repository.MajorRepo
         {
             try
             {
-                _context.Entry<Major>(major).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                await _context.SaveChangesAsync();
+                var existingMajor = await _context.Majors
+                                           .Include(m => m.Subjects)  // Nạp Subjects liên quan
+                                           .FirstOrDefaultAsync(m => m.MajorID == major.MajorID);
+
+                if (existingMajor != null)
+                {
+                    // Cập nhật các thuộc tính của Major
+                    existingMajor.MajorCode = major.MajorCode;
+                    existingMajor.MajorName = major.MajorName;
+                    existingMajor.Description = major.Description;
+                    existingMajor.TimeStudy = major.TimeStudy;
+                    existingMajor.isVocationalSchool = major.isVocationalSchool;
+                    existingMajor.Tuition = major.Tuition;
+
+                    // Cập nhật Subjects nếu có
+                    if (major.Subjects != null)
+                    {
+                        // Duyệt qua các Subject mới gửi đến
+                        foreach (var subject in major.Subjects)
+                        {
+                            var existingSubject = existingMajor.Subjects
+                                                               .FirstOrDefault(s => s.SubjectCode == subject.SubjectCode);
+
+                            if (existingSubject != null)
+                            {
+                                // Cập nhật các thông tin của Subject
+                                existingSubject.SubjectCode = subject.SubjectCode;
+                                existingSubject.SubjectName = subject.SubjectName;
+                                existingSubject.SemesterNumber = subject.SemesterNumber;
+                                existingSubject.NumberOfCredits = subject.NumberOfCredits;
+                                existingSubject.Note = subject.Note;
+                                existingSubject.NumberOfCredits = (int)(subject?.NumberOfCredits);
+                            }
+                            else
+                            {
+                                // Thêm Subject mới nếu không tìm thấy
+                                existingMajor.Subjects.Add(subject);
+                            }
+                        }
+
+                        // Xóa các Subject cũ không còn trong danh sách Subjects
+                        var subjectIdsToRemove = existingMajor.Subjects
+                                                             .Where(s => !major.Subjects.Any(ms => ms.SubjectCode == s.SubjectCode))
+                                                             .Select(s => s.SubjectCode)
+                                                             .ToList();
+
+                        foreach (var subjectId in subjectIdsToRemove)
+                        {
+                            var subjectToRemove = existingMajor.Subjects
+                                                               .FirstOrDefault(s => s.SubjectCode == subjectId);
+                            if (subjectToRemove != null)
+                            {
+                                existingMajor.Subjects.Remove(subjectToRemove);
+                            }
+                        }
+                    }
+
+                    // Lưu các thay đổi vào cơ sở dữ liệu
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    throw new Exception("Không tìm thấy ngành học");
+                }
             }
             catch (Exception)
             {
