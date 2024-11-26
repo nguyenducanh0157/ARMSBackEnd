@@ -8,6 +8,7 @@ namespace Data.Models
 {
     public class PayFeeAdmission
     {
+        public Guid Id { get; set; }
         public string TxnRef { get; set; }
         public decimal Amount { get; set; }
         public string BankCode { get; set; }

@@ -20,6 +20,7 @@ using Service.AdmissionTimeSer;
 using Service.BlogSer;
 using Service.CampusSer;
 using Service.EmailSer;
+using Service.LocationSer;
 using Service.MajorSer;
 using Service.PayFeeAdmissionSer;
 using Service.PriorityService;
@@ -160,6 +161,9 @@ builder.Services.AddSingleton<FirebaseService>();
 //Services
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IVnPayService, VnPayService>();
+
+builder.Services.AddHttpClient(); // Thêm HttpClient vào DI container
+builder.Services.AddScoped<ILocationService, LocationService>();
 // app
 var app = builder.Build();
 

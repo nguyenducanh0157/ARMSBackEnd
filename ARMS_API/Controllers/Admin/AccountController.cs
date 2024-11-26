@@ -153,7 +153,7 @@ namespace ARMS_API.Controllers.Admin
                 result.Search = Search;
 
                 // Lấy danh sách tài khoản
-                List<Account> accounts = await _accountService.GetAccounts(CampusId);
+                List<Account> accounts = await _accountService.GetAccountsRequest(CampusId);
                 // Search
                 if (!string.IsNullOrEmpty(Search))
                 {

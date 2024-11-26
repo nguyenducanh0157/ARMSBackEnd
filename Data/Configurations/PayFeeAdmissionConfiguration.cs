@@ -14,7 +14,7 @@ namespace Data.Configurations
         public void Configure(EntityTypeBuilder<PayFeeAdmission> builder)
         {
             builder.ToTable(nameof(PayFeeAdmission));
-            builder.HasKey(x => x.TxnRef);
+            builder.HasKey(x => x.Id);
 
             #region config relation
             builder.HasOne(x => x.StudentProfile)
