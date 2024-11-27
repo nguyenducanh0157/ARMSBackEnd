@@ -24,7 +24,7 @@ namespace Service.EmailSer
             _queue = queue;
         }
 
-         public async Task<ResponseViewModel> SendEmailAsync(EmailRequestByText emailRequest)
+         public async Task<ResponseViewModel> SendEmailAsync(EmailRequest emailRequest)
         {
             try
             {

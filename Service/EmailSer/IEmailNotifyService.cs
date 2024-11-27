@@ -10,5 +10,6 @@ namespace Service.EmailSer
     public interface IEmailNotifyService
     {
         Task<ResponseViewModel> SendEmailByHTMLAsync(EmailRequestNotify emailRequest);
+        Task<ResponseViewModel> SendEmailAsync(EmailRequest emailRequest);
     }
 }

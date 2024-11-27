@@ -301,7 +301,7 @@ namespace ARMS_API.Controllers.Admin
                 account.Dob = model.Dob ?? account.Dob;
                 account.Gender = model.Gender ?? account.Gender;
                 account.isAccountActive = model.isAccountActive;
-                account.Email = model.Email;
+                account.Email = model.Email?? account.Email;
                 account.TypeAccount = model.TypeAccount;
 
                 // Update account in the database

@@ -684,12 +684,12 @@ namespace ARMS_API.Controllers
                 return BadRequest("Không nhận được email của học sinh!");
             }
             var otp = new Random().Next(100000, 999999).ToString();
-            EmailRequestByText emailRequest = new EmailRequestByText();
+            EmailRequest emailRequest = new EmailRequest();
             emailRequest.ToEmail = sp.EmailStudent;
             emailRequest.Subject = "Send OTP";
             emailRequest.Body = $"OTP của bạn là: {otp}";
             _cache.Set(emailRequest.ToEmail, otp, _otpLifetime);
-            await _emailByTextService.SendEmailAsync(emailRequest);
+            await _emailNotifyService.SendEmailAsync(emailRequest);
             return Ok(new { Message = "Mã OTP đã được gửi đến email của bạn!", Email = sp.EmailStudent });
         }
         [HttpPost("verify-OTP")]
