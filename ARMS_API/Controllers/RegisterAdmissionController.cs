@@ -782,45 +782,54 @@ namespace ARMS_API.Controllers
         [HttpGet("check-email")]
         public async Task<IActionResult> CheckEmail(string email)
         {
-            try
+            if (string.IsNullOrEmpty(email))
             {
-                var checkResult = email switch
-                {
-                    var e when string.IsNullOrEmpty(e) => "empty",
-                    var e when !_userInput.IsValidEmail(e) => "invalid",
-                    var e when await _studentProfileService.isExistEmailStudent(e) => "exists", 
-                    _ => "valid"  
-                };
-
-                return checkResult switch
-                {
-                    "empty" => BadRequest(new ResponseViewModel()
-                    {
-                        Status = false,
-                        Message = "Không được để trống email của học sinh!"
-                    }),
-                    "invalid" => BadRequest(new ResponseViewModel()
-                    {
-                        Status = false,
-                        Message = "Email học sinh không hợp lệ!"
-                    }),
-                    "exists" => BadRequest(new ResponseViewModel()
-                    {
-                        Status = false,
-                        Message = "Email đã được đăng ký!"
-                    }),
-                    _ => Ok()
-                };
-            }
-            catch (Exception)
-            {
-                return BadRequest(new ResponseViewModel()
+                return BadRequest(new ResponseViewModel
                 {
                     Status = false,
-                    Message = "Server lỗi!"
+                    Message = "Không được để trống email của học sinh!"
+                });
+            }
+
+            if (!_userInput.IsValidEmail(email))
+            {
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Email học sinh không hợp lệ!"
+                });
+            }
+
+            bool isEmailExists = await _studentProfileService.isExistEmailStudent(email);
+            if (!isEmailExists)
+            {
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Email đã được đăng ký!"
+                });
+            }
+
+            try
+            {
+                return Ok(new ResponseViewModel
+                {
+                    Status = true,
+                    Message = "Email hợp lệ!"
+                });
+            }
+            catch (Exception ex)
+            {
+                // Add logging here if necessary
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Server lỗi!",
+                    // Optionally add detailed exception info for development/debug builds
                 });
             }
         }
+
 
         [HttpGet("check-phone")]
         public async Task<IActionResult> CheckPhone(string phone)
