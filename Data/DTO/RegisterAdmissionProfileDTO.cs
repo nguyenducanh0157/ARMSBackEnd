@@ -114,6 +114,7 @@ namespace Data.DTO
     }
     public class AdmissionProfile_DTO
     {
+        public Guid SpId { get; set; }
         public string Fullname { get; set; }
         public DateTime? Dob { get; set; }
         public bool? Gender { get; set; }
@@ -202,6 +203,7 @@ namespace Data.DTO
     }
     public class PayFeeAdmissionDTO
     {
+        public Guid SpId { get; set; }
         public string TxnRef { get; set; }
         public decimal Amount { get; set; }
         public string BankCode { get; set; }

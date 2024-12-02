@@ -14,7 +14,8 @@ namespace Data.Models
         ConfirmSuccessProfileAdmission,//3
         WaitingPaymentAdmission,//4
         InProcessAdmission,//5
-        Done//4
+        Done,//6
+        WaitingPaymentRegisterAdmission,//7
     }
     public enum TypeofStatusForMajor
     {
