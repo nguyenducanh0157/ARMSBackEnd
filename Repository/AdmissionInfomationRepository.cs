@@ -31,7 +31,23 @@ namespace Repository
             try
             {
                 AdmissionInformation AdmissionInformation = await _context.AdmissionInformations
-                    .FirstOrDefaultAsync(x => x.Status==TypeOfAdmissionInformation.Process && x.CampusId == campus);
+                    .FirstOrDefaultAsync(x => 
+                    //x.Status==TypeOfAdmissionInformation.Process &&
+                    x.CampusId == campus);
+                return AdmissionInformation;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public async Task<AdmissionInformation> GetAdmissionInformationProcess(string campus)
+        {
+            try
+            {
+                DateTime date = DateTime.Now;
+                AdmissionInformation AdmissionInformation = await _context.AdmissionInformations
+                    .FirstOrDefaultAsync(x => x.StartAdmission<= date && x.EndAdmission >=date && x.CampusId == campus);
                 return AdmissionInformation;
             }
             catch (Exception)
@@ -45,8 +61,8 @@ namespace Repository
             {
                 AdmissionInformation AdmissionInformation = await _context.AdmissionInformations
                     .Include(x=>x.AdmissionTimes)
-                    .Include(x => x.MajorAdmissions)
-                    .ThenInclude(ma => ma.Major)
+                    //.Include(x => x.MajorAdmissions)
+                    //.ThenInclude(ma => ma.Major)
                     .FirstOrDefaultAsync(x => x.AdmissionInformationID == AdmissionInformationID);
                 return AdmissionInformation;
             }

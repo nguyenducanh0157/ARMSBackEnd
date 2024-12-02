@@ -52,6 +52,20 @@ namespace Service.AdmissionInformationSer
                 throw;
             }
         }
+        public async Task<AdmissionInformation> GetAdmissionInformationProcess(string campus)
+        {
+            try
+            {
+                var data = await _admissionInfomationRepository.GetAdmissionInformationProcess(campus);
+                return data;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
         public async Task UpdateAdmissionInformation(AdmissionInformation AdmissionInformation)
         {

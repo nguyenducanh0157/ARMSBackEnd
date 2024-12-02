@@ -24,7 +24,16 @@ namespace ARMS_API.Controllers
         {
             try
             {
-                AdmissionInformation response = await _admissionInformationService.GetAdmissionInformationByStatus(CampusId);
+                // lấy ra đợt đang tuyển sinh
+                AdmissionInformation response = await _admissionInformationService.GetAdmissionInformationProcess(CampusId);
+                if (response == null)
+                {
+                    return BadRequest(new ResponseViewModel
+                    {
+                        Status = false,
+                        Message = "Đã hết đợt tuyển sinh!"
+                    });
+                }
                 AdmissionInformationDTO responeResult = _mapper.Map<AdmissionInformationDTO>(response);
                 return Ok(responeResult);
             }

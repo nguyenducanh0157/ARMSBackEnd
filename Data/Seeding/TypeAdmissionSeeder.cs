@@ -23,21 +23,21 @@ namespace Data.Seeding
                 new TypeAdmission()
                 {
                     MajorID = "HME",
-                    AdmissionInformationID = 1,
+                    AdmissionTimeId = 31,
                     TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
                 },
                  new TypeAdmission()
                  {
                      MajorID = "HME",
-                     AdmissionInformationID = 1,
+                     AdmissionTimeId = 31,
                      TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
                  },
                  new TypeAdmission()
                  {
                      MajorID = "HGE",
-                     AdmissionInformationID = 1,
+                     AdmissionTimeId = 31,
                      TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
                      TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_12
 
@@ -45,589 +45,591 @@ namespace Data.Seeding
                  new TypeAdmission()
                  {
                      MajorID = "HGE",
-                     AdmissionInformationID = 1,
+                     AdmissionTimeId = 31,
                      TypeDiploma = TypeOfDiploma.LienThong,
 
                  },
                  new TypeAdmission()
                  {
                      MajorID = "HWE",
-                     AdmissionInformationID = 1,
+                     AdmissionTimeId = 31,
                      TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
                  },
                  new TypeAdmission()
                  {
                      MajorID = "HWE",
-                     AdmissionInformationID = 1,
+                     AdmissionTimeId = 31,
                      TypeDiploma = TypeOfDiploma.LienThong,
 
                  },
                  new TypeAdmission()
                  {
                      MajorID = "HWE",
-                     AdmissionInformationID = 1,
+                     AdmissionTimeId = 31,
                      TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
                      TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
-                 },
-                 new TypeAdmission()
-                 {
-                     MajorID = "HTE",
-                     AdmissionInformationID = 1,
-                     TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
-
-                 },
-                 new TypeAdmission()
-                 {
-                     MajorID = "HTE",
-                     AdmissionInformationID = 1,
-                     TypeDiploma = TypeOfDiploma.Tot_nghiep_THCS,
-
-                 },
-                 new TypeAdmission()
-                 {
-                     MajorID = "HTE",
-                     AdmissionInformationID = 1,
-                     TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_5ky
-                 },
-                 new TypeAdmission()
-                 {
-                     MajorID = "HEA",
-                     AdmissionInformationID = 1,
-                     TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
-
-                 },
-                 new TypeAdmission()
-                 {
-                     MajorID = "HEA",
-                     AdmissionInformationID = 1,
-                     TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
-
                  }
-                 ,
-                 new TypeAdmission()
-                 {
-                     MajorID = "HEA",
-                     AdmissionInformationID = 1,
-                     TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_lop10_lop11_HK1_12
-                 },
-                 new TypeAdmission()
-                 {
-                     MajorID = "HJA",
-                     AdmissionInformationID = 1,
-                     TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                // ,
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HTE",
+                //     AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                 },
-                new TypeAdmission()
-                {
-                    MajorID = "HJA",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                // },
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HTE",
+                //     AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Tot_nghiep_THCS,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HJA",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3ky
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HKA",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                // },
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HTE",
+                //     AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_5ky
+                // },
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HEA",
+                //     AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HKA",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                // },
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HEA",
+                //     AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HKA",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HSM",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                // }
+                // ,
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HEA",
+                //     AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_lop10_lop11_HK1_12
+                // },
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HJA",
+                //     AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HSM",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                // },
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HJA",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HSM",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HHM",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HJA",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3ky
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HKA",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HHM",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HKA",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HHM",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HRM",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HKA",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HSM",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HRM",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HSM",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HRM",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HBT",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HSM",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HHM",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HBT",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HHM",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HBT",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HBS",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HHM",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HRM",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HBS",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HRM",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HBS",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HAO",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HRM",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HBT",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HAO",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HBT",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HAO",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HSO",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HBT",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HBS",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HSO",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HBS",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HSO",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HFO",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HBS",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HAO",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HFO",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HAO",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HFO",
-                    AdmissionInformationID = 1,
-                    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
-                },
-                 // 11
-                 new TypeAdmission()
-                 {
-                     MajorID = "HME",
-                     AdmissionInformationID = 11,
-                     TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HAO",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HSO",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                 },
-                 new TypeAdmission()
-                 {
-                     MajorID = "HME",
-                     AdmissionInformationID = 11,
-                     TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HSO",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                 },
-                 new TypeAdmission()
-                 {
-                     MajorID = "HGE",
-                     AdmissionInformationID = 11,
-                     TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HSO",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HFO",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                 },
-                 new TypeAdmission()
-                 {
-                     MajorID = "HGE",
-                     AdmissionInformationID = 11,
-                     TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_12
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HFO",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                 },
-                 new TypeAdmission()
-                 {
-                     MajorID = "HWE",
-                     AdmissionInformationID = 11,
-                     TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HFO",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                //},
+                // // 11
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HME",
+                //      AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                 },
-                 new TypeAdmission()
-                 {
-                     MajorID = "HWE",
-                     AdmissionInformationID = 11,
-                     TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                // },
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HME",
+                //      AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
 
-                 },
-                 new TypeAdmission()
-                 {
-                     MajorID = "HWE",
-                     AdmissionInformationID = 11,
-                     TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3ky
-                 },
-                 new TypeAdmission()
-                 {
-                     MajorID = "HTE",
-                     AdmissionInformationID = 11,
-                     TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                // },
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HGE",
+                //      AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                 },
-                 new TypeAdmission()
-                 {
-                     MajorID = "HTE",
-                     AdmissionInformationID = 11,
-                     TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                // },
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HGE",
+                //      AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_12
 
-                 },
-                 new TypeAdmission()
-                 {
-                     MajorID = "HTE",
-                     AdmissionInformationID = 11,
-                     TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_lop10_lop11_HK1_12
-                 },
-                 new TypeAdmission()
-                 {
-                     MajorID = "HEA",
-                     AdmissionInformationID = 11,
-                     TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                // },
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HWE",
+                //      AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                 },
-                 new TypeAdmission()
-                 {
-                     MajorID = "HEA",
-                     AdmissionInformationID = 11,
-                     TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                // },
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HWE",
+                //      AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                 }
-                 ,
-                 new TypeAdmission()
-                 {
-                     MajorID = "HEA",
-                     AdmissionInformationID = 11,
-                     TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_12
-                 },
-                 new TypeAdmission()
-                 {
-                     MajorID = "HJA",
-                     AdmissionInformationID = 11,
-                     TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                // },
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HWE",
+                //     AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3ky
+                // },
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HTE",
+                //     AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                 },
-                new TypeAdmission()
-                {
-                    MajorID = "HJA",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.LienThong,
+                // },
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HTE",
+                //     AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HJA",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HKA",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                // },
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HTE",
+                //     AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_lop10_lop11_HK1_12
+                // },
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HEA",
+                //     AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HKA",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                // },
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HEA",
+                //     AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HKA",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HSM",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                // }
+                // ,
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HEA",
+                //     AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //     TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_12
+                // },
+                // new TypeAdmission()
+                // {
+                //     MajorID = "HJA",
+                //     AdmissionTimeId = 31,
+                //     TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HSM",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                // },
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HJA",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.LienThong,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HSM",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HHM",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HJA",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HKA",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HHM",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HKA",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HHM",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HRM",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HKA",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HSM",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HRM",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HSM",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HRM",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HBT",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HSM",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HHM",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HBT",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HHM",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HBT",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HBS",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HHM",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HRM",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HBS",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HRM",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HBS",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HAO",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HRM",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HBT",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HAO",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HBT",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HAO",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HSO",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HBT",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HBS",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HSO",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HBS",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HSO",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HFO",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HBS",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HAO",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HFO",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HAO",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
 
-                },
-                new TypeAdmission()
-                {
-                    MajorID = "HFO",
-                    AdmissionInformationID = 11,
-                    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
-                    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
-                });
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HAO",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HSO",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HSO",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HSO",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HFO",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_CD_DH,
+
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HFO",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Tot_nghiep_THPT,
+
+                //},
+                //new TypeAdmission()
+                //{
+                //    MajorID = "HFO",
+                //    AdmissionTimeId = 31,
+                //    TypeDiploma = TypeOfDiploma.Xet_hoc_ba_THPT,
+                //    TypeOfTranscript = TypeOfTranscript.Xet_hoc_ba_3nam
+                //}
+            );
         }
     }
 }

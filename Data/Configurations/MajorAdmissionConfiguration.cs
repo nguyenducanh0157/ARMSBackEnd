@@ -14,14 +14,14 @@ namespace Data.Configurations
         public void Configure(EntityTypeBuilder<MajorAdmission> builder)
         {
             builder.ToTable(nameof(MajorAdmission));
-            builder.HasKey(x => new { x.AdmissionInformationID, x.MajorID });
+            builder.HasKey(x => new { x.AdmissionTimeId, x.MajorID });
             builder.Property(x => x.Status).IsRequired();
             builder.Property(x => x.Target).IsRequired();
 
             #region config relation
-            builder.HasOne(x => x.AdmissionInformation)
+            builder.HasOne(x => x.AdmissionTime)
                    .WithMany(c => c.MajorAdmissions)
-                   .HasForeignKey(x => x.AdmissionInformationID);
+                   .HasForeignKey(x => x.AdmissionTimeId);
             builder.HasOne(x => x.Major)
                   .WithMany(c => c.MajorAdmissions)
                   .HasForeignKey(x => x.MajorID);

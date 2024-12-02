@@ -81,7 +81,7 @@ namespace Service.AdmissionTimeSer
         public async Task<List<AdmissionTime>> GetAdmissionTimes(string CampusId)
         {
             // lấy ra năm đang tuyển sinh
-            var AI = await _admissionInfomationRepository.GetAdmissionInformationStatusTrue(CampusId);
+            var AI = await _admissionInfomationRepository.GetAdmissionInformationProcess(CampusId);
             var result = await _admissionTimeRepository.GetAdmissionTimes(CampusId);
             var respone = result.Where(x => x.AdmissionInformationID == AI.AdmissionInformationID).ToList();
             return respone;

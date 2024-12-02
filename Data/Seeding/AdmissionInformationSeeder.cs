@@ -28,7 +28,6 @@ namespace Data.Seeding
                    CampusId ="Hanoi",
                    Admissions =02,
                    Year = 2024,
-                   Status = TypeOfAdmissionInformation.Done,
                    StartAdmission = new DateTime(2023, 09, 01, 00, 00, 0),
                    EndAdmission = new DateTime(2024, 8, 30, 23, 59, 59),
                    AdmissionProfileDescription = "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n"
@@ -41,7 +40,6 @@ namespace Data.Seeding
                     CampusId = "Danang",
                     Year = 2024,
                     Admissions = 02,
-                    Status = TypeOfAdmissionInformation.Done,
                     StartAdmission = new DateTime(2023, 09, 01, 00, 00, 0),
                     EndAdmission = new DateTime(2024, 8, 30, 23, 59, 59),
                     AdmissionProfileDescription = "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n"
@@ -54,7 +52,6 @@ namespace Data.Seeding
                     CampusId = "Cantho",
                     Year = 2024,
                     Admissions = 02,
-                    Status = TypeOfAdmissionInformation.Done,
                     StartAdmission = new DateTime(2023, 09, 01, 00, 00, 0),
                     EndAdmission = new DateTime(2024, 8, 30, 23, 59, 59),
                     AdmissionProfileDescription = "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n"
@@ -67,7 +64,6 @@ namespace Data.Seeding
                     CampusId = "HCM",
                     Year = 2024,
                     Admissions = 02,
-                    Status = TypeOfAdmissionInformation.Done,
                     StartAdmission = new DateTime(2023, 09, 01, 00, 00, 0),
                     EndAdmission = new DateTime(2024, 8, 30, 23, 59, 59),
                     AdmissionProfileDescription = "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n"
@@ -80,7 +76,6 @@ namespace Data.Seeding
                     CampusId = "Thanhhoa",
                     Year = 2024,
                     Admissions = 02,
-                    Status = TypeOfAdmissionInformation.Done,
                     StartAdmission = new DateTime(2023, 09, 01, 00, 00, 0),
                     EndAdmission = new DateTime(2024, 8, 30, 23, 59, 59),
                     AdmissionProfileDescription = "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n"
@@ -93,7 +88,6 @@ namespace Data.Seeding
                     CampusId = "Hanoi",
                     Year = 2023,
                     Admissions = 01,
-                    Status = TypeOfAdmissionInformation.Done,
                     StartAdmission = new DateTime(2022, 09, 01, 00, 00, 0),
                     EndAdmission = new DateTime(2023, 8, 30, 23, 59, 59),
                     AdmissionProfileDescription = "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n"
@@ -106,7 +100,6 @@ namespace Data.Seeding
                     CampusId = "Danang",
                     Year = 2023,
                     Admissions = 01,
-                    Status = TypeOfAdmissionInformation.Done,
                     StartAdmission = new DateTime(2022, 09, 01, 00, 00, 0),
                     EndAdmission = new DateTime(2023, 8, 30, 23, 59, 59),
                     AdmissionProfileDescription = "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n"
@@ -119,7 +112,6 @@ namespace Data.Seeding
                     CampusId = "Cantho",
                     Year = 2023,
                     Admissions = 01,
-                    Status = TypeOfAdmissionInformation.Done,
                     StartAdmission = new DateTime(2022, 09, 01, 00, 00, 0),
                     EndAdmission = new DateTime(2023, 8, 30, 23, 59, 59),
                     AdmissionProfileDescription = "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n"
@@ -132,7 +124,6 @@ namespace Data.Seeding
                     CampusId = "HCM",
                     Year = 2023,
                     Admissions = 01,
-                    Status = TypeOfAdmissionInformation.Done,
                     StartAdmission = new DateTime(2022, 09, 01, 00, 00, 0),
                     EndAdmission = new DateTime(2023, 8, 30, 23, 59, 59),
                     AdmissionProfileDescription = "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n"
@@ -145,7 +136,6 @@ namespace Data.Seeding
                     CampusId = "Thanhhoa",
                     Year = 2023,
                     Admissions = 01,
-                    Status = TypeOfAdmissionInformation.Done,
                     StartAdmission = new DateTime(2022, 09, 01, 00, 00, 0),
                     EndAdmission = new DateTime(2023, 8, 30, 23, 59, 59),
                     AdmissionProfileDescription = "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n"
@@ -158,7 +148,6 @@ namespace Data.Seeding
                     CampusId = "Hanoi",
                     Year = 2025,
                     Admissions = 03,
-                    Status = TypeOfAdmissionInformation.Process,
                     StartAdmission = new DateTime(2024, 09, 01, 00, 00, 0),
                     EndAdmission = new DateTime(2025, 8, 30, 23, 59, 59),
                     AdmissionProfileDescription = "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n"
@@ -171,7 +160,6 @@ namespace Data.Seeding
                     CampusId = "Danang",
                     Year = 2025,
                     Admissions = 03,
-                    Status = TypeOfAdmissionInformation.Process,
                     StartAdmission = new DateTime(2024, 09, 01, 00, 00, 0),
                     EndAdmission = new DateTime(2025, 8, 30, 23, 59, 59),
                     AdmissionProfileDescription = "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n"
@@ -184,7 +172,6 @@ namespace Data.Seeding
                     CampusId = "Cantho",
                     Year = 2025,
                     Admissions = 03,
-                    Status = TypeOfAdmissionInformation.Process,
                     StartAdmission = new DateTime(2024, 09, 01, 00, 00, 0),
                     EndAdmission = new DateTime(2025, 8, 30, 23, 59, 59),
                     AdmissionProfileDescription = "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n"
@@ -197,7 +184,6 @@ namespace Data.Seeding
                     CampusId = "HCM",
                     Year = 2025,
                     Admissions = 03,
-                    Status = TypeOfAdmissionInformation.Process,
                     StartAdmission = new DateTime(2024, 09, 01, 00, 00, 0),
                     EndAdmission = new DateTime(2025, 8, 30, 23, 59, 59),
                     AdmissionProfileDescription = "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n"
@@ -210,7 +196,6 @@ namespace Data.Seeding
                     CampusId = "Thanhhoa",
                     Year = 2025,
                     Admissions = 03,
-                    Status = TypeOfAdmissionInformation.Process,
                     StartAdmission = new DateTime(2024, 09, 01, 00, 00, 0),
                     EndAdmission = new DateTime(2025, 8, 30, 23, 59, 59),
                     AdmissionProfileDescription = "01 Phiếu đăng ký học theo mẫu quy định của trường. Phiếu đăng ký học thí sinh có thể điền trực tiếp, hoặc tải về tự in tại đây, hoặc đến nhận tại văn phòng tuyển sinh trên toàn quốc.\r\n01 Bản sao công chứng Căn cước công dân hoặc Chứng minh nhân dân.\r\n01 Bản sao công chứng Bằng tốt nghiệp hoặc Giấy chứng nhận tốt nghiệp tạm thời.\r\n01 Bản sao công chứng bảng điểm(nếu xét học bạ).\r\n2 ảnh 3x4\r\n"

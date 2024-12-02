@@ -10,7 +10,7 @@ namespace Data.Models
 {
     public class MajorAdmission
     {
-        public int AdmissionInformationID { get; set; }
+        public int AdmissionTimeId { get; set; }
         public string MajorID { get; set; }
         public bool Status { get; set; }
         public int? Target { get; set; }
@@ -27,6 +27,6 @@ namespace Data.Models
         }
         public virtual ICollection<TypeAdmission>? TypeAdmissions { get; set; }
         public virtual Major? Major { get; set; }
-        public virtual AdmissionInformation? AdmissionInformation { get; set; }
+        public virtual AdmissionTime? AdmissionTime { get; set; }
     }
 }

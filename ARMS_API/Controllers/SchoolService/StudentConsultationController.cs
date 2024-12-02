@@ -8,12 +8,13 @@ using Repository.MajorRepo;
 using Service.StudentConsultationSer;
 using OfficeOpenXml;
 using Microsoft.AspNetCore.Identity;
+using System.Linq;
 
 namespace ARMS_API.Controllers.SchoolService
 {
     [Route("api/SchoolService/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "SchoolService")]
+    [Authorize(Roles = "SchoolService")]
     public class StudentConsultationController : ControllerBase
     {
         private IStudentConsultationService _studentConsultationService;
@@ -268,15 +269,15 @@ namespace ARMS_API.Controllers.SchoolService
                         errorSheet.Cells[i + 2, 3].Value = error.Email;
                         errorSheet.Cells[i + 2, 4].Value = error.MajorID;
                         errorSheet.Cells[i + 2, 5].Value = error.LinkFB;
-                        
+                        var campusCell = errorSheet.Cells[i + 2, 6];
                         errorSheet.Cells[i + 2, 7].Value = error.Error;
 
-                        var campusRange = string.Join(",", campusIds); // Tạo chuỗi danh sách các thành phố
-                        var campusCell = errorSheet.Cells[i + 2, 6];
-
-                        // Áp dụng Data Validation cho ô CampusId
+                        var campusRange = string.Join(",", campusIds); 
                         var validation = campusCell.DataValidation.AddListDataValidation();
                         validation.Formula.Values.Add(campusRange);
+
+                        var campusIdsList = campusIds.ToList();
+                        campusCell.Value = error.CampusId;
 
                     }
 
