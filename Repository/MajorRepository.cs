@@ -177,6 +177,18 @@ namespace Repository.MajorRepo
                 throw new Exception("Tạo mới không thành công");
             }
         }
+        public async Task AddMajorAdmision(MajorAdmission major)
+        {
+            try
+            {
+                await _context.MajorAdmissions.AddAsync(major);
+                _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Tạo mới không thành công");
+            }
+        }
         public async Task UpdateMajor(Major major)
         {
             try

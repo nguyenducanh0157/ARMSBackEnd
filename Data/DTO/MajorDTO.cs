@@ -53,10 +53,12 @@ namespace Data.DTO
     }
     public class Major_Admission_DTO
     {
-        public string MajorID { get; set; }
         public int AdmissionTimeId { get; set; }
-        public int? Target { get; set; } = 0;
+        public string MajorID { get; set; }
         public bool Status { get; set; }
+        public int? Target { get; set; }
+        public decimal? TotalScore { get; set; }
+        public decimal? TotalScoreAcademic { get; set; }
         public string? SubjectGroupsJson { get; set; }
         public virtual ICollection<TypeAdmissionDTO>? TypeAdmissions { get; set; }
     }

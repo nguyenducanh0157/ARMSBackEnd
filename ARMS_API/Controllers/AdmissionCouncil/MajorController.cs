@@ -46,6 +46,26 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 return BadRequest();
             }
         }
+        [HttpPost("add-major")]
+        public async Task<IActionResult> AddMajor(Major_Admission_DTO MajorDTO)
+        {
+            try
+            {
+                MajorAdmission major = _mapper.Map<MajorAdmission>(MajorDTO);
+                await _majorService.AddMajorAdmision(major);
+                return Ok(new ResponseViewModel()
+                {
+                    Status = true,
+                    Message = "Thêm ngành tuyển sinh thành công!"
+                });
+
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
+        }
         [HttpGet("get-majors")]
         public async Task<IActionResult> GetMajors(string? CampusId, bool? college, string? Search, int CurrentPage)
         {
