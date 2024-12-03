@@ -18,7 +18,8 @@ namespace Repository
             try
             {
                 List<AdmissionInformation> AdmissionInformation = await _context.AdmissionInformations
-                    .Where(x => x.CampusId == campus).ToListAsync();
+                    .Where(x => x.CampusId == campus)
+                    .OrderBy(x=>x.Admissions).ToListAsync();
                 return AdmissionInformation;
             }
             catch (Exception)

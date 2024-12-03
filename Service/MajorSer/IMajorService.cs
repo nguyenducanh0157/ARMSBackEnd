@@ -22,5 +22,6 @@ namespace Service.MajorSer
         Task<MajorAdmission> GetMajorDetail(string MajorID, string campusId);
         Task<Major> GetMajor(string MajorID);
         Task<List<MajorAdmission>> GetMajorsIsCollegeForVocationalSchool(string campusId);
+        Task<List<MajorAdmission>> GetMajorAdmissionsByATId(int ATId);
     }
 }

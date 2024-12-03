@@ -74,6 +74,26 @@ namespace Repository.MajorRepo
             }
 
         }
+        public async Task<List<MajorAdmission>> GetMajorAdmissionsByATId(int ATId)
+        {
+            try
+            {
+                List<MajorAdmission> majors =
+                await _context.MajorAdmissions
+                .Include(x => x.Major)
+                .Include(x => x.TypeAdmissions)
+                .OrderBy(x => x.Major.isVocationalSchool)
+                .Where(x => x.AdmissionTimeId == ATId).ToListAsync();
+                return majors;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+
+        }
         // cái này sẽ bỏ
         public async Task<List<Major>> GetMajors_Manage(string campusId)
         {

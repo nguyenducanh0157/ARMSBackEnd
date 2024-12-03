@@ -62,8 +62,7 @@ namespace ARMS_API.Controllers.AdmissionCouncil
             try
             {
                 //check data
-                _validAdmissionInformation.ValidDataAdmissionInforAdd(AdmissionInformationDTO, AdmissionInformationDTO.CampusId);
-                _validAdmissionInformation.ValidateAdmissionTimes(AdmissionInformationDTO);
+               await _validAdmissionInformation.ValidDataAdmissionInforAdd(AdmissionInformationDTO, AdmissionInformationDTO.CampusId);
                 //mapper
                 AdmissionInformation AdmissionInformation = _mapper.Map<AdmissionInformation>(AdmissionInformationDTO);
                 //add new
@@ -91,7 +90,7 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 var checkdata = await _admissionInformationService.GetAdmissionInformationById(AdmissionInformationDTO.AdmissionInformationID);
                 if (checkdata == null) return NotFound();
                 //check data
-                _validAdmissionInformation.ValidDataAdmissionInfor(AdmissionInformationDTO, checkdata.CampusId);
+                await _validAdmissionInformation.ValidDataAdmissionInfor(AdmissionInformationDTO, checkdata.CampusId);
                 //mapper
                 AdmissionInformation admissionInformation = _mapper.Map<AdmissionInformation>(AdmissionInformationDTO);
                 await _admissionInformationService.UpdateAdmissionInformation(admissionInformation);

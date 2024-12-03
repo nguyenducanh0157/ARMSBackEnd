@@ -54,7 +54,7 @@ namespace Data.DTO
     public class Major_Admission_DTO
     {
         public string MajorID { get; set; }
-        public int AdmissionInformationID { get; set; }
+        public int AdmissionTimeId { get; set; }
         public int? Target { get; set; } = 0;
         public bool Status { get; set; }
         public string? SubjectGroupsJson { get; set; }
@@ -82,7 +82,7 @@ namespace Data.DTO
     }
     public class Major_AC_DTO
     {
-        public int AdmissionInformationID { get; set; }
+        public int AdmissionTimeId { get; set; }
         public string MajorID { get; set; }
         public string MajorCode { get; set; }
         public string MajorName { get; set; }
@@ -90,15 +90,8 @@ namespace Data.DTO
         public int? Target { get; set; }
         public decimal? TotalScore { get; set; }
         public decimal? TotalScoreAcademic { get; set; }
-        public string? SubjectGroupsJson { get; set; }
-        [NotMapped]
-        public List<SubjectGroup>? SubjectGroups
-        {
-            get => string.IsNullOrEmpty(SubjectGroupsJson)
-                   ? new List<SubjectGroup>()
-                   : JsonSerializer.Deserialize<List<SubjectGroup>>(SubjectGroupsJson);
-            set => SubjectGroupsJson = JsonSerializer.Serialize(value);
-        }
+        public List<SubjectGroupDTO> subjectGroupDTOs { get; set; }
+        public virtual ICollection<TypeAdmissionDTO>? TypeAdmissions { get; set; }
     }
     public class Major_Add_DTO
     {

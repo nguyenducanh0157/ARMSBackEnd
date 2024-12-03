@@ -898,7 +898,7 @@ namespace ARMS_API.Controllers
             }
 
             bool isPhoneExists = await _studentProfileService.isExistPhoneNumberStudent(phone);
-            if (isPhoneExists)
+            if (!isPhoneExists)
             {
                 return BadRequest(new ResponseViewModel
                 {

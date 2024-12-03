@@ -23,10 +23,9 @@ namespace Data.DTO
         public int Admissions { get; set; }
         public DateTime? StartAdmission { get; set; }
         public DateTime? EndAdmission { get; set; }
-        public TypeOfAdmissionInformation? Status { get; set; }
         public string? AdmissionProfileDescription { get; set; }
         public virtual ICollection<AdmissionTime_Admission_DTO>? AdmissionTimes { get; set; }
-        public virtual ICollection<Major_AC_DTO>? MajorAdmissions { get; set; }
+
     }
     public class AdmissionInformation_Add_DTO
     {
@@ -36,11 +35,9 @@ namespace Data.DTO
         public DateTime? StartAdmission { get; set; }
         public DateTime? EndAdmission { get; set; }
         public int Admissions { get; set; }
-        public TypeOfAdmissionInformation? Status { get; set; }
         public string? AdmissionProfileDescription { get; set; }
         public string CampusId { get; set; }
-        public virtual ICollection<AdmissionTime_Add_DTO>? AdmissionTimes { get; set; }
-        public virtual ICollection<Major_Add_DTO>? MajorAdmissions { get; set; }
+        
     }
     public class AdmissionInformation_Update_DTO
     {
@@ -51,7 +48,6 @@ namespace Data.DTO
         public int Admissions { get; set; }
         public DateTime? StartAdmission { get; set; }
         public DateTime? EndAdmission { get; set; }
-        public TypeOfAdmissionInformation? Status { get; set; }
         public string? AdmissionProfileDescription { get; set; }
 
     }

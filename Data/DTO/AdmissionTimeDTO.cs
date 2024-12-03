@@ -25,6 +25,7 @@ namespace Data.DTO
         public DateTime StartAdmission { get; set; }
         public DateTime EndAdmission { get; set; }
         public int AdmissionInformationID { get; set; }
+        public virtual ICollection<Major_AC_DTO>? MajorAdmissions { get; set; }
     }
     public class AdmissionTime_Add_DTO
     {

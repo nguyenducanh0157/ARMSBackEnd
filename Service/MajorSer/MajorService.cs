@@ -88,5 +88,8 @@ namespace Service.MajorSer
 
         public Task<MajorAdmission> GetMajorDetail(string MajorID, string campusId)
         => _majorRepository.GetMajorDetail(MajorID,campusId);
+
+        public Task<List<MajorAdmission>> GetMajorAdmissionsByATId(int ATId)
+            => _majorRepository.GetMajorAdmissionsByATId(ATId);
     }
 }
