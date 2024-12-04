@@ -135,6 +135,68 @@ namespace Repository.StudentProfileRepo
                 throw;
             }
         }
+        public async Task<List<StudentProfile>> GetRegisterAdmission(int ATId)
+        {
+            try
+            {
+                var registerAdmissions = await _context.StudentProfiles
+                    .Include(x => x.Campus)
+                    .Include(x => x.AcademicTranscripts)
+                    .Include(x => x.PriorityDetail)
+                    .Include(x => x.PayFeeAdmissions)
+                    .Include(x => x.MajorNV1)
+                    .Include(x => x.MajorNV2)
+                    .Where(x => x.AdmissionTimeId == ATId)
+                    .ToListAsync();
+
+                // Tính tổng điểm dựa trên từng nguyện vọng và điểm ưu tiên
+                var sortedAdmissions = registerAdmissions
+                    .Select(student =>
+                    {
+                        // Lấy điểm ưu tiên
+                        var priorityScore = student.PriorityDetail?.TypeOfPriority switch
+                        {
+                            TypeOfPriority.UT1 => 2,
+                            TypeOfPriority.UT2 => 1,
+                            _ => 0 // Mặc định nếu không phải UT1 hoặc UT2
+                        };
+
+                        // Tính tổng điểm cho Nguyện vọng 1
+                        var scoreNV1 = student.AcademicTranscripts
+                            .Where(transcript => transcript.isMajor1) // Lọc cho Nguyện vọng 1
+                            .Sum(transcript => transcript.SubjectPoint) // Tổng điểm các môn
+                            + priorityScore; // Cộng điểm ưu tiên
+
+                        // Tính tổng điểm cho Nguyện vọng 2
+                        var scoreNV2 = student.AcademicTranscripts
+                            .Where(transcript => !transcript.isMajor1) // Lọc cho Nguyện vọng 2
+                            .Sum(transcript => transcript.SubjectPoint) // Tổng điểm các môn
+                            + priorityScore; // Cộng điểm ưu tiên
+
+                        return new
+                        {
+                            Student = student,
+                            ScoreNV1 = scoreNV1,
+                            ScoreNV2 = scoreNV2
+                        };
+                    })
+                    .OrderByDescending(x => x.ScoreNV1) // Sắp xếp giảm dần theo điểm Nguyện vọng 1
+                    .ThenByDescending(x => x.ScoreNV2) // Sắp xếp phụ giảm dần theo điểm Nguyện vọng 2
+                    .ThenBy(x => x.Student.PriorityDetail.PriorityID) // Sắp xếp phụ theo độ ưu tiên
+                    .ThenBy(x => x.Student.TimeRegister) // Sắp xếp phụ theo thời gian đăng ký
+                    .Select(x => x.Student) // Lấy danh sách StudentProfile
+                    .ToList();
+
+                return sortedAdmissions;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+
         public async Task<StudentProfile?> GetStudentProfileBySpIdAsync(Guid id)
         {
             var studentProfile = await _context.StudentProfiles

@@ -14,6 +14,7 @@ using MimeKit;
 using Repository.StudentProfileRepo;
 using Service.AccountSer;
 using Service.AdmissionInformationSer;
+using Service.AdmissionTimeSer;
 using Service.CampusSer;
 using Service.EmailSer;
 using Service.LocationSer;
@@ -41,6 +42,7 @@ namespace ARMS_API.Controllers
         private readonly TimeSpan _otpLifetime = TimeSpan.FromMinutes(5);
         private readonly TokenHealper _tokenHealper;
         private readonly IAdmissionInformationService _admissionInformationService;
+        private readonly IAdmissionTimeService _admissionTimeService;
         private readonly IEmailService _emailService;
         private readonly IEmailNotifyService _emailNotifyService;
         private readonly ILocationService _locationService;
@@ -68,7 +70,8 @@ namespace ARMS_API.Controllers
             IRequestNotificationService requestNotificationService,
             ICampusService campusService,
             UserManager<Account> userManager, 
-            RoleManager<IdentityRole<Guid>> roleManager
+            RoleManager<IdentityRole<Guid>> roleManager,
+            IAdmissionTimeService admissionTimeService
             )
         {
             _studentProfileService = studentProfileService;
@@ -90,6 +93,7 @@ namespace ARMS_API.Controllers
             _campusService = campusService;
             _userManager = userManager;
             _roleManager = roleManager;
+            _admissionTimeService = admissionTimeService;
         }
 
 
@@ -246,16 +250,6 @@ namespace ARMS_API.Controllers
         {
             try
             {
-
-                // check status pay fee
-                //if (registerAdmissionProfileDTO.PayFeeAdmission.TransactionStatus != "00")
-                //{
-                //    return BadRequest(new ResponseViewModel()
-                //    {
-                //        Status = false,
-                //        Message = "Vui lòng hoàn thành khoản thanh toán!"
-                //    });
-                //}
                 //mapper
                 // Map registerAdmissionProfileDTO sang StudentProfile
                 StudentProfile studentProfile = _mapper.Map<StudentProfile>(registerAdmissionProfileDTO);
@@ -265,19 +259,9 @@ namespace ARMS_API.Controllers
                 studentProfile.TypeofStatusMajor2 = TypeofStatusForMajor.Pending;
                 studentProfile.TimeRegister = DateTime.Now;
 
-                AdmissionInformation response = await _admissionInformationService.GetAdmissionInformationByStatus(registerAdmissionProfileDTO.CampusId);
-                studentProfile.AdmissionTimeId = response.AdmissionInformationID;
-                //if (studentProfile.PayFeeAdmissions == null)
-                //{
-                //    studentProfile.PayFeeAdmissions = new List<PayFeeAdmission>();
-                //}
-                //PayFeeAdmission PayFeeAdmission = _mapper.Map<PayFeeAdmission>(registerAdmissionProfileDTO.PayFeeAdmission);
-                //if (registerAdmissionProfileDTO.PayFeeAdmission.TransactionStatus == "00")
-                //{
-                //    studentProfile.TypeofStatusProfile = TypeofStatus.SuccessProfileRegister;
-                //    PayFeeAdmission.isFeeRegister = true;
-                //    studentProfile.PayFeeAdmissions.Add(PayFeeAdmission);
-                //}
+                AdmissionTime response = await _admissionTimeService.GetAdmissionTime(registerAdmissionProfileDTO.CampusId);
+                studentProfile.AdmissionTimeId = response.AdmissionTimeId;
+
                 //add new
                 await _studentProfileService.AddStudentProfile(studentProfile);
 

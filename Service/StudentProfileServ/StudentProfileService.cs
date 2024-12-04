@@ -68,5 +68,8 @@ namespace Service.StudentProfileServ
 
         public Task<int> CountAdmissionMajor(string majorId, string CampusId)
         => _studentProfileRepository.CountAdmissionMajor(majorId, CampusId);
+
+        public Task<List<StudentProfile>> GetRegisterAdmission(int ATId)
+        => _studentProfileRepository.GetRegisterAdmission(ATId);
     }
 }

@@ -49,7 +49,7 @@ namespace ARMS_API.Controllers
             }
             catch (Exception ex)
             {
-                return Ok(new ResponseViewModel()
+                return BadRequest(new ResponseViewModel()
                 {
                     Status = false,
                     Message = ex.Message
