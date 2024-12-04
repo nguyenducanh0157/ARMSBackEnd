@@ -127,28 +127,28 @@ namespace ARMS_API.ValidData
 
                 // Lấy thông tin tuyển sinh từ dịch vụ
                 AdmissionInformation admissionInformation = await _admissionInformationService.GetAdmissionInformationById(admissionTimeDTO.AdmissionInformationID);
-                if (admissionTimeDTO.StartRegister > admissionInformation.StartAdmission 
+                if (admissionTimeDTO.StartRegister < admissionInformation.StartAdmission 
                     || admissionTimeDTO.StartRegister > admissionInformation.EndAdmission
                     )
                 {
                     throw new Exception($"Thời gian bắt đầu đăng ký của {admissionTimeDTO.AdmissionTimeName} không nằm trong khoảng thời gian tuyển sinh.");
                 }
 
-                if (admissionTimeDTO.EndRegister > admissionInformation.StartAdmission 
+                if (admissionTimeDTO.EndRegister < admissionInformation.StartAdmission 
                     || admissionTimeDTO.EndRegister > admissionInformation.EndAdmission
                     )
                 {
                     throw new Exception($"Thời gian kết thúc đăng ký của {admissionTimeDTO.AdmissionTimeName} không nằm trong khoảng thời gian tuyển sinh.");
                 }
 
-                if (admissionTimeDTO.StartAdmission > admissionInformation.StartAdmission 
+                if (admissionTimeDTO.StartAdmission < admissionInformation.StartAdmission 
                     || admissionTimeDTO.StartAdmission > admissionInformation.EndAdmission
                     )
                 {
                     throw new Exception($"Thời gian bắt đầu tuyển sinh của {admissionTimeDTO.AdmissionTimeName} không nằm trong khoảng thời gian tuyển sinh.");
                 }
 
-                if (admissionTimeDTO.EndAdmission > admissionInformation.StartAdmission 
+                if (admissionTimeDTO.EndAdmission < admissionInformation.StartAdmission 
                     || admissionTimeDTO.EndAdmission > admissionInformation.EndAdmission
                     )
                 {
@@ -219,28 +219,28 @@ namespace ARMS_API.ValidData
                 AdmissionInformation admissionInformation = await _admissionInformationService.GetAdmissionInformationById(admissionTimeDTO.AdmissionInformationID);
 
                 // Kiểm tra thời gian đăng ký và tuyển sinh nằm trong khoảng thời gian tuyển sinh
-                if (admissionTimeDTO.StartRegister > admissionInformation.StartAdmission
+                if (admissionTimeDTO.StartRegister < admissionInformation.StartAdmission
                     || admissionTimeDTO.StartRegister > admissionInformation.EndAdmission
                     )
                 {
                     throw new Exception($"Thời gian bắt đầu đăng ký của {admissionTimeDTO.AdmissionTimeName} không nằm trong khoảng thời gian tuyển sinh.");
                 }
 
-                if (admissionTimeDTO.EndRegister > admissionInformation.StartAdmission
+                if (admissionTimeDTO.EndRegister < admissionInformation.StartAdmission
                     || admissionTimeDTO.EndRegister > admissionInformation.EndAdmission
                     )
                 {
                     throw new Exception($"Thời gian kết thúc đăng ký của {admissionTimeDTO.AdmissionTimeName} không nằm trong khoảng thời gian tuyển sinh.");
                 }
 
-                if (admissionTimeDTO.StartAdmission > admissionInformation.StartAdmission
+                if (admissionTimeDTO.StartAdmission < admissionInformation.StartAdmission
                     || admissionTimeDTO.StartAdmission > admissionInformation.EndAdmission
                     )
                 {
                     throw new Exception($"Thời gian bắt đầu tuyển sinh của {admissionTimeDTO.AdmissionTimeName} không nằm trong khoảng thời gian tuyển sinh.");
                 }
 
-                if (admissionTimeDTO.EndAdmission > admissionInformation.StartAdmission
+                if (admissionTimeDTO.EndAdmission < admissionInformation.StartAdmission
                     || admissionTimeDTO.EndAdmission > admissionInformation.EndAdmission
                     )
                 {
