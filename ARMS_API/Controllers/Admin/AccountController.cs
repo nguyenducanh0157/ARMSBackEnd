@@ -142,6 +142,53 @@ namespace ARMS_API.Controllers.Admin
                 });
             }
         }
+        [HttpGet("reset-password/{id}")]
+        public async Task<IActionResult> ResetPassword(Guid id)
+        {
+            try
+            {
+                var account = await _userManager.FindByIdAsync(id.ToString());
+                if (account == null)
+                {
+                    return NotFound(new ResponseViewModel
+                    {
+                        Status = false,
+                        Message = "Không tìm thấy người dùng!"
+                    });
+                }
+                var resetPasswordResult = await _userManager.RemovePasswordAsync(account);
+                if (!resetPasswordResult.Succeeded)
+                {
+                    return BadRequest(new ResponseViewModel
+                    {
+                        Status = false,
+                        Message = "Đã sảy ra lỗi vui lòng thử lại sau!"
+                    });
+                }
+                var result = await _userManager.AddPasswordAsync(account, "A123@123a");
+                if (!result.Succeeded)
+                {
+                    return BadRequest(new ResponseViewModel
+                    {
+                        Status = false,
+                        Message = "Đăng lại mật khẩu không thành công!"
+                    });
+                }
+                return Ok(new ResponseViewModel
+                {
+                    Status = true,
+                    Message = "Đăng lại mật khẩu thành công"
+                });
+            }
+            catch (Exception)
+            {
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã sảy ra lỗi vui lòng thử lại sau!"
+                });
+            }
+        }
         [HttpGet("get-accounts-student")]
         public async Task<IActionResult> GetAccountsRequest(string? CampusId, string? Search, int CurrentPage, TypeAccount? TypeAccount)
         {

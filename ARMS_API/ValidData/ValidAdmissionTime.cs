@@ -55,7 +55,7 @@ namespace ARMS_API.ValidData
         //                {
         //                    throw new Exception($"Thời gian bắt đầu tuyển sinh của {admissionTime.AdmissionTimeName} phải nhỏ hơn thời gian kết thúc tuyển sinh.");
         //                }
-                       
+
         //            }
         //            foreach (var at in admissionInformationDTO.AdmissionTimes.OrderBy(a => a.StartRegister))  // Sắp xếp theo StartRegister
         //            {
@@ -118,7 +118,7 @@ namespace ARMS_API.ValidData
         //    }
         //}
 
-        internal async Task ValidDataAdmissionTime(AdmissionTime_Add_DTO admissionTimeDTO)
+        public async Task ValidDataAdmissionTime(AdmissionTime_Add_DTO admissionTimeDTO)
         {
             try
             {
