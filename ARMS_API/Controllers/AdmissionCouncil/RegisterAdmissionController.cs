@@ -185,291 +185,220 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 });
             }
         }
-        //[HttpPut("update-student-register")]
-        //public async Task<IActionResult> UpdateStudentRegister(AdmissionProfile_AO_DTO AdmissionProfile_DTO)
-        //{
-        //    try
-        //    {
-        //        StudentProfile responeResult = _mapper.Map<StudentProfile>(AdmissionProfile_DTO);
-        //        if (responeResult.TypeofStatusMajor1 == TypeofStatusForMajor.Pass)
-        //        {
-        //            responeResult.TypeofStatusMajor2 = TypeofStatusForMajor.Pending;
-        //            responeResult.TypeofStatusProfile = TypeofStatus.WaitingPaymentAdmission;
-        //        }
-        //        if (responeResult.TypeofStatusMajor1 == TypeofStatusForMajor.Fail && responeResult.TypeofStatusMajor2 == TypeofStatusForMajor.Pass)
-        //        {
-        //            responeResult.TypeofStatusProfile = TypeofStatus.WaitingPaymentAdmission;
-        //        }
-        //        if (responeResult.TypeofStatusMajor1 == TypeofStatusForMajor.Fail && responeResult.TypeofStatusMajor2 == TypeofStatusForMajor.Fail)
-        //        {
-        //            responeResult.TypeofStatusProfile = TypeofStatus.Done;
-        //        }
-        //        await _studentProfileService.UpdateStudentRegister(responeResult);
+        [HttpPut("update-student-register")]
+        public async Task<IActionResult> UpdateStudentRegister(AdmissionProfile_AO_DTO AdmissionProfile_DTO)
+        {
+            try
+            {
+                StudentProfile responeResult = _mapper.Map<StudentProfile>(AdmissionProfile_DTO);
+                if (responeResult.TypeofStatusMajor == TypeofStatusForMajor.Pass)
+                {
+                    responeResult.TypeofStatusProfile = TypeofStatus.WaitingPaymentAdmission;
+                }
+                await _studentProfileService.UpdateStudentRegister(responeResult);
 
-        //        return Ok(new ResponseViewModel()
-        //        {
-        //            Status = true,
-        //            Message = "Cập nhật thành công!"
-        //        });
+                return Ok(new ResponseViewModel()
+                {
+                    Status = true,
+                    Message = "Cập nhật thành công!"
+                });
 
-        //    }
-        //    catch (Exception)
-        //    {
+            }
+            catch (Exception)
+            {
 
-        //        return BadRequest();
-        //    }
-        //}
-        //[HttpPut("update-student-register-status")]
-        //public async Task<IActionResult> UpdateStudentRegisterStatus(AdmissionProfile_UpdateStatus_DTO AdmissionProfile_UpdateStatus_DTO)
-        //{
-        //    try
-        //    {
+                return BadRequest();
+            }
+        }
+        [HttpPut("update-student-register-status")]
+        public async Task<IActionResult> UpdateStudentRegisterStatus(AdmissionProfile_UpdateStatus_DTO AdmissionProfile_UpdateStatus_DTO)
+        {
+            try
+            {
 
-        //        StudentProfile stf = await _studentProfileService.GetStudentProfileBySpIdAsync(AdmissionProfile_UpdateStatus_DTO.SpId);
-        //        if (stf == null)
-        //        {
-        //            return NotFound(new ResponseViewModel()
-        //            {
-        //                Status = false,
-        //                Message = "Không tìm thấy hồ sơ!"
-        //            });
-        //        }
-        //        var major = await _majorService.GetMajor(stf.Major1);
-        //        string major1 = major.MajorName;
-        //        var majorn2 = await _majorService.GetMajor(stf.Major2);
-        //        string major2 = majorn2.MajorName;
-        //        AdmissionTime time = stf.AdmissionTime;
-        //        AdmissionInformation AdmissionInformation = await _admissionInformationService.GetAdmissionInformationById(time.AdmissionInformationID);
+                StudentProfile stf = await _studentProfileService.GetStudentProfileBySpIdAsync(AdmissionProfile_UpdateStatus_DTO.SpId);
+                if (stf == null)
+                {
+                    return NotFound(new ResponseViewModel()
+                    {
+                        Status = false,
+                        Message = "Không tìm thấy hồ sơ!"
+                    });
+                }
+                var major = await _majorService.GetMajor(stf.Major);
+                string majorName = major.MajorName;
+                AdmissionTime time = stf.AdmissionTime;
+                AdmissionInformation AdmissionInformation = await _admissionInformationService.GetAdmissionInformationById(time.AdmissionInformationID);
 
-        //        if (AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor1 == TypeofStatusForMajor.Pass)
-        //        {
-        //            stf.TypeofStatusMajor1 = TypeofStatusForMajor.Pass;
-        //            stf.TypeofStatusMajor2 = TypeofStatusForMajor.Pending;
-        //            stf.TypeofStatusProfile = TypeofStatus.WaitingPaymentAdmission;
-        //            _ = Task.Run(async () =>
-        //            {
-        //                    var emailRequest = new EmailRequest
-        //                    {
-        //                        ToEmail = stf.EmailStudent,
-        //                        Subject = "Xét duyệt hồ sơ!",
-        //                        Body = $@"<!DOCTYPE html>
-        //                            <html lang=""en"">
-        //                            <head>
-        //                                <meta charset=""UTF-8"">
-        //                                <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
-        //                                <title>Thông tin Đăng ký Tuyển sinh</title>
-        //                                <style>
-        //                                    body {{  
-        //                                        font-family: Arial, sans-serif;
-        //                                        line-height: 1.6;
-        //                                        margin: 20px;
-        //                                    }}
-        //                                    .container {{
-        //                                        max-width: 800px;
-        //                                        margin: 0 auto;
-        //                                        border: 1px solid #ddd;
-        //                                        border-radius: 10px;
-        //                                        padding: 20px;
-        //                                        background-color: #f9f9f9;
-        //                                    }}
-        //                                    h1 {{
-        //                                        text-align: center;
-        //                                        color: #333;
-        //                                    }}
+                if (AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor1 == TypeofStatusForMajor.Pass)
+                {
+                    stf.TypeofStatusMajor = TypeofStatusForMajor.Pass;
+                    stf.TypeofStatusProfile = TypeofStatus.WaitingPaymentAdmission;
+                    _ = Task.Run(async () =>
+                    {
+                        var emailRequest = new EmailRequest
+                        {
+                            ToEmail = stf.EmailStudent,
+                            Subject = "Xét duyệt hồ sơ!",
+                            Body = $@"<!DOCTYPE html>
+                                    <html lang=""en"">
+                                    <head>
+                                        <meta charset=""UTF-8"">
+                                        <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+                                        <title>Thông tin Đăng ký Tuyển sinh</title>
+                                        <style>
+                                            body {{  
+                                                font-family: Arial, sans-serif;
+                                                line-height: 1.6;
+                                                margin: 20px;
+                                            }}
+                                            .container {{
+                                                max-width: 800px;
+                                                margin: 0 auto;
+                                                border: 1px solid #ddd;
+                                                border-radius: 10px;
+                                                padding: 20px;
+                                                background-color: #f9f9f9;
+                                            }}
+                                            h1 {{
+                                                text-align: center;
+                                                color: #333;
+                                            }}
 
-        //                                </style>
-        //                            </head>
-        //                            <body>
-        //                                <div class=""container"">
-        //                                    <h1 style=""color: orange"">Thông báo kết quả tuyển sinh</h1>
-        //                                    <p>Gửi {stf.Fullname},
-        //                                    <p> Chúc mừng em đã đậu nguyện vọng 1 của chuyên ngành {major1}
-        //                                    <p> Thời gian nhập học sẽ bắt đầu từ {time.StartAdmission} đến {time.EndAdmission}
-        //                                    <p> Phí nhập học của em sẽ bao gồm: Học phí ({major.Tuition}) và phí nhập học ({AdmissionInformation.FeeAdmission})
-        //                                    <p> Tổng:{major.Tuition+ AdmissionInformation.FeeAdmission}
-        //                                    <p>Trân trọng,</p>
-        //                                    <p>Phòng tuyển sinh</p>
-        //                                </div>
-        //                            </body>
-        //                            </html>"
-        //                    }; 
+                                        </style>
+                                    </head>
+                                    <body>
+                                        <div class=""container"">
+                                            <h1 style=""color: orange"">Thông báo kết quả tuyển sinh</h1>
+                                            <p>Gửi {stf.Fullname},
+                                            <p> Chúc mừng em đã đậu nguyện vọng 1 của chuyên ngành {majorName}
+                                            <p> Thời gian nhập học sẽ bắt đầu từ {time.StartAdmission} đến {time.EndAdmission}
+                                            <p> Phí nhập học của em sẽ bao gồm: Học phí ({major.Tuition}) và phí nhập học ({AdmissionInformation.FeeAdmission})
+                                            <p> Tổng:{major.Tuition + AdmissionInformation.FeeAdmission}
+                                            <p>Trân trọng,</p>
+                                            <p>Phòng tuyển sinh</p>
+                                        </div>
+                                    </body>
+                                    </html>"
+                        };
 
-        //                await _emailService.SendEmailByHTMLAsync(emailRequest);
+                        await _emailService.SendEmailByHTMLAsync(emailRequest);
 
-        //            });
+                    });
 
-        //        }
-        //        if (AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor1 == TypeofStatusForMajor.Fail && AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor2 == TypeofStatusForMajor.Pass)
-        //        {
-        //            stf.TypeofStatusMajor1 = TypeofStatusForMajor.Fail;
-        //            stf.TypeofStatusMajor2 = TypeofStatusForMajor.Pass;
-        //            stf.TypeofStatusProfile = TypeofStatus.WaitingPaymentAdmission;
-        //            _ = Task.Run(async () =>
-        //            {
-        //                var emailRequest = new EmailRequest
-        //                {
-        //                    ToEmail = stf.EmailStudent,
-        //                    Subject = "Xét duyệt hồ sơ!",
-        //                    Body = $@"<!DOCTYPE html>
-        //                            <html lang=""en"">
-        //                            <head>
-        //                                <meta charset=""UTF-8"">
-        //                                <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
-        //                                <title>Thông tin Đăng ký Tuyển sinh</title>
-        //                                <style>
-        //                                    body {{  
-        //                                        font-family: Arial, sans-serif;
-        //                                        line-height: 1.6;
-        //                                        margin: 20px;
-        //                                    }}
-        //                                    .container {{
-        //                                        max-width: 800px;
-        //                                        margin: 0 auto;
-        //                                        border: 1px solid #ddd;
-        //                                        border-radius: 10px;
-        //                                        padding: 20px;
-        //                                        background-color: #f9f9f9;
-        //                                    }}
-        //                                    h1 {{
-        //                                        text-align: center;
-        //                                        color: #333;
-        //                                    }}
+                }
+                if (AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor1 == TypeofStatusForMajor.Fail)
+                {
+                    stf.TypeofStatusMajor = TypeofStatusForMajor.Fail;
+                    stf.TypeofStatusProfile = TypeofStatus.Done;
+                    _ = Task.Run(async () =>
+                    {
+                        var emailRequest = new EmailRequest
+                        {
+                            ToEmail = stf.EmailStudent,
+                            Subject = "Xét duyệt hồ sơ!",
+                            Body = $@"<!DOCTYPE html>
+                                    <html lang=""en"">
+                                    <head>
+                                        <meta charset=""UTF-8"">
+                                        <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+                                        <title>Thông tin Đăng ký Tuyển sinh</title>
+                                        <style>
+                                            body {{  
+                                                font-family: Arial, sans-serif;
+                                                line-height: 1.6;
+                                                margin: 20px;
+                                            }}
+                                            .container {{
+                                                max-width: 800px;
+                                                margin: 0 auto;
+                                                border: 1px solid #ddd;
+                                                border-radius: 10px;
+                                                padding: 20px;
+                                                background-color: #f9f9f9;
+                                            }}
+                                            h1 {{
+                                                text-align: center;
+                                                color: #333;
+                                            }}
 
-        //                                </style>
-        //                            </head>
-        //                            <body>
-        //                                <div class=""container"">
-        //                                    <h1 style=""color: orange"">Thông báo kết quả tuyển sinh</h1>
-        //                                    <p>Gửi {stf.Fullname},
-        //                                    <p> Chúc mừng em đã đậu nguyện vọng 1 của chuyên ngành {major2}
-        //                                    <p> Thời gian nhập học sẽ bắt đầu từ {time.StartAdmission} đến {time.EndAdmission}
-        //                                    <p> Phí nhập học của em sẽ bao gồm: Học phí ({majorn2.Tuition}) và phí nhập học ({AdmissionInformation.FeeAdmission})
-        //                                    <p> Tổng:{major.Tuition + AdmissionInformation.FeeAdmission}
-        //                                    <p>Trân trọng,</p>
-        //                                    <p>Phòng tuyển sinh</p>
-        //                                </div>
-        //                            </body>
-        //                            </html>"
-        //                };
+                                        </style>
+                                    </head>
+                                    <body>
+                                        <div class=""container"">
+                                            <h1 style=""color: orange"">Thông báo kết quả tuyển sinh</h1>
+                                            <p>Gửi {stf.Fullname},
+                                            <p> Lời đầu tiên nhà trường xin gửi lời cảm ơn vì em đã dành sự gian tâm tới nhà trường.
+                                            <p> Sau thời gian cân nhắc và xem xét hồ sơ. Nhà trường rất tiếc vì hồ sơ của em chưa đủ điều kiện xét tuyển!
+                                            <p> Nhà trường xin gửi lời cảm ơn và chúc em sẽ có thật nhiều thành côgn trong tương lai
+                                            <p>Trân trọng,</p>
+                                            <p>Phòng tuyển sinh</p>
+                                        </div>
+                                    </body>
+                                    </html>"
+                        };
 
-        //                await _emailService.SendEmailByHTMLAsync(emailRequest);
+                        await _emailService.SendEmailByHTMLAsync(emailRequest);
 
-        //            });
-        //        }
-        //        if (AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor1 == TypeofStatusForMajor.Fail && AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor2 == TypeofStatusForMajor.Fail)
-        //        {
-        //            stf.TypeofStatusMajor1 = TypeofStatusForMajor.Fail;
-        //            stf.TypeofStatusMajor2 = TypeofStatusForMajor.Fail;
-        //            stf.TypeofStatusProfile = TypeofStatus.Done;
-        //            _ = Task.Run(async () =>
-        //            {
-        //                var emailRequest = new EmailRequest
-        //                {
-        //                    ToEmail = stf.EmailStudent,
-        //                    Subject = "Xét duyệt hồ sơ!",
-        //                    Body = $@"<!DOCTYPE html>
-        //                            <html lang=""en"">
-        //                            <head>
-        //                                <meta charset=""UTF-8"">
-        //                                <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
-        //                                <title>Thông tin Đăng ký Tuyển sinh</title>
-        //                                <style>
-        //                                    body {{  
-        //                                        font-family: Arial, sans-serif;
-        //                                        line-height: 1.6;
-        //                                        margin: 20px;
-        //                                    }}
-        //                                    .container {{
-        //                                        max-width: 800px;
-        //                                        margin: 0 auto;
-        //                                        border: 1px solid #ddd;
-        //                                        border-radius: 10px;
-        //                                        padding: 20px;
-        //                                        background-color: #f9f9f9;
-        //                                    }}
-        //                                    h1 {{
-        //                                        text-align: center;
-        //                                        color: #333;
-        //                                    }}
+                    });
+                }
+                // Save the updated profile
+                await _studentProfileService.UpdateStudentRegister(stf);
 
-        //                                </style>
-        //                            </head>
-        //                            <body>
-        //                                <div class=""container"">
-        //                                    <h1 style=""color: orange"">Thông báo kết quả tuyển sinh</h1>
-        //                                    <p>Gửi {stf.Fullname},
-        //                                    <p> Lời đầu tiên nhà trường xin gửi lời cảm ơn vì em đã dành sự gian tâm tới nhà trường.
-        //                                    <p> Sau thời gian cân nhắc và xem xét hồ sơ. Nhà trường rất tiếc vì hồ sơ của em chưa đủ điều kiện xét tuyển!
-        //                                    <p> Nhà trường xin gửi lời cảm ơn và chúc em sẽ có thật nhiều thành côgn trong tương lai
-        //                                    <p>Trân trọng,</p>
-        //                                    <p>Phòng tuyển sinh</p>
-        //                                </div>
-        //                            </body>
-        //                            </html>"
-        //                };
+                return Ok(new ResponseViewModel()
+                {
+                    Status = true,
+                    Message = "Cập nhật thành công!"
+                });
 
-        //                await _emailService.SendEmailByHTMLAsync(emailRequest);
+            }
+            catch (Exception)
+            {
+                return BadRequest(new ResponseViewModel()
+                {
+                    Status = false,
+                    Message = "Không tìm thấy hồ sơ!"
+                });
+            }
+        }
+        [HttpPut("change-student-register-status")]
+        public async Task<IActionResult> ChangeStudentRegisterStatus(AdmissionProfile_UpdateStatus_DTO AdmissionProfile_UpdateStatus_DTO)
+        {
+            try
+            {
 
-        //            });
-        //        }
-        //        // Save the updated profile
-        //        await _studentProfileService.UpdateStudentRegister(stf);
+                StudentProfile stf = await _studentProfileService.GetStudentProfileBySpIdAsync(AdmissionProfile_UpdateStatus_DTO.SpId);
+                if (stf == null)
+                {
+                    return NotFound(new ResponseViewModel()
+                    {
+                        Status = false,
+                        Message = "Không tìm thấy hồ sơ!"
+                    });
+                }
+                stf.TypeofStatusMajor = AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor1;
+                stf.TypeofStatusProfile = AdmissionProfile_UpdateStatus_DTO.TypeofStatusProfile;
+                stf.Note = AdmissionProfile_UpdateStatus_DTO.Note;
 
-        //        return Ok(new ResponseViewModel()
-        //        {
-        //            Status = true,
-        //            Message = "Cập nhật thành công!"
-        //        });
+                // Save the updated profile
+                await _studentProfileService.UpdateStudentRegister(stf);
 
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return BadRequest(new ResponseViewModel()
-        //        {
-        //            Status = false,
-        //            Message = "Không tìm thấy hồ sơ!"
-        //        });
-        //    }
-        //}
-        //[HttpPut("change-student-register-status")]
-        //public async Task<IActionResult> ChangeStudentRegisterStatus(AdmissionProfile_UpdateStatus_DTO AdmissionProfile_UpdateStatus_DTO)
-        //{
-        //    try
-        //    {
+                return Ok(new ResponseViewModel()
+                {
+                    Status = true,
+                    Message = "Cập nhật thành công!"
+                });
 
-        //        StudentProfile stf = await _studentProfileService.GetStudentProfileBySpIdAsync(AdmissionProfile_UpdateStatus_DTO.SpId);
-        //        if (stf == null)
-        //        {
-        //            return NotFound(new ResponseViewModel()
-        //            {
-        //                Status = false,
-        //                Message = "Không tìm thấy hồ sơ!"
-        //            });
-        //        }
-        //        stf.TypeofStatusMajor1 = AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor1;
-        //        stf.TypeofStatusMajor2 = AdmissionProfile_UpdateStatus_DTO.TypeofStatusMajor2;
-        //        stf.TypeofStatusProfile = AdmissionProfile_UpdateStatus_DTO.TypeofStatusProfile;
-        //        stf.Note = AdmissionProfile_UpdateStatus_DTO.Note;
-
-        //        // Save the updated profile
-        //        await _studentProfileService.UpdateStudentRegister(stf);
-
-        //        return Ok(new ResponseViewModel()
-        //        {
-        //            Status = true,
-        //            Message = "Cập nhật thành công!"
-        //        });
-
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return BadRequest(new ResponseViewModel()
-        //        {
-        //            Status = false,
-        //            Message = "Không tìm thấy hồ sơ!"
-        //        });
-        //    }
-        //}
+            }
+            catch (Exception)
+            {
+                return BadRequest(new ResponseViewModel()
+                {
+                    Status = false,
+                    Message = "Không tìm thấy hồ sơ!"
+                });
+            }
+        }
 
     }
 }

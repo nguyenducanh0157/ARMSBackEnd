@@ -154,7 +154,7 @@ namespace Repository.StudentProfileRepo
                 var sortedAdmissions = registerAdmissions
                     .Select(student =>
                     {
-                        // Lấy điểm ưu tiên
+                        // Lấy điểm ưu tiên nếu có
                         var priorityScore = student.PriorityDetail?.TypeOfPriority switch
                         {
                             TypeOfPriority.UT1 => 2,
@@ -162,28 +162,19 @@ namespace Repository.StudentProfileRepo
                             _ => 0 // Mặc định nếu không phải UT1 hoặc UT2
                         };
 
-                        // Tính tổng điểm cho Nguyện vọng 1
-                        var scoreNV1 = student.AcademicTranscripts
-                            //.Where(transcript => transcript.isMajor1) // Lọc cho Nguyện vọng 1
-                            .Sum(transcript => transcript.SubjectPoint) // Tổng điểm các môn
-                            + priorityScore; // Cộng điểm ưu tiên
-
-                        // Tính tổng điểm cho Nguyện vọng 2
-                        var scoreNV2 = student.AcademicTranscripts
-                           // .Where(transcript => !transcript.isMajor) // Lọc cho Nguyện vọng 2
-                            .Sum(transcript => transcript.SubjectPoint) // Tổng điểm các môn
-                            + priorityScore; // Cộng điểm ưu tiên
+                        // Chỉ tính tổng điểm nếu AcademicTranscripts không null
+                        var scoreNV = student.AcademicTranscripts?.Any() == true // Kiểm tra nếu có điểm
+                            ? student.AcademicTranscripts.Sum(transcript => transcript.SubjectPoint) + priorityScore
+                            : 0; // Nếu không có điểm, tổng là 0
 
                         return new
                         {
                             Student = student,
-                            ScoreNV1 = scoreNV1,
-                            ScoreNV2 = scoreNV2
+                            ScoreNV = scoreNV,
                         };
                     })
-                    .OrderByDescending(x => x.ScoreNV1) // Sắp xếp giảm dần theo điểm Nguyện vọng 1
-                    .ThenByDescending(x => x.ScoreNV2) // Sắp xếp phụ giảm dần theo điểm Nguyện vọng 2
-                    .ThenBy(x => x.Student.PriorityDetail.PriorityID) // Sắp xếp phụ theo độ ưu tiên
+                    .OrderByDescending(x => x.ScoreNV) // Sắp xếp giảm dần theo điểm Nguyện vọng 1
+                    .ThenBy(x => x.Student.PriorityDetail?.PriorityID ?? int.MaxValue) // Sắp xếp phụ theo độ ưu tiên (ưu tiên null đặt cuối)
                     .ThenBy(x => x.Student.TimeRegister) // Sắp xếp phụ theo thời gian đăng ký
                     .Select(x => x.Student) // Lấy danh sách StudentProfile
                     .ToList();
@@ -195,7 +186,6 @@ namespace Repository.StudentProfileRepo
                 throw;
             }
         }
-
 
 
         public async Task<StudentProfile?> GetStudentProfileBySpIdAsync(Guid id)

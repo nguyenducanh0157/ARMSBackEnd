@@ -97,5 +97,8 @@ namespace Service.MajorSer
 
         public Task AddMajorAdmision(MajorAdmission major)
             => _majorRepository.AddMajorAdmision(major);
+
+        public Task<List<object>> GetMajorAdmissionsAndRegisterByATId(int ATId)
+        => _majorRepository.GetMajorAdmissionsAndRegisterByATId(ATId);
     }
 }

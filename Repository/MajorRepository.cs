@@ -1,6 +1,7 @@
 ﻿using Data.ArmsContext;
 using Data.Models;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -85,6 +86,50 @@ namespace Repository.MajorRepo
                 .OrderBy(x => x.Major.isVocationalSchool)
                 .Where(x => x.AdmissionTimeId == ATId).ToListAsync();
                 return majors;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+
+        }
+        public async Task<List<object>> GetMajorAdmissionsAndRegisterByATId(int ATId)
+        {
+            try
+            {
+                List<MajorAdmission> majors =
+                await _context.MajorAdmissions
+                .Include(x => x.Major)
+                .Include(x => x.TypeAdmissions)
+                .OrderBy(x => x.Major.isVocationalSchool)
+                .Where(x => x.AdmissionTimeId == ATId).ToListAsync();
+                var majorWithRegisterCount = new List<object>();
+                foreach (var major in majors)
+                {
+                    var registerCount = await _context.StudentProfiles
+                        .Where(r => r.Major == major.MajorID && r.AdmissionTimeId == ATId)
+                        .CountAsync();
+                    var registerCountPass = await _context.StudentProfiles
+                        .Where(r => r.Major == major.MajorID
+                                    && r.AdmissionTimeId == ATId
+                                    && r.TypeofStatusProfile == TypeofStatus.SuccessProfileAdmission
+                                    && r.Major == major.MajorID
+                                    && r.TypeofStatusMajor == TypeofStatusForMajor.Pass)
+                        .CountAsync();
+
+                    majorWithRegisterCount.Add(new
+                    {
+                        MajorId = major.MajorID,
+                        MajorName = major.Major?.MajorName,
+                        RegisteredCount = registerCount,
+                        Target = major.Target,
+                        RegisterCountPass = registerCountPass
+                    });
+                }
+
+                return majorWithRegisterCount;
 
             }
             catch (Exception ex)
