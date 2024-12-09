@@ -166,5 +166,20 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 return BadRequest();
             }
         }
+        [HttpGet("get-majors_admission_and_register")]
+        public async Task<IActionResult> GetMajorAdmissionsAndRegisterProcess(string CampusId)
+        {
+            try
+            {
+                List<object> response = await _majorService.GetMajorAdmissionsAndRegisterProcess(CampusId);
+                return Ok(response);
+
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
+        }
     }
 }

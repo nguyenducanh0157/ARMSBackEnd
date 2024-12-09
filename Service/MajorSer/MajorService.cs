@@ -100,5 +100,8 @@ namespace Service.MajorSer
 
         public Task<List<object>> GetMajorAdmissionsAndRegisterByATId(int ATId)
         => _majorRepository.GetMajorAdmissionsAndRegisterByATId(ATId);
+
+        public Task<List<object>> GetMajorAdmissionsAndRegisterProcess(string campusId)
+         => _majorRepository.GetMajorAdmissionsAndRegisterProcess(campusId);
     }
 }

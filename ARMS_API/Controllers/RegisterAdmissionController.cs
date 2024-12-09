@@ -629,7 +629,6 @@ namespace ARMS_API.Controllers
                 });
             }
         }
-        [Authorize(Roles = "guest")]
         [HttpPost("pay-register-admission")]
         public async Task<IActionResult> PayRegisterAdmission([FromBody] PayFeeAdmissionDTO payFeeAdmissionDTO)
         {

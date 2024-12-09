@@ -131,16 +131,27 @@ namespace ARMS_API.Config
                 config.CreateMap<PayFeeAdmissionDTO, PayFeeAdmission>();
                 config.CreateMap<PayFeeAdmission, PayFeeAdmissionDTO>();
 
-                config.CreateMap<RegisterAdmissionProfileDTO, StudentProfile>();
+                config.CreateMap<RegisterAdmissionProfileDTO, StudentProfile>()
+                .ForMember(dest => dest.AcademicTranscripts, opt => opt.MapFrom(src => src.AcademicTranscriptsMajor));
+
                 config.CreateMap<RegisterAdmissionProfileDTO_Update, StudentProfile>();
                 config.CreateMap<StudentProfile, AdmissionProfile_DTO>()
-                 .ForMember(dest => dest.MajorName, opt => opt.MapFrom(src => src.MajorNV.MajorName));
+                 .ForMember(dest => dest.MajorName, opt => opt.MapFrom(src => src.MajorNV.MajorName))
+                 .ForMember(dest => dest.AcademicTranscriptsMajor, opt => opt.MapFrom(src => src.AcademicTranscripts));
 
                 config.CreateMap<AdmissionProfile_AO_DTO, StudentProfile>();
+
                 config.CreateMap<StudentProfile, AdmissionProfile_AO_DTO>()
-               .ForMember(dest => dest.CampusName, opt => opt.MapFrom(src => src.Campus.CampusName))
+                .ForMember(dest => dest.CampusName, opt => opt.MapFrom(src => src.Campus.CampusName))
                 .ForMember(dest => dest.MajorName1, opt => opt.MapFrom(src => src.MajorNV.MajorName))
-                  .ForMember(dest => dest.AIId, opt => opt.MapFrom(src => src.AdmissionTimeId));
+                .ForMember(dest => dest.Major1, opt => opt.MapFrom(src => src.Major))
+                .ForMember(dest => dest.ImgDiplomaMajor1, opt => opt.MapFrom(src => src.ImgDiplomaMajor))
+                .ForMember(dest => dest.TypeOfDiplomaMajor1, opt => opt.MapFrom(src => src.TypeOfDiplomaMajor))
+                .ForMember(dest => dest.TypeOfTranscriptMajor1, opt => opt.MapFrom(src => src.TypeOfTranscriptMajor))
+                .ForMember(dest => dest.TypeofStatusMajor1, opt => opt.MapFrom(src => src.TypeofStatusMajor))
+                .ForMember(dest => dest.AcademicTranscriptsMajor1, opt => opt.MapFrom(src => src.AcademicTranscripts))
+                .ForMember(dest => dest.AIId, opt => opt.MapFrom(src => src.AdmissionTimeId));
+
                 config.CreateMap<PriorityDetail, PriorityDetailDTO>();
                 config.CreateMap<PriorityDetailDTO, PriorityDetail>();
 
