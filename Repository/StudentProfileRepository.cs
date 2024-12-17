@@ -114,6 +114,110 @@ namespace Repository.StudentProfileRepo
                 throw;
             }
         }
+        public async Task<int> CountAdmission(string CampusId)
+        {
+            try
+            {
+                var admission = await _context.StudentProfiles
+                    .Where(x =>  x.CampusId == CampusId)
+                    .ToListAsync();
+
+                return admission.Count();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public async Task<int> CountAdmissionsToday(string campusId)
+        {
+            try
+            {
+                DateTime today = DateTime.UtcNow.Date;
+                int count = await _context.StudentProfiles
+                    .Where(x => x.CampusId == campusId && x.TimeRegister.Date == today)
+                    .CountAsync();
+
+                return count;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public async Task<int> CountRegisterDone(string CampusId)
+        {
+            try
+            {
+                var admission = await _context.StudentProfiles
+                    .Where(x => x.CampusId == CampusId && x.TypeofStatusProfile == TypeofStatus.Done)
+                    .ToListAsync();
+
+                return admission.Count();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public async Task<int> CalculatePassRate(string CampusId)
+        {
+            try
+            {
+                var studentProfiles = await _context.StudentProfiles
+                    .Where(x => x.CampusId == CampusId)
+                    .ToListAsync();
+
+                int totalCount = studentProfiles.Count();
+
+                int passedCount = studentProfiles.Count(x => x.TypeofStatusMajor == TypeofStatusForMajor.Pass);
+                int passRate = totalCount > 0 ? (int)((double)passedCount / totalCount * 100) : 0;
+
+                return passRate;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public async Task<string> FindMostSubmittedMajor(string campusId)
+        {
+            try
+            {
+
+                var mostSubmittedMajor = await _context.StudentProfiles
+                    .Where(sp => sp.CampusId == campusId) 
+                    .Include(x=>x.MajorNV)
+                    .GroupBy(sp => sp.Major)
+                    .Select(g => new
+                    {
+                        Major = g.Key,                   
+                        Count = g.Count(),
+                    })
+                    .OrderByDescending(x => x.Count)      
+                    .FirstOrDefaultAsync();       
+
+                if (mostSubmittedMajor != null)
+                {
+                    Major major = await _context.Majors
+                    .Include(x => x.Subjects)
+                    .SingleOrDefaultAsync(x => x.MajorID.Equals(mostSubmittedMajor.Major));
+                    return major.MajorName;    
+                }
+                else
+                {
+                    return "No submissions found";  
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         public async Task<List<StudentProfile>> GetRegisterAdmission(string CampusId)
         {
             try

@@ -69,5 +69,20 @@ namespace Service.StudentProfileServ
 
         public Task<List<StudentProfile>> GetRegisterAdmission(int ATId)
         => _studentProfileRepository.GetRegisterAdmission(ATId);
+
+        public Task<int> CountAdmission(string CampusId)
+        => _studentProfileRepository.CountAdmission(CampusId);
+
+        public Task<int> CalculatePassRate(string CampusId)
+        => _studentProfileRepository.CalculatePassRate(CampusId);
+
+        public Task<int> CountRegisterDone(string CampusId)
+        => _studentProfileRepository.CountRegisterDone(CampusId);
+
+        public Task<string> FindMostSubmittedMajor(string campusId)
+        => _studentProfileRepository.FindMostSubmittedMajor(campusId);
+
+        public Task<int> CountAdmissionsToday(string campusId)
+        => _studentProfileRepository.CountAdmissionsToday(campusId);
     }
 }

@@ -26,5 +26,7 @@ namespace Service.MajorSer
         Task AddMajorAdmision(MajorAdmission major);
         Task<List<object>> GetMajorAdmissionsAndRegisterByATId(int ATId);
         Task<List<object>> GetMajorAdmissionsAndRegisterProcess(string campusId);
+        Task<List<object>> ReportAdmission(string campusId);
+        Task<List<object>> ReportRegisterAdmission(string campusId);
     }
 }

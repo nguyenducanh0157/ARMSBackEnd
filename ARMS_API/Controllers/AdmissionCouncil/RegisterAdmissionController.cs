@@ -185,6 +185,23 @@ namespace ARMS_API.Controllers.AdmissionCouncil
                 });
             }
         }
+        //[HttpGet("count-register")]
+        //public async Task<IActionResult> CountRegister(string campus)
+        //{
+        //    try
+        //    {
+        //        int count = await _studentProfileService.CountAdmission(campus);
+        //        return Ok(count);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(new ResponseViewModel()
+        //        {
+        //            Status = false,
+        //            Message = ex.Message
+        //        });
+        //    }
+        //}
         [HttpPut("update-student-register")]
         public async Task<IActionResult> UpdateStudentRegister(AdmissionProfile_AO_DTO AdmissionProfile_DTO)
         {

@@ -379,5 +379,75 @@ namespace Repository.MajorRepo
                 throw new Exception("Chỉnh sửa không thành công");
             }
         }
+        public async Task<List<object>> ReportAdmission(string campusId)
+        {
+            try
+            {
+                var majorWithRegisterCount = new List<object>();
+                    var majors = await _context.Majors
+                    .Where(x=>x.CampusId==campusId)
+                        .ToListAsync();
+
+                    foreach (var major in majors)
+                    {
+                        var registerCount = await _context.StudentProfiles
+                            .Where(r => r.Major == major.MajorID)
+                            .CountAsync();
+
+                        majorWithRegisterCount.Add(new
+                        {
+                            MajorId = major.MajorID,
+                            MajorName = major?.MajorName,
+                            RegisteredCount = registerCount
+                        });
+                    }
+
+                return majorWithRegisterCount;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        public async Task<List<object>> ReportRegisterAdmission(string campusId)
+        {
+            try
+            {
+                var majorWithRegisterCount = new List<object>();
+                var majors = await _context.Majors
+                .Where(x => x.CampusId == campusId)
+                    .ToListAsync();
+
+                foreach (var major in majors)
+                {
+                    var registerConsultationCount = await _context.StudentConsultations
+                        .Where(r => r.MajorID == major.MajorID)
+                        .CountAsync();
+                    var registerCount = await _context.StudentProfiles
+                        .Where(r => r.Major == major.MajorID)
+                        .CountAsync();
+
+                    var registerCountPass = await _context.StudentProfiles
+                        .Where(r => r.Major == major.MajorID
+                                    && r.TypeofStatusProfile == TypeofStatus.SuccessProfileAdmission)
+                        .CountAsync();
+                    majorWithRegisterCount.Add(new
+                    {
+                        MajorId = major.MajorID,
+                        MajorName = major?.MajorName,
+                        RegisterConsultationCount = registerConsultationCount,
+                        RegisteredCount = registerCount,
+                        RegisterCountPass = registerCountPass
+                    });
+                }
+
+                return majorWithRegisterCount;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
     }
 }
