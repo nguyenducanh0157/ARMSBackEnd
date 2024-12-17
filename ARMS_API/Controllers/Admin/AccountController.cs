@@ -16,7 +16,7 @@ namespace ARMS_API.Controllers.Admin
 {
     [Route("api/[controller]")]
     [ApiController]
-   // [Authorize(Roles = "Admin")]
+   [Authorize(Roles = "Admin")]
     public class AccountController : ControllerBase
     {
         private IAccountService _accountService;

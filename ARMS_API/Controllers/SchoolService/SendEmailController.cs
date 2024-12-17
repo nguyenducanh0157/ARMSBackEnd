@@ -1,6 +1,7 @@
 ﻿using ARMS_API.Helper;
 using Data.DTO;
 using Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
@@ -13,7 +14,7 @@ namespace ARMS_API.Controllers.SchoolService
 {
     [Route("api/SchoolService/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "SchoolService")]
+    [Authorize(Roles = "SchoolService")]
     public class SendEmailController : ControllerBase
     {
         private readonly IEmailService _emailService;

@@ -18,7 +18,7 @@ namespace ARMS_API.Controllers.AdmissionCouncil
 {
     [Route("api/admin-council/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "AdmissionCouncil")]
+    [Authorize(Roles = "AdmissionCouncil")]
     public class RegisterAdmissionController : ControllerBase
     {
         private IStudentProfileService _studentProfileService;

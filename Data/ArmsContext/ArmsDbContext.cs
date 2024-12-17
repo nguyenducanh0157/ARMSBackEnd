@@ -58,6 +58,7 @@ namespace Data.ArmsContext
             modelBuilder.ApplyConfiguration(new MajorAdmissionConfiguration());
             modelBuilder.ApplyConfiguration(new TypeAdmissionConfiguration());
             modelBuilder.ApplyConfiguration(new RequestNotificationConfiguration());
+            modelBuilder.ApplyConfiguration(new NotificationConfiguration());
 
             modelBuilder.Entity<IdentityUserLogin<Guid>>(entity =>
             {
@@ -143,6 +144,7 @@ namespace Data.ArmsContext
         public DbSet<MajorAdmission> MajorAdmissions { get; set; }
         public DbSet<TypeAdmission> TypeAdmissions { get; set; }
         public DbSet<RequestNotification> RequestNotifications { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
         #endregion
     }
 

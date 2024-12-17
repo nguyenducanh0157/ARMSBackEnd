@@ -22,6 +22,7 @@ using Service.CampusSer;
 using Service.EmailSer;
 using Service.LocationSer;
 using Service.MajorSer;
+using Service.NotificationSer;
 using Service.PayFeeAdmissionSer;
 using Service.PriorityService;
 using Service.RequestChangeMajorSer;
@@ -156,6 +157,7 @@ builder.Services.AddScoped<IPriorityService, PriorityService>();
 builder.Services.AddScoped<IPayFeeAdmissionService, PayFeeAdmissionService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IRequestNotificationService, RequestNotificationService>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<EmailQueue>();
 builder.Services.AddSingleton<FirebaseService>();
 //Services

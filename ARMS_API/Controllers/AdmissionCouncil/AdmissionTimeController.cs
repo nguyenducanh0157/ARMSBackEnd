@@ -12,7 +12,7 @@ namespace ARMS_API.Controllers.AdmissionCouncil
 {
     [Route("api/admission-council/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "AdmissionCouncil")]
+    [Authorize(Roles = "AdmissionCouncil")]
     public class AdmissionTimeController : ControllerBase
     {
         private IAdmissionTimeService _admissionTimeService;

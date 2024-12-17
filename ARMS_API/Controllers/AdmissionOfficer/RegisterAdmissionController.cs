@@ -16,7 +16,7 @@ namespace ARMS_API.Controllers.AdmissionOfficer
 {
     [Route("api/admin-officer/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "AdminOfficer")]
+    [Authorize(Roles = "AdminOfficer")]
     public class RegisterAdmissionController : ControllerBase
     {
         private IStudentProfileService _studentProfileService;
@@ -218,7 +218,7 @@ namespace ARMS_API.Controllers.AdmissionOfficer
                         Body = $@" <h1 style=""color: orange"">Thông báo kết quả tuyển sinh</h1>
                                             <p>Gửi {stf.Fullname},
                                             <p> Hồ sơ của em đã được phòng tuyển sinh xét duyệt
-                                            <p> Trong thời gian tới phòng tuyển sinh sẽ gửi thông báo kế quả tuyển sinh em vui lòng theo dõi email và hồ sơ trên hệ thống để nhận kết quả của mình!
+                                            <p> Trong thời gian tới phòng tuyển sinh sẽ gửi thông báo kết quả tuyển sinh em vui lòng theo dõi email và hồ sơ trên hệ thống để nhận kết quả của mình!
                                             <p>Trân trọng,</p>
                                             <p>Phòng tuyển sinh</p>"
                     };

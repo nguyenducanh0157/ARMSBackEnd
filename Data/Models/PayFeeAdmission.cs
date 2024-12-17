@@ -27,4 +27,23 @@ namespace Data.Models
         public Guid SpId { get; set; }
         public virtual StudentProfile? StudentProfile { get; set; }
     }
+    public class PayFeeAdmissionDTO_Manage
+    {
+        public Guid SpId { get; set; }
+        public string TxnRef { get; set; }
+        public decimal Amount { get; set; }
+        public string BankCode { get; set; }
+        public string BankTranNo { get; set; }
+        public string CardType { get; set; }
+        public string OrderInfo { get; set; }
+        public DateTime PayDate { get; set; }
+        public string ResponseCode { get; set; }
+        public string TmnCode { get; set; }
+        public string TransactionNo { get; set; }
+        public string TransactionStatus { get; set; }
+        public string SecureHash { get; set; }
+        public bool isFeeRegister { get; set; }
+        public bool? Success { get; set; }
+        public string Fullname { get; set; }
+    }
 }

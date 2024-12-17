@@ -14,7 +14,7 @@ namespace ARMS_API.Controllers.SchoolService
 {
     [Route("api/SchoolService/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "SchoolService")]
+    [Authorize(Roles = "SchoolService")]
     public class RequestChangeMajorController : ControllerBase
     {
         private IRequestService _requestChangeMajorService;

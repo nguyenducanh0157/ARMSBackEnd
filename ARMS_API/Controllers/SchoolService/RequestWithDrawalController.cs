@@ -12,7 +12,7 @@ namespace ARMS_API.Controllers.SchoolService
 {
     [Route("api/SchoolService/[controller]")]
     [ApiController]
-    //[Authorize(Roles = "SchoolService")]
+    [Authorize(Roles = "SchoolService")]
     public class RequestWithDrawalController : ControllerBase
     {
         private IRequestService _request;

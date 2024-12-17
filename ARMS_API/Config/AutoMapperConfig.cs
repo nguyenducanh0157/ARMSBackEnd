@@ -130,6 +130,8 @@ namespace ARMS_API.Config
 
                 config.CreateMap<PayFeeAdmissionDTO, PayFeeAdmission>();
                 config.CreateMap<PayFeeAdmission, PayFeeAdmissionDTO>();
+                config.CreateMap<PayFeeAdmission, PayFeeAdmissionDTO_Manage>()
+.ForMember(dest => dest.Fullname, opt => opt.MapFrom(src => src.StudentProfile.Fullname));
 
                 config.CreateMap<RegisterAdmissionProfileDTO, StudentProfile>()
                 .ForMember(dest => dest.AcademicTranscripts, opt => opt.MapFrom(src => src.AcademicTranscriptsMajor));
@@ -191,6 +193,8 @@ namespace ARMS_API.Config
                 .ForMember(dest => dest.MajorCode, opt => opt.MapFrom(src => src.Major.MajorCode))
                 .ForMember(dest => dest.MajorName, opt => opt.MapFrom(src => src.Major.MajorName));
                 config.CreateMap<CreateAccountDTO, Account>();
+                config.CreateMap<NotificationDTO, Notification>();
+                config.CreateMap<Notification, NotificationDTO>();
             });
 
             return mapperConfig.CreateMapper();

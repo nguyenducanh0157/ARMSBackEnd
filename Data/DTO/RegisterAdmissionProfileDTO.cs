@@ -69,8 +69,7 @@ namespace Data.DTO
         public string? FullnameParents { get; set; }
         public string? PhoneParents { get; set; }
         public string CampusId { get; set; }
-        public string? Major1 { get; set; }
-        public string? Major2 { get; set; }
+        public string? Major { get; set; }
         public int? YearOfGraduation { get; set; }
         public string? SchoolName { get; set; }
         public bool? RecipientResults { get; set; } // true học sinh nhận kết quả
@@ -78,8 +77,7 @@ namespace Data.DTO
         public string? AddressRecipientResults { get; set; } // lưu địa chỉ nhận khác
         public string? ImgCitizenIdentification1 { get; set; }
         public string? ImgCitizenIdentification2 { get; set; }
-        public string? ImgDiplomaMajor1 { get; set; } // ảnh bằng ngành 1
-        public string? ImgDiplomaMajor2 { get; set; } // ảnh bằng ngành 2
+        public string? ImgDiplomaMajor { get; set; } // ảnh bằng ngành 1
         public string? Imgpriority { get; set; } // ảnh bằng chứng xác nhận ưu tiên
         public string? ImgAcademicTranscript1 { get; set; }//kỳ 1 - lớp 10
         public string? ImgAcademicTranscript2 { get; set; }//kỳ 2 - lớp 10
@@ -90,13 +88,10 @@ namespace Data.DTO
         public string? ImgAcademicTranscript7 { get; set; }//kỳ 1 - lớp 12
         public string? ImgAcademicTranscript8 { get; set; }//kỳ 2 - lớp 12
         public string? ImgAcademicTranscript9 { get; set; }//cuối năm - lớp 12
-        public virtual TypeOfDiploma? TypeOfDiplomaMajor1 { get; set; }// loại bằng ngành 1
-        public virtual TypeOfTranscript? TypeOfTranscriptMajor1 { get; set; }// loại học bạ ngành 1
-        public virtual TypeOfDiploma? TypeOfDiplomaMajor2 { get; set; }// loại bằng ngành 2
-        public virtual TypeOfTranscript? TypeOfTranscriptMajor2 { get; set; }// loại học bạ ngành 2
+        public virtual TypeOfDiploma? TypeOfDiplomaMajor { get; set; }// loại bằng ngành 1
+        public virtual TypeOfTranscript? TypeOfTranscriptMajor { get; set; }// loại học bạ ngành 1
         public int? PriorityDetailPriorityID { get; set; }
-        public virtual ICollection<AcademicTranscript_View_DTO>? AcademicTranscriptsMajor1 { get; set; }
-        public virtual ICollection<AcademicTranscript_View_DTO>? AcademicTranscriptsMajor2 { get; set; }
+        public virtual ICollection<AcademicTranscript_View_DTO>? AcademicTranscriptsMajor { get; set; }
 
     }
     public class AdmissionProfileDTO
@@ -225,8 +220,8 @@ namespace Data.DTO
         public string? FullnameParents { get; set; }
         public string? PhoneParents { get; set; }
         public string CampusId { get; set; }
-        public string? Major1 { get; set; }
-        public string MajorName1 { get; set; }
+        public string? Major { get; set; }
+        public string? MajorName { get; set; }
         public int? YearOfGraduation { get; set; }
         public string? SchoolName { get; set; }
         public bool? RecipientResults { get; set; } // true học sinh nhận kết quả
@@ -234,7 +229,7 @@ namespace Data.DTO
         public string? AddressRecipientResults { get; set; } // lưu địa chỉ nhận khác
         public string? ImgCitizenIdentification1 { get; set; }
         public string? ImgCitizenIdentification2 { get; set; }
-        public string? ImgDiplomaMajor1 { get; set; } // ảnh bằng ngành 1
+        public string? ImgDiplomaMajor { get; set; } // ảnh bằng ngành 1
         public string? Imgpriority { get; set; } // ảnh bằng chứng xác nhận ưu tiên
         public string? ImgAcademicTranscript1 { get; set; }//kỳ 1 - lớp 10
         public string? ImgAcademicTranscript2 { get; set; }//kỳ 2 - lớp 10
@@ -245,11 +240,11 @@ namespace Data.DTO
         public string? ImgAcademicTranscript7 { get; set; }//kỳ 1 - lớp 12
         public string? ImgAcademicTranscript8 { get; set; }//kỳ 2 - lớp 12
         public string? ImgAcademicTranscript9 { get; set; }//cuối năm - lớp 12
-        public virtual TypeOfDiploma? TypeOfDiplomaMajor1 { get; set; }// loại bằng ngành 1
-        public virtual TypeOfTranscript? TypeOfTranscriptMajor1 { get; set; }// loại học bạ ngành 1
+        public virtual TypeOfDiploma? TypeOfDiplomaMajor { get; set; }// loại bằng ngành 1
+        public virtual TypeOfTranscript? TypeOfTranscriptMajor { get; set; }// loại học bạ ngành 1
         public int? PriorityDetailPriorityID { get; set; }
-        public virtual ICollection<AcademicTranscript_View_DTO>? AcademicTranscriptsMajor1 { get; set; }
-        public virtual TypeofStatusForMajor? TypeofStatusMajor1 { get; set; } // trạng thái xét tuyển ngành 1
+        public virtual ICollection<AcademicTranscript_View_DTO>? AcademicTranscriptsMajor { get; set; }
+        public virtual TypeofStatusForMajor? TypeofStatusMajor { get; set; } // trạng thái xét tuyển ngành 1
         public virtual TypeofStatus? TypeofStatusProfile { get; set; } // trạng thái hồ sơ
         public string? Note { get; set; }
         public string? AdmissionForm { get; set; }

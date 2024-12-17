@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "V8RFGoGg0e0S8Y9mKDvYtN/wvJUqSEJjzjE+og/zaONLf3HoCaZ4hCVFD1ZxU4Vq6h7IlCwD2kLAonMSMmVSXA==",
+  "dgSpecHash": "iBbdh6T3j/UbFMpLguKn0k6Y7BwqAXJ+0i37Z+hHdSAW8EWuoq3F2r+Y8yPjGsaF+RrEOrZBpz0Lzhdah4FTlg==",
   "success": true,
-  "projectFilePath": "D:\\Job\\Đức Anh\\BE_v1\\Service\\Service.csproj",
+  "projectFilePath": "D:\\Job\\Đức Anh\\Clone_BE\\Service\\Service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\-ASUS-\\.nuget\\packages\\bouncycastle.cryptography\\2.4.0\\bouncycastle.cryptography.2.4.0.nupkg.sha512",
     "C:\\Users\\-ASUS-\\.nuget\\packages\\firebaseadmin\\3.1.0\\firebaseadmin.3.1.0.nupkg.sha512",
