@@ -104,6 +104,67 @@ namespace Service.AccountSer
                 throw new Exception("Đã sảy ra lỗi!", ex);
             }
         }
+        public async Task<List<Account>> GetAC(string campusId)
+        {
+            try
+            {
+                var RoleId = Guid.Parse("E5EC8836-E240-4BFC-9BBE-33F2CC7A404D");
 
+                var allUsers = await _userManager.Users
+                    .Where(user => user.CampusId == campusId)
+                    .ToListAsync();
+
+                var Accounts = new List<Account>();
+                foreach (var user in allUsers)
+                {
+                    var roles = await _userManager.GetRolesAsync(user);
+                    if (roles.Any(roleName =>
+                    {
+                        var role = _roleManager.Roles.FirstOrDefault(r => r.Name == roleName);
+                        return role != null && role.Id == RoleId;
+                    }))
+                    {
+                        Accounts.Add(user);
+                    }
+                }
+
+                return Accounts;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Đã sảy ra lỗi!", ex);
+            }
+        }
+        public async Task<List<Account>> GetAdmin(string campusId)
+        {
+            try
+            {
+                var RoleId = Guid.Parse("B8FD818F-63F1-49EE-BEC5-F7B66CAFBFCA");
+
+                var allUsers = await _userManager.Users
+                    .Where(user => user.CampusId == campusId)
+                    .ToListAsync();
+
+                var Accounts = new List<Account>();
+                foreach (var user in allUsers)
+                {
+                    var roles = await _userManager.GetRolesAsync(user);
+                    if (roles.Any(roleName =>
+                    {
+                        var role = _roleManager.Roles.FirstOrDefault(r => r.Name == roleName);
+                        return role != null && role.Id == RoleId;
+                    }))
+                    {
+                        Accounts.Add(user);
+                    }
+                }
+
+                return Accounts;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Đã sảy ra lỗi!", ex);
+            }
+        }
     }
 }

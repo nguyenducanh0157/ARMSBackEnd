@@ -231,11 +231,138 @@ namespace ARMS_API.Controllers
                         var roleResult = await _userManager.AddToRoleAsync(account, role.Name);
                     }
                 }
+                List<Account> accountAOs = await _accountService.GetAO(studentProfile.CampusId);
+                _ = Task.Run(async () =>
+                {
+                    foreach (var item in accountAOs)
+                    {
+                        var emailRequest = new EmailRequest
+                        {
+                            ToEmail = item.Email,
+                            Subject = "Học sinh " + account.Fullname + " đã nhập học thành công!",
+                            Body = $@"<!DOCTYPE html>
+                                    <html lang=""en"">
+                                    <head>
+                                        <meta charset=""UTF-8"">
+                                        <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+                                        <title>Thông tin Đăng ký Tuyển sinh</title>
+                                        <style>
+                                            body {{  
+                                                font-family: Arial, sans-serif;
+                                                line-height: 1.6;
+                                                margin: 20px;
+                                            }}
+                                            .container {{
+                                                max-width: 800px;
+                                                margin: 0 auto;
+                                                border: 1px solid #ddd;
+                                                border-radius: 10px;
+                                                padding: 20px;
+                                                background-color: #f9f9f9;
+                                            }}
+                                            h1 {{
+                                                text-align: center;
+                                                color: #333;
+                                            }}
+
+                                        </style>
+                                    </head>
+                                    <body>
+                                        <div class=""container"">
+                                            <h1 style=""color: orange"">Thông tin tuyển sinh</h1>
+                                            <p>Hồ sơ của thí sinh {account.Fullname} đã nhập học thành công vui lòng kiểm tra và phản hồi trong thời gian sớm nhất
+                                            <p>Trân trọng,</p>
+                                            <p>Hệ thống tuyển sinh</p>
+                                        </div>
+                                    </body>
+                                    </html>"
+                        };
+                        await _emailService.SendEmailByHTMLAsync(emailRequest);
+                    }
+                });
+                foreach (var item in accountAOs)
+                {
+                    Data.Models.Notification noti = new Data.Models.Notification()
+                    {
+                        AccountId = item.Id,
+                        CreateAt = DateTime.Now,
+                        isRead = false,
+                        Content = "Học sinh " + account.Fullname + " nhập học thành công!",
+                        NotificationId = Guid.NewGuid(),
+                        TypeNotification = TypeNotification.RegisterAdmission,
+                        
+                    };
+                    _notificationService.AddNotification(noti);
+                }
+                List<Account> accountAdmins = await _accountService.GetAdmin(studentProfile.CampusId);
+                _ = Task.Run(async () =>
+                {
+                    foreach (var item in accountAdmins)
+                    {
+                        var emailRequest = new EmailRequest
+                        {
+                            ToEmail = item.Email,
+                            Subject = "Học sinh " + account.Fullname + " đã nhập học thành công!",
+                            Body = $@"<!DOCTYPE html>
+                                    <html lang=""en"">
+                                    <head>
+                                        <meta charset=""UTF-8"">
+                                        <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+                                        <title>Thông tin Đăng ký Tuyển sinh</title>
+                                        <style>
+                                            body {{  
+                                                font-family: Arial, sans-serif;
+                                                line-height: 1.6;
+                                                margin: 20px;
+                                            }}
+                                            .container {{
+                                                max-width: 800px;
+                                                margin: 0 auto;
+                                                border: 1px solid #ddd;
+                                                border-radius: 10px;
+                                                padding: 20px;
+                                                background-color: #f9f9f9;
+                                            }}
+                                            h1 {{
+                                                text-align: center;
+                                                color: #333;
+                                            }}
+
+                                        </style>
+                                    </head>
+                                    <body>
+                                        <div class=""container"">
+                                            <h1 style=""color: orange"">Thông tin tuyển sinh</h1>
+                                            <p>Hồ sơ của thí sinh {account.Fullname} đã nhập học thành công vui lòng kiểm tra và phản hồi trong thời gian sớm nhất
+                                            <p>Trân trọng,</p>
+                                            <p>Hệ thống tuyển sinh</p>
+                                        </div>
+                                    </body>
+                                    </html>"
+                        };
+                        await _emailService.SendEmailByHTMLAsync(emailRequest);
+                    }
+                });
+                foreach (var item in accountAdmins)
+                {
+                    Data.Models.Notification noti = new Data.Models.Notification()
+                    {
+                        AccountId = item.Id,
+                        CreateAt = DateTime.Now,
+                        isRead = false,
+                        Content = "Học sinh " + account.Fullname + " nhập học thành công!",
+                        NotificationId = Guid.NewGuid(),
+                        TypeNotification = TypeNotification.RegisterAdmission,
+
+                    };
+                    _notificationService.AddNotification(noti);
+                }
                 return Ok(new ResponseViewModel()
                 {
                     Status = true,
                     Message = "Thủ tục nhập học thành công!"
                 });
+
             }
             catch (Exception ex)
             {
@@ -497,14 +624,6 @@ namespace ARMS_API.Controllers
                         };
 
                         await _emailService.SendEmailByHTMLAsync(emailRequest);
-                        RequestNotification requestNotification = new RequestNotification()
-                        {
-                            SendTo = item.Id,
-                            Content = "Hồ sơ đăng ký mới",
-                            Subject = "Học sinh " + registerAdmissionProfileDTO.Fullname + " đăng ký thành công!",
-                            TimeSend = DateTime.Now
-                        };
-                        _requestNotificationService.AddNewRequest(requestNotification);
                     }
                 });
                 foreach (var item in accounts)

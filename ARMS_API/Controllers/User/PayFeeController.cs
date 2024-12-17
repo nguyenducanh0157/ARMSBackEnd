@@ -12,7 +12,7 @@ namespace ARMS_API.Controllers.User
 {
     [Route("api/user/[controller]")]
     [ApiController]
-    [Authorize(Roles = "AdmissionCouncil, AdminOfficer, Admin")]
+    [Authorize(Roles = "AdmissionCouncil, AdmissionOfficer, Admin")]
     public class PayFeeController : ControllerBase
     {
 
