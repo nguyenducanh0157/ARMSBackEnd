@@ -213,19 +213,60 @@ namespace Repository.StudentProfileRepo
 
             return studentProfile;
         }
-        public async Task<StudentProfile> UpdateStudentRegister(StudentProfile StudentProfile)
+        //public async Task<StudentProfile> UpdateStudentRegister(StudentProfile StudentProfile)
+        //{
+        //    try
+        //    {
+        //        _context.Entry<StudentProfile>(StudentProfile).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+        //        _context.AcademicTranscripts.RemoveRange(StudentProfile.AcademicTranscripts);
+        //        foreach (var transcript in StudentProfile.AcademicTranscripts)
+        //        {
+        //            StudentProfile.AcademicTranscripts.Add(transcript);
+        //        }
+
+        //        await _context.SaveChangesAsync();
+        //        return StudentProfile;
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //}
+        public async Task<StudentProfile> UpdateStudentRegister(StudentProfile studentProfile)
         {
             try
             {
-                _context.Entry<StudentProfile>(StudentProfile).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                await _context.SaveChangesAsync();
-                return StudentProfile;
-            }
-            catch (Exception)
-            {
+                // Tìm StudentProfile từ cơ sở dữ liệu
+                var existingProfile = await _context.StudentProfiles
+                    .Include(sp => sp.AcademicTranscripts)
+                    .FirstOrDefaultAsync(sp => sp.SpId == studentProfile.SpId);
 
+                if (existingProfile == null)
+                {
+                    throw new Exception("StudentProfile not found");
+                }
+
+                // Cập nhật toàn bộ StudentProfile, Entity Framework sẽ tự động nhận biết sự thay đổi
+                _context.Entry(existingProfile).CurrentValues.SetValues(studentProfile);
+                _context.AcademicTranscripts.RemoveRange(existingProfile.AcademicTranscripts);
+
+                foreach (var transcript in studentProfile.AcademicTranscripts)
+                {
+                    _context.AcademicTranscripts.Add(transcript);
+
+                }
+                _context.Entry(existingProfile).State = EntityState.Modified;
+                // Lưu thay đổi
+                await _context.SaveChangesAsync();
+
+                return existingProfile;
+            }
+            catch (Exception ex)
+            {
                 throw;
             }
         }
+
     }
 }

@@ -72,6 +72,24 @@ namespace ARMS_API.Controllers.SchoolService
                 return BadRequest();
             }
         }
+        [HttpDelete("delete-blog")]
+        public async Task<IActionResult> DeleteBlog(int BlogId)
+        {
+            try
+            {
+                await _blogService.DeleteBlog(BlogId);
+                return Ok(new ResponseViewModel()
+                {
+                    Status = true,
+                    Message = "Xóa bài viết thành công!"
+                });
 
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
+        }
     }
 }

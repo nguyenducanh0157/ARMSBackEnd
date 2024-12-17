@@ -10,5 +10,7 @@ namespace Service.NotificationSer
     public interface INotificationService
     {
         Task<List<Notification>> GetNotifications(Guid AccountId);
+        Task UpdateNotification(Guid NotificationId);
+        Task AddNotification(Notification Notification);
     }
 }

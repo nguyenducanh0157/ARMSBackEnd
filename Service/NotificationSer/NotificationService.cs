@@ -17,7 +17,14 @@ namespace Service.NotificationSer
         {
             _notificationRepository = new NotificationRepository(context);
         }
+
+        public Task AddNotification(Notification Notification)
+        => _notificationRepository.AddNotification(Notification);
+
         public Task<List<Notification>> GetNotifications(Guid AccountId)
         => _notificationRepository.GetNotifications(AccountId);
+
+        public Task UpdateNotification(Guid NotificationId)
+        => _notificationRepository.UpdateNotification(NotificationId);
     }
 }

@@ -14,5 +14,6 @@ namespace Service.BlogSer
         Task<List<Blog>> GetBlogs(string CampusId);
         Task AddNewBlog(Blog blog);
         Task UpdateBlog(Blog blog);
+        Task DeleteBlog(int BlogId);
     }
 }

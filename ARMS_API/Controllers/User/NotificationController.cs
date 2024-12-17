@@ -45,5 +45,24 @@ namespace ARMS_API.Controllers.User
                 return BadRequest();
             }
         }
+        [HttpPut("update-notification")]
+        public async Task<IActionResult> UpdateNotification(Guid NotificationId)
+        {
+            try
+            {
+                await _notificationService.UpdateNotification(NotificationId);
+                return Ok(new ResponseViewModel()
+                {
+                    Status = true,
+                    Message = "Cập nhật thành công!"
+                });
+
+            }
+            catch (Exception)
+            {
+
+                return BadRequest();
+            }
+        }
     }
 }

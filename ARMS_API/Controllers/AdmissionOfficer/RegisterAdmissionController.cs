@@ -16,7 +16,7 @@ namespace ARMS_API.Controllers.AdmissionOfficer
 {
     [Route("api/admin-officer/[controller]")]
     [ApiController]
-    [Authorize(Roles = "AdminOfficer")]
+    [Authorize(Roles = "AdmissionOfficer")]
     public class RegisterAdmissionController : ControllerBase
     {
         private IStudentProfileService _studentProfileService;
@@ -119,7 +119,7 @@ namespace ARMS_API.Controllers.AdmissionOfficer
             try
             {
                 StudentProfile responeResult = _mapper.Map<StudentProfile>(AdmissionProfile_DTO);
-                if (AdmissionProfile_DTO.TypeofStatusMajor1 == TypeofStatusForMajor.Fail )
+                if (AdmissionProfile_DTO.TypeofStatusMajor == TypeofStatusForMajor.Fail )
                 {
                     responeResult.TypeofStatusMajor = TypeofStatusForMajor.Fail;
                     responeResult.TypeofStatusProfile = TypeofStatus.Done;

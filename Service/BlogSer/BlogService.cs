@@ -24,7 +24,10 @@ namespace Service.BlogSer
             if (blogcategory == null) throw new Exception("Không tồn tại loại bài viết!");
             blog.DateCreate = DateTime.Now;
             await _blogRepository.AddNewBlog(blog);
-        } 
+        }
+
+        public Task DeleteBlog(int BlogId)
+        => _blogRepository.DeleteBlog(BlogId);
 
         public async Task<Blog> GetBlog(int BlogId) => await _blogRepository.GetBlog(BlogId);
 

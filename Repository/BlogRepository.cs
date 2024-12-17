@@ -85,6 +85,20 @@ namespace Repository
                 throw;
             }
         }
+        public async Task DeleteBlog(int BlogId)
+        {
+            try
+            {
+                Blog blog = await _context.Blogs
+                   .FirstOrDefaultAsync(x => x.BlogId == BlogId);
+                  _context.Blogs.Remove(blog);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         public async Task UpdateBlog(Blog blog)
         {
             try

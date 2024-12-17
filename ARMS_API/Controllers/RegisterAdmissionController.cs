@@ -529,6 +529,8 @@ namespace ARMS_API.Controllers
                     return NotFound(new ResponseViewModel { Status = false, Message = "Student profile not found." });
                 }
                 _mapper.Map(registerAdmissionProfileDTO, studentProfile);
+                List<AcademicTranscript> responeResult = _mapper.Map<List<AcademicTranscript>>(registerAdmissionProfileDTO.AcademicTranscriptsMajor);
+                studentProfile.AcademicTranscripts = responeResult;
 
                 //add new
                 await _studentProfileService.UpdateStudentRegister(studentProfile);

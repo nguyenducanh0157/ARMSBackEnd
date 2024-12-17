@@ -11,6 +11,7 @@ namespace Data.DTO
 {
     public class MajorDTO
     {
+        public int? AdmissionTimeId { get; set; }
         public string MajorID { get; set; }
         public string MajorCode { get; set; }
         public bool Status { get; set; }
