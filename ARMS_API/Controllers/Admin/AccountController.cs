@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Service.AccountSer;
 using Service.AdmissionTimeSer;
+using Service.EmailSer;
 using Service.MajorSer;
 using static Google.Apis.Requests.BatchRequest;
 
@@ -25,8 +26,9 @@ namespace ARMS_API.Controllers.Admin
         private readonly IMajorService _majorService;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
+        private readonly IEmailService _emailService;
         private UserInput _userInput;
-        public AccountController(IAccountService accountService, IMapper mapper, UserManager<Account> userManager, RoleManager<IdentityRole<Guid>> roleManager, IConfiguration configuration, UserInput userInput,IMajorService majorService)
+        public AccountController(IAccountService accountService, IEmailService emailService, IMapper mapper, UserManager<Account> userManager, RoleManager<IdentityRole<Guid>> roleManager, IConfiguration configuration, UserInput userInput,IMajorService majorService)
         {
             _accountService = accountService;
             _userManager = userManager;
@@ -35,6 +37,7 @@ namespace ARMS_API.Controllers.Admin
             _mapper = mapper;
             _userInput = userInput;
             _majorService = majorService;
+            _emailService= emailService;
         }
         [HttpGet("get-accounts")]
         public async Task<IActionResult> GetAccounts(string? CampusId, string? Search, int CurrentPage, string? role)
@@ -379,6 +382,62 @@ namespace ARMS_API.Controllers.Admin
                     await _userManager.AddToRoleAsync(account, model.RoleName);
                 }
 
+                if (account.TypeAccount== TypeAccount.RequestAccountAccept)
+                {
+                    _ = Task.Run(async () =>
+                    {
+
+                        var Body = $@"<!DOCTYPE html>
+                        <html lang=""en"">
+                        <head>
+                            <meta charset=""UTF-8"">
+                            <meta name=""viewport"" content=""width=device-width, initial-scale=1.0"">
+                            <title>Thông tin Đăng ký Tuyển sinh</title>
+                            <style>
+                                body {{  
+                                    font-family: Arial, sans-serif;
+                                    line-height: 1.6;
+                                    margin: 20px;
+                                }}
+                                .container {{
+                                    max-width: 800px;
+                                    margin: 0 auto;
+                                    border: 1px solid #ddd;
+                                    border-radius: 10px;
+                                    padding: 20px;
+                                    background-color: #f9f9f9;
+                                }}
+                                h1 {{
+                                    text-align: center;
+                                    color: #333;
+                                }}
+
+                            </style>
+                        </head>
+                        <body>
+                            <div class=""container"">
+                                <h1 style=""color: orange"">Thông báo tài khoản đăng nhập</h1>
+                                <p>Thân gửi bạn 
+                                    <strong>{account.Fullname},</strong>
+                                </p>
+                                <p>Chúng tôi rất vui vì nhận được sự quan tâm từ bạn. 
+
+                                <p>Hồ sơ của bạn đã hoàn tất vui lòng sử dụng email cá nhân đã đăng ký ({account.Email}) để đăng nhập vào hệ thống!</p>
+                                <p>Trân trọng,</p>
+                                <p>Phòng Tuyển sinh</p>
+                            </div>
+                        </body>
+                        </html>";
+                        var emailRequest = new EmailRequest
+                        {
+                            ToEmail = account.Email,
+                            Subject = "Thông báo tài khoản đăng nhập",
+                            Body = Body,
+                        };
+
+                        await _emailService.SendEmailByHTMLAsync(emailRequest);
+                    });
+                }
                 return Ok(new ResponseViewModel
                 {
                     Status = true,

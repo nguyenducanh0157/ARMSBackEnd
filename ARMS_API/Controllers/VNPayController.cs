@@ -121,7 +121,7 @@ namespace ARMS_API.Controllers
                     });
                 }
 
-                decimal totalFee = admissionInfo.FeeRegister;
+                decimal totalFee = admissionInfo.FeeAdmission;
 
                 Major major = await _majorService.GetMajor(request.Major);
                 if (major == null)

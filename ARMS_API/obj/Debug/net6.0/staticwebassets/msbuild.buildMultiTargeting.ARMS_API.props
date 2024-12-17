@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ARMS_API.props" />
+</Project>
