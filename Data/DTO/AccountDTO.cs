@@ -1,6 +1,7 @@
 ﻿using Data.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,29 @@ namespace Data.DTO
         public string? Fullname { get; set; }
         public string? StudentCode { get; set; }
     }
-public class Account_DTO
+    public class ChangePasswordModel
+    {
+        [Required]
+        public string OldPassword { get; set; }
+
+        [Required]
+        [MinLength(6)]
+        public string NewPassword { get; set; }
+    }
+    public class ForgotPasswordModel_Email
+    {
+        [Required]
+        public string email { get; set; }
+    }
+    public class ForgotPasswordModel
+    {
+        [Required]
+        public string email { get; set; }
+        [Required]
+        [MinLength(6)]
+        public string NewPassword { get; set; }
+    }
+    public class Account_DTO
     {
         public Guid Id { get; set; }
         public string? Fullname { get; set; }

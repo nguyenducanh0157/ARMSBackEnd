@@ -19,6 +19,7 @@ using Service.CampusSer;
 using Service.EmailSer;
 using Service.LocationSer;
 using Service.MajorSer;
+using Service.NotificationSer;
 using Service.PayFeeAdmissionSer;
 using Service.PriorityService;
 using Service.RequestNotificationSer;
@@ -48,6 +49,7 @@ namespace ARMS_API.Controllers
         private readonly IPriorityService _priorityService;
         private readonly IAccountService _accountService;
         private readonly IRequestNotificationService _requestNotificationService;
+        private readonly INotificationService _notificationService;
         private readonly ICampusService _campusService;
         private readonly UserManager<Account> _userManager;
         private readonly RoleManager<IdentityRole<Guid>> _roleManager;
@@ -69,7 +71,8 @@ namespace ARMS_API.Controllers
             ICampusService campusService,
             UserManager<Account> userManager, 
             RoleManager<IdentityRole<Guid>> roleManager,
-            IAdmissionTimeService admissionTimeService
+            IAdmissionTimeService admissionTimeService,
+            INotificationService notificationService
             )
         {
             _studentProfileService = studentProfileService;
@@ -91,6 +94,7 @@ namespace ARMS_API.Controllers
             _userManager = userManager;
             _roleManager = roleManager;
             _admissionTimeService = admissionTimeService;
+            _notificationService = notificationService;
         }
 
 
@@ -409,7 +413,7 @@ namespace ARMS_API.Controllers
                             <tr>
                                 <th>Ngành đăng ký</th>
                                <td>
-                                    {major}
+                                    {major1}
                                 </td>
                             </tr>
                             <tr>
@@ -503,7 +507,20 @@ namespace ARMS_API.Controllers
                         _requestNotificationService.AddNewRequest(requestNotification);
                     }
                 });
-
+                foreach (var item in accounts)
+                {
+                    Data.Models.Notification noti = new Data.Models.Notification()
+                    {
+                        AccountId = item.Id,
+                        CreateAt = DateTime.Now,
+                        isRead = false,
+                        Content = "Học sinh " + registerAdmissionProfileDTO.Fullname + " đã nộp hồ sơ thành công!",
+                        SPId = id,
+                        NotificationId = Guid.NewGuid(),
+                        TypeNotification = TypeNotification.RegisterAdmission
+                    };
+                    _notificationService.AddNotification(noti);
+                }
                 return Ok(id);
             }
             catch (Exception ex)

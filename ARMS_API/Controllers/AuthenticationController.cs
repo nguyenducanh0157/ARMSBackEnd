@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.IdentityModel.Tokens;
 using Org.BouncyCastle.Asn1.Ocsp;
 using Service;
+using Service.EmailSer;
 using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -26,12 +28,21 @@ namespace ARMS_API.Controllers
         private readonly RoleManager<IdentityRole<Guid>> _roleManager;
         private readonly IConfiguration _configuration;
         private readonly FirebaseService _firebaseService;
-        public AuthenticationController(UserManager<Account> userManager, RoleManager<IdentityRole<Guid>> roleManager, IConfiguration configuration, FirebaseService firebaseService)
+        private readonly SignInManager<Account> _signInManager;
+        private readonly IEmailService _emailService;
+        private readonly IMemoryCache _cache;
+        private readonly TokenHealper _tokenHealper;
+        private readonly TimeSpan _otpLifetime = TimeSpan.FromMinutes(5);
+        public AuthenticationController(UserManager<Account> userManager,TokenHealper tokenHealper, IEmailService emailService, IMemoryCache cache, RoleManager<IdentityRole<Guid>> roleManager, IConfiguration configuration, FirebaseService firebaseService, SignInManager<Account> signInManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
             _firebaseService = firebaseService;
+            _signInManager = signInManager;
+            _emailService = emailService;
+            _cache = cache;
+            _tokenHealper = tokenHealper;
         }
         [HttpPost]
         [Route("login")]
@@ -163,6 +174,115 @@ namespace ARMS_API.Controllers
                 });
             }
         }
+        [HttpPost("change-password")]
+        [Authorize]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordModel model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                var user = await _userManager.GetUserAsync(User);
+                if (user == null)
+                    return Unauthorized("User not found");
+
+                var result = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
+
+                if (!result.Succeeded)
+                    return BadRequest(result.Errors);
+
+                await _signInManager.RefreshSignInAsync(user);
+
+                return Ok(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Cập nhật thành công!"
+                });
+            }
+            catch (Exception)
+            {
+
+                return BadRequest(new ResponseViewModel
+                {
+                    Status = false,
+                    Message = "Đã xảy ra lỗi! Vui lòng thử lại sau!"
+                });
+            }
+            
+        }
+        [HttpPost("send-OTP")]
+        public async Task<IActionResult> SendOTPByEmail([FromBody] ForgotPasswordModel_Email requestSendOTP)
+        {
+            var otp = new Random().Next(100000, 999999).ToString();
+            EmailRequest emailRequest = new EmailRequest();
+            emailRequest.ToEmail = requestSendOTP.email;
+            emailRequest.Subject = "Send OTP";
+            emailRequest.Body = $"OTP của bạn là: {otp}";
+            _cache.Set(emailRequest.ToEmail, otp, _otpLifetime);
+            await _emailService.SendEmailAsync(emailRequest);
+            return Ok(new { Message = "Mã OTP đã được gửi đến email của bạn!", Email = requestSendOTP.email });
+        }
+        [HttpPost("verify-OTP")]
+        public async Task<ActionResult<string>> VerifyOtpAsync(string email, string otp)
+        {
+            if (_cache.TryGetValue(email, out string storedOtp) && storedOtp == otp)
+            {
+                _cache.Remove(email);
+
+                var token = _tokenHealper.GenerateAccessToken(email);
+
+                return Ok(new { Token = token });
+            }
+
+            return Unauthorized("OTP không hợp lệ.");
+        }
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordModel model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                var user = await _userManager.FindByEmailAsync(model.email);
+                if (user == null)
+                    return BadRequest("không tìm thấy tài khoản!");
+
+                var resetPasswordResult = await _userManager.RemovePasswordAsync(user);
+                if (!resetPasswordResult.Succeeded)
+                {
+                    return BadRequest(new ResponseViewModel
+                    {
+                        Status = false,
+                        Message = "Đã sảy ra lỗi vui lòng thử lại sau!"
+                    });
+                }
+                var result = await _userManager.AddPasswordAsync(user, "A123@123a");
+                if (!result.Succeeded)
+                {
+                    return BadRequest(new ResponseViewModel
+                    {
+                        Status = false,
+                        Message = "Đăng lại mật khẩu không thành công!"
+                    });
+                }
+                return Ok(new ResponseViewModel()
+                {
+                    Status = true,
+                    Message = "Đổi mật khẩu thành công!"
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResponseViewModel()
+                {
+                    Status = true,
+                    Message = "Đổi mật khẩu không thành công!"
+                });
+            }
+        }
+
         private async Task<FirebaseAdmin.Auth.FirebaseToken> VerifyGoogleTokenWithFirebase(string idToken)
         {
             try
